@@ -29,6 +29,7 @@
 </head>
 <body onload="init">
 <h3>Hello HTML5 Web Socket</h3>
+<h3>Smag0</h3>
 <div>Connect to: <span id="wsUri"></span></div>
 <input type="button" value="stop" name="stopBtn" class="button" onclick="javascript:stop();"/>
 <div id="output">
