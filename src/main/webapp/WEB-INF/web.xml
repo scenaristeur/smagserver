@@ -12,4 +12,12 @@
     <servlet-name>HelloHtml5</servlet-name>
     <url-pattern>/ws/*</url-pattern>
   </servlet-mapping>
+    <servlet>
+    <servlet-name>Hello</servlet-name>
+    <servlet-class>favedave.smag.HelloServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Hello</servlet-name>
+    <url-pattern>/hello/*</url-pattern>
+  </servlet-mapping>
 </web-app>
