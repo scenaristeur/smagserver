@@ -4,12 +4,22 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
-  <servlet>
+<!--  -->  <servlet>
     <servlet-name>HelloHtml5</servlet-name>
     <servlet-class>org.ajeesh.app.Html5Servlet</servlet-class>
   </servlet>
-  <servlet-mapping>
+   -->
+    <servlet>
+    <servlet-name>hello</servlet-name>
+    <servlet-class>com.example.HelloServlet</servlet-class>
+  </servlet>
+<!--   <servlet-mapping>
     <servlet-name>HelloHtml5</servlet-name>
     <url-pattern>/ws/*</url-pattern>
+  </servlet-mapping>
+  -->
+    <servlet-mapping>
+    <servlet-name>hello</servlet-name>
+    <url-pattern>/hello</url-pattern>
   </servlet-mapping>
 </web-app>
