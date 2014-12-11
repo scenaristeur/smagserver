@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.servlet.http.HttpServletRequest;
 
-/*import org.eclipse.jetty.websocket.WebSocket;
+import org.eclipse.jetty.websocket.WebSocket;
 import org.eclipse.jetty.websocket.WebSocketServlet;
 
 public class Html5Servlet extends WebSocketServlet {
@@ -74,4 +74,4 @@ public class Html5Servlet extends WebSocketServlet {
 		}
 		
 	}
-}*/
+}
