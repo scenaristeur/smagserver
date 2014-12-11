@@ -8,7 +8,7 @@ import org.janusproject.kernel.status.Status;
 
 public class AgentB extends Agent {
 	  public Status activate(Object... parameters) {
-		    print ("Je me présente");
+		    print ("Je me presente");
 		    return null;
 		  }
 	  public Status live() {
@@ -18,8 +18,8 @@ public class AgentB extends Agent {
 	          ((StringMessage)m).getContent().equals("hello")) {
 	        replyToMessage(m, new StringMessage("welcome"));
 	        AgentAddress a = (AgentAddress)m.getSender();
-	        print ("J'ai reçu un message qui dit 'hello' en provenance de "+a);
-	        print ("Je lui répond 'welcome'");
+	        print ("J'ai recu un message qui dit 'hello' en provenance de "+a);
+	        print ("Je lui repond 'welcome'");
 	      }
 	    }
 	    return null;

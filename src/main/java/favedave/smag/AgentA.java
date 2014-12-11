@@ -14,7 +14,7 @@ public class AgentA extends Agent {
 	  private State state;
 	  public Status activate(Object... parameters) {
 	    this.state = State.PRESENTATION;
-	    print ("Je me présente");
+	    print ("Je me presente");
 	    return null;
 	  }
 	  public Status live() {
@@ -35,7 +35,7 @@ public class AgentA extends Agent {
 	        	 AgentAddress a = (AgentAddress)m.getSender();
 	        	 print ("Oh! j'ai un message qui dit '"+((StringMessage)m).getContent()+"' en provenance de "+a+" !");
 	           killMe();
-	        	 print ("c'est bon, le test est terminé, je peux me tuer... ARRggggHHH !!!");
+	        	 print ("c'est bon, le test est termine, je peux me tuer... ARRggggHHH !!!");
 	         }
 	      }
 	      break;
