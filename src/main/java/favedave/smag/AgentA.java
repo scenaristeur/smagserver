@@ -15,6 +15,7 @@ public class AgentA extends Agent {
 	  public Status activate(Object... parameters) {
 	    this.state = State.PRESENTATION;
 	    print ("Je me presente");
+		System.out.println("Je me présente");
 	    return null;
 	  }
 	  public Status live() {
