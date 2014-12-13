@@ -41,7 +41,7 @@
 </body>
 <script language="javascript" type="text/javascript">
 
-  var openshiftWebSocketPort = 8080; // Or use 8443 for wss
+  var openshiftWebSocketPort = 8000; // Or use 8443 for wss
   var wsUri = "ws://" + window.location.hostname + ":" + openshiftWebSocketPort + "/ws";
   var output;
 
