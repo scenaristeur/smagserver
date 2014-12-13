@@ -22,7 +22,7 @@
         <activeByDefault>true</activeByDefault>
       </activation>
       <properties>
-        <jetty.port>8080</jetty.port>
+        <jetty.port>8000</jetty.port>
         <jetty.host>0.0.0.0</jetty.host>
       </properties>
     </profile>
