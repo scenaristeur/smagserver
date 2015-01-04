@@ -9,7 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.janusproject.kernel.Kernel;
 import org.janusproject.kernel.address.Address;
+import org.janusproject.kernel.agent.AgentLifeState;
 import org.janusproject.kernel.agent.Kernels;
+
+import favedave.smag.jena.sparql.JenaRequeteProjets;
 
 
 
@@ -29,9 +32,11 @@ public class ProjetsServlet extends HttpServlet
 	     
 	     AgentA a = new AgentA();
 	     AgentB b = new AgentB();
+	    // JenaRequeteProjets  jenarequeteprojets=new JenaRequeteProjets();
 			Kernel k = Kernels.get();
 			k.launchLightAgent(a,"Albert");
 			k.launchLightAgent(b,"Bernardo");
+		//	k.launchLightAgent(jenarequeteprojets,"JenaRequeteProjets");
 			Address addressA = a.getAddress();
 			String addresseA = addressA.toString();
 			
@@ -40,9 +45,15 @@ public class ProjetsServlet extends HttpServlet
 			
 	     
 			//response.getWriter().println("Developpement agents avec Janus-project".getBytes());
-			response.getWriter().println("<h3>"+addresseA+"</h3");
-			response.getWriter().println("<h3>"+addresseB+"</h3");
+			response.getWriter().println("<h3>"+addresseA+"</h3>");
+			response.getWriter().println("<h3>"+addresseB+"</h3>");
+			response.getWriter().println("<h3>Liste des projets récupérée par l'agent Projets sur \n"+
+			"http://fuseki-smag0.rhcloud.com/</h3>");
+			AgentLifeState resultat = null;
+			//while(resultat.isEmpty()){
+			//	resultat=jenarequeteprojets.getState();
+			//}
+			response.getWriter().println("<div>"+resultat+"</div>");
 
-	     
 	 }
 }

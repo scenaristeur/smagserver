@@ -7,20 +7,13 @@ import org.janusproject.kernel.message.Message;
 import org.janusproject.kernel.message.StringMessage;
 import org.janusproject.kernel.status.Status;
 
-import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
-
-
-public class AgentA extends Agent {
-	
-	Model model2;
+public class AgentProjets extends Agent {
 	  private static enum State {
 	     PRESENTATION, WAIT_FOR_WELCOME;
 	  }
 	  private State state;
 	  public Status activate(Object... parameters) {
 	    this.state = State.PRESENTATION;
-	 //   model2=ModelFactory.createDefaultModel();
 	    print ("Je me presente");
 		System.out.println("Je me presente");
 	    return null;
