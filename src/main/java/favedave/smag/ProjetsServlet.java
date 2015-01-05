@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.eclipse.jetty.util.log.Log;
 import org.janusproject.kernel.Kernel;
 import org.janusproject.kernel.address.Address;
 import org.janusproject.kernel.agent.AgentLifeState;
@@ -56,6 +57,6 @@ public class ProjetsServlet extends HttpServlet
 			//	resultat=requeteProjets.getResultat();
 			//}
 			response.getWriter().println("<div>"+resultat+"</div>");
-
+			Log.debug("test debug");
 	 }
 }
