@@ -16,6 +16,7 @@ import com.hp.hpl.jena.query.ResultSetFormatter;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Model;
 
+// JENA ne semble pas fonctionner, à cause de java 8 ?*/
 public class JenaRequeteProjets extends Agent{
 private String resultat;
 
@@ -25,6 +26,7 @@ String NS;
 OntModel model1;
 //create a model which doesn't use a reasoner
 OntModel model2;
+// 
 
 private static enum State {
     //PRESENTATION, WAIT_FOR_WELCOME, 
