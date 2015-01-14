@@ -87,11 +87,18 @@
   </properties>
 
   <dependencies>
+  <!--
+  http://stackoverflow.com/questions/26187341/httpget-get-new-httpgeturl-giving-exceptions
   <dependency>
   <groupId>org.apache.httpcomponents</groupId>
   <artifactId>httpclient</artifactId>
   <version>4.4-beta1</version>
-</dependency>
+</dependency>-->
+<dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpclient</artifactId>
+        <version>4.3.6</version>
+    </dependency>
 <dependency>
     <groupId>org.apache.jena</groupId>
     <artifactId>apache-jena-libs</artifactId>

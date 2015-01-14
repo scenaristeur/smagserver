@@ -45,17 +45,24 @@ public class ProjetsServlet extends HttpServlet
 			Address addressB = b.getAddress();
 			String addresseB = addressB.toString();
 			
+			Address addressJenaRequeteProjets=jenarequeteprojets.getAddress();
+			String addresseJenaRequeteProjets=addressJenaRequeteProjets.toString();
+			
 	     
 			//response.getWriter().println("Developpement agents avec Janus-project".getBytes());
 			response.getWriter().println("<h3>"+addresseA+"</h3>");
 			response.getWriter().println("<h3>"+addresseB+"</h3>");
+			response.getWriter().println("<h3>"+addresseJenaRequeteProjets+"</h3>");
 			response.getWriter().println("<h3>Liste des projets récupérée par l'agent Projets sur \n"+
 			"http://fuseki-smag0.rhcloud.com/</h3>");
 			String resultat = null;
 			//RequeteProjets requeteProjets= new RequeteProjets();
 			//while(resultat.isEmpty()){
-			//	resultat=requeteProjets.getResultat();
-			//}
+			//	resultat=jenarequeteprojets.getResultat();
+		//		response.getWriter().println("h3");
+		//		response.getWriter().println("resultat");
+		//		resultat="3";
+		//	}
 			response.getWriter().println("<div>"+resultat+"</div>");
 			Log.debug("test debug");
 	 }
