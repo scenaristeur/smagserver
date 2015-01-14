@@ -1,11 +1,7 @@
 package favedave.smag.jena.sparql;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Set;
 
-import org.janusproject.kernel.address.Address;
 import org.janusproject.kernel.address.AgentAddress;
 import org.janusproject.kernel.agent.Agent;
 import org.janusproject.kernel.channels.Channel;
@@ -27,17 +23,8 @@ import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.query.ResultSet;
 
 // JENA ne semble pas fonctionner, à cause de java 8 ?*/
-public class JenaRequeteProjets extends Agent implements ChannelInteractable{
+public class CopyOfJenaRequeteProjets extends Agent implements ChannelInteractable{
 private String resultat;
-/** First attribute in the state of the agent.
- */
-private int firstAttribute = 1;
-private String etat="not Actif";
-
-
-/** Second attribute in the state of the agent.
- */
-private final Collection<Object> secondAttribute = new ArrayList<Object>();
 
 String SOURCE;
 String NS;
@@ -123,7 +110,6 @@ LIMIT 100*/
    return null;
  }
  public Status live() {
-	 firstAttribute++;
 	 print(this.state);
    switch(this.state) {
    case CONSTRUCTION_REQUETE:
@@ -138,10 +124,9 @@ LIMIT 100*/
 	   QueryExecution qexec = QueryExecutionFactory.sparqlService("http://fuseki-smag0.rhcloud.com/ds/query", query);
 	     try {
 	         ResultSet results = qexec.execSelect();
-	       //  ResultSetFormatter.out(System.out, results, query);
+	         ResultSetFormatter.out(System.out, results, query);
 	         while ( results.hasNext()) {
 QuerySolution result = results.next();
-this.resultat=this.resultat+"\n"+result.toString();
 	         System.out.println(result);
 	         }
 	     }
@@ -169,11 +154,10 @@ this.resultat=this.resultat+"\n"+result.toString();
 	   
    case RESULTAT_PRET:
 	   
-	  // this.resultat="voilà";
+	   this.resultat="voilà";
 	   print("envoi de l'info du resultat prêt");
 	   //simule ma récupération du résultat par un autre agent
-	  // getResultat();
-	   this.state = State.RESULTAT_TRANSMIS;
+	   getResultat();
 	   break;
 	   
    case RESULTAT_TRANSMIS:
@@ -184,64 +168,22 @@ this.resultat=this.resultat+"\n"+result.toString();
    }
    return null;
  }
-/*	public String getResultat() {
+	public String getResultat() {
 		// TODO Auto-generated method stub
 		this.state = State.RESULTAT_TRANSMIS;
 		return this.resultat;
-	}*/
+	}
 	@Override
 	public Set<? extends Class<? extends Channel>> getSupportedChannels() {
-		return Collections.singleton(AgentStateChannel.class);
+		// TODO Auto-generated method stub
+		return null;
 	}
 	@Override
 	public <C extends Channel> C getChannel(Class<C> channelClass,
 			Object... params) {
-		  // Check if the given channel type is supported by the agent.
-	    if (AgentStateChannel.class.isAssignableFrom(channelClass)) {
-	 
-	      // Create the instance of the channel.
-	      AgentStateChannel channelInstance = new StateChannelImplementation();
-	 
-	      // Reply the channel instance.
-	      return channelClass.cast(channelInstance);
-	 
-	    }
-	 
-	    // The given channel type is not supported
-	    throw new IllegalArgumentException("channelClass");
+		// TODO Auto-generated method stub
+		return null;
 	}
-	 /** This inner class is the implementation of the channel
-	   *  for this agent implementation.
-	   */
-	  private class StateChannelImplementation implements AgentStateChannel {
-	 
-	    public int getFirstAttribute() {
-	      return JenaRequeteProjets.this.firstAttribute;
-	    }
-	    public String getEtat() {
-		      return JenaRequeteProjets.this.state.toString();
-		    }
-	 
-	    public Collection<Object> getSecondAttribute() {
-	      // You must reply an object that is read-only to
-	      // ensure that the agent's attribute cannot be changed
-	      // from the outside of the agent.
-	      return Collections.unmodifiableCollection(JenaRequeteProjets.this.secondAttribute);
-	    }
-
-		@Override
-		public Address getChannelOwner() {
-			// TODO Auto-generated method stub
-			return null;
-		}
-		@Override
-		public String getResultat() {
-			
-			return JenaRequeteProjets.this.resultat;
-			
-		}
-	 
-	  }
 
 }
 /*

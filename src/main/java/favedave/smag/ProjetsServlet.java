@@ -10,9 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 import org.eclipse.jetty.util.log.Log;
 import org.janusproject.kernel.Kernel;
 import org.janusproject.kernel.address.Address;
+import org.janusproject.kernel.address.AgentAddress;
+import org.janusproject.kernel.agent.Agent;
 import org.janusproject.kernel.agent.AgentLifeState;
+import org.janusproject.kernel.agent.ChannelManager;
 import org.janusproject.kernel.agent.Kernels;
 
+import favedave.smag.jena.sparql.AgentStateChannel;
 import favedave.smag.jena.sparql.JenaRequeteProjets;
 import favedave.smag.sparql.RequeteProjets;
 
@@ -56,6 +60,27 @@ public class ProjetsServlet extends HttpServlet
 			response.getWriter().println("<h3>Liste des projets récupérée par l'agent Projets sur \n"+
 			"http://fuseki-smag0.rhcloud.com/</h3>");
 			String resultat = null;
+			
+			//recuperation des infos de l'agent
+		    // Get the channel manager of the kernel.
+		    ChannelManager channelManager = k.getChannelManager();
+		 
+		    // Ask for a channel for interacting with the agent.
+		    // The first parameter is the agent to interact with
+		    // The second parameter is the type of the channel to use.
+		    AgentStateChannel channel = jenarequeteprojets.getChannel( AgentStateChannel.class);
+		 
+		    // Check if the agent accept to interact
+		    if (channel!=null) {
+		      // Display the agent's state
+		      System.out.println("First attribute is "+
+		           channel.getFirstAttribute());
+		      System.out.println("Second attribute is "+
+		           channel.getSecondAttribute());
+		    }
+		    else {
+		      System.err.println("The agent does not accept to interact");
+		    }
 			//RequeteProjets requeteProjets= new RequeteProjets();
 			//while(resultat.isEmpty()){
 			//	resultat=jenarequeteprojets.getResultat();

@@ -13,6 +13,14 @@
     <url-pattern>/ws/*</url-pattern>
   </servlet-mapping>
     <servlet>
+    <servlet-name>ProjetsHtml5</servlet-name>
+    <servlet-class>favedave.smag.projets.ProjetsHtml5Servlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProjetsHtml5</servlet-name>
+    <url-pattern>/projetsws/*</url-pattern>
+  </servlet-mapping>
+    <servlet>
     <servlet-name>ProjetsServlet</servlet-name>
     <servlet-class>favedave.smag.ProjetsServlet</servlet-class>
   </servlet>
