@@ -22,12 +22,12 @@ String projet="vide";
 		        while (parameterNames.hasMoreElements()) {
 		            String paramName = parameterNames.nextElement();
 		            System.out.println(paramName);
-		            System.out.println("n");
+		           // System.out.println("\n");
 		            String[] paramValues = request.getParameterValues(paramName);
 		            for (int i = 0; i < paramValues.length; i++) {
 		                String paramValue = paramValues[i];
-		                System.out.println("t" + paramValue);
-		                System.out.println("n");
+		                System.out.println("\t" + paramValue);
+		             //   System.out.println("\n");
 		            }
 		        }
 
@@ -66,7 +66,11 @@ String projet="vide";
 				return;
 			}
 			try {
-				connection.sendMessage("Recherche des elements du projet "+projet);
+				connection.sendMessage("Recherche des elements du projet "+projet+"<h2>"+
+			"<a href=\"http://fuseki-smag0.rhcloud.com/ds/query?query="+
+						"select+*+where+%7B%3Chttp%3A%2F%2Fsmag0.blogspot.fr%2Fns%2Fsmag0%23"+
+			projet+
+			"%3E%0D%0A+%3Fpropriete+%3Fvaleur%7D&output=xml&stylesheet=%2Fxml-to-html.xsl\">Voir les propriétés du projet</a></h2>");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

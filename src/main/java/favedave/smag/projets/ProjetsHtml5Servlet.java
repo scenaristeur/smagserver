@@ -52,6 +52,7 @@ public class ProjetsHtml5Servlet extends WebSocketServlet {
 
 		@Override
 		public void onClose(int arg0, String arg1) {
+			timer.cancel();
 			System.out.println("Web socket closed!");
 		}
 
