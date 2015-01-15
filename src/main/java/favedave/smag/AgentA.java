@@ -7,13 +7,18 @@ import org.janusproject.kernel.message.Message;
 import org.janusproject.kernel.message.StringMessage;
 import org.janusproject.kernel.status.Status;
 
+
+
 public class AgentA extends Agent {
+	
+
 	  private static enum State {
 	     PRESENTATION, WAIT_FOR_WELCOME;
 	  }
 	  private State state;
 	  public Status activate(Object... parameters) {
 	    this.state = State.PRESENTATION;
+
 	    print ("Je me presente");
 		System.out.println("Je me presente");
 	    return null;

@@ -43,7 +43,7 @@
 
   var openshiftWebSocketPort = 8000; // Or use 8443 for wss
   var wsUri = "ws://" + window.location.hostname + ":" + openshiftWebSocketPort + "/ws";
-  var output;
+  var output; 
 
   function init()
   {
