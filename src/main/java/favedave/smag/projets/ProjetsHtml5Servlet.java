@@ -94,7 +94,7 @@ public class ProjetsHtml5Servlet extends WebSocketServlet {
 						           channel.getFirstAttribute());
 						      //retour de l'attribut
 						     exFirstAtt=firstAtt;
-						   firstAtt="Retour\n"+channel.getFirstAttribute()+"\n"+channel.getEtat()+"\n"+channel.getResultat();
+						   firstAtt="Le chargement des projets sera terminé lorsque le code retour sera égal à 6 : <bold> Retour : "+channel.getFirstAttribute()+"</bold>..................."+channel.getEtat()+"\n"+channel.getResultat();
 						   // firstAtt=channel.getResultat();
 						     if (exFirstAtt!=firstAtt){
 						      connection.sendMessage(firstAtt);

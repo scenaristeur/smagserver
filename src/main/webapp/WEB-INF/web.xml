@@ -4,36 +4,65 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+ 
   <servlet>
     <servlet-name>HelloHtml5</servlet-name>
     <servlet-class>org.ajeesh.app.Html5Servlet</servlet-class>
   </servlet>
+  
   <servlet-mapping>
     <servlet-name>HelloHtml5</servlet-name>
     <url-pattern>/ws/*</url-pattern>
   </servlet-mapping>
+  
     <servlet>
     <servlet-name>ProjetsHtml5</servlet-name>
     <servlet-class>favedave.smag.projets.ProjetsHtml5Servlet</servlet-class>
   </servlet>
+  
   <servlet-mapping>
     <servlet-name>ProjetsHtml5</servlet-name>
     <url-pattern>/projetsws/*</url-pattern>
   </servlet-mapping>
-    <servlet>
+        
+<servlet>
+    <servlet-name>DiamondHtml5</servlet-name>
+    <servlet-class>favedave.smag.projets.DiamondHtml5Servlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>DiamondHtml5</servlet-name>
+    <url-pattern>/diamondws/*</url-pattern>
+  </servlet-mapping>
+        
+        <servlet>
+    <servlet-name>ProjetHtml5</servlet-name>
+    <servlet-class>favedave.smag.projets.ProjetHtml5Servlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>ProjetHtml5</servlet-name>
+    <url-pattern>/projetws/*</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>       
     <servlet-name>ProjetsServlet</servlet-name>
     <servlet-class>favedave.smag.ProjetsServlet</servlet-class>
   </servlet>
+  
   <servlet-mapping>
     <servlet-name>ProjetsServlet</servlet-name>
     <url-pattern>/projets/*</url-pattern>
   </servlet-mapping>
+  
       <servlet>
     <servlet-name>Hello</servlet-name>
     <servlet-class>favedave.smag.HelloServlet</servlet-class>
   </servlet>
+  
   <servlet-mapping>
     <servlet-name>Hello</servlet-name>
     <url-pattern>/hello/*</url-pattern>
   </servlet-mapping>
+  
 </web-app>

@@ -28,7 +28,7 @@
 </style>
 </head>
 <body onload="init">
-<h3>Page Projet</h3>
+<h3>Hello HTML5 Web Socket</h3>
 <h3>Smag0</h3>
 <div>Connect to: <span id="wsUri"></span></div>
 <input type="button" value="stop" name="stopBtn" class="button" onclick="javascript:stop();"/>
@@ -42,24 +42,15 @@
 <script language="javascript" type="text/javascript">
 
   var openshiftWebSocketPort = 8000; // Or use 8443 for wss
-  var wsUri;
- /* var wsUri = "ws://" + window.location.hostname + ":" + openshiftWebSocketPort + "/projetws?projet=2"; */
+  var wsUri = "ws://" + window.location.hostname + ":" + openshiftWebSocketPort + "/diamondws";
   var output; 
 var obj="test";
-function getParameterByName(name) {
-    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-        results = regex.exec(location.search);
-    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-}
+
   function init()
   {
-          var projetId = getParameterByName('projet');
-    wsUri = "ws://" + window.location.hostname + ":" + openshiftWebSocketPort + "/projetws/?projet="+projetId;
     document.getElementById("wsUri").innerHTML = wsUri;
     output = document.getElementById("output");
     writeToScreen(" Not Connected to server",'warning');
-
     testWebSocket();
   }
   function stop()
@@ -79,7 +70,6 @@ function getParameterByName(name) {
   {
     writeToScreen("Connected to server");
     doSend("Hello are you there WebSocket Server");
-
   }
 
   function onClose(evt)
