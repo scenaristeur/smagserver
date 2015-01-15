@@ -44,7 +44,6 @@
   var openshiftWebSocketPort = 8000; // Or use 8443 for wss
   var wsUri = "ws://" + window.location.hostname + ":" + openshiftWebSocketPort + "/projetsws";
   var output; 
-var obj="test";
 
   function init()
   {
@@ -78,7 +77,7 @@ var obj="test";
   }
 
   function onMessage(evt)
-  {console.log(event.data);
+  {
     writeToScreen(evt.data, 'info');
   }
 
@@ -95,7 +94,6 @@ var obj="test";
 
   function writeToScreen(message,rule)
   {
-
     output.innerHTML=message;
     output.className=rule;
   }

@@ -1,10 +1,13 @@
 package favedave.smag.jena.sparql;
 
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Set;
 
+import org.apache.jena.atlas.json.JsonObject;
 import org.janusproject.kernel.address.Address;
 import org.janusproject.kernel.address.AgentAddress;
 import org.janusproject.kernel.agent.Agent;
@@ -22,8 +25,11 @@ import com.hp.hpl.jena.query.QueryExecutionFactory;
 import com.hp.hpl.jena.query.QueryFactory;
 import com.hp.hpl.jena.query.QuerySolution;
 import com.hp.hpl.jena.query.ResultSetFormatter;
+import com.hp.hpl.jena.rdf.model.Literal;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.RDFNode;
+import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.query.ResultSet;
 
 // JENA ne semble pas fonctionner, à cause de java 8 ?*/
@@ -138,12 +144,27 @@ LIMIT 100*/
 	   QueryExecution qexec = QueryExecutionFactory.sparqlService("http://fuseki-smag0.rhcloud.com/ds/query", query);
 	     try {
 	         ResultSet results = qexec.execSelect();
-	       //  ResultSetFormatter.out(System.out, results, query);
-	         while ( results.hasNext()) {
-QuerySolution result = results.next();
-this.resultat=this.resultat+"\n"+result.toString();
-	         System.out.println(result);
+	        resultat="<table border=\"1\">\n<tr><th>PROJET</th><th>DESCRIPTION</th></tr>\n";
+	         for ( ; results.hasNext() ; )
+	         {
+	           QuerySolution soln = results.nextSolution() ;
+	          // RDFNode x = soln.get("varName") ;       // Get a result variable by name.
+	           Resource projet = soln.getResource("projet") ; // Get a result variable - must be a resource
+	           Literal titre = soln.getLiteral("titre") ;
+	           Literal description = soln.getLiteral("description") ;   // Get a result variable - must be a literal
+	       resultat=resultat+"<tr><td><a href=\"projet.jsp?projet="+projet.getLocalName()+"\">"+titre+"</a></td><td>"+description+"</td></tr>\n";
 	         }
+	         resultat=resultat+"</table>";
+			//  ResultSetFormatter.out(System.out, results, query);
+	        /* while ( results.hasNext()) {
+QuerySolution result = results.next();
+resultat=resultat+" <h3>"+result.toString()+"</h3> ";
+	         System.out.println(result);
+	         }*/
+	       /*  ByteArrayOutputStream b = new ByteArrayOutputStream();
+	         ResultSetFormatter.outputAsJSON(b, results);
+*/
+	       // this.resultat = b.toString();
 	     }
 	     finally {
 	        qexec.close();
@@ -237,7 +258,7 @@ this.resultat=this.resultat+"\n"+result.toString();
 		@Override
 		public String getResultat() {
 			
-			return JenaRequeteProjets.this.resultat;
+			return resultat;
 			
 		}
 	 

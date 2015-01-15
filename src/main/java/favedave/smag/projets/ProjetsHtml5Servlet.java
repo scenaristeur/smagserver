@@ -85,8 +85,8 @@ public class ProjetsHtml5Servlet extends WebSocketServlet {
 					@Override
 					public void run() {
 						try{
-							System.out.println("Running task");
-							connection.sendMessage(getMyJsonTicker());
+						//	System.out.println("Running task");
+						//	connection.sendMessage(getMyJsonTicker());
 						    // Check if the agent accept to interact
 						    if (channel!=null) {
 						      // Display the agent's state
@@ -94,12 +94,13 @@ public class ProjetsHtml5Servlet extends WebSocketServlet {
 						           channel.getFirstAttribute());
 						      //retour de l'attribut
 						     exFirstAtt=firstAtt;
-						      firstAtt="Retour\n"+channel.getFirstAttribute()+"\n"+channel.getEtat()+"\n"+channel.getResultat();
+						   firstAtt="Retour\n"+channel.getFirstAttribute()+"\n"+channel.getEtat()+"\n"+channel.getResultat();
+						   // firstAtt=channel.getResultat();
 						     if (exFirstAtt!=firstAtt){
 						      connection.sendMessage(firstAtt);
 						     }
 						      System.out.println("Second attribute is "+
-						           channel.getSecondAttribute());
+							           channel.getSecondAttribute());
 						    }
 						    else {
 						      System.err.println("The agent does not accept to interact");
