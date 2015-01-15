@@ -67,6 +67,7 @@ public class ProjetsHtml5Servlet extends WebSocketServlet {
 			if(data.indexOf("disconnect")>=0){
 				connection.close();
 				timer.cancel();
+				data=null;
 			}else{
 				sendMessage();
 
@@ -95,7 +96,8 @@ public class ProjetsHtml5Servlet extends WebSocketServlet {
 						           channel.getFirstAttribute());
 						      //retour de l'attribut
 						     exFirstAtt=firstAtt;
-						   firstAtt="Le chargement des projets sera terminé lorsque le code retour sera égal à 6 : <bold> Retour : "+channel.getFirstAttribute()+"</bold>..................."+channel.getEtat()+"\n"+channel.getResultat();
+						   firstAtt="<div>Un agent Janus est en train de travailler pour récupérer les projets</div></br>"+
+						     "<div>Le chargement des projets sera terminé lorsque le code retour sera égal à 6 :</br> <bold> Retour : "+channel.getFirstAttribute()+"</bold>..................."+channel.getEtat()+"</div>"+channel.getResultat();
 						   // firstAtt=channel.getResultat();
 						     if (exFirstAtt!=firstAtt){
 						      connection.sendMessage(firstAtt);

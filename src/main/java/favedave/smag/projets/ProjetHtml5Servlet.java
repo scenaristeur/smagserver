@@ -67,10 +67,12 @@ String projet="vide";
 			}
 			try {
 				connection.sendMessage("Recherche des elements du projet "+projet+"<h2>"+
-			"<a href=\"http://fuseki-smag0.rhcloud.com/ds/query?query="+
+			"A faire : construire la page du projet<br>"+
+						"<a href=\"http://fuseki-smag0.rhcloud.com/ds/query?query="+
 						"select+*+where+%7B%3Chttp%3A%2F%2Fsmag0.blogspot.fr%2Fns%2Fsmag0%23"+
 			projet+
-			"%3E%0D%0A+%3Fpropriete+%3Fvaleur%7D&output=xml&stylesheet=%2Fxml-to-html.xsl\">Voir les propriétés du projet</a></h2>");
+			"%3E%0D%0A+%3Fpropriete+%3Fvaleur%7D&output=xml&stylesheet=%2Fxml-to-html.xsl\">"+
+			"Voir les propriétés du projet</a></h2>");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
