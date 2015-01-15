@@ -12,7 +12,6 @@ public class DiamondHtml5Servlet extends WebSocketServlet{
 			String protocol) {
 		// TODO Auto-generated method stub
 		return null;
-		
 	}
 
 }
