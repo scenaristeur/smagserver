@@ -1,1 +1,5 @@
-Sample application forked from https://github.com/ajeeshpu/html5-webapp
+Serveur Multi-agents Janus sur openshift. basé sur jetty, java jdk8
+avec Eclipse Luna
+
+- demo : http://smag-smag0.rhcloud.com/
+- blog : http://smag0.blogspot.fr/2015/01/une-appli-android-pour-inserer-des.html
