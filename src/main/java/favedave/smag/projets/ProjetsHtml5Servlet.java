@@ -1,5 +1,6 @@
 package favedave.smag.projets;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -99,8 +100,10 @@ public class ProjetsHtml5Servlet extends WebSocketServlet {
 						   firstAtt="<div>Un agent Janus est en train de travailler pour récupérer les projets</div></br>"+
 						     "<div>Le chargement des projets sera terminé lorsque le code retour sera égal à 6 :</br> <bold> Retour : "+channel.getFirstAttribute()+"</bold>..................."+channel.getEtat()+"</div>"+channel.getResultat();
 						   // firstAtt=channel.getResultat();
+						   ByteArrayOutputStream reponseJson = channel.getResultatJson();
 						     if (exFirstAtt!=firstAtt){
 						      connection.sendMessage(firstAtt);
+						    //	 connection.sendMessage(reponseJson.toString());
 						     }
 						      System.out.println("Second attribute is "+
 							           channel.getSecondAttribute());

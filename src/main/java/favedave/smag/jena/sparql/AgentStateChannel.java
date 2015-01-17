@@ -1,5 +1,6 @@
 package favedave.smag.jena.sparql;
 
+import java.io.ByteArrayOutputStream;
 import java.util.Collection;
 
 import org.janusproject.kernel.channels.Channel;
@@ -18,4 +19,6 @@ public interface AgentStateChannel extends Channel {
 
 	public String getResultat();
 	 
-	}
+
+public ByteArrayOutputStream getResultatJson();
+}

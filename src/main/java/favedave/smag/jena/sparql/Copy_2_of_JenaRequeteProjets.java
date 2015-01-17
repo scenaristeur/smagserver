@@ -35,14 +35,14 @@ import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.query.ResultSet;
 
 // JENA ne semble pas fonctionner, à cause de java 8 ?*/
-public class JenaRequeteProjets extends Agent implements ChannelInteractable{
+public class Copy_2_of_JenaRequeteProjets extends Agent implements ChannelInteractable{
 private String resultat;
 /** First attribute in the state of the agent.
  */
 private int firstAttribute = 1;
 private String etat="not Actif";
 private ResultSet resultats;
-private ResultSet resultatsJson;
+private ResultSetRewindable resultatJson;
 
 
 /** Second attribute in the state of the agent.
@@ -63,7 +63,6 @@ private static enum State {
 	CONSTRUCTION_REQUETE, EXECUTION_REQUETE, CONSTRUCTION_RESULTAT, RESULTAT_PRET,RESULTAT_TRANSMIS;
  }
  private State state;
-private ByteArrayOutputStream resultatJson;
 
  public Status activate(Object... parameters) {
    this.state = State.CONSTRUCTION_REQUETE;
@@ -151,7 +150,7 @@ private ByteArrayOutputStream resultatJson;
 	     try {
 	          ResultSet results = qexec.execSelect();
 	          resultats=ResultSetFactory.copyResults(results);
-	          resultatsJson=ResultSetFactory.copyResults(results);
+	          resultatJson=ResultSetFactory.copyResults(results);
 			//  ResultSetFormatter.out(System.out, results, query);
 	        /* while ( results.hasNext()) {
 QuerySolution result = results.next();
@@ -193,13 +192,13 @@ resultat=resultat+" <h3>"+result.toString()+"</h3> ";
       resultat=resultat+"<tr><td><a href=\"projet.jsp?projet="+projet.getLocalName()+"\">"+titre+"</a></td><td>"+description+"</td></tr>\n";
         }
         resultat=resultat+"</table>";
-        /*
+        
         // au format JSON
-	       ByteArrayOutputStream b = new ByteArrayOutputStream();
-        ResultSetFormatter.outputAsJSON(b, (ResultSet) resultatJson);
+	/*         ByteArrayOutputStream b = new ByteArrayOutputStream();
+        ResultSetFormatter.outputAsJSON(b, resultatJson);
 
-       this.resultatJson = b;*/
-       
+       this.resultat = b.toString();
+        */
         
 	   this.state = State.RESULTAT_PRET;
 	   break;
@@ -253,17 +252,17 @@ resultat=resultat+" <h3>"+result.toString()+"</h3> ";
 	  private class StateChannelImplementation implements AgentStateChannel {
 	 
 	    public int getFirstAttribute() {
-	      return JenaRequeteProjets.this.firstAttribute;
+	      return Copy_2_of_JenaRequeteProjets.this.firstAttribute;
 	    }
 	    public String getEtat() {
-		      return JenaRequeteProjets.this.state.toString();
+		      return Copy_2_of_JenaRequeteProjets.this.state.toString();
 		    }
 	 
 	    public Collection<Object> getSecondAttribute() {
 	      // You must reply an object that is read-only to
 	      // ensure that the agent's attribute cannot be changed
 	      // from the outside of the agent.
-	      return Collections.unmodifiableCollection(JenaRequeteProjets.this.secondAttribute);
+	      return Collections.unmodifiableCollection(Copy_2_of_JenaRequeteProjets.this.secondAttribute);
 	    }
 
 		@Override
@@ -277,8 +276,10 @@ resultat=resultat+" <h3>"+result.toString()+"</h3> ";
 			return resultat;
 			
 		}
-		public ByteArrayOutputStream getResultatJson(){
-			return resultatJson;
+		@Override
+		public ByteArrayOutputStream getResultatJson() {
+			// TODO Auto-generated method stub
+			return null;
 		}
 	 
 	  }

@@ -26,36 +26,12 @@
 }
 
 </style>
- <script type="text/javascript">
- var reponse="recherche en cours";
-       function drawSomeText(id) {
-         var pjs = Processing.getInstanceById(id);
-         var text = document.getElementById('inputtext').value;
-         pjs.drawText(text); }
-         
-         function actualisePde(id) {
-         var pjs = Processing.getInstanceById(id);
-         /* var text = document.getElementById('inputtext').value;*/
-         var text = reponse;
-         pjs.drawText(text); }
-       </script>
 </head>
 <body onload="init">
-<script src="/js/processing.min.js"></script>
 <h3>Hello HTML5 Web Socket</h3>
 <h3>Smag0</h3>
 <div>Connect to: <span id="wsUri"></span></div>
 <input type="button" value="stop" name="stopBtn" class="button" onclick="javascript:stop();"/>
-
-        ----
-        </br>
-        <canvas id="projets" data-processing-sources="/pde/smag/smag.pde /pde/smag/Noeud.pde"></canvas>
-       <!-- <canvas id="mysketch2" data-processing-sources="/pde/smag/smag.pde /pde/smag/Noeud.pde"></canvas>-->
-
-        </br>
-        ----</br>
-         <input type="textfield" value="my text" id="inputtext">
-    <button type="button" onclick="drawSomeText('projets')">place</button>
 <div id="output">
 </div>
 
@@ -104,14 +80,11 @@ var obj="test";
   function onMessage(evt)
   {console.log(event.data);
     writeToScreen(evt.data, 'info');
-    	  reponse=evt.data;
-	  actualisePde('projets')
   }
 
   function onError(evt)
   {
 	  writeToScreen(evt.data,'error');
-
   }
 
   function doSend(message)
