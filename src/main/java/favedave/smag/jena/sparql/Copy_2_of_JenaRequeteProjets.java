@@ -7,6 +7,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Set;
 
+import org.apache.jena.atlas.json.JSON;
 import org.apache.jena.atlas.json.JsonObject;
 import org.janusproject.kernel.address.Address;
 import org.janusproject.kernel.address.AgentAddress;
@@ -278,6 +279,11 @@ resultat=resultat+" <h3>"+result.toString()+"</h3> ";
 		}
 		@Override
 		public ByteArrayOutputStream getResultatJson() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public JSON getProjetDetails() {
 			// TODO Auto-generated method stub
 			return null;
 		}

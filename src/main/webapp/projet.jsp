@@ -36,7 +36,22 @@
 </div>
 
 <span class="warning">Behold websockets</span>
-
+<div id="doaptab">
+<table><tr><th>DOAP - Description of a project</th></tr>
+<tr>
+<td>détails doap
+</td>
+</tr>
+</table>
+</div>
+<div id="methode">
+<table><tr><th>Méthode Diamond</th></tr>
+<tr>
+<td>détail de la méthode
+</td>
+</tr>
+</table>
+</div>
 
 </body>
 <script language="javascript" type="text/javascript">
@@ -90,7 +105,10 @@ function getParameterByName(name) {
   function onMessage(evt)
   {console.log(event.data);
     writeToScreen(evt.data, 'info');
-  }
+    console.log(data);
+      /*                          var obj = JSON.parse(msg.data); 
+                                console.log(obj);
+  */}
 
   function onError(evt)
   {

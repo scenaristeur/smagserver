@@ -2,7 +2,7 @@ ArrayList <Noeud> noeuds= new ArrayList();
 
 String texte="vide";
 void setup(){
-  size(800,600);
+  size(80,60);
   for (int i=0; i<10;i++){
    Noeud noeud= new Noeud(); 
    noeuds.add(noeud);

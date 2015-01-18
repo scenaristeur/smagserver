@@ -42,9 +42,12 @@
 </head>
 <body onload="init">
 <script src="/js/processing.min.js"></script>
+<table><tr><td>
 <h3>Hello HTML5 Web Socket</h3>
 <h3>Smag0</h3>
 <div>Connect to: <span id="wsUri"></span></div>
+</td>
+<td>
 <input type="button" value="stop" name="stopBtn" class="button" onclick="javascript:stop();"/>
 
         ----
@@ -56,6 +59,9 @@
         ----</br>
          <input type="textfield" value="my text" id="inputtext">
     <button type="button" onclick="drawSomeText('projets')">place</button>
+</td></tr></table>
+
+
 <div id="output">
 </div>
 
