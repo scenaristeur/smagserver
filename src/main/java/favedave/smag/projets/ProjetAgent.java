@@ -5,12 +5,14 @@ package favedave.smag.projets;
 import java.io.ByteArrayOutputStream;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Enumeration;
 import java.util.Set;
 
 import org.apache.jena.atlas.json.JSON;
 import org.janusproject.kernel.Kernel;
 import org.janusproject.kernel.address.Address;
 import org.janusproject.kernel.agent.Agent;
+import org.janusproject.kernel.agent.ChannelManager;
 import org.janusproject.kernel.agent.Kernels;
 import org.janusproject.kernel.channels.Channel;
 import org.janusproject.kernel.status.Status;
@@ -28,10 +30,14 @@ public class ProjetAgent extends Agent {
 	private String projetDoap;
 	private int infos_recuperees;
 	private String etat;
+	private String id;
+	private AgentDetailProjetChannel channelDetails;
+
 
 
 	 public Status activate(Object... parameters) {
-
+		id=this.getName();
+		 System.out.print("ID du projet :"+id);
 		 this.state = State.INITIALISATION;
 
 	   return null;
@@ -44,7 +50,9 @@ public class ProjetAgent extends Agent {
 				DetailsAgent detailsAgent=new DetailsAgent();
 				MethodeAgent methodeAgent=new MethodeAgent();
 				DoapAgent doapAgent=new DoapAgent();
-				k.launchLightAgent(detailsAgent,"detailsAgent");
+				k.launchLightAgent(detailsAgent,"detailsAgent",id);
+			    ChannelManager channelManager = k.getChannelManager();
+			    channelDetails = detailsAgent.getChannel( AgentDetailProjetChannel.class);
 				k.launchLightAgent(methodeAgent,"methodeAgent");
 				k.launchLightAgent(doapAgent,"doapAgent");
 				infos_recuperees=0;
@@ -54,13 +62,23 @@ public class ProjetAgent extends Agent {
 				System.out.println("recup infos");
 				
 				if (projetDetail==null){
-				System.out.println("simulation de la recuperation des details du projet");
-					projetDetail="Recuperation des détails du projet";
+				System.out.println("recuperation des details du projet");
+							
+					if (channelDetails!=null) {
+						projetDetail=channelDetails.getDetails();
+						System.out.println("Details "+projetDetail);
+					}
+					else {
+					      System.err.println("The agent does not accept to interact");
+					    }
+					
+				}else{
 					infos_recuperees++;
 				}
 				if (projetMethode==null){
 				System.out.println("simulation de la recuperation de la methode du projet");
 				projetMethode="Recuperation de la méthode du projet";
+				//JenaRequete jenaRequete = new JenaRequete();
 				infos_recuperees++;
 				}
 				if (projetDoap==null){
@@ -71,12 +89,14 @@ public class ProjetAgent extends Agent {
 				if (infos_recuperees==3){
 				this.state = State.INFOS_RECUPEREES;
 				}else{
-					this.state = State.PROBLEME;
+				//	this.state = State.PROBLEME;
 					System.out.println(state+" "+infos_recuperees);
 					
 				}
 				break;
 			case INFOS_RECUPEREES:
+
+				
 				System.out.println("INFOS OK");
 				   killMe();
 			 break;
@@ -85,7 +105,8 @@ public class ProjetAgent extends Agent {
 	 
 	 }
 
-	 public Set<? extends Class<? extends Channel>> getSupportedChannels() {
+
+	public Set<? extends Class<? extends Channel>> getSupportedChannels() {
 			return Collections.singleton(AgentProjetChannel.class);
 		}
 		public <C extends Channel> C getChannel(Class<C> channelClass,

@@ -40,6 +40,7 @@ private AgentProjetChannel channel;
 private String projetDetails;
 private String projetMethode;
 private String projetDoap;
+private String messageDefaut;
 
 	@Override
 	public WebSocket doWebSocketConnect(HttpServletRequest request,
@@ -48,9 +49,7 @@ private String projetDoap;
 
 		Kernel k = Kernels.get();
 		ProjetAgent projetAgent = new ProjetAgent();
-		k.launchLightAgent(projetAgent,projet);
-	    ChannelManager channelManager = k.getChannelManager();
-	    channel = projetAgent.getChannel( AgentProjetChannel.class);
+
 		
 		Enumeration<String> parameterNames = request.getParameterNames();
 
@@ -67,7 +66,10 @@ private String projetDoap;
 		        }
 
 		projet = request.getParameter("projet");
-		message="Recherche des elements du projet "+projet+"<h2>"+
+		k.launchLightAgent(projetAgent,projet);
+	    ChannelManager channelManager = k.getChannelManager();
+	    channel = projetAgent.getChannel( AgentProjetChannel.class);
+		messageDefaut="Recherche des elements du projet "+projet+"<h2>"+
 				"A faire : construire la page du projet<br>"+
 				"<a href=\"http://fuseki-smag0.rhcloud.com/ds/query?query="+
 				"select+*+where+%7B%3Chttp%3A%2F%2Fsmag0.blogspot.fr%2Fns%2Fsmag0%23"+
@@ -137,7 +139,8 @@ private String projetDoap;
 							   // firstAtt=channel.getResultat();
 
 							     if (exFirstAtt!=firstAtt){
-							      connection.sendMessage(firstAtt);
+							    	 message=messageDefaut+firstAtt;
+							      connection.sendMessage(message);
 							    //	 connection.sendMessage(reponseJson.toString());
 							     }
 

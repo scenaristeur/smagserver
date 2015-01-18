@@ -52,7 +52,7 @@
 
         ----
         </br>
-        <canvas id="projets" data-processing-sources="/pde/smag/smag.pde /pde/smag/Noeud.pde"></canvas>
+        <canvas id="projets" data-processing-sources="pde/smag/smag.pde /pde/smag/Noeud.pde"></canvas>
        <!-- <canvas id="mysketch2" data-processing-sources="/pde/smag/smag.pde /pde/smag/Noeud.pde"></canvas>-->
 
         </br>
