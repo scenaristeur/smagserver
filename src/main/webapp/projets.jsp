@@ -108,8 +108,16 @@ var obj="test";
   }
 
   function onMessage(evt)
-  {console.log(event.data);
+  {console.log(evt.data);
+ /* var json = '{"result":true,"count":1}',
+    obj = JSON.parse(json);
+
+alert(obj.count);*/
     writeToScreen(evt.data, 'info');
+    /* test avec json 
+    var testjson= JSON.parse(evt.data);
+    alert(testjson.id);
+    writeToScreen(testjson, 'info');*/
     	  reponse=evt.data;
 	  actualisePde('projets')
   }

@@ -65,4 +65,14 @@
     <url-pattern>/hello/*</url-pattern>
   </servlet-mapping>
   
+        <servlet>
+    <servlet-name>TestJson</servlet-name>
+    <servlet-class>favedave.smag.TestJson</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>TestJson</servlet-name>
+    <url-pattern>/testjson/*</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

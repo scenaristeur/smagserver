@@ -1,0 +1,65 @@
+ <html>
+ 
+ <script language="javascript" type="text/javascript">
+  var openshiftWebSocketPort = 8000; // Or use 8443 for wss
+  var wsUri = "ws://" + window.location.hostname + ":" + openshiftWebSocketPort + "/testjson";
+  var output; 
+
+
+function testWebSocket() {
+
+        websocket = new WebSocket(wsUri);
+        websocket.onopen = function(evt) { onOpen(evt) };
+        websocket.onclose = function(evt) { onClose(evt) };
+        websocket.onmessage = function(evt) { onMessage(evt) };
+        websocket.onerror = function(evt) { onError(evt) }; }
+}
+
+function onOpen(evt) {
+        writeToScreen("CONNECTED");
+        doSend("WebSocket rocks");
+}
+function onClose(evt) {
+        writeToScreen("DISCONNECTED");
+}
+function onMessage(evt) {
+        writeToScreen('<span style="color: blue;">RESPONSE: ' + evt.data+'</span>');
+        websocket.close();
+}
+
+function onError(evt) {
+        writeToScreen('<span style="color: red;">ERROR:</span> ' + evt.data);
+}
+function doSend(message) {
+        writeToScreen("SENT: " + message);
+        websocket.send(message);
+}
+</script>
+/*
+var connection=new WebSocket(wsUri,'json');
+connection.onopen = function () {
+  connection.send('Hello, Server!!'); //send a message to server once connection is opened.
+};
+connection.onerror = function (error) {
+  console.log('Error Logged: ' + error); //log errors
+};
+connection.onmessage = function (e) {
+  console.log('Received From Server: ' + e.data); //log the received message
+};
+*/
+/*
+envoi d'une image
+
+var image = canvas2DContext.getImageData(0, 0, 440, 300);
+var binary_data = new Uint8Array(image.data.length);
+for (var i = 0; i < image.data.length; i++) {
+  binary_data[i] = image.data[i];
+}
+connection.send(binary_data.buffer);
+*/
+<body>
+<h3>Test javascript</h3>
+<div id="output">
+</div>
+</body>
+</html>

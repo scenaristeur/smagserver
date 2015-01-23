@@ -105,7 +105,7 @@ function getParameterByName(name) {
   function onMessage(evt)
   {console.log(event.data);
     writeToScreen(evt.data, 'info');
-    console.log(data);
+
       /*                          var obj = JSON.parse(msg.data); 
                                 console.log(obj);
   */}

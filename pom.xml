@@ -95,6 +95,17 @@
   <version>4.4-beta1</version>
 </dependency>-->
 <dependency>
+	<groupId>javax.websocket</groupId>
+	<artifactId>javax.websocket-api</artifactId>
+	<version>1.1</version>
+</dependency>
+<dependency>
+	<groupId>org.json</groupId>
+	<artifactId>json</artifactId>
+	<version>20141113</version>
+</dependency>
+
+<dependency>
         <groupId>org.apache.httpcomponents</groupId>
         <artifactId>httpclient</artifactId>
         <version>4.3.6</version>

@@ -11,11 +11,15 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.jena.atlas.json.JsonObject;
+import org.apache.jena.atlas.json.JsonValue;
 import org.eclipse.jetty.websocket.WebSocket;
 import org.eclipse.jetty.websocket.WebSocketServlet;
 import org.janusproject.kernel.Kernel;
 import org.janusproject.kernel.agent.ChannelManager;
 import org.janusproject.kernel.agent.Kernels;
+
+import com.fasterxml.jackson.databind.util.JSONPObject;
 
 import favedave.smag.jena.sparql.AgentStateChannel;
 import favedave.smag.jena.sparql.JenaRequeteProjets;
@@ -100,10 +104,12 @@ public class ProjetsHtml5Servlet extends WebSocketServlet {
 						   firstAtt="<div>Un agent Janus est en train de travailler pour récupérer les projets</div></br>"+
 						     "<div>Le chargement des projets sera terminé lorsque le code retour sera égal à 6 :</br> <bold> Retour : "+channel.getFirstAttribute()+"</bold>..................."+channel.getEtat()+"</div>"+channel.getResultat();
 						   // firstAtt=channel.getResultat();
-						   ByteArrayOutputStream reponseJson = channel.getResultatJson();
+						//   ByteArrayOutputStream reponseJson = channel.getResultatJson();
+
 						     if (exFirstAtt!=firstAtt){
+
 						      connection.sendMessage(firstAtt);
-						    //	 connection.sendMessage(reponseJson.toString());
+						
 						     }
 						      System.out.println("Second attribute is "+
 							           channel.getSecondAttribute());
