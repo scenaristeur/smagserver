@@ -1,12 +1,15 @@
 package favedave.smag;
 
 import java.io.IOException;
+import java.util.Collection;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.websocket.OnMessage;
+
 import org.json.JSONObject;
 import org.eclipse.jetty.websocket.WebSocket;
 import org.eclipse.jetty.websocket.WebSocketServlet;
+
 import com.hp.hpl.jena.query.Query;
 import com.hp.hpl.jena.query.QueryExecution;
 import com.hp.hpl.jena.query.QueryExecutionFactory;
@@ -53,6 +56,17 @@ public class TestJson extends WebSocketServlet{
 			@Override
 			public void onOpen(Connection connection) {
 				this.connection=connection;
+				 j=new JSONObject();
+				 JSONObject jresult = new JSONObject();
+				String testavant="avant requete Jena";
+				jresult.put("titre",testavant);
+				j.put("0",jresult);
+				try {
+					connection.sendMessage(j.toString());
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				  query = QueryFactory.create(queryString);
 				   QueryExecution qexec = QueryExecutionFactory.sparqlService("http://fuseki-smag0.rhcloud.com/ds/query", query);
 				     try {
@@ -65,7 +79,7 @@ public class TestJson extends WebSocketServlet{
 						    // j.put("JOON", "Hello");
 						         while ( resultats.hasNext()) {
 						     i++;
-						        	 JSONObject jresult = new JSONObject();
+						        	  jresult = new JSONObject();
 						     QuerySolution result = resultats.next();
 						     String projet = result.getResource("projet").getLocalName().toString();
 						     String titre = result.getLiteral("titre").toString();
