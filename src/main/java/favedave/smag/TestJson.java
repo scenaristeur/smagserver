@@ -42,7 +42,7 @@ public class TestJson extends WebSocketServlet{
  	 		"}"+
  	 		"ORDER BY DESC(?projet)"+
  	 		"LIMIT 200";
- 	
+ 	 
         @OnMessage 
         public String handleMessage(String message){
                 return "Thanks for the message: " + message;

@@ -81,7 +81,7 @@ function onMessage(evt) {
 console.log("message reçu"+evt.data);
 //var json = '{"result":true,"count":1}',
     obj = JSON.parse(evt.data);
-
+writeToScreen(evt.data);
 //alert(obj.JOON);
 var i=0;
 var reponse='<table border=1><tr><td></td><td>Projet</td><td>Titre</td><td>Description</td></tr>';
@@ -105,6 +105,7 @@ console.log("error");
 function doSend(message) {
         writeToStatut("SENT: " + message+" Attendez quelques secondes");
         websocket.send(message);
+        console.log(send);
 }
 
   function writeToScreen(message,rule)
