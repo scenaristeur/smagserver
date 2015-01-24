@@ -56,7 +56,7 @@ public class TestJson extends WebSocketServlet{
 			@Override
 			public void onOpen(Connection connection) {
 				this.connection=connection;
-				 j=new JSONObject();
+			/*	 j=new JSONObject();
 				 JSONObject jresult = new JSONObject();
 				String testavant="avant requete Jena";
 				jresult.put("titre",testavant);
@@ -66,7 +66,7 @@ public class TestJson extends WebSocketServlet{
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}
+				}*/
 				  query = QueryFactory.create(queryString);
 				   QueryExecution qexec = QueryExecutionFactory.sparqlService("http://fuseki-smag0.rhcloud.com/ds/query", query);
 				     try {
@@ -79,7 +79,7 @@ public class TestJson extends WebSocketServlet{
 						    // j.put("JOON", "Hello");
 						         while ( resultats.hasNext()) {
 						     i++;
-						        	  jresult = new JSONObject();
+						     JSONObject  jresult = new JSONObject();
 						     QuerySolution result = resultats.next();
 						     String projet = result.getResource("projet").getLocalName().toString();
 						     String titre = result.getLiteral("titre").toString();

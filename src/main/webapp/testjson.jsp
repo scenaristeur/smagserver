@@ -63,8 +63,8 @@ var statut;
   }
 function testWebSocket() {
 
-     //   websocket = new WebSocket(wsUri,'json');
-        websocket = new WebSocket(wsUri);
+        websocket = new WebSocket(wsUri,'json');
+      //  websocket = new WebSocket(wsUri);
         websocket.onopen = function(evt) { onOpen(evt) };
         websocket.onclose = function(evt) { onClose(evt) };
         websocket.onmessage = function(evt) { onMessage(evt) };
