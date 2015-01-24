@@ -105,7 +105,7 @@ console.log("error");
 function doSend(message) {
         writeToStatut("SENT: " + message+" Attendez quelques secondes");
         websocket.send(message);
-        console.log(send);
+        console.log("send");
 }
 
   function writeToScreen(message,rule)
