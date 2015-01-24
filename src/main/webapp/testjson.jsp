@@ -26,17 +26,14 @@
 }
 
 </style>
- <script type="text/javascript">
-  var openshiftWebSocketPort = 8000; // Or use 8443 for wss
-  var wsUri = "ws://" + window.location.hostname + ":" + openshiftWebSocketPort + "/testjson";
-  console.log(wsUri);
-       </script>
+
 </head>
 <body onload="init">
 
 <h3>Hello HTML5 TestJson</h3>
 <h3>Smag0</h3>
-<div>Connect to: <span id="wsUri"></span></div><div id="statut"></div>
+<div>Connect to: <span id="wsUri"></span></div>
+<div id="statut"></div>
 
 <div id="output">
 </div>
@@ -46,6 +43,12 @@
 
 </body>
 <script language="javascript" type="text/javascript">
+
+  var openshiftWebSocketPort = 8000; // Or use 8443 for wss
+  var wsUri = "ws://" + window.location.hostname + ":" + openshiftWebSocketPort + "/testjson";
+  console.log(wsUri);
+var output;
+var statut;
 
   function init()
   {
