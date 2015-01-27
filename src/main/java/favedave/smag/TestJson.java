@@ -56,6 +56,7 @@ public class TestJson extends WebSocketServlet{
 			@Override
 			public void onOpen(Connection connection) {
 				this.connection=connection;
+				System.out.println("connection a testjson");
 			/*	 j=new JSONObject();
 				 JSONObject jresult = new JSONObject();
 				String testavant="avant requete Jena";
