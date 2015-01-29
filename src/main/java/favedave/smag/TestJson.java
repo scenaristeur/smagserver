@@ -89,7 +89,7 @@ public class TestJson extends WebSocketServlet{
 						     jresult.put("titre",titre);
 						     jresult.put("description", description);
 						     j.put(String.valueOf(i),jresult);
-						     sendMessage(String.valueOf(i));
+						    // sendMessage(String.valueOf(i));
 						   // System.out.println(i);
 						     	         }
 						        // OutputStream jsonResult = null;
