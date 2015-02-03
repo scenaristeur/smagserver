@@ -40,6 +40,15 @@
     <servlet-name>TestJson</servlet-name>
     <servlet-class>favedave.smag.TestJson</servlet-class>
   </servlet>
+  
+<servlet>
+    <servlet-name>MethodeHtml5Servlet</servlet-name>
+    <servlet-class>favedave.smag.projets.MethodeHtml5Servlet</servlet-class>
+  </servlet>
+<servlet>
+    <servlet-name>DoapHtml5Servlet</servlet-name>
+    <servlet-class>favedave.smag.projets.DoapHtml5Servlet</servlet-class>
+  </servlet>
    
   <servlet-mapping>
     <servlet-name>HelloHtml5</servlet-name>
@@ -74,6 +83,16 @@
   <servlet-mapping>
     <servlet-name>TestJson</servlet-name>
     <url-pattern>/testjson/*</url-pattern>
+  </servlet-mapping>
+  
+    <servlet-mapping>
+    <servlet-name>MethodeHtml5Servlet</servlet-name>
+    <url-pattern>/methodews/*</url-pattern>
+  </servlet-mapping>
+  
+      <servlet-mapping>
+    <servlet-name>DoapHtml5Servlet</servlet-name>
+    <url-pattern>/doapws/*</url-pattern>
   </servlet-mapping>
   
 </web-app>
