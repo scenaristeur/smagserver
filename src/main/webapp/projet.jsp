@@ -127,17 +127,49 @@ function onMessageMet(evt){
 console.log("methode JSON reçue : "+evt.data);
 obj = JSON.parse(evt.data);
 var i=0;
-var reponse='<table border=1><tr><td></td><td>Méthode</td><td>Propriété</td><td>Objet</td><td>Valeur pour ce projet</td></tr>';
+//var reponse='<table border=1><tr><td></td><td>Méthode</td><td>Propriété</td><td>Objet</td><td>Valeur pour ce projet</td></tr>';
+var reponse='';
+var sujet='';
+var types='types : ';
+var hasPart='Composé de : ';
+var first='FIRST : ';
+var autres='Autres : ';
 for (var key in obj) {
   if (obj.hasOwnProperty(key)) {
   i++;
+  if (obj[key].subject!=sujet){
+  sujet=obj[key].subject;
+  
+  }
+  
+  if (obj[key].predicate=='type'){
+  console.log(obj[key].predicate+obj[key].object);
+  types+=obj[key].object+" ";
+  }else if (obj[key].predicate=='hasPart'){
+  console.log(obj[key].predicate+obj[key].object);
+  hasPart+=obj[key].object+" ";
+  }
+  else if (obj[key].predicate=='first'){
+  console.log(obj[key].predicate+obj[key].object);
+  first+=obj[key].object+" ";
+  }
+  else{
   //reponse+='<span style="color: blue;">'+key+'</span><span>'+obj[key].subject+'</span></br>';
   //reponse=reponse+'<tr><td>'+key+'</td><td><a href=\"projet.jsp?projet='+obj[key].projet+'\">'+obj[key].projet+'</a></td><td>'+obj[key].titre+'</td><td>'+obj[key].description+'</td></tr>';
-   reponse=reponse+'<tr><td>'+key+'</td><td><a href=\"http://smag0.rww.io/diamond.owl\" target=\"_blank\">'+obj[key].subject+'</td><td>'+obj[key].predicate+'</td><td>'+obj[key].object+'</td><td>Compléter (page en cours de confection)</td></tr>';
+  // reponse=reponse+'<tr><td>'+key+'</td><td><a href=\"http://smag0.rww.io/diamond.owl\" target=\"_blank\">'+obj[key].subject+'</td><td>'+obj[key].predicate+'</td><td>'+obj[key].object+'</td><td>Compléter (page en cours de confection)</td></tr>';
    // alert(key + " -> " + p[key]);
+     console.log(obj[key].predicate+obj[key].object);
+  autres+=obj[key].object+" ";
+  }
   }
 }
-reponse+='</table>';
+//reponse+='</table>';
+reponse+="<h1>"+sujet+"</h1>";
+reponse+="insérer commentaire sur la méthode";
+reponse+=types;
+reponse+="<h2>"+first+"</h2>";
+reponse+="<h3>"+hasPart+"</h3>";
+reponse+=autres;
        writeToMethode('<span style="color: blue;">'+i+' RESPONSE(S): </br>' + reponse+'</span>');
         websocketMethode.close();
 // writeToMethode(evt.data, 'info');
