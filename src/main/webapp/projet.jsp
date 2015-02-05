@@ -34,24 +34,32 @@
 <input type="button" value="stop" name="stopBtn" class="button" onclick="javascript:stop();"/>
 <div id="output">
 </div>
+<div id="doaptab">Merci de patienter, nous recherchons la description de ce projet
+</div>
+<div id="methodetab">Patientez, nous recherchons la meilleure méthode pour faire avancer votre projet
+</div>
+
 
 <span class="warning">Behold websockets</span>
-<div id="doaptab">
+<span>DOAP - Description of a project</span>
+
 <table><tr><th>DOAP - Description of a project</th></tr>
 <tr>
 <td><a href="https://github.com/edumbill/doap/wiki>détails doap</a>
 </td>
 </tr>
 </table>
-</div>
-<div id="methodetab">
+
+<span>Méthode Diamond 
+<a href="http://smag0.rww.io/diamond.owl">détails de la méthode</a></span>
+
 <table><tr><th>Méthode Diamond</th></tr>
 <tr>
-<td><a href="http://smag0.rww.io/diamond.owl">détails de la méthode</a>
+<td>
 </td>
 </tr>
 </table>
-</div>
+
 
 </body>
 <script language="javascript" type="text/javascript">
@@ -59,7 +67,6 @@
 var projetId;
   var openshiftWebSocketPort = 8000; // Or use 8443 for wss
   var wsUri;
- /* var wsUri = "ws://" + window.location.hostname + ":" + openshiftWebSocketPort + "/projetws?projet=2"; */
   var output; 
   var methodetab;
   var doaptab;
@@ -118,6 +125,7 @@ console.log("onclosemet");
 }
 function onMessageMet(evt){
 console.log("onmessagemet");
+console.log("data : "+evt.data);
 writeToMethode(evt.data, 'info');
 }
 function onErrorMet(evt){
@@ -175,6 +183,7 @@ console.log("onerrorDoap");
   }
     function writeToMethode(message,rule)
   {
+  console.log("ecriture dans methodetab : "+message);
   methodetab.innerHTML=message;
     methodetab.className=rule;
   }

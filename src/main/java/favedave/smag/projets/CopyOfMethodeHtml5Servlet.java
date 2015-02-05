@@ -23,7 +23,7 @@ import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.util.FileManager;
 import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 
-public class MethodeHtml5Servlet extends WebSocketServlet{
+public class CopyOfMethodeHtml5Servlet extends WebSocketServlet{
 	// retourne la méthode (Diamond ou Aspecs ) d'un projet
 	//Create the Ontology Model
 	OntModel model = ModelFactory.createOntologyModel();
