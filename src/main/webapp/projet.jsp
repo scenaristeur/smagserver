@@ -165,7 +165,7 @@ for (var key in obj) {
 }
 //reponse+='</table>';
 reponse+="<h1>"+sujet+"</h1>";
-reponse+="insérer commentaire sur la méthode";
+reponse+="<div>insérer commentaire sur la méthode+"<\div>";
 reponse+=types;
 reponse+="<h2>"+first+"</h2>";
 reponse+="<h3>"+hasPart+"</h3>";
