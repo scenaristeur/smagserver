@@ -45,7 +45,7 @@
 
 <table><tr><th>DOAP - Description of a project</th></tr>
 <tr>
-<td><a href="https://github.com/edumbill/doap/wiki>détails doap</a>
+<td><a href="https://github.com/edumbill/doap/wiki">détails doap</a>
 </td>
 </tr>
 </table>
@@ -124,17 +124,32 @@ function onCloseMet(evt){
 console.log("onclosemet");
 }
 function onMessageMet(evt){
-console.log("onmessagemet");
-console.log("data : "+evt.data);
-writeToMethode(evt.data, 'info');
+console.log("methode JSON reçue : "+evt.data);
+obj = JSON.parse(evt.data);
+var i=0;
+var reponse='<table border=1><tr><td></td><td>Méthode</td><td>Propriété</td><td>Objet</td><td>Valeur pour ce projet</td></tr>';
+for (var key in obj) {
+  if (obj.hasOwnProperty(key)) {
+  i++;
+  //reponse+='<span style="color: blue;">'+key+'</span><span>'+obj[key].subject+'</span></br>';
+  //reponse=reponse+'<tr><td>'+key+'</td><td><a href=\"projet.jsp?projet='+obj[key].projet+'\">'+obj[key].projet+'</a></td><td>'+obj[key].titre+'</td><td>'+obj[key].description+'</td></tr>';
+   reponse=reponse+'<tr><td>'+key+'</td><td><a href=\"http://smag0.rww.io/diamond.owl\" target=\"_blank\">'+obj[key].subject+'</td><td>'+obj[key].predicate+'</td><td>'+obj[key].object+'</td><td>Compléter (page en cours de confection)</td></tr>';
+   // alert(key + " -> " + p[key]);
+  }
+}
+reponse+='</table>';
+       writeToMethode('<span style="color: blue;">'+i+' RESPONSE(S): </br>' + reponse+'</span>');
+        websocketMethode.close();
+// writeToMethode(evt.data, 'info');
 }
 function onErrorMet(evt){
 console.log("onerrormet");
+writeToMethode(evt.data, 'error');
 }
 
 function onOpenDoap(evt){
 console.log("onopenDoap");
- websocketDoap.send(projetId);
+ /* debug non lancement de la recherche DOAP pendant le dev de Methode websocketDoap.send(projetId);*/
 }
 function onCloseDoap(evt){
 console.log("oncloseDoap");
@@ -145,6 +160,7 @@ writeToDoap(evt.data, 'info');
 }
 function onErrorDoap(evt){
 console.log("onerrorDoap");
+writeToDoap(evt.data, 'error');
 }
   function onOpen(evt)
   {
