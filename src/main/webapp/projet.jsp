@@ -67,6 +67,7 @@
 var projetId;
   var openshiftWebSocketPort = 8000; // Or use 8443 for wss
   var wsUri;
+  var urlProjet;
   var output; 
   var methodetab;
   var doaptab;
@@ -88,7 +89,7 @@ function getParameterByName(name) {
     doaptab = document.getElementById("doaptab");
     methodetab = document.getElementById("methodetab");
     writeToScreen(" Not Connected to server",'warning');
-
+urlProjet="http://"+window.location.hostname + ":" + openshiftWebSocketPort + "/projet.jsp?projet="+projetId;
     testWebSocket();
   }
   function stop()
@@ -147,7 +148,7 @@ for (var key in obj) {
   types+=obj[key].object+" ";
   }else if (obj[key].predicate=='hasPart'){
   console.log(obj[key].predicate+obj[key].object);
-  hasPart+="<a href=\"+window.location.href+"&etape="+obj[key].object+"\">"+obj[key].object+"</a></br>";
+  hasPart+="<a href=\""+urlProjet+"&etape="+obj[key].object+"\">"+obj[key].object+"</a></br>";
   }
   else if (obj[key].predicate=='first'){
   console.log(obj[key].predicate+obj[key].object);
