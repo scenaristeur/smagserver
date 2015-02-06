@@ -147,7 +147,7 @@ for (var key in obj) {
   types+=obj[key].object+" ";
   }else if (obj[key].predicate=='hasPart'){
   console.log(obj[key].predicate+obj[key].object);
-  hasPart+="<a href=\"etape=obj[key].object\">"+obj[key].object+"</a>\n";
+  hasPart+="<a href=\"+window.location.href+"&etape="+obj[key].object+"\">"+obj[key].object+"</a></br>";
   }
   else if (obj[key].predicate=='first'){
   console.log(obj[key].predicate+obj[key].object);
