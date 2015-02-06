@@ -147,7 +147,7 @@ for (var key in obj) {
   types+=obj[key].object+" ";
   }else if (obj[key].predicate=='hasPart'){
   console.log(obj[key].predicate+obj[key].object);
-  hasPart+=obj[key].object+" ";
+  hasPart+="<a href=\"etape=obj[key].object\">"+obj[key].object+"</a>\n";
   }
   else if (obj[key].predicate=='first'){
   console.log(obj[key].predicate+obj[key].object);
@@ -165,7 +165,7 @@ for (var key in obj) {
 }
 //reponse+='</table>';
 reponse+="<h1>"+sujet+"</h1>";
-reponse+="<div>insérer commentaire sur la méthode+"<\div>";
+reponse+="<div>insérer commentaire sur la méthode<\div>";
 reponse+=types;
 reponse+="<h2>"+first+"</h2>";
 reponse+="<h3>"+hasPart+"</h3>";
