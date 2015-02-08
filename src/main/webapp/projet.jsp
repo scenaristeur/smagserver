@@ -6,7 +6,7 @@
 .info {
 	color: #01529B;
 	background-color: #BDE5F8;
-}
+} 
 .error {
 	color: #D8000C;
 	background-color: #FFBABA;

@@ -1,5 +1,5 @@
 window.onload = function() {
-
+ 
   // Get references to elements on the page.
   var form = document.getElementById('message-form');
   var messageField = document.getElementById('message');
