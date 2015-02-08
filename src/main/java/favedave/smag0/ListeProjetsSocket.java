@@ -48,8 +48,8 @@ public class ListeProjetsSocket extends WebSocketServlet {
 					+ "?projet <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smag0.blogspot.fr/ns/smag0#Projet> ."
 					+ "?projet <http://purl.org/dc/elements/1.1/title> ?titre ."
 					+ "?projet <http://purl.org/dc/elements/1.1/description> ?description ."
-					+ "}" + "ORDER BY DESC(?projet)" + "LIMIT 100";
-
+					+ "}" + "ORDER BY DESC(?projet)";
+			// + "}" + "ORDER BY DESC(?projet)" + "LIMIT 1000";
 			Query query = QueryFactory.create(queryString);
 			QueryExecution qexec = QueryExecutionFactory.sparqlService(
 					"http://fuseki-smag0.rhcloud.com/ds/query", query);
