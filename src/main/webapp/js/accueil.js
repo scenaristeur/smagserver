@@ -92,9 +92,6 @@ obj = JSON.parse(event.data);
 var i=0;
 for (var key in obj) {
   if (obj.hasOwnProperty(key)) {
-  console.log(key);
- // var ligne;
-//ligne=obj[key].titre+" : "+obj[key].description;
 messagesList.innerHTML += '<li class="received"><span><a href=\"projet.jsp?projet='+obj[key].projet+'\">'+obj[key].titre+': </a></span></br>' +
                              obj[key].description + '</li>';
   }
