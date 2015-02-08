@@ -13,16 +13,14 @@ import org.eclipse.jetty.websocket.WebSocketServlet;
 import org.janusproject.kernel.Kernel;
 import org.janusproject.kernel.agent.ChannelManager;
 import org.janusproject.kernel.agent.Kernels;
-import org.json.JSONObject;
 
-public class ProjetHtml5Servlet extends WebSocketServlet {
+public class CopyOfProjetHtml5Servlet extends WebSocketServlet {
 	String projet = "vide";
 	private String message;
 	private AgentProjetChannel channel;
 	private String projetDetails;
 	private String projetMethode;
 	private String projetDoap;
-	JSONObject j = new JSONObject();
 
 	// private String messageDefaut;
 
@@ -63,14 +61,6 @@ public class ProjetHtml5Servlet extends WebSocketServlet {
 		 */
 
 		System.out.println(request.toString());
-		int i = 0;
-		JSONObject jresult = new JSONObject();
-		jresult.put("subject", "sujettest");
-		jresult.put("predicate", "predicatetest");
-		jresult.put("object", "objettest");
-		System.out.println(jresult.toString());
-		j.put(String.valueOf(i), jresult);
-
 		return new ProjetSocket();
 	}
 
@@ -82,10 +72,6 @@ public class ProjetHtml5Servlet extends WebSocketServlet {
 		@Override
 		public void onOpen(Connection connection) {
 			this.connection = connection;
-			/*
-			 * try { connection.sendMessage(j.toString()); } catch (IOException
-			 * e) { // TODO Auto-generated catch block e.printStackTrace(); }
-			 */
 			this.timer = new Timer();
 		}
 
@@ -135,11 +121,9 @@ public class ProjetHtml5Servlet extends WebSocketServlet {
 									+ "</div>" + "<div>"
 									+ channel.getProjetMethode() + "</div>";
 							// firstAtt=channel.getResultat();
-							// j = channel.getProjetDetailsJson();
 
 							if (exFirstAtt != firstAtt) {
 								message = firstAtt;
-								// connection.sendMessage(j.toString());
 								connection.sendMessage(message);
 								// connection.sendMessage(reponseJson.toString());
 							}

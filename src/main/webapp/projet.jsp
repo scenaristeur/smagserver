@@ -28,8 +28,9 @@
 </style>
 </head>
 <body onload="init">
-<h3>Page Projet</h3>
-<h3>Smag0</h3>
+<h1 id="titre">Page Projet</h1>
+<h4 id="type">type</h4>
+<h4 id="description"></h4>
 <div>Connect to: <span id="wsUri"></span></div>
 <input type="button" value="stop" name="stopBtn" class="button" onclick="javascript:stop();"/>
 <div id="output">
@@ -71,7 +72,12 @@ var projetId;
   var output; 
   var methodetab;
   var doaptab;
+  var titre;
+  var type;
+  var description;
+ 
 var obj="test";
+var objTitre="TITRE au format JSON";
 function getParameterByName(name) {
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
@@ -88,6 +94,9 @@ function getParameterByName(name) {
     output = document.getElementById("output");
     doaptab = document.getElementById("doaptab");
     methodetab = document.getElementById("methodetab");
+    titre = document.getElementById("titre");
+    type=document.getElementById("type");
+    description=document.getElementById("description");
     writeToScreen(" Not Connected to server",'warning');
 urlProjet="http://"+window.location.hostname + ":" + openshiftWebSocketPort + "/projet.jsp?projet="+projetId;
     testWebSocket();
@@ -208,12 +217,18 @@ writeToDoap(evt.data, 'error');
   }
 
   function onMessage(evt)
-  {console.log(event.data);
+  {console.log(evt.data);
     writeToScreen(evt.data, 'info');
-
-      /*                          var obj = JSON.parse(msg.data); 
-                                console.log(obj);
-  */}
+/*console.log("OBJET TITRE JSON reçu : "+evt.data);
+objTitre = JSON.parse(evt.data);
+for (var key in objTitre) {
+  if (objTitre.hasOwnProperty(key)) {
+  console.log("A afficher : "+objTitre[key]);*/
+  /*if (obj[key].subject!=sujet){
+  sujet=obj[key].subject;
+  */
+ /* }}*/
+  }
 
   function onError(evt)
   {

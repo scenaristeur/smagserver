@@ -42,6 +42,9 @@
 </head>
 <body onload="init">
 <script src="/js/processing.min.js"></script>
+<div> Chaque projet intégré au système Smag est pris en compte comme un agent #Ferber #Janus.</br>
+Dont le but est de se résoudre par lui même en fonction des son environnement et des autres projets.</div>
+<div>Vous pouvez, vous aussi ajouter un projet.</div>
 <table><tr><td>
 <h3>Hello HTML5 Web Socket</h3>
 <h3>Smag0</h3>
