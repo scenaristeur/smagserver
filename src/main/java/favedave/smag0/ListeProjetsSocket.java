@@ -39,18 +39,11 @@ public class ListeProjetsSocket extends WebSocketServlet {
 		public void onOpen(Connection connection) {
 			this.connection = connection;
 			System.out.println("Liste Projet open");
-
+			prepareRequete();
 		}
 
-		@Override
-		public void onClose(int closeCode, String message) {
-			// TODO Auto-generated method stub
+		private void prepareRequete() {
 
-		}
-
-		@Override
-		public void onMessage(String data) {
-			System.out.println("Liste projets message reçu " + data);
 			String queryString = "select ?projet ?titre ?description where {"
 					+ "?projet <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smag0.blogspot.fr/ns/smag0#Projet> ."
 					+ "?projet <http://purl.org/dc/elements/1.1/title> ?titre ."
@@ -98,6 +91,18 @@ public class ListeProjetsSocket extends WebSocketServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}
+
+		@Override
+		public void onClose(int closeCode, String message) {
+			// TODO Auto-generated method stub
+
+		}
+
+		@Override
+		public void onMessage(String data) {
+			System.out.println("Liste projets message reçu " + data);
+
 		}
 	}
 }
