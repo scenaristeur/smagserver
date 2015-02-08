@@ -37,7 +37,6 @@ websocketListeProjets.onopen = function(event) {
 // Handle any errors that occur.
 socket.onerror = function(error) {
   console.log('WebSocket Echo Error: ' + error);
-  
 };
 // Handle any errors that occur.
 websocketNouveauProjet.onerror = function(error) {
