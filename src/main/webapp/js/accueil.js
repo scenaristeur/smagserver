@@ -53,6 +53,7 @@ form.onsubmit = function(e) {
  if (websocketNouveauProjet.readyState === undefined || websocketNouveauProjet.readyState > 1) {
 websocketNouveauProjet = new WebSocket(wsUriNouveauProjet);
  console.log("reconnexion websocketNouveauProjet");
+ websocketNouveauProjet.onopen;
  }
 
 
@@ -73,10 +74,11 @@ websocketNouveauProjet = new WebSocket(wsUriNouveauProjet);
   websocketNouveauProjet.send(data);
 
   // Add the message to the messages list.
+    messagesList.innerHTML = '<li class="sent"><span>Projet en cours : </span>' + data +
+                            '</li>'+messagesList.innerHTML;
   messagesList.innerHTML += '<li class="sent"><span>Sent:</span>' + message +
                             '</li>';
-  messagesList.innerHTML += '<li class="sent"><span>Sent:</span>' + data +
-                            '</li>';
+
 
   // Clear out the message field.
   messageField.value = '';

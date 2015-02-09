@@ -11,7 +11,17 @@ import org.eclipse.jetty.websocket.WebSocketServlet;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.hp.hpl.jena.update.UpdateExecutionFactory;
+import com.hp.hpl.jena.update.UpdateProcessor;
+import com.hp.hpl.jena.update.UpdateRequest;
+
 public class NouveauProjetSocket extends WebSocketServlet {
+
+	public String type;
+	public String titre;
+	public String description;
+	public String date;
+	public String id;
 
 	@Override
 	public WebSocket doWebSocketConnect(HttpServletRequest request,
@@ -45,10 +55,11 @@ public class NouveauProjetSocket extends WebSocketServlet {
 
 			parse(dataJson, out);
 
-			String type = out.get("type");
-			String titre = out.get("titre");
-			String description = out.get("description");
-			String date = out.get("date");
+			type = out.get("type");
+			titre = out.get("titre");
+			description = out.get("description");
+			date = out.get("date");
+			id = "P" + date;
 
 			System.out
 					.println("Recherche pour savoir si un projet avec le même nom existe ou un nom proche"
@@ -60,26 +71,40 @@ public class NouveauProjetSocket extends WebSocketServlet {
 							+ " "
 							+ date);
 
+			insertionProjet();
+		}
+
+		private void insertionProjet() {
+			UpdateRequest ur = new UpdateRequest();
+			UpdateProcessor up;
+			String service = "http://fuseki-smag0.rhcloud.com/ds/update";
+			String update;
+			update = "PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> ";
+			update += "PREFIX smag:   <http://smag0.blogspot.fr/ns/smag0#>";
+			update += "PREFIX dc: <http://purl.org/dc/elements/1.1/>";
+
+			update += "INSERT DATA {";
+			update += "GRAPH <http://smag0.blogspot.fr/GraphTest>{";
+
+			update += "smag:" + id + "    rdf:type         smag:Projet .";
+			update += "smag:" + id + "   dc:title         '" + titre + "' .";
+			update += "smag:" + id + "   dc:description         '"
+					+ description + "' .";
 			/*
-			 * Iterator<String> keys = dataJson.keys(); String type = null;
-			 * String titre = null; String description = null; String date =
-			 * "12";
-			 * 
-			 * while (keys.hasNext()) { String key = keys.next();
-			 * System.out.println("##" + key + "##"); if (key == "\"type\"") {
-			 * type = dataJson.getString(key); System.out.println(key + " dd: "
-			 * + type); } if (key == "\"titre\"") { titre =
-			 * dataJson.getString(key); System.out.println(key + " dd: " +
-			 * titre); } if (key == "description") { description =
-			 * dataJson.getString(key); System.out.println(key + " dd: " +
-			 * description); } if (key == "date") { date =
-			 * dataJson.getString(key); System.out.println(key + " dd: " +
-			 * date); } if (dataJson.get(key) instanceof JSONObject) {
-			 * System.out.println("instance of json " + dataJson.get(key)); }
-			 * else { System.out.println(key + " : " + dataJson.get(key)); }
-			 * System.out.println(type + " " + titre + " " + description + " " +
-			 * date); }
+			 * update += "ex:cat     rdfs:subClassOf  ex:animal ."; update +=
+			 * "zoo:host   rdfs:range       ex:animal ."; update +=
+			 * "ex:zoo1    zoo:host         ex:cat2 ."; update +=
+			 * "ex:cat3    owl:sameAs       ex:cat2 .";
 			 */
+			update += "}}";
+			// ur.add("INSERT {<bouuula> <bouuuulb> <bouuulc>} WHERE {?s ?p ?o}");
+			// ur.add("INSERT DATA { <http://website.com/exmp/something> http://purl.org/dc/elements/1.1/title ‘Some title’}");
+			ur.add(update);
+
+			up = UpdateExecutionFactory.createRemote(ur, service);
+			up.execute();
+			System.out.println("test inséré" + up);
+
 		}
 
 	}
