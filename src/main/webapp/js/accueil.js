@@ -49,6 +49,13 @@ websocketListeProjets.onerror = function(error) {
 
 // Send a message when the form is submitted.
 form.onsubmit = function(e) {
+
+ if (websocketNouveauProjet.readyState === undefined || websocketNouveauProjet.readyState > 1) {
+websocketNouveauProjet = new WebSocket(wsUriNouveauProjet);
+ console.log("reconnexion websocketNouveauProjet");
+ }
+
+
   e.preventDefault();
 
   // Retrieve the message from the textarea.
