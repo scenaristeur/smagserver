@@ -53,7 +53,8 @@ form.onsubmit = function(e) {
  if (websocketNouveauProjet.readyState === undefined || websocketNouveauProjet.readyState > 1) {
 websocketNouveauProjet = new WebSocket(wsUriNouveauProjet);
  console.log("reconnexion websocketNouveauProjet");
- websocketNouveauProjet.onopen;
+   socketStatusNouveau.innerHTML = 'Connected to: ' + event.currentTarget.url;
+  socketStatusNouveau.className = 'open';
  }
 
 

@@ -103,7 +103,7 @@ public class NouveauProjetSocket extends WebSocketServlet {
 
 			up = UpdateExecutionFactory.createRemote(ur, service);
 			up.execute();
-			System.out.println("test inséré" + up);
+			System.out.println("test inséré");
 
 		}
 
