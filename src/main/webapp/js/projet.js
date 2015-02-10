@@ -7,6 +7,7 @@ function getParameterByName(name) {
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
+
  var projetId = getParameterByName('projet');
  var openshiftWebSocketPort = 8000; // Or use 8443 for wss
  var wsUriPageProjet = "ws://" + window.location.hostname + ":" + openshiftWebSocketPort + "/pageprojetws/?projet="+projetId;
