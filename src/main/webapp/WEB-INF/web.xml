@@ -58,6 +58,11 @@
     <servlet-name>ListeProjets</servlet-name>
     <servlet-class>favedave.smag0.ListeProjetsSocket</servlet-class>
   </servlet>
+    <servlet>
+    <servlet-name>PageProjet</servlet-name>
+    <servlet-class>favedave.smag0.PageProjetSocket</servlet-class>
+  </servlet>
+ <!-- MAPPING --> 
    
   <servlet-mapping>
     <servlet-name>HelloHtml5</servlet-name>
@@ -112,6 +117,11 @@
                   <servlet-mapping>
     <servlet-name>ListeProjets</servlet-name>
     <url-pattern>/listeprojetsws/*</url-pattern>
+  </servlet-mapping>
+  
+<servlet-mapping>
+    <servlet-name>PageProjet</servlet-name>
+    <url-pattern>/pageprojetws/*</url-pattern>
   </servlet-mapping>
   
 </web-app>
