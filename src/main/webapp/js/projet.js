@@ -20,6 +20,8 @@ function getParameterByName(name) {
  var statutDoap = document.getElementById('statutDoap');
  var statutMethode = document.getElementById('statutMethode');
  var websocketPageProjet = new WebSocket(wsUriPageProjet);
+ 
+ doapDiv.style.display="none";
 
  
 websocketPageProjet.onopen = function(event) {
