@@ -102,8 +102,10 @@ obj = JSON.parse(event.data);
 var i=0;
 for (var key in obj) {
   if (obj.hasOwnProperty(key)) {
-messagesList.innerHTML += '<li class="received"><span><a href=\"projet.jsp?projet='+obj[key].projet+'\">'+obj[key].titre+': </a></span></br>' +
-                             obj[key].description + '</li>';
+messagesList.innerHTML += '<li class="received"><span><a href=\"projet.jsp?projet='+obj[key].projet+'\">'+obj[key].titre+': </a>'+
+'<a href=\"projet1.jsp?projet='+obj[key].projet+'\">(ancienne page projet) </a>'+
+'</span></br>' +
+obj[key].description + '</li>';
   }
 
    }
