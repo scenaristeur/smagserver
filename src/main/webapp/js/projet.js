@@ -27,7 +27,7 @@ var objDetail;
 var nomDoap=null;
 var descriptionDoap=null;
  
- doapDiv.style.display="none";
+ //doapDiv.style.display="none";
 
  websocketDoapModel.onopen = function(event) {
   statutDoap.innerHTML = 'Connected to: ' + event.currentTarget.url;
@@ -65,18 +65,41 @@ console.log(event);
  doapDiv.innerHTML ='';
 console.log(event.data);
 objDoap = JSON.parse(event.data);
-doapDiv.innerHTML +='<form id="doap-form" action="#" method="post">';
+var doapform = document.createElement("form");
+doapform.setAttribute('method',"post");
+doapform.setAttribute('action',"#");
+doapDiv.appendChild(doapform);
+
 var i=0;
 for (var key in objDoap) {
   if (objDoap.hasOwnProperty(key)) {
-doapDiv.innerHTML += '<li class="received"><span>'+objDoap[key].object+': '+
-'</span></br>' +
+  var ligne = document.createElement("li"); //input element, text
+ligne.setAttribute('class',"received");
+ligne.innerHTML='<span>'+objDoap[key].object+': </span></br>' +
+'<textarea  id="'+objDoap[key].subject+'" placeholder="Aucune information pour l\'instant. Libre à vous de compléter"></textarea >'+
+'<button type="submit">Enregistrer</button><button type="button" id="effacer">Effacer</button>';
+doapform.appendChild(ligne);
 
+if (objDoap[key].subject=="name"){
+doapform.insertBefore(ligne, doapform.childNodes[0]);
+}
+else if (objDoap[key].subject=="description"){
+
+doapform.insertBefore(ligne, doapform.childNodes[0]);
+}
+
+else{
+doapform.appendChild(ligne);
+}
+/*
+doapDiv.innerHTML += '<li class="received"><span>'+objDoap[key].object+': </span></br>' +
 '<textarea  id="'+objDoap[key].subject+'" placeholder="Aucune information pour l\'instant. Libre à vous de compléter"></textarea >'+
 '<button type="submit">Enregistrer</button><button type="button" id="effacer">Effacer</button></li>';
+*/
   }
 } 
-doapDiv.innerHTML +='</form>';
+
+//doapDiv.innerHTML +='</form>';
   		document.getElementById("name").value  = nomDoap;
   		document.getElementById("Project").value = nomDoap;
   		document.getElementById("description").value = descriptionDoap;
