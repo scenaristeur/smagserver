@@ -26,8 +26,13 @@
 <div id="methode"></div>
 
 
-<div id="affiche-methode">Affichage de la méthode</div>
-<div id="colonne2">Espace dispo</div>
+<div id="affiche-methode">
+Affichage de la méthode</div>
+<div id="liaisons">Liaisons entre les projets<br>
+<ul>
+<li>Projets avec un nom similaire</li>
+</ul>
+</div>
 
 
   <div id="page-wrapper">
@@ -37,7 +42,6 @@
     <ul id="descriptionProjet">description </ul>
     <input type="button" onclick="return toggleMe('doapDiv')" value="Afficher/Cacher DOAP (description of a Project)"><br>
     <ul id="doapDiv"><li>Recherche du DOAP du projet, veuillez patienter, <div id="statutDoap">chargement en cours</div></li></ul>
-    <ul id="methodeDiv">Methode de resolution du projet, <div id="statutMethode">chargement en cours</div></ul>
       </div>
 
   <script src="/js/projet.js"></script>

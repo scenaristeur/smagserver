@@ -18,6 +18,7 @@ function getParameterByName(name) {
  var descriptionProjet = document.getElementById('descriptionProjet');
  var doapDiv = document.getElementById('doapDiv');
  var methodeDiv = document.getElementById('methode');
+ var affichemethode = document.getElementById('affiche-methode');
  var statutTitre = document.getElementById('statutTitre');
  var statutDoap = document.getElementById('statutDoap');
  var statutMethode = document.getElementById('statutMethode');
@@ -101,7 +102,7 @@ doapform.appendChild(ligne);
 /*
 doapDiv.innerHTML += '<li class="received"><span>'+objDoap[key].object+': </span></br>' +
 '<textarea  id="'+objDoap[key].subject+'" placeholder="Aucune information pour l\'instant. Libre à vous de compléter"></textarea >'+
-'<button type="submit">Enregistrer</button><button type="button" id="effacer">Effacer</button></li>';
+'<button type="submit">Enregistrer</button><button type="button" id="ajouter">Ajouter</button><button type="button" id="effacer">Effacer</button></li>';
 */
   }
 } 
@@ -165,11 +166,14 @@ var hasPart='';
 var first='';
 var documentproduit='Document produit : ';
 var autres='voir aussi : ';
+var listeDiamond = document.createElement('ul');
 for (var key in obj) {
   if (obj.hasOwnProperty(key)) {
   i++;
   if (obj[key].subject!=sujet){
-  	sujet=obj[key].subject; 
+  	sujet=obj[key].subject;
+  	affichemethode.innerHTML=sujet; 	
+  	affichemethode.appendChild(listeDiamond);
   }  
   if (obj[key].predicate=='type'){
   	console.log(obj[key].predicate+obj[key].object);
@@ -177,6 +181,9 @@ for (var key in obj) {
   }else if (obj[key].predicate=='hasPart'){
   	console.log(obj[key].predicate+obj[key].object);
   	hasPart+=" <a href=\""+urlProjet+"&etape="+obj[key].object+"\">"+obj[key].object+"</a> ";
+  	var ligneDiamond = document.createElement('li');
+  	listeDiamond.appendChild(ligneDiamond);
+  	ligneDiamond.innerHTML+="<a href=\""+urlProjet+"&etape="+obj[key].object+"\">"+obj[key].object+"</a>";
   }
   else if (obj[key].predicate=='first'){
   	console.log(obj[key].predicate+obj[key].object);
@@ -185,12 +192,16 @@ for (var key in obj) {
     else if (obj[key].predicate=='documentproduit'){
   	console.log(obj[key].predicate+obj[key].object);
   	documentproduit+=" <a href=\""+urlProjet+"&etape="+obj[key].object+"\">"+obj[key].object+"</a> ";
+  	  	var ligneDiamond = document.createElement('li');
+  	listeDiamond.appendChild(ligneDiamond);
+  	ligneDiamond.innerHTML+="<a href=\""+urlProjet+"&etape="+obj[key].object+"\">"+obj[key].object+"</a>";
   }
   else{
   	autres+=obj[key].object+" ";
   	}
   }
 }
+affichemethode.innerHTML+='</ul>'; 
 reponse+=sujet+'(<a id = "mini" href="https://tel.archives-ouvertes.fr/tel-00189046/document" target="_blank">description de la methode</a>)';
 reponse+=" ("+types+")";
 //reponse+="<h2>"+first+"</h2>";
@@ -198,6 +209,7 @@ reponse+="<div>"+hasPart+"</div>";
 reponse+="<div>"+documentproduit+"</div>";
 reponse+=autres;
 reponse+='<a id ="mini" href="http://smag0.rww.io/diamond.owl" target="_blank">détails de la méthode</a>';
+reponse+='<a id ="mini" href="https://drive.google.com/file/d/0B0zEK4yLB5C6V0xaa3VtLXllQXM/view?usp=sharing" target="_blank">Smag0 sur votre mobile Android</a>';
        writeToMethode(reponse);
         websocketMethode.close();
 
