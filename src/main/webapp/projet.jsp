@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="utf-8">
   <title id="titrePage">Smag</title>
@@ -24,9 +24,9 @@
   <div id="page-wrapper">
       <input type="button" value="Tous les projets / Proposer un projet" onclick="location.href='accueil.jsp'">
     <ul id="statutTitre">veuillez patienter, chargement en cours</ul>
-    <h1 id=titre">Smag0 détail d'un projet </h1>
-    <ul id="description">description </ul>
-    <input type="button" onclick="return toggleMe('doapDiv')" value="Afficher/Cacher DOAP"><br>
+    <h1 id="titreProjet">Smag0 détail d'un projet </h1>
+    <ul id="descriptionProjet">description </ul>
+    <input type="button" onclick="return toggleMe('doapDiv')" value="Afficher/Cacher DOAP (description of a Project)"><br>
     <ul id="doapDiv"><li>Recherche du DOAP du projet, veuillez patienter, <div id="statutDoap">chargement en cours</div></li></ul>
     <ul id="methodeDiv">Methode de resolution du projet, <div id="statutMethode">chargement en cours</div></ul>
       </div>

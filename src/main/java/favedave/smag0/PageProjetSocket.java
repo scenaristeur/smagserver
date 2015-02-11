@@ -9,19 +9,17 @@ import org.eclipse.jetty.websocket.WebSocket;
 import org.eclipse.jetty.websocket.WebSocketServlet;
 import org.json.JSONObject;
 
-import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.Property;
+import com.hp.hpl.jena.query.Query;
+import com.hp.hpl.jena.query.QueryExecution;
+import com.hp.hpl.jena.query.QueryExecutionFactory;
+import com.hp.hpl.jena.query.QueryFactory;
+import com.hp.hpl.jena.query.QuerySolution;
+import com.hp.hpl.jena.query.ResultSet;
 import com.hp.hpl.jena.rdf.model.RDFNode;
-import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.rdf.model.Statement;
-import com.hp.hpl.jena.rdf.model.StmtIterator;
-import com.hp.hpl.jena.util.FileManager;
 
 public class PageProjetSocket extends WebSocketServlet {
 	JSONObject projetJson = new JSONObject();
-	JSONObject doapJson = new JSONObject();
-	JSONObject methodeJson = new JSONObject();
-	String langue = "fr";
+
 	private String projet;
 
 	@Override
@@ -53,70 +51,54 @@ public class PageProjetSocket extends WebSocketServlet {
 			// TODO Auto-generated method stub
 			this.connection = connection;
 			System.out.println("connexion page projet " + projet);
-			recupereDOAPModel();
+
 			recupereDoapProjet();
-			recupereMethode();
+
 		}
 
 		private void recupereDoapProjet() {
 			String message = "Recherche des elements du projet " + projet;
 			System.out.println(message);
-
-		}
-
-		private void recupereDOAPModel() {
-			String doapDefaultSource = "http://usefulinc.com/ns/doap#";
-			Model model = FileManager.get().loadModel(doapDefaultSource);
-			// Model m = ModelFactory.createDefaultModel();
-			// RDFReader reader = model.getReader("fr");
-			// model.write(System.out);
-			Property propertyLabel = model
-					.getProperty("http://www.w3.org/2000/01/rdf-schema#label");
-			StmtIterator it = model.listStatements(null, propertyLabel, null,
-					langue);
-			// display the 3 statements
+			String queryString = /*
+								 * "PREFIX dc: <http://purl.org/dc/elements/1.1/> "
+								 * +
+								 * "PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
+								 * +
+								 * "PREFIX smag:   <http://smag0.blogspot.fr/ns/smag0#>"
+								 * +
+								 */
+			"select * where {<http://smag0.blogspot.fr/ns/smag0#" + projet
+					+ "> ?propriete ?objet} ";
+			Query query = QueryFactory.create(queryString);
+			QueryExecution qexec = QueryExecutionFactory.sparqlService(
+					"http://fuseki-smag0.rhcloud.com/ds/query", query);
+			ResultSet results = qexec.execSelect();
 			int i = 0;
-			for (; it.hasNext();) {
+			for (; results.hasNext();) {
 				i++;
-				Statement doapLigne = it.next();
-				System.out.println(doapLigne);
-				Resource subject = doapLigne.getSubject();
-				Property predicate = doapLigne.getPredicate();
-				RDFNode object = doapLigne.getObject();
+				QuerySolution soln = results.nextSolution();
+				RDFNode propriete = soln.get("propriete");
+				RDFNode objet = soln.get("objet");
 				String objectResultat = null;
-				if (object.isResource()) {
-					objectResultat = object.asResource().getLocalName()
-							.toString();
-				} else if (object.isLiteral()) {
-					objectResultat = object.asLiteral().toString();
+				if (objet.isResource()) {
+					objectResultat = objet.asResource().toString();
+				} else if (objet.isLiteral()) {
+					objectResultat = objet.asLiteral().toString();
 				}
-				// System.out.println(subject + "\t" + predicate + "\t" +
-				// object);
 
 				JSONObject jresult = new JSONObject();
-				jresult.put("subject", subject.getLocalName().toString());
-				jresult.put("predicate", predicate.getLocalName().toString());
-				jresult.put("object", objectResultat);
-
-				doapJson.put(String.valueOf(i), jresult);
-
+				jresult.put("projet", projet);
+				jresult.put("propriete", propriete.toString());
+				jresult.put("objet", objectResultat);
+				projetJson.put(String.valueOf(i), jresult);
 			}
-			// SimpleSelector selector = new SimpleSelector((Resource) null,
-			// (Property) null, (RDFNode) null, "fr");
-			// SimpleSelector((Resource) null, (Property) null, (String) null,
-			// (String) null);
-			System.out.println(doapJson.toString());
+			System.out.println(projetJson.toString());
 			try {
-				connection.sendMessage(doapJson.toString());
+				connection.sendMessage(projetJson.toString());
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
-
-		private void recupereMethode() {
-			// TODO Auto-generated method stub
-
 		}
 
 		@Override
