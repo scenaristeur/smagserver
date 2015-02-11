@@ -12,20 +12,23 @@ function getParameterByName(name) {
  var openshiftWebSocketPort = 8000; // Or use 8443 for wss
  var wsUriDoapModel = "ws://" + window.location.hostname + ":" + openshiftWebSocketPort + "/doapmodelws";
  var wsUriPageProjet = "ws://" + window.location.hostname + ":" + openshiftWebSocketPort + "/pageprojetws/?projet="+projetId;
+ var wsUriMethode = "ws://" + window.location.hostname + ":" + openshiftWebSocketPort + "/methodews/?projet="+projetId;
  var titrePage = document.getElementById('titrePage');
  var titreProjet = document.getElementById('titreProjet');
  var descriptionProjet = document.getElementById('descriptionProjet');
  var doapDiv = document.getElementById('doapDiv');
- var methodeDiv = document.getElementById('methodeDiv');
+ var methodeDiv = document.getElementById('methode');
  var statutTitre = document.getElementById('statutTitre');
  var statutDoap = document.getElementById('statutDoap');
  var statutMethode = document.getElementById('statutMethode');
  var websocketDoapModel = new WebSocket(wsUriDoapModel);
  var websocketPageProjet = new WebSocket(wsUriPageProjet);
+ var websocketMethode = new WebSocket(wsUriMethode);
 var objDoap;
 var objDetail;
 var nomDoap=null;
 var descriptionDoap=null;
+var urlProjet="http://"+window.location.hostname + ":" + openshiftWebSocketPort + "/projet.jsp?projet="+projetId;;
  
  //doapDiv.style.display="none";
 
@@ -137,5 +140,78 @@ for (var key in objDetail){
 }
 }
 };
+
+
+    websocketMethode.onopen = function(evt) { onOpenMet(evt) };
+    websocketMethode.onclose = function(evt) { onCloseMet(evt) };
+    websocketMethode.onmessage = function(evt) { onMessageMet(evt) };
+    websocketMethode.onerror = function(evt) { onErrorMet(evt) };
+    
+    function onOpenMet(evt){
+console.log("onopenmet");
+ websocketMethode.send(projetId);
+}
+function onCloseMet(evt){
+console.log("onclosemet");
+}
+function onMessageMet(evt){
+console.log("methode JSON reçue : "+evt.data);
+obj = JSON.parse(evt.data);
+var i=0;
+var reponse='';
+var sujet='';
+var types='subClassOf : ';
+var hasPart='';
+var first='';
+var documentproduit='Document produit : ';
+var autres='voir aussi : ';
+for (var key in obj) {
+  if (obj.hasOwnProperty(key)) {
+  i++;
+  if (obj[key].subject!=sujet){
+  	sujet=obj[key].subject; 
+  }  
+  if (obj[key].predicate=='type'){
+  	console.log(obj[key].predicate+obj[key].object);
+  	types+=obj[key].object+" ";
+  }else if (obj[key].predicate=='hasPart'){
+  	console.log(obj[key].predicate+obj[key].object);
+  	hasPart+=" <a href=\""+urlProjet+"&etape="+obj[key].object+"\">"+obj[key].object+"</a> ";
+  }
+  else if (obj[key].predicate=='first'){
+  	console.log(obj[key].predicate+obj[key].object);
+  	first+=obj[key].object+" ";
+  }
+    else if (obj[key].predicate=='documentproduit'){
+  	console.log(obj[key].predicate+obj[key].object);
+  	documentproduit+=" <a href=\""+urlProjet+"&etape="+obj[key].object+"\">"+obj[key].object+"</a> ";
+  }
+  else{
+  	autres+=obj[key].object+" ";
+  	}
+  }
+}
+reponse+=sujet+'(<a id = "mini" href="https://tel.archives-ouvertes.fr/tel-00189046/document" target="_blank">description de la methode</a>)';
+reponse+=" ("+types+")";
+//reponse+="<h2>"+first+"</h2>";
+reponse+="<div>"+hasPart+"</div>";
+reponse+="<div>"+documentproduit+"</div>";
+reponse+=autres;
+reponse+='<a id ="mini" href="http://smag0.rww.io/diamond.owl" target="_blank">détails de la méthode</a>';
+       writeToMethode(reponse);
+        websocketMethode.close();
+
+}
+function onErrorMet(evt){
+console.log("onerrormet");
+writeToMethode(evt.data, 'error');
+}
+
+    function writeToMethode(message,rule)
+  {
+  console.log("ecriture dans methodetab : "+message);
+  methodeDiv.innerHTML=message;
+    methodeDiv.className=rule;
+  }
 
 };

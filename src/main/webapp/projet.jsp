@@ -21,6 +21,15 @@
 	}
 </script>
 
+<div id="page-left">Emplacement Processing</div>
+<div id="page-right">Emplacement Agent Projet</div>
+<div id="methode"></div>
+
+
+<div id="affiche-methode">Affichage de la méthode</div>
+<div id="colonne2">Espace dispo</div>
+
+
   <div id="page-wrapper">
       <input type="button" value="Tous les projets / Proposer un projet" onclick="location.href='accueil.jsp'">
     <ul id="statutTitre">veuillez patienter, chargement en cours</ul>
