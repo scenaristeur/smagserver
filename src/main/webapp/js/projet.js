@@ -24,8 +24,8 @@ function getParameterByName(name) {
  var websocketPageProjet = new WebSocket(wsUriPageProjet);
 var objDoap;
 var objDetail;
-var nomDoap;
-var descriptionDoap;
+var nomDoap=null;
+var descriptionDoap=null;
  
  doapDiv.style.display="none";
 
