@@ -85,7 +85,11 @@ doapform.insertBefore(ligne, doapform.childNodes[0]);
 }
 else if (objDoap[key].subject=="description"){
 
-doapform.insertBefore(ligne, doapform.childNodes[0]);
+doapform.insertBefore(ligne, doapform.childNodes[1]);
+}
+else if (objDoap[key].subject=="Project"){
+
+doapform.insertBefore(ligne, doapform.childNodes[1]);
 }
 
 else{
