@@ -25,6 +25,7 @@ function getParameterByName(name) {
  var websocketDoapModel = new WebSocket(wsUriDoapModel);
  var websocketPageProjet = new WebSocket(wsUriPageProjet);
  var websocketMethode = new WebSocket(wsUriMethode);
+ var agentDiv= document.getElementById('agentDiv');
 var objDoap;
 var objDetail;
 var nomDoap=null;
@@ -120,7 +121,10 @@ objDetail=JSON.parse(event.data);
 var i=0;
 for (var key in objDetail){
 	if(objDetail.hasOwnProperty(key)){
-	 if (objDetail[key].propriete=='http://purl.org/dc/elements/1.1/title'){
+	if(key=='messageUtilisateur'){
+		console.log(objDetail[key]);
+		agentDiv.innerHTML =objDetail[key];
+	}else if (objDetail[key].propriete=='http://purl.org/dc/elements/1.1/title'){
 	 nomDoap=objDetail[key].objet;
   		console.log("titre :"+nomDoap);
   		titreProjet.innerHTML=nomDoap;

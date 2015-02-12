@@ -1,12 +1,18 @@
 package favedave.smag0;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.Enumeration;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.eclipse.jetty.websocket.WebSocket;
 import org.eclipse.jetty.websocket.WebSocketServlet;
+import org.janusproject.kernel.Kernel;
+import org.janusproject.kernel.agent.ChannelManager;
+import org.janusproject.kernel.agent.Kernels;
 import org.json.JSONObject;
 
 import com.hp.hpl.jena.query.Query;
@@ -17,10 +23,15 @@ import com.hp.hpl.jena.query.QuerySolution;
 import com.hp.hpl.jena.query.ResultSet;
 import com.hp.hpl.jena.rdf.model.RDFNode;
 
+import favedave.smag0.agents.AgentProjet;
+import favedave.smag0.agents.channels.AgentProjetChannel;
+
 public class PageProjetSocket extends WebSocketServlet {
 	JSONObject projetJson = new JSONObject();
 
 	private String projet;
+	private String etape;
+	private AgentProjetChannel channel;
 
 	@Override
 	public WebSocket doWebSocketConnect(HttpServletRequest request,
@@ -38,22 +49,64 @@ public class PageProjetSocket extends WebSocketServlet {
 				// System.out.println("\n");
 			}
 		}
-
+		etape = request.getParameter("etape");
 		projet = request.getParameter("projet");
+		System.out.println(etape);
 		return new PageProjet();
 	}
 
 	public class PageProjet implements WebSocket.OnTextMessage {
 		private Connection connection;
+		private Timer timer;
+		String messageUtilisateur = "L'agent qui gère se projet se met en route, merci de patienter";
 
 		@Override
 		public void onOpen(Connection connection) {
 			// TODO Auto-generated method stub
 			this.connection = connection;
+			this.timer = new Timer();
 			System.out.println("connexion page projet " + projet);
-
+			lanceAgentProjet(projet);
 			recupereDoapProjet();
 
+		}
+
+		private void lanceAgentProjet(String projet) {
+			Kernel k = Kernels.get();
+			AgentProjet agentProjet = new AgentProjet();
+			k.launchLightAgent(agentProjet, projet);
+			ChannelManager channelManager = k.getChannelManager();
+			channel = agentProjet.getChannel(AgentProjetChannel.class);
+			if (connection == null || !connection.isOpen()) {
+				System.out.println("Connection is closed!!");
+				return;
+			}
+			timer.schedule(new TimerTask() {
+
+				@Override
+				public void run() {
+					if (channel != null) {
+						// Display the agent's state
+						// System.out.println("Etat " + channel.getEtat());
+						messageUtilisateur = channel.getMessageUtilisateur();
+						projetJson
+								.put("messageUtilisateur", messageUtilisateur);
+						try {
+							connection.sendMessage(projetJson.toString());
+							System.out.println("Connection send "
+									+ projetJson.toString());
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+
+					} else {
+						System.err
+								.println("The agent does not accept to interact");
+						timer.cancel();
+					}
+				}
+			}, new Date(), 5000);
 		}
 
 		private void recupereDoapProjet() {
@@ -103,7 +156,7 @@ public class PageProjetSocket extends WebSocketServlet {
 
 		@Override
 		public void onClose(int closeCode, String message) {
-			// TODO Auto-generated method stub
+			timer.cancel();
 
 		}
 

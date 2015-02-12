@@ -22,7 +22,7 @@
 </script>
 
 <div id="page-left">Emplacement Processing</div>
-<div id="page-right">Emplacement Agent Projet</div>
+<div id="page-right">Emplacement Agent Projet<div id="agentDiv"></div></div>
 <div id="methode"></div>
 
 
