@@ -22,6 +22,9 @@ public class NouveauProjetSocket extends WebSocketServlet {
 	public String description;
 	public String date;
 	public String id;
+	String titreFuseki;
+	String typeFuseki;
+	String descriptionFuseki;
 
 	@Override
 	public WebSocket doWebSocketConnect(HttpServletRequest request,
@@ -60,7 +63,13 @@ public class NouveauProjetSocket extends WebSocketServlet {
 			description = out.get("description");
 			date = out.get("date");
 			id = "P" + date;
-
+			/*
+			 * try { titreFuseki = URLEncoder.encode(titre, "UTF-8"); typeFuseki
+			 * = URLEncoder.encode(type, "UTF-8"); descriptionFuseki =
+			 * URLEncoder.encode(description, "UTF-8"); } catch
+			 * (UnsupportedEncodingException e) { // TODO Auto-generated catch
+			 * block e.printStackTrace(); }
+			 */
 			System.out
 					.println("Recherche pour savoir si un projet avec le même nom existe ou un nom proche"
 							+ type
@@ -70,6 +79,8 @@ public class NouveauProjetSocket extends WebSocketServlet {
 							+ description
 							+ " "
 							+ date);
+
+			// encode pour fuseki(apostrophes)
 
 			insertionProjet();
 		}
@@ -87,9 +98,9 @@ public class NouveauProjetSocket extends WebSocketServlet {
 			update += "GRAPH <http://smag0.blogspot.fr/GraphTest>{";
 
 			update += "smag:" + id + "    rdf:type         smag:Projet .";
-			update += "smag:" + id + "   dc:title         '" + titre + "' .";
-			update += "smag:" + id + "   dc:description         '"
-					+ description + "' .";
+			update += "smag:" + id + "   dc:title         \"" + titre + "\" .";
+			update += "smag:" + id + "   dc:description         \""
+					+ description + "\" .";
 			/*
 			 * update += "ex:cat     rdfs:subClassOf  ex:animal ."; update +=
 			 * "zoo:host   rdfs:range       ex:animal ."; update +=
@@ -97,6 +108,8 @@ public class NouveauProjetSocket extends WebSocketServlet {
 			 * "ex:cat3    owl:sameAs       ex:cat2 .";
 			 */
 			update += "}}";
+
+			System.out.println(update);
 			// ur.add("INSERT {<bouuula> <bouuuulb> <bouuulc>} WHERE {?s ?p ?o}");
 			// ur.add("INSERT DATA { <http://website.com/exmp/something> http://purl.org/dc/elements/1.1/title ‘Some title’}");
 			ur.add(update);
