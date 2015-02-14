@@ -27,8 +27,10 @@ import favedave.smag0.agents.AgentProjet;
 import favedave.smag0.agents.channels.AgentProjetChannel;
 
 public class PageProjetSocket extends WebSocketServlet {
-	JSONObject projetJson = new JSONObject();
-
+	private JSONObject projetJson = new JSONObject();
+	private JSONObject projetJsonPrecedent = new JSONObject();
+	private JSONObject projetsSimilaires = new JSONObject();
+	private JSONObject projetsSimilairesPrecedent = new JSONObject();
 	private String projet;
 	private String etape;
 	private AgentProjetChannel channel;
@@ -49,6 +51,7 @@ public class PageProjetSocket extends WebSocketServlet {
 				// System.out.println("\n");
 			}
 		}
+		projetsSimilairesPrecedent.put("precedent", "vide");
 		etape = request.getParameter("etape");
 		projet = request.getParameter("projet");
 		System.out.println(etape);
@@ -59,6 +62,7 @@ public class PageProjetSocket extends WebSocketServlet {
 		private Connection connection;
 		private Timer timer;
 		String messageUtilisateur = "L'agent qui gère se projet se met en route, merci de patienter";
+		String messageUtilisateurPrecedent = new String();
 
 		@Override
 		public void onOpen(Connection connection) {
@@ -89,15 +93,51 @@ public class PageProjetSocket extends WebSocketServlet {
 						// Display the agent's state
 						// System.out.println("Etat " + channel.getEtat());
 						messageUtilisateur = channel.getMessageUtilisateur();
-						projetJson
-								.put("messageUtilisateur", messageUtilisateur);
-						try {
-							connection.sendMessage(projetJson.toString());
-							System.out.println("Connection send "
-									+ projetJson.toString());
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
+						projetsSimilaires = channel
+								.getProjetsSimilaires(projet);
+
+						if (!messageUtilisateur
+								.equals(messageUtilisateurPrecedent)) {
+							try {
+								projetJson.put("messageUtilisateur",
+										messageUtilisateur);
+								System.out.println("message utilisateur : "
+										+ messageUtilisateur);
+								connection.sendMessage(projetJson.toString());
+								messageUtilisateurPrecedent = messageUtilisateur;
+								System.out
+										.println("nouveau message utilisateur");
+								System.out.println("Connection send "
+										+ projetJson.toString());
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
+						if (projetsSimilaires != null)
+						// && (!projetsSimilaires
+						// .equals(projetsSimilairesPrecedent)))
+						{
+							try {
+								projetJson.put("projetsSimilaires",
+										projetsSimilaires);
+								System.out.println("projetsSimilaires : "
+										+ projetsSimilaires);
+								connection.sendMessage(projetJson.toString());
+								projetsSimilairesPrecedent = projetsSimilaires;
+								System.out
+										.println("VIRER le connection SEND , si la liste n'est pas modifiée. nouveau projetsSimilaires");
+								System.out.println("Connection send "
+										+ projetJson.toString());
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+
+						} else {
+							System.out
+									.println("pas de nouveau projet similaire");
+
 						}
 
 					} else {
@@ -146,8 +186,10 @@ public class PageProjetSocket extends WebSocketServlet {
 				projetJson.put(String.valueOf(i), jresult);
 			}
 			System.out.println(projetJson.toString());
+
 			try {
 				connection.sendMessage(projetJson.toString());
+
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
