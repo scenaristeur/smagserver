@@ -55,7 +55,7 @@ public class PageProjetSocket extends WebSocketServlet {
 		etape = request.getParameter("etape");
 		projet = request.getParameter("projet");
 		System.out.println(etape);
-		return new PageProjet();
+		return new PageProjet(projet);
 	}
 
 	public class PageProjet implements WebSocket.OnTextMessage {
@@ -63,22 +63,28 @@ public class PageProjetSocket extends WebSocketServlet {
 		private Timer timer;
 		String messageUtilisateur = "L'agent qui gère se projet se met en route, merci de patienter";
 		String messageUtilisateurPrecedent = new String();
+		private String projetID;
+
+		public PageProjet(String _projet) {
+			projetID = _projet;
+		}
 
 		@Override
 		public void onOpen(Connection connection) {
 			// TODO Auto-generated method stub
 			this.connection = connection;
 			this.timer = new Timer();
-			System.out.println("connexion page projet " + projet);
-			lanceAgentProjet(projet);
-			recupereDoapProjet();
+			System.out.println("connexion page projet " + projetID);
+			lanceAgentProjet(projetID);
+			recupereDoapProjet(projetID);
 
 		}
 
-		private void lanceAgentProjet(String projet) {
+		private void lanceAgentProjet(String _projetID) {
+			String _agentProjetID = projetID;
 			Kernel k = Kernels.get();
 			AgentProjet agentProjet = new AgentProjet();
-			k.launchLightAgent(agentProjet, projet);
+			k.launchLightAgent(agentProjet, _agentProjetID);
 			ChannelManager channelManager = k.getChannelManager();
 			channel = agentProjet.getChannel(AgentProjetChannel.class);
 			if (connection == null || !connection.isOpen()) {
@@ -94,7 +100,7 @@ public class PageProjetSocket extends WebSocketServlet {
 						// System.out.println("Etat " + channel.getEtat());
 						messageUtilisateur = channel.getMessageUtilisateur();
 						projetsSimilaires = channel
-								.getProjetsSimilaires(projet);
+								.getProjetsSimilaires(_agentProjetID);
 
 						if (!messageUtilisateur
 								.equals(messageUtilisateurPrecedent)) {
@@ -149,8 +155,9 @@ public class PageProjetSocket extends WebSocketServlet {
 			}, new Date(), 5000);
 		}
 
-		private void recupereDoapProjet() {
-			String message = "Recherche des elements du projet " + projet;
+		private void recupereDoapProjet(String _projetID2) {
+			String doapID = _projetID2;
+			String message = "Recherche des elements du projet " + doapID;
 			System.out.println(message);
 			String queryString = /*
 								 * "PREFIX dc: <http://purl.org/dc/elements/1.1/> "
@@ -160,7 +167,7 @@ public class PageProjetSocket extends WebSocketServlet {
 								 * "PREFIX smag:   <http://smag0.blogspot.fr/ns/smag0#>"
 								 * +
 								 */
-			"select * where {<http://smag0.blogspot.fr/ns/smag0#" + projet
+			"select * where {<http://smag0.blogspot.fr/ns/smag0#" + doapID
 					+ "> ?propriete ?objet} ";
 			Query query = QueryFactory.create(queryString);
 			QueryExecution qexec = QueryExecutionFactory.sparqlService(
@@ -180,7 +187,7 @@ public class PageProjetSocket extends WebSocketServlet {
 				}
 
 				JSONObject jresult = new JSONObject();
-				jresult.put("projet", projet);
+				jresult.put("projet", doapID);
 				jresult.put("propriete", propriete.toString());
 				jresult.put("objet", objectResultat);
 				projetJson.put(String.valueOf(i), jresult);
