@@ -33,7 +33,7 @@ public class PageProjetSocket extends WebSocketServlet {
 	private JSONObject projetsSimilairesPrecedent = new JSONObject();
 	private String etape;
 	private AgentProjetChannel channel;
-	private String projet;
+	String projet;
 
 	@Override
 	public WebSocket doWebSocketConnect(HttpServletRequest request,
@@ -55,7 +55,7 @@ public class PageProjetSocket extends WebSocketServlet {
 		etape = request.getParameter("etape");
 		projet = request.getParameter("projet");
 		System.out.println(etape);
-		return new PageProjet(projet);
+		return new PageProjet();
 	}
 
 	public class PageProjet implements WebSocket.OnTextMessage {
@@ -63,11 +63,6 @@ public class PageProjetSocket extends WebSocketServlet {
 		private Timer timer;
 		String messageUtilisateur = "L'agent qui gère se projet se met en route, merci de patienter";
 		String messageUtilisateurPrecedent = new String();
-		String projet;
-
-		public PageProjet(String _projet) {
-			projet = _projet;
-		}
 
 		@Override
 		public void onOpen(Connection connection) {
