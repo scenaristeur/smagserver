@@ -82,7 +82,10 @@ for (var key in objDoap) {
 ligne.setAttribute('class',"received");
 ligne.innerHTML='<span>'+objDoap[key].object+': </span></br>' +
 '<textarea  id="'+objDoap[key].subject+'" placeholder="Aucune information pour l\'instant. Libre à vous de compléter"></textarea >'+
-'<button type="submit">Enregistrer</button><button type="button" id="effacer">Effacer</button>';
+'<button type="submit">Enregistrer</button>'+
+'<button type="button" id="ajouter">Ajouter</button>'+
+'<button type="button" id="modifier">Modifier</button>'+
+'<button type="button" id="effacer">Effacer</button>';
 doapform.appendChild(ligne);
 
 if (objDoap[key].subject=="name"){
@@ -112,18 +115,29 @@ doapDiv.innerHTML += '<li class="received"><span>'+objDoap[key].object+': </span
   		document.getElementById("name").value  = nomDoap;
   		document.getElementById("Project").value = nomDoap;
   		document.getElementById("description").value = descriptionDoap;
-               
+        document.getElementById("infoSujet").value = nomDoap;
 };
 
 websocketPageProjet.onmessage = function(event) {
 console.log("Page projet:" +event.data);
 objDetail=JSON.parse(event.data);
 var i=0;
+var lignesProjetsSimilaires=null;
 for (var key in objDetail){
 	if(objDetail.hasOwnProperty(key)){
 	if(key=='messageUtilisateur'){
 		console.log(objDetail[key]);
 		agentDiv.innerHTML =objDetail[key];
+	}else if(key=='projetsSimilaires'){
+	objProjetSimilaire=objDetail[key];
+		console.log(objProjetSimilaire);
+		for (var key in objProjetSimilaire){
+	if(objProjetSimilaire.hasOwnProperty(key)){
+	console.log(objProjetSimilaire[key]);
+	lignesProjetsSimilaires+='<li>'+objProjetSimilaire[key].titre+
+		'<span id="mini">'+objProjetSimilaire[key].description+'</span></li>'
+	}}
+		projetsSimilairesDiv.innerHTML =lignesProjetsSimilaires;	
 	}else if (objDetail[key].propriete=='http://purl.org/dc/elements/1.1/title'){
 	 nomDoap=objDetail[key].objet;
   		console.log("titre :"+nomDoap);

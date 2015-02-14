@@ -29,17 +29,31 @@
 <div id="affiche-methode">
 Affichage de la méthode</div>
 <div id="liaisons">Liaisons entre les projets<br>
-<ul>
-<li>Projets avec un nom similaire</li>
+<ul id="projetsSimilairesDiv">
+<li >Projets avec un nom similaire</li>
 </ul>
 </div>
 
 
   <div id="page-wrapper">
       <input type="button" value="Tous les projets / Proposer un projet" onclick="location.href='accueil.jsp'">
-    <ul id="statutTitre">veuillez patienter, chargement en cours</ul>
+      <ul id="statutTitre">veuillez patienter, chargement en cours</ul>
     <h1 id="titreProjet">Smag0 détail d'un projet </h1>
     <ul id="descriptionProjet">description </ul>
+     </br>
+     <ul> <input type="button" type="button" id="ajouterInfo" onclick="return toggleMe('ajouteInfoDiv')" value="Ajouter une information en rapport avec ce projet (dev en cours)" >
+  <div id="ajouteInfoDiv">
+    <form id="ajouteInfo-form" action="#" method="post">
+    Insérez une info au format rdf : Sujet / Propriété / Objet </br>(exemple : <i>mon robot / possède la capacité de / se déplacer</i> ou </br>
+    <i>mon projet / complément d'information / les infos que j'ai à rajouter, blablabla...</i>)</br>
+      <input id="infoSujet" placeholder="Sujet" required></input>
+      <input id="infoPropriete" placeholder="Entrez une propriété qui relie le sujet et l'objet" required></input>
+      <textarea id="infoObjet" placeholder="Entrez l'objet" required></textarea>
+      <button type="submit">Ajouter</button>
+      <button type="button" id="effaceInfo">Effacer</button>
+    </form>
+</div>
+ </ul>
     <input type="button" onclick="return toggleMe('doapDiv')" value="Afficher/Cacher DOAP (description of a Project)"><br>
     <ul id="doapDiv"><li>Recherche du DOAP du projet, veuillez patienter, <div id="statutDoap">chargement en cours</div></li></ul>
       </div>
