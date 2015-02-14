@@ -81,7 +81,7 @@ public class PageProjetSocket extends WebSocketServlet {
 		}
 
 		private void lanceAgentProjet(String _projetID) {
-			String _agentProjetID = projetID;
+			final String _agentProjetID = projetID;
 			Kernel k = Kernels.get();
 			AgentProjet agentProjet = new AgentProjet();
 			k.launchLightAgent(agentProjet, _agentProjetID);
@@ -156,7 +156,7 @@ public class PageProjetSocket extends WebSocketServlet {
 		}
 
 		private void recupereDoapProjet(String _projetID2) {
-			String doapID = _projetID2;
+			final String doapID = _projetID2;
 			String message = "Recherche des elements du projet " + doapID;
 			System.out.println(message);
 			String queryString = /*
