@@ -212,13 +212,7 @@ public class PageProjetSocket extends WebSocketServlet {
 		@Override
 		public void onMessage(String data) {
 			System.out.println("Page projet reçu " + data);
-			/*
-			 * try { // connection.sendMessage(doapJson.toString());
-			 * connection.sendMessage("test doapjson");
-			 * System.out.println("ENVOI : " + doapJson.toString()); } catch
-			 * (IOException e) { // TODO Auto-generated catch block
-			 * e.printStackTrace(); }
-			 */
+
 		}
 	}
 }
