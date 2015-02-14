@@ -55,7 +55,7 @@ public class PageProjetSocket extends WebSocketServlet {
 		etape = request.getParameter("etape");
 		projet = request.getParameter("projet");
 		System.out.println(etape);
-		return new PageProjet();
+		return new PageProjet(projet);
 	}
 
 	public class PageProjet implements WebSocket.OnTextMessage {
@@ -63,6 +63,11 @@ public class PageProjetSocket extends WebSocketServlet {
 		private Timer timer;
 		String messageUtilisateur = "L'agent qui gère se projet se met en route, merci de patienter";
 		String messageUtilisateurPrecedent = new String();
+		String projet;
+
+		public PageProjet(String _projet) {
+			projet = _projet;
+		}
 
 		@Override
 		public void onOpen(Connection connection) {
