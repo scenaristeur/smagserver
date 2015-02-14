@@ -31,9 +31,9 @@ public class PageProjetSocket extends WebSocketServlet {
 	private JSONObject projetJsonPrecedent = new JSONObject();
 	private JSONObject projetsSimilaires = new JSONObject();
 	private JSONObject projetsSimilairesPrecedent = new JSONObject();
-	private String projet;
 	private String etape;
 	private AgentProjetChannel channel;
+	private String projet;
 
 	@Override
 	public WebSocket doWebSocketConnect(HttpServletRequest request,
