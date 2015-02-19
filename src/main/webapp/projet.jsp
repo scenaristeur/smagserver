@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+<script src="/js/processing.min.js"></script>
 <script type="text/javascript">
 	function toggleMe(a){
 		var e=document.getElementById(a);
@@ -21,7 +22,10 @@
 	}
 </script>
 
-<div id="page-left">Emplacement Processing</div>
+<div id="page-left">Visualisation</br>
+<canvas id="projetPde" width="500" height="500" data-processing-sources="pde/smag/smag.pde /pde/smag/Noeud.pde"></canvas></br>
+<button type="button" onclick="drawSomeText('projetPde')">Actualiser</button>
+</div>
 <div id="page-right">Emplacement Agent Projet<div id="agentDiv"></div></div>
 <div id="methode"></div>
 
@@ -57,7 +61,8 @@ Affichage de la méthode</div>
     <input type="button" onclick="return toggleMe('doapDiv')" value="Afficher/Cacher DOAP (description of a Project)"><br>
     <ul id="doapDiv"><li>Recherche du DOAP du projet, veuillez patienter, <div id="statutDoap">chargement en cours</div></li></ul>
       </div>
-
+ <!-- <script src="/js/projetPde.js"></script> -->
   <script src="/js/projet.js"></script>
+
 </body>
 </html>

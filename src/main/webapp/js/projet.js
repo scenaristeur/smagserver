@@ -7,6 +7,32 @@ function getParameterByName(name) {
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
+       function drawSomeText(id) {
+         var pjs = Processing.getInstanceById(id);
+         //var text = document.getElementById('inputtext').value;
+         var text='test';
+         pjs.drawText(text); }
+
+function detailProjetPde(id, objDetail){
+         var pjs = Processing.getInstanceById(id);
+         var objDetailJson = objDetail;
+         pjs.drawDetails(objDetailJson);    
+         };
+         
+function setNomProjetPde(id, nomProjet){
+         var pjs = Processing.getInstanceById(id);
+         var nomProjet = nomProjet;
+         pjs.setNomProjetPde(nomProjet);    
+         };
+function setIDProjetPde(id, _IDProjetPde){
+         var pjs = Processing.getInstanceById(id);
+         var IDProjetPde = _IDProjetPde;
+         console.log(IDProjetPde);
+         pjs.setIDProjetPde(IDProjetPde);    
+         };
+
+
+    
 
  var projetId = getParameterByName('projet');
  var openshiftWebSocketPort = 8000; // Or use 8443 for wss
@@ -33,6 +59,9 @@ var descriptionDoap=null;
 var urlProjet="http://"+window.location.hostname + ":" + openshiftWebSocketPort + "/projet.jsp?projet="+projetId;;
  
  //doapDiv.style.display="none";
+	// setNomProjetPde('projetPde',projetId);
+	// setIDProjetPde('projetPde',projetId);
+ // ne passe pas ??? trop tot ? setIDProjetPde('projetPde',projetId);
 
  websocketDoapModel.onopen = function(event) {
   statutDoap.innerHTML = 'Connected to: ' + event.currentTarget.url;
@@ -61,7 +90,6 @@ websocketPageProjet.onclose = function(event) {
   statutTitre.innerHTML = 'Disconnected from WebSocket Page Projet.';
   statutTitre.className = 'closed';
 };
-
 
 // Handle messages sent by the server.
 websocketDoapModel.onmessage = function(event) {
@@ -121,6 +149,7 @@ doapDiv.innerHTML += '<li class="received"><span>'+objDoap[key].object+': </span
 websocketPageProjet.onmessage = function(event) {
 console.log("Page projet:" +event.data);
 objDetail=JSON.parse(event.data);
+//setProjetPde('projetPde',objDetail);
 var i=0;
 var lignesProjetsSimilaires=null;
 for (var key in objDetail){
@@ -128,6 +157,7 @@ for (var key in objDetail){
 	if(key=='messageUtilisateur'){
 		console.log(objDetail[key]);
 		agentDiv.innerHTML =objDetail[key];
+		//setMessagePde('projetPde',objDetail[key]);
 	}else if(key=='projetsSimilaires'){
 	objProjetSimilaire=objDetail[key];
 		console.log(objProjetSimilaire);
@@ -135,11 +165,14 @@ for (var key in objDetail){
 	if(objProjetSimilaire.hasOwnProperty(key)){
 	console.log(objProjetSimilaire[key]);
 	lignesProjetsSimilaires+='<li>'+objProjetSimilaire[key].titre+
+	//addProjetSimilairePde('projetPde',objProjetSimilaire[key]);
 		'<span id="mini">'+objProjetSimilaire[key].description+'</span></li>'
 	}}
 		projetsSimilairesDiv.innerHTML =lignesProjetsSimilaires;	
 	}else if (objDetail[key].propriete=='http://purl.org/dc/elements/1.1/title'){
 	 nomDoap=objDetail[key].objet;
+	 setNomProjetPde('projetPde',nomDoap);
+	 setIDProjetPde('projetPde',projetId);
   		console.log("titre :"+nomDoap);
   		titreProjet.innerHTML=nomDoap;
   		titrePage.innerHTML=nomDoap;
@@ -150,6 +183,7 @@ for (var key in objDetail){
 
 	}else if (objDetail[key].propriete=='http://purl.org/dc/elements/1.1/description'){
   		descriptionDoap=objDetail[key].objet;
+  			// setDescriptionProjetPde('projetPde',descriptionDoap);
   		console.log("description : "+descriptionDoap);
   		descriptionProjet.innerHTML=descriptionDoap;
   		if (document.getElementById("description")){
