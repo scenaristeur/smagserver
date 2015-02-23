@@ -30,7 +30,20 @@ function setIDProjetPde(id, _IDProjetPde){
          console.log(IDProjetPde);
          pjs.setIDProjetPde(IDProjetPde);    
          };
+         
+         
+         
+var selectPropriete= document.getElementById('selectPropriete');
+var infoPropriete= document.getElementById('infoPropriete');
+	function proprieteLibre(){
+		selectPropriete.disabled=true;
+		infoPropriete.disabled=false;
 
+	};
+	function proprieteExistante(){
+		selectPropriete.disabled=false;
+		infoPropriete.disabled=true;
+	};
 
     
 
@@ -57,6 +70,29 @@ var objDetail;
 var nomDoap=null;
 var descriptionDoap=null;
 var urlProjet="http://"+window.location.hostname + ":" + openshiftWebSocketPort + "/projet.jsp?projet="+projetId;;
+  var ajouteInfoForm = document.getElementById('ajouteInfo-form'); 
+  
+  
+  // recupere les infos du formulaire ajouteInfo
+ajouteInfoForm.onsubmit = function(e) {
+    e.preventDefault();
+
+  // Retrieve the message from the textarea.
+  var ajouteInfoFormSujet = infoSujet.value;
+  var ajouteInfoFormPropriete = infoPropriete.value;
+  var ajouteInfoFormObjet = infoObjet.value;
+  console.log(e);
+  
+  console.log(ajouteInfoFormSujet+" "+ajouteInfoFormPropriete+" "+ajouteInfoFormObjet);
+/*
+ if (websocketNouveauProjet.readyState === undefined || websocketNouveauProjet.readyState > 1) {
+websocketNouveauProjet = new WebSocket(wsUriNouveauProjet);
+ console.log("reconnexion websocketNouveauProjet");
+   socketStatusNouveau.innerHTML = 'Connected to: ' + event.currentTarget.url;
+  socketStatusNouveau.className = 'open';*/
+
+ }
+ 
  
  //doapDiv.style.display="none";
 	// setNomProjetPde('projetPde',projetId);
@@ -143,7 +179,7 @@ doapDiv.innerHTML += '<li class="received"><span>'+objDoap[key].object+': </span
   		document.getElementById("name").value  = nomDoap;
   		document.getElementById("Project").value = nomDoap;
   		document.getElementById("description").value = descriptionDoap;
-        document.getElementById("infoSujet").value = nomDoap;
+        document.getElementById("infoSujet").value = projetId;
 };
 
 websocketPageProjet.onmessage = function(event) {

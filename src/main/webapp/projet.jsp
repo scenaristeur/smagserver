@@ -20,6 +20,10 @@
 			}
 			return true;
 	}
+	
+     
+
+
 </script>
 
 <div id="page-left">Visualisation</br>
@@ -50,9 +54,19 @@ Affichage de la méthode</div>
     <form id="ajouteInfo-form" action="#" method="post">
     Insérez une info au format rdf : Sujet / Propriété / Objet </br>(exemple : <i>mon robot / possède la capacité de / se déplacer</i> ou </br>
     <i>mon projet / complément d'information / les infos que j'ai à rajouter, blablabla...</i>)</br>
-      <input id="infoSujet" placeholder="Sujet" required></input>
-      <input id="infoPropriete" placeholder="Entrez une propriété qui relie le sujet et l'objet" required></input>
-      <textarea id="infoObjet" placeholder="Entrez l'objet" required></textarea>
+      <input id="infoSujet" placeholder="Sujet" required> </input>
+   <!-- disabled=false    <div>
+      <input type="radio" name="checkPropriete" value="libre" onclick="proprieteLibre()" checked="true">Texte Libre
+		<input type="radio" name="checkPropriete" value="existante" onclick="proprieteExistante()">Propriété existante
+   </div> -->
+   <select id="selectPropriete" >
+  <option value="indetermine">Lien indéterminé (Dev en cours)</option>
+  <option value="sameAS">Est identique à</option>
+  <option value="partOf">Est un composant de</option>
+  <option value="other">Selectionner une les proprriétés d'une ontologie</option>
+</select>
+     <input id="infoPropriete" placeholder="Entrez une propriété qui relie le sujet et l'objet" required></input>
+		 <textarea id="infoObjet" placeholder="Entrez l'objet" required></textarea>
       <button type="submit">Ajouter</button>
       <button type="button" id="effaceInfo">Effacer</button>
     </form>
