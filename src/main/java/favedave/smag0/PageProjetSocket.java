@@ -123,6 +123,7 @@ public class PageProjetSocket extends WebSocketServlet {
 						if (projetsSimilaires != null)
 						// && (!projetsSimilaires
 						// .equals(projetsSimilairesPrecedent)))
+							
 						{
 							try {
 								projetJson.put("projetsSimilaires",
@@ -132,7 +133,7 @@ public class PageProjetSocket extends WebSocketServlet {
 								connection.sendMessage(projetJson.toString());
 								projetsSimilairesPrecedent = projetsSimilaires;
 								System.out
-										.println("VIRER le connection SEND , si la liste n'est pas modifiée. nouveau projetsSimilaires");
+										.println("SORTIR LE CONNECTION SEND et ne l'executer que si  la condition si projet JSON MODIFIE VIRER le connection SEND , si la liste n'est pas modifiée. nouveau projetsSimilaires");
 								System.out.println("Connection send "
 										+ projetJson.toString());
 							} catch (IOException e) {
