@@ -120,9 +120,7 @@ public class PageProjetSocket extends WebSocketServlet {
 								e.printStackTrace();
 							}
 						}
-						if (projetsSimilaires != null)
-						// && (!projetsSimilaires
-						// .equals(projetsSimilairesPrecedent)))
+						if ((projetsSimilaires != null)&&(!projetsSimilaires.equals(projetsSimilairesPrecedent)))
 						{
 							try {
 								projetJson.put("projetsSimilaires",
@@ -132,7 +130,7 @@ public class PageProjetSocket extends WebSocketServlet {
 								connection.sendMessage(projetJson.toString());
 								projetsSimilairesPrecedent = projetsSimilaires;
 								System.out
-										.println("VIRER le connection SEND , si la liste n'est pas modifiée. nouveau projetsSimilaires");
+										.println("nouveau projetsSimilaires");
 								System.out.println("Connection send "
 										+ projetJson.toString());
 							} catch (IOException e) {
