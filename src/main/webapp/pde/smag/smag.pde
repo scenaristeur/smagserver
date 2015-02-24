@@ -17,7 +17,7 @@ void setup() {
   fill(#FFEE88);
   background(#000033);
   text("", 0, 0);          // force Processing to load a font
-  textSize(24);
+  textSize(18);
 }
 
 void draw () {
