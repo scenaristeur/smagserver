@@ -72,8 +72,24 @@ public class MethodeHtml5Servlet extends WebSocketServlet {
 			String objectResultat = null;
 			if (object.isResource()) {
 				objectResultat = object.asResource().getLocalName().toString();
+
 			} else if (object.isLiteral()) {
 				objectResultat = object.asLiteral().toString();
+				//recuperation des sous classes
+				/*Resource objectResource=model.getResource(objectResultat);
+				SimpleSelector selectorSubclasses = new SimpleSelector(objectResource,
+						(Property) null, (RDFNode) null);
+				StmtIterator iterSubclasses = model.listStatements(selectorSubclasses);
+				System.out.println("liste sous classes de" +objectResource);
+				int j = 0;
+				while (iterSubclasses.hasNext()) {
+					j++;
+					Statement stmtSubclasses = iterSubclasses.nextStatement();
+					Resource subjectSub = stmtSubclasses.getSubject();
+					Property predicateSub = stmtSubclasses.getPredicate();
+					RDFNode objectSub = stmtSubclasses.getObject();
+					System.out.println("Detail des sous classes de la méthode" +subjectSub + "\t" + predicateSub + "\t" + objectSub);
+				}*/
 			}
 			System.out.println(subject + "\t" + predicate + "\t" + object);
 
@@ -122,8 +138,11 @@ public class MethodeHtml5Servlet extends WebSocketServlet {
 
 		@Override
 		public void onMessage(String data) {
-			// TODO Auto-generated method stub
+			if (data.equals("subclasses")){
+				System.out.println("recupération des sous classes de la méthode à partir de " +j.toString()+ data);
+			}else{
 			System.out.println("Methode message" + data);
+			System.out.println("récupération des classes principales de la méthode");
 			try {
 				// connection.sendMessage("reçu Methode"+data);
 				// connection.sendMessage(resultat);
@@ -135,7 +154,7 @@ public class MethodeHtml5Servlet extends WebSocketServlet {
 				e.printStackTrace();
 			}
 
-		}
+		}}
 
 	}
 

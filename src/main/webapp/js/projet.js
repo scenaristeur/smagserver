@@ -18,6 +18,18 @@ function detailProjetPde(id, objDetail){
          var objDetailJson = objDetail;
          pjs.drawDetails(objDetailJson);    
          };
+function drawMethode(id, objMethode){
+		var i=0;
+        var pjs = Processing.getInstanceById(id);
+ 		for (var key in obj) {
+ 			if (obj.hasOwnProperty(key)) {
+ 		 		i++;
+ 		 		pjs.addNoeud(obj[key].subject,10, 20*i);
+ 		 		pjs.addNoeud(obj[key].object,300, 20*i);
+ 		 		console.log("ajoute point"+obj[key].subject);
+ 		 	}
+ 		}
+        };
          
 function setNomProjetPde(id, nomProjet){
          var pjs = Processing.getInstanceById(id);
@@ -245,7 +257,10 @@ console.log("onclosemet");
 }
 function onMessageMet(evt){
 console.log("methode JSON reçue : "+evt.data);
+websocketMethode.send("subclasses");
+/*websocketMethode.close();*/
 obj = JSON.parse(evt.data);
+drawMethode('projetPde',obj);
 var i=0;
 var reponse='';
 var sujet='';
@@ -299,7 +314,7 @@ reponse+=autres;
 reponse+='<a id ="mini" href="http://smag0.rww.io/diamond.owl" target="_blank">détails de la méthode</a>';
 reponse+='<a id ="mini" href="https://drive.google.com/file/d/0B0zEK4yLB5C6V0xaa3VtLXllQXM/view?usp=sharing" target="_blank">Smag0 sur votre mobile Android</a>';
        writeToMethode(reponse);
-        websocketMethode.close();
+        
 
 }
 function onErrorMet(evt){

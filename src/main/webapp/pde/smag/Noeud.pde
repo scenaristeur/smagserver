@@ -14,7 +14,11 @@ class Noeud{
   ellipse(position.x, position.y, 10, 10);
   if (id!=null){
     float twidth = textWidth(id);
-  text(id, (width - twidth)/2, height/2+10);
+  text(id, position.x - twidth/2, position.y);
+ // println(id);
   }
+ }
+ void addJson(JSONObject _jsonobject){
+  println( _jsonobject);
  }
 }
