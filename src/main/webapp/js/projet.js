@@ -260,7 +260,7 @@ console.log("methode JSON reçue : "+evt.data);
 //websocketMethode.send("subclasses");
 /*websocketMethode.close();*/
 obj = JSON.parse(evt.data);
-drawMethode('projetPde',obj);
+drawMethode('methodePde',obj);
 var i=0;
 var reponse='';
 var sujet='';
@@ -275,7 +275,7 @@ for (var key in obj) {
   i++;
   if (obj[key].subject!=sujet){
   	sujet=obj[key].subject;
-  	affichemethode.innerHTML=sujet; 	
+  	affichemethode.innerHTML+=sujet; 	
   	affichemethode.appendChild(listeDiamond);
   }  
   if (obj[key].predicate=='type'){

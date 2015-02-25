@@ -27,15 +27,20 @@
 </script>
 
 <div id="page-left">Visualisation</br>
-<canvas id="projetPde" width="500" height="500" data-processing-sources="pde/smag/smag.pde /pde/smag/Noeud.pde"></canvas></br>
+<canvas id="projetPde" width="300" height="300" data-processing-sources="pde/smag/smag.pde /pde/smag/Noeud.pde"></canvas></br>
 <button type="button" onclick="drawSomeText('projetPde')">Actualiser</button>
 </div>
 <div id="page-right">Emplacement Agent Projet<div id="agentDiv"></div></div>
-<div id="methode"></div>
+<div id="methode">
+</div>
 
-
+<div class="gauche">
 <div id="affiche-methode">
-Affichage de la méthode</div>
+</div>
+<canvas id="methodePde"  width="100" height="100" data-processing-sources="pde/diamond/diamond.pde /pde/diamond/Noeud.pde"></canvas></br>
+
+</div>
+
 <div id="liaisons">Liaisons entre les projets<br>
 <ul id="projetsSimilairesDiv">
 <li >Projets avec un nom similaire</li>
