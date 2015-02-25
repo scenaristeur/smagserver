@@ -250,14 +250,14 @@ for (var key in objDetail){
     
     function onOpenMet(evt){
 console.log("onopenmet");
- websocketMethode.send(projetId);
+ websocketMethode.send("diamond");
 }
 function onCloseMet(evt){
 console.log("onclosemet");
 }
 function onMessageMet(evt){
 console.log("methode JSON reçue : "+evt.data);
-websocketMethode.send("subclasses");
+//websocketMethode.send("subclasses");
 /*websocketMethode.close();*/
 obj = JSON.parse(evt.data);
 drawMethode('projetPde',obj);
@@ -286,7 +286,8 @@ for (var key in obj) {
   	hasPart+=" <a href=\""+urlProjet+"&etape="+obj[key].object+"\">"+obj[key].object+"</a> ";
   	var ligneDiamond = document.createElement('li');
   	listeDiamond.appendChild(ligneDiamond);
-  	ligneDiamond.innerHTML+="<a href=\""+urlProjet+"&etape="+obj[key].object+"\">"+obj[key].object+"</a>";
+  	ligneDiamond.innerHTML+="<div id="+obj[key].object+"><a href=\""+urlProjet+"&etape="+obj[key].object+"\">"+obj[key].object+"</a></div>";
+  	 websocketMethode.send(obj[key].object);
   }
   else if (obj[key].predicate=='first'){
   	console.log(obj[key].predicate+obj[key].object);

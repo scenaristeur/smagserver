@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <title>WebSockets Demo</title>
+  <title>Smag 0, résoudre un problème complexe à l'aide d'ontologies et de système multi-agent</title>
 
   <link rel="stylesheet" href="/css/style.css">
 </head>
