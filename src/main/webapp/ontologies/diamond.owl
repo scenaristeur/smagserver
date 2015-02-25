@@ -32,6 +32,7 @@ sauver au format rdf/xml pour pouvoir l&apos;intégrer dans jOWL (http://jowl.on
 DIAMOND: UNE APPROCHE POUR LA CONCEPTION
 DE SYSTEMES MULTI-AGENTS EMBARQUES
 http://hal.archives-ouvertes.fr/docs/00/18/90/46/PDF/These_Jean-Paul_Jamont_2005.pdf</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="&Diamond;ProcedureDiamond"/>
         <versionIRI rdf:resource="http://smag0.blogspot.fr/ontologies/Diamond/1.0.0"/>
         <imports rdf:resource="http://usefulinc.com/ns/doap#"/>
         <imports rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
@@ -413,6 +414,12 @@ faire</rdfs:comment>
     <ObjectProperty rdf:about="&Diamond;utilisateur">
         <rdfs:subPropertyOf rdf:resource="&Diamond;role"/>
     </ObjectProperty>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#utilise -->
+
+    <ObjectProperty rdf:about="&Diamond;utilise"/>
     
 
 
@@ -1080,6 +1087,7 @@ par l’utilisateur.</rdfs:comment>
 DIAMOND: UNE APPROCHE POUR LA CONCEPTION
 DE SYSTEMES MULTI-AGENTS EMBARQUES
 http://hal.archives-ouvertes.fr/docs/00/18/90/46/PDF/These_Jean-Paul_Jamont_2005.pdf</Diamond:objectif>
+        <rdfs:isDefinedBy rdf:resource="&Diamond;ProcedureDiamond"/>
     </Class>
     
 
@@ -2155,6 +2163,7 @@ Le composant matériel est décrit avec un langage de haut niveau prévu à cet 
         <rdf:type rdf:resource="&Diamond;Demandeur"/>
         <rdf:type rdf:resource="&Diamond;Expert"/>
         <rdf:type rdf:resource="&Diamond;Utilisateur"/>
+        <rdf:type rdf:resource="&foaf;Agent"/>
         <foaf:gender rdf:datatype="&xsd;string">M</foaf:gender>
         <foaf:familyName>Falavaleris</foaf:familyName>
         <foaf:firstName>David</foaf:firstName>
@@ -2643,17 +2652,29 @@ deux façons complémentaires. On peut tout d’abord établir les éventuelles 
     
 
 
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#ProjetSmag0 -->
+
+    <NamedIndividual rdf:about="&Diamond;ProjetSmag0">
+        <rdf:type rdf:resource="http://usefulinc.com/ns/doap#Project"/>
+        <Diamond:utilise rdf:resource="&Diamond;MethodeDiamond"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#ProjetTest -->
+
+    <NamedIndividual rdf:about="&Diamond;ProjetTest">
+        <rdf:type rdf:resource="http://usefulinc.com/ns/doap#Project"/>
+        <Diamond:utilise rdf:resource="&Diamond;MethodeDiamond"/>
+    </NamedIndividual>
+    
+
+
     <!-- http://smag0.blogspot.fr/ontologies/Diamond#TestAuSterone -->
 
     <NamedIndividual rdf:about="&Diamond;TestAuSterone">
         <rdf:type rdf:resource="&rdf;Seq"/>
     </NamedIndividual>
-    
-
-
-    <!-- http://smag0.blogspot.fr/ontologies/Diamond#TestDemiseenlignedelontologie -->
-
-    <NamedIndividual rdf:about="&Diamond;TestDemiseenlignedelontologie"/>
     
 
 
