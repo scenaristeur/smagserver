@@ -1,0 +1,1 @@
+Pour modifier une ontologie, utilisez l'application PROTEGE 2000 : http://protege.stanford.edu/products.php
