@@ -3,3 +3,9 @@ avec Eclipse Luna
 
 - demo : http://smag-smag0.rhcloud.com/
 - blog : http://smag0.blogspot.fr/2015/01/une-appli-android-pour-inserer-des.html
+
+Smag, est une application un peu particulière, elle met à votre disposition des agents autonomes afin de faciliter la résolution de problèmes complexes. Pour vérifier que ces agents sont disponibles, vous pouvez cliquer sur le lien "Hello Servlet", vous verrez normalement deux agents Albert et Bernardo avec un numéro identifiant. Si c'est le cas, c'est que le système fonctionne correctement. 
+Smag s'appuie sur un serveur RDF pour représenter les informations (voir le blog). 
+Partant du principe que ce que je veux transmettre à ma maison, à mes objets connectés, ou au système SMAG est pour moi un projet, il faut commencer par une interface de gestion des projets. Ceux-ci deviennent ensuite des agents autonomes comme Albert et Bernardo, dont le but est de tout faire (ou presque !) pour être réalisés (rechercher ou demander des informations, se connecter à des projets similaires...) 
+Pour ajouter des projets, utilisez l'application Android (en cours de développement) Projet.apk
+ou la page des projets Liste Projets V3 (Attention ! les doubles quotes/guillemets comme " sont interdites pour l'instant, préférez << !)
