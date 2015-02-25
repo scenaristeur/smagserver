@@ -25,7 +25,11 @@ public class MethodeHtml5Servlet extends WebSocketServlet {
 	// retourne la méthode (Diamond ou Aspecs ) d'un projet
 	// Create the Ontology Model
 	OntModel model = ModelFactory.createOntologyModel();
-	String diamondDefaultSource = "http://smag0.rww.io/diamond.owl";
+	String diamondDefaultSource = "https://raw.githubusercontent.com/scenaristeur/smagserver/master/src/main/webapp/ontologies/diamond.owl";
+	/*
+	 * Source alternative : http://smag0.rww.io/diamond.owl
+	 */
+	
 	// Read the ontology file
 	// model.begin();
 	String resultat = "resultat vide";

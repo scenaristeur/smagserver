@@ -14,13 +14,13 @@
 
 <rdf:RDF xmlns="http://www.w3.org/2002/07/owl#"
      xml:base="http://www.w3.org/2002/07/owl"
-     xmlns:dc="http://purl.org/dc/elements/1.1/"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:Diamond="http://smag0.blogspot.fr/ontologies/Diamond#">
+     xmlns:Diamond="http://smag0.blogspot.fr/ontologies/Diamond#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
     <Ontology rdf:about="http://smag0.blogspot.fr/ontologies/Diamond">
         <rdfs:comment xml:lang="fr">La présentation de la méthode DIAMOND adoptera une version tronquée du modèle en spirale tel qu’il est défini en §3.4.7. En effet, notre travail n’a pas porté sur la phase d’évaluation des risques et la
 planification. Pour obtenir un modèle complet , il faudra intégrer une démarche qualité. Cette démarche mettra en oeuvre des mesures notamment au niveau des prototypes afin de quantifier la qualité de la
@@ -1292,8 +1292,8 @@ Pour identifier les attentes des différentes parties prenantes (le demandeur et
         <Diamond:documentproduit rdf:resource="&Diamond;FicheContraintesTechniques"/>
         <Diamond:documentproduit rdf:resource="&Diamond;FicheContraintesTechnologiques"/>
         <Diamond:documentproduit rdf:resource="&Diamond;FicheGlossaireContextuel"/>
-        <Diamond:documentproduit rdf:resource="&Diamond;FichePresentationProjet"/>
         <Diamond:first rdf:resource="&Diamond;FichePresentationProjet"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FichePresentationProjet"/>
         <Diamond:documentproduit rdf:resource="&Diamond;FicheReceuilBesoinsFonctionnels"/>
         <Diamond:formulaire rdf:resource="&Diamond;PersonForm"/>
         <Diamond:formulaire rdf:resource="&Diamond;TitreProjetForm"/>
@@ -1446,8 +1446,8 @@ Cette définition des modes pourra en plus, par la suite :
         <rdfs:comment xml:lang="fr">Les applications envisagées avec notre méthode étant à la fois logicielles et matérielles, il est nécessaire de prendre en considération les modes de marche et d’arrêt. Cette activité est inspirée du GEMMA
 (Guide des Modes de Marche et d’Arrêt) qui est un guide permettant de structurer graphiquement le fonctionnement des systèmes automatisés de production (SAP) [Moreno and Peulot, 1997]. En effet, le GEMMA a pour vocation de regrouper par thème les états d’un SAP qui serait vu comme une machine à états finis. A ce titre, le GEMMA est utilisé en collaboration avec les GRAFCET. Nous en avons fait un outil textuel pour spécifier des modes de fonctionnement important du système. Des modes ont été supprimés car ils étaient trop spécialisés pour les SAP tandis que d’autres ont été étendus ou ajoutés.</rdfs:comment>
         <rdfs:comment xml:lang="fr">Vu que le système est en partie physique il est important d’identifier ses différents modes de marche et d’arrêt (A.5) afin de spécifier les contraintes que l’on peut avoir selon les modes de fonctionnement comme pour les arrêts d’urgence.</rdfs:comment>
-        <Diamond:first rdf:resource="&Diamond;A51DeterminationModeMarche"/>
         <Diamond:hasPart rdf:resource="&Diamond;A51DeterminationModeMarche"/>
+        <Diamond:first rdf:resource="&Diamond;A51DeterminationModeMarche"/>
         <Diamond:hasPart rdf:resource="&Diamond;A52DeterminationModeArret"/>
         <Diamond:hasPart rdf:resource="&Diamond;A53DeterminationModeDefaillant"/>
         <Diamond:next rdf:resource="&Diamond;BAnalyseSMA"/>
@@ -1820,8 +1820,8 @@ L’itération multi-agents de la spirale regroupe quatre différentes activité
 – une phase sociale pour les interactions et l’organisation (B.3),
 – une phase d’intégration pour la socialisation des agents c’est-à-dire l’intégration des influences sociales dans les agents (B.4).</Diamond:objectif>
         <rdfs:comment xml:lang="fr">la seconde étape va permettre l’analyse de l’application à concevoir. Cette étape est détaillée en §5.3</rdfs:comment>
-        <Diamond:first rdf:resource="&Diamond;B1PhaseSituation"/>
         <Diamond:hasPart rdf:resource="&Diamond;B1PhaseSituation"/>
+        <Diamond:first rdf:resource="&Diamond;B1PhaseSituation"/>
         <Diamond:hasPart rdf:resource="&Diamond;B2PhaseIndividuelle"/>
         <Diamond:hasPart rdf:resource="&Diamond;B3PhaseSociale"/>
         <Diamond:hasPart rdf:resource="&Diamond;B4PhaseIntegration"/>
@@ -2057,8 +2057,8 @@ en §5.4. Elle a donc pour objectif la construction des entités élémentaires 
         <Diamond:objectif xml:lang="fr">La principale utilisation du co-design figure dans le partitionnement logiciel/matériel qui sera fait des différents composants se rapportant aux différents axes de la décomposition AEIO. Il devra être fait manuellement (dans notre cas) en accord avec les spécifications technologiques. Il inclura, à terme, la co-simulation pour la co-synthèse. Cette étape produit les spécifications du logiciel et du matériel.
 Il nous est indispensable de nous interroger sur les critères qui vont orienter nos décisions vers leur implémentation logicielle ou matérielle. Nous pensons qu’il y a deux niveaux à prendre en compte : tout d’abord on va commencer par écarter les composants pour lesquelles la question du partitionnement ne se pose pas (D.1.1). Pour chacun des composants pour lesquels se pose la question du partitionnement, on va hiérarchiser les critères que l’on souhaite satisfaire (D.1.2). On en déduira le choix du partitionnement (D.1.3) et on s’interrogera quant aux interfaces logicielle/matérielle à implémenter 4 (D.1.4).</Diamond:objectif>
         <Diamond:documentationLiee xml:lang="fr">Une partie partitionnement est créée. Elle regroupe une fiche de critère de partitionnement qui indique la hiérarchisation des critères. De plus une fiche de partitionnement précise pour chaque composant la déclinaison choisie. Il peut exister plusieurs implémentations différentes logicielles ou matérielles d’un même composant : la référence de l’implémentation choisie est précisée et ce choix doit être motivé. Si des contraintes influant sur le partitionnement sont spécifiées dans les fiches de contraintes techniques et technologiques, elles ne devront pas être violées.</Diamond:documentationLiee>
-        <Diamond:first rdf:resource="&Diamond;D11DeterminationPartitionnement"/>
         <Diamond:hasPart rdf:resource="&Diamond;D11DeterminationPartitionnement"/>
+        <Diamond:first rdf:resource="&Diamond;D11DeterminationPartitionnement"/>
         <Diamond:hasPart rdf:resource="&Diamond;D12HierarchisationCriteres"/>
         <Diamond:hasPart rdf:resource="&Diamond;D13DeterminationChoixPartitionnement"/>
         <Diamond:hasPart rdf:resource="&Diamond;D14DefinitionInterfaceLogicielleMaterielle"/>
@@ -2137,8 +2137,8 @@ Le composant matériel est décrit avec un langage de haut niveau prévu à cet 
         <rdf:type rdf:resource="&Diamond;Etape"/>
         <rdfs:label xml:lang="fr">D. Implémentation</rdfs:label>
         <rdfs:comment xml:lang="fr">La quatrième étape de notre cycle de vie, détaillée en section 5.5, consiste à implémenter l’application construite dans la étape précédente : le choix d’une partition logicielle/matérielle</rdfs:comment>
-        <Diamond:hasPart rdf:resource="&Diamond;D1Partitionnement"/>
         <Diamond:first rdf:resource="&Diamond;D1Partitionnement"/>
+        <Diamond:hasPart rdf:resource="&Diamond;D1Partitionnement"/>
         <Diamond:hasPart rdf:resource="&Diamond;D2CoSimulation"/>
         <Diamond:hasPart rdf:resource="&Diamond;D3CoValidation"/>
         <Diamond:hasPart rdf:resource="&Diamond;D4Realisation"/>
@@ -2633,12 +2633,13 @@ deux façons complémentaires. On peut tout d’abord établir les éventuelles 
     <NamedIndividual rdf:about="&Diamond;ProcedureDiamond">
         <rdf:type rdf:resource="&Diamond;Procedure"/>
         <rdfs:label xml:lang="fr">Procédure Diamond</rdfs:label>
-        <Diamond:first rdf:resource="&Diamond;ADefinitionBesoins"/>
         <Diamond:hasPart rdf:resource="&Diamond;ADefinitionBesoins"/>
+        <Diamond:first rdf:resource="&Diamond;ADefinitionBesoins"/>
         <Diamond:hasPart rdf:resource="&Diamond;BAnalyseSMA"/>
         <Diamond:hasPart rdf:resource="&Diamond;CConceptionGenerique"/>
         <Diamond:hasPart rdf:resource="&Diamond;DImplementation"/>
         <Diamond:documentproduit rdf:resource="&Diamond;DocumentationDiamond"/>
+        <Diamond:hasPart rdf:resource="&Diamond;TestDemiseenlignedelontologie"/>
     </NamedIndividual>
     
 
@@ -2651,6 +2652,12 @@ deux façons complémentaires. On peut tout d’abord établir les éventuelles 
     
 
 
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#TestDemiseenlignedelontologie -->
+
+    <NamedIndividual rdf:about="&Diamond;TestDemiseenlignedelontologie"/>
+    
+
+
     <!-- http://smag0.blogspot.fr/ontologies/Diamond#TitreProjetForm -->
 
     <NamedIndividual rdf:about="&Diamond;TitreProjetForm">
@@ -2660,5 +2667,5 @@ deux façons complémentaires. On peut tout d’abord établir les éventuelles 
 
 
 
-<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+<!-- Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net -->
 
