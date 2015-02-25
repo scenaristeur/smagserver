@@ -10,6 +10,12 @@ import org.json.JSONObject;
 
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
+import com.hp.hpl.jena.query.Query;
+import com.hp.hpl.jena.query.QueryExecution;
+import com.hp.hpl.jena.query.QueryExecutionFactory;
+import com.hp.hpl.jena.query.QueryFactory;
+import com.hp.hpl.jena.query.QuerySolution;
+import com.hp.hpl.jena.query.ResultSet;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Property;
@@ -29,11 +35,13 @@ public class MethodeHtml5Servlet extends WebSocketServlet {
 	/*
 	 * Source alternative : http://smag0.rww.io/diamond.owl
 	 */
-	
+
 	// Read the ontology file
 	// model.begin();
 	String resultat = "resultat vide";
 	JSONObject j = new JSONObject();
+	// Get the base namespace
+	String namespace = "http://smag0.blogspot.fr/ontologies/Diamond#";
 
 	@Override
 	public WebSocket doWebSocketConnect(HttpServletRequest request,
@@ -50,8 +58,6 @@ public class MethodeHtml5Servlet extends WebSocketServlet {
 		// model.read(in,"");
 		// model.commit();
 
-		// Get the base namespace
-		String namespace = "http://smag0.blogspot.fr/ontologies/Diamond#";
 		String procedureDiamondUri = namespace + "ProcedureDiamond";
 		// rechercher la ressource MethodeDiamond
 		Resource procedureDiamondRessource = model
@@ -79,21 +85,22 @@ public class MethodeHtml5Servlet extends WebSocketServlet {
 
 			} else if (object.isLiteral()) {
 				objectResultat = object.asLiteral().toString();
-				//recuperation des sous classes
-				/*Resource objectResource=model.getResource(objectResultat);
-				SimpleSelector selectorSubclasses = new SimpleSelector(objectResource,
-						(Property) null, (RDFNode) null);
-				StmtIterator iterSubclasses = model.listStatements(selectorSubclasses);
-				System.out.println("liste sous classes de" +objectResource);
-				int j = 0;
-				while (iterSubclasses.hasNext()) {
-					j++;
-					Statement stmtSubclasses = iterSubclasses.nextStatement();
-					Resource subjectSub = stmtSubclasses.getSubject();
-					Property predicateSub = stmtSubclasses.getPredicate();
-					RDFNode objectSub = stmtSubclasses.getObject();
-					System.out.println("Detail des sous classes de la méthode" +subjectSub + "\t" + predicateSub + "\t" + objectSub);
-				}*/
+				// recuperation des sous classes
+				/*
+				 * Resource objectResource=model.getResource(objectResultat);
+				 * SimpleSelector selectorSubclasses = new
+				 * SimpleSelector(objectResource, (Property) null, (RDFNode)
+				 * null); StmtIterator iterSubclasses =
+				 * model.listStatements(selectorSubclasses);
+				 * System.out.println("liste sous classes de" +objectResource);
+				 * int j = 0; while (iterSubclasses.hasNext()) { j++; Statement
+				 * stmtSubclasses = iterSubclasses.nextStatement(); Resource
+				 * subjectSub = stmtSubclasses.getSubject(); Property
+				 * predicateSub = stmtSubclasses.getPredicate(); RDFNode
+				 * objectSub = stmtSubclasses.getObject();
+				 * System.out.println("Detail des sous classes de la méthode"
+				 * +subjectSub + "\t" + predicateSub + "\t" + objectSub); }
+				 */
 			}
 			System.out.println(subject + "\t" + predicate + "\t" + object);
 
@@ -142,23 +149,67 @@ public class MethodeHtml5Servlet extends WebSocketServlet {
 
 		@Override
 		public void onMessage(String data) {
-			if (data.equals("subclasses")){
-				System.out.println("recupération des sous classes de la méthode à partir de " +j.toString()+ data);
-			}else{
-			System.out.println("Methode message" + data);
-			System.out.println("récupération des classes principales de la méthode");
-			try {
-				// connection.sendMessage("reçu Methode"+data);
-				// connection.sendMessage(resultat);
-				connection.sendMessage(j.toString());
-				// System.out.println("RESULTAT ENVOYE : "+resultat);
-				System.out.println("RESULTAT ENVOYE en JSON : " + j.toString());
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			if (data.equals("diamond")) {
+				System.out.println("\n\nRecuperation de la methode" + data);
+				System.out
+						.println("récupération des classes principales de la méthode");
+				try {
+					// connection.sendMessage("reçu Methode"+data);
+					// connection.sendMessage(resultat);
+					connection.sendMessage(j.toString());
+					// System.out.println("RESULTAT ENVOYE : "+resultat);
+					System.out.println("RESULTAT ENVOYE en JSON : "
+							+ j.toString());
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 
-		}}
+			} else {
+				System.out.println(data);
+				// String etapeDiamondUri = namespace + data;
+				// rechercher la ressource MethodeDiamond
+				String etapeDiamondUri = namespace + data;
+				Property smagHasPart = model.getProperty(namespace + "hasPart");
+
+				// OK String queryString =
+				// "select * where {<http://smag0.blogspot.fr/ontologies/Diamond#"+
+				// data + "> ?propriete ?objet} ";
+				String queryString = "PREFIX smag0: <" + namespace + "> "
+						+ "select ?etape ?propriete ?objet where {<"
+						+ etapeDiamondUri + "> ?propriete ?objet} ";
+				System.out.println("\n\nRecuperation du detail de la méthode"
+						+ queryString);
+				Query query = QueryFactory.create(queryString);
+				try (QueryExecution qexec = QueryExecutionFactory.create(query,
+						model)) {
+					ResultSet results = qexec.execSelect();
+					for (; results.hasNext();) {
+						QuerySolution soln = results.nextSolution();
+						RDFNode propriete = soln.get("propriete");
+						RDFNode x = soln.get("objet");
+						Resource r = soln.getResource("etape");
+						if (propriete == smagHasPart) {
+							System.out.println(x.toString());
+						} else {
+							// RDFNode x = soln.get("objet"); // Get a result
+							// variable by name.
+							// Resource r = soln.getResource("etape"); // Get a
+							// result
+							// variable -
+							// must be a
+							// resource
+							// Literal l = soln.getLiteral("objet"); // Get a
+							// result
+							// variable -
+							// must be a
+							// literal
+							System.out.println(soln);
+						}
+					}
+				}
+			}
+		}
 
 	}
 
