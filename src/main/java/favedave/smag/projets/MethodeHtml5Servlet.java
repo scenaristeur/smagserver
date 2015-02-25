@@ -171,7 +171,6 @@ public class MethodeHtml5Servlet extends WebSocketServlet {
 				// rechercher la ressource MethodeDiamond
 				String etapeDiamondUri = namespace + data;
 				Property smagHasPart = model.getProperty(namespace + "hasPart");
-				
 
 				// OK String queryString =
 				// "select * where {<http://smag0.blogspot.fr/ontologies/Diamond#"+

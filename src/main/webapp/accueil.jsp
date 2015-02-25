@@ -21,7 +21,7 @@
 
     <ul id="messages"></ul>
 
-
+ 
   </div>
 
   <script src="/js/accueil.js"></script>
