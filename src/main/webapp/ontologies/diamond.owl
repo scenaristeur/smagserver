@@ -1,0 +1,2664 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY foaf "http://xmlns.com/foaf/0.1/" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY Diamond "http://smag0.blogspot.fr/ontologies/Diamond#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.w3.org/2002/07/owl"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:Diamond="http://smag0.blogspot.fr/ontologies/Diamond#">
+    <Ontology rdf:about="http://smag0.blogspot.fr/ontologies/Diamond">
+        <rdfs:comment xml:lang="fr">La présentation de la méthode DIAMOND adoptera une version tronquée du modèle en spirale tel qu’il est défini en §3.4.7. En effet, notre travail n’a pas porté sur la phase d’évaluation des risques et la
+planification. Pour obtenir un modèle complet , il faudra intégrer une démarche qualité. Cette démarche mettra en oeuvre des mesures notamment au niveau des prototypes afin de quantifier la qualité de la
+solution proposée lors de l’itération (via des simulations). Elle permettra ainsi, entre autres, d’en évaluer les faiblesses et les déviations par rapport aux spécifications.</rdfs:comment>
+        <rdfs:comment xml:lang="fr">TODO : revoir les documents produits / nécessaires à partir de C3</rdfs:comment>
+        <rdfs:comment xml:lang="fr">creer avec Protégé 4.3.0
+sauver au format rdf/xml pour pouvoir l&apos;intégrer dans jOWL (http://jowl.ontologyonline.org/)</rdfs:comment>
+        <rdfs:comment xml:lang="fr">ontologie pour l&apos;application de la méthode Diamond.
+DIAMOND: UNE APPROCHE POUR LA CONCEPTION
+DE SYSTEMES MULTI-AGENTS EMBARQUES
+http://hal.archives-ouvertes.fr/docs/00/18/90/46/PDF/These_Jean-Paul_Jamont_2005.pdf</rdfs:comment>
+        <versionIRI rdf:resource="http://smag0.blogspot.fr/ontologies/Diamond/1.0.0"/>
+        <imports rdf:resource="http://usefulinc.com/ns/doap#"/>
+        <imports rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    </Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#documentationLiee -->
+
+    <AnnotationProperty rdf:about="&Diamond;documentationLiee"/>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#objectif -->
+
+    <AnnotationProperty rdf:about="&Diamond;objectif"/>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#ordre -->
+
+    <AnnotationProperty rdf:about="&Diamond;ordre"/>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#valeur -->
+
+    <AnnotationProperty rdf:about="&Diamond;valeur"/>
+    
+
+
+    <!-- http://www.w3.org/2000/01/rdf-schema#comment -->
+
+    <AnnotationProperty rdf:about="&rdfs;comment"/>
+    
+
+
+    <!-- http://www.w3.org/2000/01/rdf-schema#label -->
+
+    <AnnotationProperty rdf:about="&rdfs;label"/>
+    
+
+
+    <!-- http://www.w3.org/2000/01/rdf-schema#seeAlso -->
+
+    <AnnotationProperty rdf:about="&rdfs;seeAlso"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/birthday -->
+
+    <AnnotationProperty rdf:about="&foaf;birthday"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/familyName -->
+
+    <AnnotationProperty rdf:about="&foaf;familyName"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/firstName -->
+
+    <AnnotationProperty rdf:about="&foaf;firstName"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/gender -->
+
+    <AnnotationProperty rdf:about="&foaf;gender"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral -->
+
+    <rdfs:Datatype rdf:about="&rdf;PlainLiteral"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#boolean -->
+
+    <rdfs:Datatype rdf:about="&xsd;boolean"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#integer -->
+
+    <rdfs:Datatype rdf:about="&xsd;integer"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#string -->
+
+    <rdfs:Datatype rdf:about="&xsd;string"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#analyste -->
+
+    <ObjectProperty rdf:about="&Diamond;analyste">
+        <rdfs:subPropertyOf rdf:resource="&Diamond;role"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#auteur -->
+
+    <ObjectProperty rdf:about="&Diamond;auteur">
+        <rdfs:range rdf:resource="&Diamond;Acteur"/>
+        <rdfs:domain rdf:resource="&Diamond;Documentation"/>
+        <rdfs:subPropertyOf rdf:resource="&Diamond;documentation_propriete"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#concepteur -->
+
+    <ObjectProperty rdf:about="&Diamond;concepteur">
+        <rdfs:subPropertyOf rdf:resource="&Diamond;role"/>
+        <equivalentProperty rdf:resource="&foaf;maker"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#corps -->
+
+    <ObjectProperty rdf:about="&Diamond;corps">
+        <rdfs:comment xml:lang="fr">Un corps de document qui représente la zone utilisable par le rédacteur,</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&Diamond;documentation_propriete"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#dateCreation -->
+
+    <ObjectProperty rdf:about="&Diamond;dateCreation">
+        <rdfs:label xml:lang="fr">date de création</rdfs:label>
+        <rdfs:subPropertyOf rdf:resource="&Diamond;documentation_propriete"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#dateDerniereModification -->
+
+    <ObjectProperty rdf:about="&Diamond;dateDerniereModification">
+        <rdfs:label xml:lang="fr">date de dernière modification</rdfs:label>
+        <rdfs:subPropertyOf rdf:resource="&Diamond;documentation_propriete"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#demandeur -->
+
+    <ObjectProperty rdf:about="&Diamond;demandeur">
+        <rdfs:subPropertyOf rdf:resource="&Diamond;role"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#document_necessaire -->
+
+    <ObjectProperty rdf:about="&Diamond;document_necessaire">
+        <rdfs:label xml:lang="fr">document nécessaire</rdfs:label>
+        <rdfs:range rdf:resource="&Diamond;Documentation"/>
+        <rdfs:domain rdf:resource="&Diamond;Procedure"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#documentation_propriete -->
+
+    <ObjectProperty rdf:about="&Diamond;documentation_propriete">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#documentproduit -->
+
+    <ObjectProperty rdf:about="&Diamond;documentproduit">
+        <rdfs:label xml:lang="fr">document produit</rdfs:label>
+        <rdfs:range rdf:resource="&Diamond;Documentation"/>
+        <rdfs:domain rdf:resource="&Diamond;Procedure"/>
+        <inverseOf rdf:resource="&Diamond;produitPar"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#enteteDePage -->
+
+    <ObjectProperty rdf:about="&Diamond;enteteDePage">
+        <rdfs:label xml:lang="fr">entête de page</rdfs:label>
+        <rdfs:comment xml:lang="fr">Un en-tête de page qui est un cartouche qui permet au lecteur connaître le document auquel il a à
+faire</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&Diamond;documentation_propriete"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#executant -->
+
+    <ObjectProperty rdf:about="&Diamond;executant">
+        <rdfs:range rdf:resource="&Diamond;Acteur"/>
+        <rdfs:subPropertyOf rdf:resource="&Diamond;role"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#expert -->
+
+    <ObjectProperty rdf:about="&Diamond;expert">
+        <rdfs:subPropertyOf rdf:resource="&Diamond;role"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#first -->
+
+    <ObjectProperty rdf:about="&Diamond;first">
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#formulaire -->
+
+    <ObjectProperty rdf:about="&Diamond;formulaire"/>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#generePar -->
+
+    <ObjectProperty rdf:about="&Diamond;generePar">
+        <rdfs:subPropertyOf rdf:resource="&Diamond;documentation_propriete"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#hasPart -->
+
+    <ObjectProperty rdf:about="&Diamond;hasPart">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#next -->
+
+    <ObjectProperty rdf:about="&Diamond;next">
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#norme -->
+
+    <ObjectProperty rdf:about="&Diamond;norme">
+        <rdfs:subPropertyOf rdf:resource="&Diamond;documentation_propriete"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#objectif -->
+
+    <ObjectProperty rdf:about="&Diamond;objectif">
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#ordre -->
+
+    <ObjectProperty rdf:about="&Diamond;ordre"/>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#partOf -->
+
+    <ObjectProperty rdf:about="&Diamond;partOf">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <inverseOf rdf:resource="&Diamond;hasPart"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#piedDePage -->
+
+    <ObjectProperty rdf:about="&Diamond;piedDePage">
+        <rdfs:label xml:lang="fr">pied de page</rdfs:label>
+        <rdfs:comment xml:lang="fr">Un pied de page pour les informations complémentaires.</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&Diamond;documentation_propriete"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#previous -->
+
+    <ObjectProperty rdf:about="&Diamond;previous">
+        <inverseOf rdf:resource="&Diamond;next"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#processus -->
+
+    <ObjectProperty rdf:about="&Diamond;processus"/>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#produitPar -->
+
+    <ObjectProperty rdf:about="&Diamond;produitPar">
+        <rdfs:domain rdf:resource="&Diamond;Documentation"/>
+        <rdfs:range rdf:resource="&Diamond;Procedure"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#responsable -->
+
+    <ObjectProperty rdf:about="&Diamond;responsable">
+        <rdfs:subPropertyOf rdf:resource="&Diamond;role"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#role -->
+
+    <ObjectProperty rdf:about="&Diamond;role">
+        <rdfs:range rdf:resource="&foaf;Agent"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#titre -->
+
+    <ObjectProperty rdf:about="&Diamond;titre">
+        <rdfs:subPropertyOf rdf:resource="&Diamond;documentation_propriete"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#utilisateur -->
+
+    <ObjectProperty rdf:about="&Diamond;utilisateur">
+        <rdfs:subPropertyOf rdf:resource="&Diamond;role"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#version -->
+
+    <ObjectProperty rdf:about="&Diamond;version">
+        <rdfs:comment xml:lang="fr">Pour les numéros de version, nous utiliserons la notation normalisée de l’ISO. Tout document peut être dans trois états différents (il peut y avoir des cycles) :
+– provisoire : le document est en cours d’élaboration (version 0.0)
+– à valider : le document est complet, il est en cours de validation (version 0.1)
+– validé/approuvé: le document est conforme, il est diffusé pour action (version 1.0)</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&Diamond;documentation_propriete"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://usefulinc.com/ns/doap#developer -->
+
+    <ObjectProperty rdf:about="http://usefulinc.com/ns/doap#developer">
+        <rdfs:subPropertyOf rdf:resource="&Diamond;role"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://usefulinc.com/ns/doap#documenter -->
+
+    <ObjectProperty rdf:about="http://usefulinc.com/ns/doap#documenter">
+        <rdfs:subPropertyOf rdf:resource="&Diamond;role"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://usefulinc.com/ns/doap#helper -->
+
+    <ObjectProperty rdf:about="http://usefulinc.com/ns/doap#helper">
+        <rdfs:subPropertyOf rdf:resource="&Diamond;role"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://usefulinc.com/ns/doap#maintainer -->
+
+    <ObjectProperty rdf:about="http://usefulinc.com/ns/doap#maintainer">
+        <rdfs:subPropertyOf rdf:resource="http://usefulinc.com/ns/doap#developer"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://usefulinc.com/ns/doap#tester -->
+
+    <ObjectProperty rdf:about="http://usefulinc.com/ns/doap#tester">
+        <rdfs:subPropertyOf rdf:resource="&Diamond;role"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://usefulinc.com/ns/doap#translator -->
+
+    <ObjectProperty rdf:about="http://usefulinc.com/ns/doap#translator">
+        <rdfs:subPropertyOf rdf:resource="&Diamond;role"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://usefulinc.com/ns/doap#vendor -->
+
+    <ObjectProperty rdf:about="http://usefulinc.com/ns/doap#vendor">
+        <rdfs:subPropertyOf rdf:resource="&Diamond;role"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#topObjectProperty -->
+
+    <ObjectProperty rdf:about="&owl;topObjectProperty"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/maker -->
+
+    <ObjectProperty rdf:about="&foaf;maker">
+        <rdfs:subPropertyOf rdf:resource="&Diamond;role"/>
+    </ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#GestionDesRisques -->
+
+    <DatatypeProperty rdf:about="&Diamond;GestionDesRisques">
+        <rdfs:comment xml:lang="fr">La gestion des risques que nécessite la criticité des applications mais aussi la nature logicielle et matérielle du système à concevoir.</rdfs:comment>
+        <Diamond:valeur xml:lang="fr">true</Diamond:valeur>
+        <rdfs:subPropertyOf rdf:resource="&Diamond;caracteristiques"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#Incremental -->
+
+    <DatatypeProperty rdf:about="&Diamond;Incremental">
+        <rdfs:comment xml:lang="fr">Le caractère incrémental qui milite pour la généricité.</rdfs:comment>
+        <Diamond:valeur xml:lang="fr">true</Diamond:valeur>
+        <rdfs:subPropertyOf rdf:resource="&Diamond;caracteristiques"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#PossibiliteRemiseEnCauseBesoins -->
+
+    <DatatypeProperty rdf:about="&Diamond;PossibiliteRemiseEnCauseBesoins">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="fr">Possibilité de remise en cause des besoins</rdfs:label>
+        <rdfs:comment xml:lang="fr">La possibilité de remettre en cause les besoins. La classe des problèmes complexes est difficilement spécifiable. Les spécifications évoluent généralement avec la compréhension du problème qu’ont
+l’utilisateur mais aussi l’analyste.</rdfs:comment>
+        <Diamond:valeur xml:lang="fr">true</Diamond:valeur>
+        <rdfs:domain rdf:resource="&Diamond;Caracteristique"/>
+        <rdfs:subPropertyOf rdf:resource="&Diamond;caracteristiques"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#PossibiliteRemiseEnCauseDuProduit -->
+
+    <DatatypeProperty rdf:about="&Diamond;PossibiliteRemiseEnCauseDuProduit">
+        <rdfs:comment xml:lang="fr">La possibilité de remise en cause du produit, que l’on ne souhaite pas, afin que le système mixte soit directement issu de la conception. Cela permet d’éviter des divergences au niveau des spécifications et une meilleure maintenance du système. Ce critère est d’autant plus important que la part des parties matérielles est importante dans le produit.</rdfs:comment>
+        <Diamond:valeur xml:lang="fr">false</Diamond:valeur>
+        <rdfs:subPropertyOf rdf:resource="&Diamond;caracteristiques"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#Raffinement -->
+
+    <DatatypeProperty rdf:about="&Diamond;Raffinement">
+        <rdfs:comment xml:lang="fr">Le raffinement qui permettra une exploration efficace de l’espace de conception, c’est-à-dire de trouver un bon compromis logiciel/matériel.</rdfs:comment>
+        <Diamond:valeur xml:lang="fr">true</Diamond:valeur>
+        <rdfs:subPropertyOf rdf:resource="&Diamond;caracteristiques"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#caracteristiques -->
+
+    <DatatypeProperty rdf:about="&Diamond;caracteristiques"/>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#cycleDevie -->
+
+    <DatatypeProperty rdf:about="&Diamond;cycleDevie">
+        <Diamond:valeur xml:lang="fr">spirale</Diamond:valeur>
+        <rdfs:subPropertyOf rdf:resource="&Diamond;caracteristiques"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#Acteur -->
+
+    <Class rdf:about="&Diamond;Acteur">
+        <equivalentClass rdf:resource="&foaf;Agent"/>
+        <rdfs:subClassOf rdf:resource="&Diamond;MethodeDiamond"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#ActionsPerceptionsCollaboratives -->
+
+    <Class rdf:about="&Diamond;ActionsPerceptionsCollaboratives">
+        <rdfs:label xml:lang="fr">Actions et perceptions collaboratives</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;PhaseSociale"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#Activite -->
+
+    <Class rdf:about="&Diamond;Activite">
+        <rdfs:label xml:lang="fr">04 Activité</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;Procedure"/>
+        <Diamond:ordre xml:lang="fr">4</Diamond:ordre>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#AdaptationComportement -->
+
+    <Class rdf:about="&Diamond;AdaptationComportement">
+        <rdfs:label xml:lang="fr">Adaptation des comportements individuels et sociaux</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;PhaseIntegration"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#Analyse -->
+
+    <Class rdf:about="&Diamond;Analyse">
+        <rdfs:subClassOf rdf:resource="&Diamond;ClasseurAgentN"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#AnalyseSystemeGlobal -->
+
+    <Class rdf:about="&Diamond;AnalyseSystemeGlobal">
+        <rdfs:label xml:lang="fr">Analyse système global</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;Systeme"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#Analyste -->
+
+    <Class rdf:about="&Diamond;Analyste">
+        <rdfs:label xml:lang="en">Analyst</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;Acteur"/>
+        <rdfs:comment xml:lang="fr">Personne chargée de procéder à l’analyse du problème. Il sert généralement d’interface entre le demandeur et l’équipe de conception/développement</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#ApprochePreliminaire -->
+
+    <Class rdf:about="&Diamond;ApprochePreliminaire">
+        <rdfs:label xml:lang="fr">Approche Préliminaire</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;DefinitionDesBesoins"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#AspectOrganisationnel -->
+
+    <Class rdf:about="&Diamond;AspectOrganisationnel">
+        <rdfs:label xml:lang="fr">Aspect organisationnel</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;PhaseSociale"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#BesoinsCommunication -->
+
+    <Class rdf:about="&Diamond;BesoinsCommunication">
+        <rdfs:label xml:lang="fr">Besoins en communication</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;PhaseSociale"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#Caracteristique -->
+
+    <Class rdf:about="&Diamond;Caracteristique"/>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#CasUtilisationDocumentation -->
+
+    <Class rdf:about="&Diamond;CasUtilisationDocumentation">
+        <rdfs:label xml:lang="fr">Documentation des cas d&apos;utilisation</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;UtilisationSysteme"/>
+        <rdfs:comment xml:lang="fr">La description textuelle (A.3.2) est efficace pour communiquer
+avec les utilisateurs et s’entendre sur la terminologie du domaine. Cependant, il est nécessaire d’avoir recours à d’autres outils pour montrer comment les enchaînements se succèdent ou permettre une
+maintenance efficace de l’application. Pour cela on dispose des diagrammes d’activité qui permettent de consolider les enchaînements de la fiche descriptive textuelle du cas. L’alternative est le diagramme d’état qui se prête mieux à la modélisation événementielle. Cependant il est plus difficile à appréhender
+par l’utilisateur.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#ClasseurAgentN -->
+
+    <Class rdf:about="&Diamond;ClasseurAgentN">
+        <rdfs:label xml:lang="fr">Classeur agent n</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;AnalyseSystemeGlobal"/>
+        <rdfs:comment xml:lang="fr">un classeur par agent</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#ComportementIndividuel -->
+
+    <Class rdf:about="&Diamond;ComportementIndividuel">
+        <rdfs:label xml:lang="fr">Comportement individuel</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;PhaseIndividuelle"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#ComportementSocial -->
+
+    <Class rdf:about="&Diamond;ComportementSocial">
+        <rdfs:label xml:lang="fr">Comportement social</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;PhaseIntegration"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#Concepteur -->
+
+    <Class rdf:about="&Diamond;Concepteur">
+        <rdfs:subClassOf rdf:resource="&Diamond;Acteur"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#Conception -->
+
+    <Class rdf:about="&Diamond;Conception">
+        <rdfs:subClassOf rdf:resource="&Diamond;ClasseurAgentN"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#ConnaissanceAutres -->
+
+    <Class rdf:about="&Diamond;ConnaissanceAutres">
+        <rdfs:label xml:lang="fr">Connaissance des autres</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;PhaseSociale"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#Contexte -->
+
+    <Class rdf:about="&Diamond;Contexte">
+        <rdfs:label xml:lang="fr">Contexte</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;PhaseIndividuelle"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#ContraintesTechniques -->
+
+    <Class rdf:about="&Diamond;ContraintesTechniques">
+        <rdfs:label xml:lang="fr">Contraintes Techniques</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;ApprochePreliminaire"/>
+        <rdfs:comment xml:lang="fr">une fiche des contraintes techniques qui permet d’insister sur des points particuliers tels que la sécurité.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#ContraintesTechnologiques -->
+
+    <Class rdf:about="&Diamond;ContraintesTechnologiques">
+        <rdfs:label xml:lang="fr">Contraintes Technologiques</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;ApprochePreliminaire"/>
+        <rdfs:comment xml:lang="fr">une fiche des contraintes technologiques pour le cas où le client impose certains matériels existants ou émet des préférences.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#DefinitionDesBesoins -->
+
+    <Class rdf:about="&Diamond;DefinitionDesBesoins">
+        <rdfs:label xml:lang="fr">Définition des besoins</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;Systeme"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#Demandeur -->
+
+    <Class rdf:about="&Diamond;Demandeur">
+        <rdfs:subClassOf rdf:resource="&Diamond;Acteur"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#DescriptionEntiteActivePassive -->
+
+    <Class rdf:about="&Diamond;DescriptionEntiteActivePassive">
+        <rdfs:label xml:lang="fr">Description de l&apos;entité active / passive</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;AnalyseSystemeGlobal"/>
+        <rdfs:comment xml:lang="fr">une fiche par entité</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#DescriptionEnvironnement -->
+
+    <Class rdf:about="&Diamond;DescriptionEnvironnement">
+        <rdfs:label xml:lang="fr">Description de l&apos;environnement</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;AnalyseSystemeGlobal"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#DiagrammeSequence -->
+
+    <Class rdf:about="&Diamond;DiagrammeSequence">
+        <rdfs:label xml:lang="fr">Diagramme de séquences</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;UtilisationSysteme"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#Documentation -->
+
+    <Class rdf:about="&Diamond;Documentation">
+        <rdfs:subClassOf rdf:resource="&Diamond;MethodeDiamond"/>
+        <rdfs:subClassOf rdf:resource="&rdf;Bag"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#DocumentationActeurs -->
+
+    <Class rdf:about="&Diamond;DocumentationActeurs">
+        <rdfs:label xml:lang="fr">Documentation des acteurs</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;UtilisationSysteme"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#Etape -->
+
+    <Class rdf:about="&Diamond;Etape">
+        <rdfs:label xml:lang="fr">01 Etape</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;Procedure"/>
+        <Diamond:ordre rdf:datatype="&xsd;integer">1</Diamond:ordre>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#EtudeModeArrets -->
+
+    <Class rdf:about="&Diamond;EtudeModeArrets">
+        <rdfs:label xml:lang="fr">Etude des modes d&apos;arrêts</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;EtudeModes"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#EtudeModeDefaillants -->
+
+    <Class rdf:about="&Diamond;EtudeModeDefaillants">
+        <rdfs:label xml:lang="fr">Etude des modes de défaillants</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;EtudeModes"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#EtudeModeMarches -->
+
+    <Class rdf:about="&Diamond;EtudeModeMarches">
+        <rdfs:label xml:lang="fr">Etude des modes de marches</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;EtudeModes"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#EtudeModes -->
+
+    <Class rdf:about="&Diamond;EtudeModes">
+        <rdfs:label xml:lang="fr">Etude des modes</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;DefinitionDesBesoins"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#Expert -->
+
+    <Class rdf:about="&Diamond;Expert">
+        <rdfs:subClassOf rdf:resource="&Diamond;Acteur"/>
+        <rdfs:comment xml:lang="fr">Certaines applications nécessitent une ou plusieurs personnes ayant l’expertise d’un domaine : l’expert est la personne qui la possède.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FicheCoSynthese -->
+
+    <Class rdf:about="&Diamond;FicheCoSynthese">
+        <rdfs:label xml:lang="fr">Fiche de co-synthèse</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;Implementation"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FicheCodeSource -->
+
+    <Class rdf:about="&Diamond;FicheCodeSource">
+        <rdfs:label xml:lang="fr">Fiche de code source</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;Implementation"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FicheComposant -->
+
+    <Class rdf:about="&Diamond;FicheComposant">
+        <rdfs:label xml:lang="fr">Fiche de composants</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;Conception"/>
+        <rdfs:comment xml:lang="fr">une fiche pour chaque composant utilisé</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FicheCosimulation -->
+
+    <Class rdf:about="&Diamond;FicheCosimulation">
+        <rdfs:label xml:lang="fr">Fiche de cosimulation</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;Implementation"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FicheCovalidation -->
+
+    <Class rdf:about="&Diamond;FicheCovalidation">
+        <rdfs:label xml:lang="fr">Fiche de covalidation</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;Implementation"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FicheCriterePartitionnement -->
+
+    <Class rdf:about="&Diamond;FicheCriterePartitionnement">
+        <rdfs:label xml:lang="fr">Fiche de critère de partitionnement</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;Implementation"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FicheDescriptionArchitecturale -->
+
+    <Class rdf:about="&Diamond;FicheDescriptionArchitecturale">
+        <rdfs:label xml:lang="fr">Fiche de description architecturale</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;Conception"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FicheDescriptionArchitecturaleImplementation -->
+
+    <Class rdf:about="&Diamond;FicheDescriptionArchitecturaleImplementation">
+        <rdfs:label xml:lang="fr">Fiche de description architecturale en implémentation</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;Implementation"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FicheDiagrammeContexte -->
+
+    <Class rdf:about="&Diamond;FicheDiagrammeContexte">
+        <rdfs:label xml:lang="fr">Fiche de diagramme de contexte</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;Conception"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FichePartitionnement -->
+
+    <Class rdf:about="&Diamond;FichePartitionnement">
+        <rdfs:label xml:lang="fr">Fiche de partitionnement</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;Implementation"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#Formulaire -->
+
+    <Class rdf:about="&Diamond;Formulaire">
+        <rdfs:subClassOf rdf:resource="&Diamond;MethodeDiamond"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#GlossaireAnalyse -->
+
+    <Class rdf:about="&Diamond;GlossaireAnalyse">
+        <rdfs:label xml:lang="fr">Glossaire d&apos;analyse</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;AnalyseSystemeGlobal"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#GlossaireAnalyseAgent -->
+
+    <Class rdf:about="&Diamond;GlossaireAnalyseAgent">
+        <rdfs:label xml:lang="fr">Glossaire d&apos;analyse de l&apos;agent</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;Analyse"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#GlossaireConception -->
+
+    <Class rdf:about="&Diamond;GlossaireConception">
+        <rdfs:label xml:lang="fr">Glossaire de conception</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;Conception"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#GlossaireContextuel -->
+
+    <Class rdf:about="&Diamond;GlossaireContextuel">
+        <rdfs:label xml:lang="fr">Glossaire contextuel</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;DefinitionDesBesoins"/>
+        <rdfs:comment xml:lang="fr">un glossaire contextuel (figure D.1) qui permet de préciser la définition du vocabulaire voire d’aider, si nécessaire, à la construction d’une ontologie du domaine.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#IdentificationEntitesActivesPassives -->
+
+    <Class rdf:about="&Diamond;IdentificationEntitesActivesPassives">
+        <rdfs:label xml:lang="fr">Identification des entités actives et passives</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;AnalyseSystemeGlobal"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#IdentificationInfluenceSociale -->
+
+    <Class rdf:about="&Diamond;IdentificationInfluenceSociale">
+        <rdfs:label xml:lang="fr">Identification de l&apos;influence sociale</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;PhaseIntegration"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#Ihm -->
+
+    <Class rdf:about="&Diamond;Ihm">
+        <rdfs:label xml:lang="fr">Ihm (interface homme-machine)</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;UtilisationSysteme"/>
+        <rdfs:comment xml:lang="fr">Fiche d&apos;interface Homme Machine</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#Implementation -->
+
+    <Class rdf:about="&Diamond;Implementation">
+        <rdfs:subClassOf rdf:resource="&Diamond;ClasseurAgentN"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#MethodeDiamond -->
+
+    <Class rdf:about="&Diamond;MethodeDiamond">
+        <rdfs:label xml:lang="fr">Méthode Diamond</rdfs:label>
+        <Diamond:objectif xml:lang="fr">ontologie pour l&apos;application de la méthode Diamond.
+DIAMOND: UNE APPROCHE POUR LA CONCEPTION
+DE SYSTEMES MULTI-AGENTS EMBARQUES
+http://hal.archives-ouvertes.fr/docs/00/18/90/46/PDF/These_Jean-Paul_Jamont_2005.pdf</Diamond:objectif>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#Phase -->
+
+    <Class rdf:about="&Diamond;Phase">
+        <rdfs:label xml:lang="fr">02 Phase</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;Procedure"/>
+        <Diamond:ordre xml:lang="fr">2</Diamond:ordre>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#PhaseIndividuelle -->
+
+    <Class rdf:about="&Diamond;PhaseIndividuelle">
+        <rdfs:label xml:lang="fr">Phase individuelle</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;Analyse"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#PhaseIntegration -->
+
+    <Class rdf:about="&Diamond;PhaseIntegration">
+        <rdfs:label xml:lang="fr">Phase d&apos;intégration</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;Analyse"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#PhaseSociale -->
+
+    <Class rdf:about="&Diamond;PhaseSociale">
+        <rdfs:label xml:lang="fr">Phase sociale</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;Analyse"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#PresentationProjet -->
+
+    <Class rdf:about="&Diamond;PresentationProjet">
+        <rdfs:label xml:lang="fr">Présentation du projet</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;ApprochePreliminaire"/>
+        <rdfs:comment xml:lang="fr">une fiche de présentation du projet qui résume, présente le contexte du projet (demandeur, problématique,etc.)</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#Procedure -->
+
+    <Class rdf:about="&Diamond;Procedure">
+        <rdfs:subClassOf rdf:resource="&Diamond;MethodeDiamond"/>
+        <rdfs:subClassOf rdf:resource="&rdf;Seq"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#Processus -->
+
+    <Class rdf:about="&Diamond;Processus">
+        <rdfs:label xml:lang="fr">03 Processus</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;Procedure"/>
+        <Diamond:ordre xml:lang="fr">3</Diamond:ordre>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#RecueilBesoinsFonctionnels -->
+
+    <Class rdf:about="&Diamond;RecueilBesoinsFonctionnels">
+        <rdfs:label xml:lang="fr">Recueil des besoins Fonctionnels</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;ApprochePreliminaire"/>
+        <rdfs:comment xml:lang="fr">une fiche de recueil des besoins fonctionnels qui est une synthèse des besoins exprimés dans le cahier des charges.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#SchemaAction -->
+
+    <Class rdf:about="&Diamond;SchemaAction">
+        <rdfs:label xml:lang="fr">Schéma d&apos;action</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;PhaseIndividuelle"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#SchemaPerception -->
+
+    <Class rdf:about="&Diamond;SchemaPerception">
+        <rdfs:label xml:lang="fr">Schéma de perception</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;PhaseIndividuelle"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#StructurationCasUtilisation -->
+
+    <Class rdf:about="&Diamond;StructurationCasUtilisation">
+        <rdfs:label xml:lang="fr">Structuration des cas d&apos;utilisation</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;UtilisationSysteme"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#SynthèseCasUtilisation -->
+
+    <Class rdf:about="&Diamond;SynthèseCasUtilisation">
+        <rdfs:label xml:lang="fr">Synthèse des cas d&apos;utilisation</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;UtilisationSysteme"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#Systeme -->
+
+    <Class rdf:about="&Diamond;Systeme">
+        <rdfs:label xml:lang="fr">Système</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;Documentation"/>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#Utilisateur -->
+
+    <Class rdf:about="&Diamond;Utilisateur">
+        <rdfs:subClassOf rdf:resource="&Diamond;Acteur"/>
+        <rdfs:comment xml:lang="fr">Le ou les utilisateurs ﬁnaux de l’application.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#UtilisationSysteme -->
+
+    <Class rdf:about="&Diamond;UtilisationSysteme">
+        <rdfs:label xml:lang="fr">Utilisation du système</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&Diamond;DefinitionDesBesoins"/>
+    </Class>
+    
+
+
+    <!-- http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag -->
+
+    <Class rdf:about="&rdf;Bag">
+        <rdfs:label xml:lang="fr">Sac</rdfs:label>
+    </Class>
+    
+
+
+    <!-- http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq -->
+
+    <Class rdf:about="&rdf;Seq">
+        <rdfs:label xml:lang="fr">Séquence</rdfs:label>
+    </Class>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <Class rdf:about="&owl;Thing"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Agent -->
+
+    <Class rdf:about="&foaf;Agent"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Organization -->
+
+    <Class rdf:about="&foaf;Organization"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#A1ApprochePreliminaireProblème -->
+
+    <NamedIndividual rdf:about="&Diamond;A1ApprochePreliminaireProblème">
+        <rdf:type rdf:resource="&Diamond;Phase"/>
+        <rdfs:label xml:lang="fr">A.1 : Approche préliminaire du problème</rdfs:label>
+        <Diamond:documentationLiee xml:lang="fr">A ce niveau de l’étude on établit plusieurs fiches :
+– une fiche de présentation du projet qui résume, présente le contexte du projet (demandeur, problématique, etc.),
+– une fiche de recueil des besoins fonctionnels qui est une synthèse des besoins exprimés dans le cahier des charges,
+– une fiche des contraintes techniques qui permet d’insister sur des points particuliers tels que la sécurité,
+– une fiche des contraintes technologiques pour le cas où le client impose certains matériels existants ou émet des préférences,
+– un glossaire contextuel qui permet de préciser la définition du vocabulaire voire d’aider, si nécessaire, à la construction d’une ontologie du domaine.</Diamond:documentationLiee>
+        <Diamond:objectif xml:lang="fr">Nous allons nous intéresser, dans cette activité, à toutes les opérations utiles pour comprendre les besoins des utilisateurs et décrire de manière informelle le problème que souhaite résoudre le demandeur.
+Pour identifier les attentes des différentes parties prenantes (le demandeur et les utilisateurs), plusieurs techniques peuvent être mises en oeuvre : les interviews, l’observation du processus à automatiser (ainsi que les opérateurs), l’utilisation d’experts, le maquettage (confronter un utilisateur à une maquette afin de mettre en exergue des manquements), l’identification des flux de travail etc. Il peut être important de déterminer l’ontologie du domaine ou plus simplement d’établir un glossaire qui permettra de décrire les principaux concepts et le vocabulaire utilisé dans la description des besoins et des cas d’utilisation. A l’issu de ce processus, il est important de s’assurer de l’adéquation entre la problématique et l’utilisation du paradigme multi-agents [Picard, 2004]. Même si c’est essentiellement l’expérience de l’analyste qui peut le vérifier, on peut identifier et vérifier que les caractéristiques de la problématique font pressentir cet intérêt (voir [Boissier et al., 2004]).</Diamond:objectif>
+        <rdfs:comment xml:lang="fr">Tout d’abord, il est nécessaire à l’analyste de préciser de manière informelle le problème, de s’en imprégner, d’en avoir une vue globale même imprécise (A.1).</rdfs:comment>
+        <Diamond:next rdf:resource="&Diamond;A2EtudeActeurs"/>
+        <Diamond:formulaire rdf:resource="&Diamond;ActeursForm"/>
+        <Diamond:formulaire rdf:resource="&Diamond;CahierChargesForm"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;CahierDesCharges"/>
+        <Diamond:executant rdf:resource="&Diamond;David"/>
+        <Diamond:formulaire rdf:resource="&Diamond;DescriptionProjetForm"/>
+        <Diamond:formulaire rdf:resource="&Diamond;DomaineForm"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheContraintesTechniques"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheContraintesTechnologiques"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheGlossaireContextuel"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FichePresentationProjet"/>
+        <Diamond:first rdf:resource="&Diamond;FichePresentationProjet"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheReceuilBesoinsFonctionnels"/>
+        <Diamond:formulaire rdf:resource="&Diamond;PersonForm"/>
+        <Diamond:formulaire rdf:resource="&Diamond;TitreProjetForm"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#A2EtudeActeurs -->
+
+    <NamedIndividual rdf:about="&Diamond;A2EtudeActeurs">
+        <rdf:type rdf:resource="&Diamond;Phase"/>
+        <rdfs:label xml:lang="fr">A.2 : Etude des acteurs</rdfs:label>
+        <Diamond:documentationLiee xml:lang="fr">En s’appuyant notamment sur les fiches de présentation du projet et les fiches de recueil des besoins fonctionnels on détermine les acteurs. Chacun des acteurs devra être documenté via une fiche de documentation des acteurs (figure D.3) qui insiste sur la définition
+du rôle des acteurs.</Diamond:documentationLiee>
+        <rdfs:comment xml:lang="fr">On identifie ensuite les différents intervenants du système (A.2). Le rôle de ces acteurs, qu’ils soient humain ou non , doit être spécifié.</rdfs:comment>
+        <Diamond:next rdf:resource="&Diamond;A3EtudeCasUtilisation"/>
+        <Diamond:hasPart rdf:resource="&Diamond;DescriptionActeurs"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheDocumentationActeur"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FichePresentationProjet"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheReceuilBesoinsFonctionnels"/>
+        <Diamond:hasPart rdf:resource="&Diamond;IdentificationActeurs"/>
+        <Diamond:first rdf:resource="&Diamond;IdentificationActeurs"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#A3EtudeCasUtilisation -->
+
+    <NamedIndividual rdf:about="&Diamond;A3EtudeCasUtilisation">
+        <rdf:type rdf:resource="&Diamond;Phase"/>
+        <rdfs:label xml:lang="fr">A.3 : Etude des cas d’utilisation</rdfs:label>
+        <Diamond:documentationLiee xml:lang="fr">A partir de la fiche de présentation du projet, de la fiche de recueil des besoins fonctionnels, de la fiche des contraintes techniques et des fiches de documentation des acteurs, on détermine les cas d’utilisation. Chaque cas est documenté via une fiche de documentation de cas d’utilisation (figure D.4). qui indique les acteurs qui interagissent avec le cas étudié. Une synthèse des cas apparaîtra dans la fiche de synthèse des cas d’utilisation (figure D.5). Ces cas d’utilisation organisés via la fiche de structuration des cas d’utilisation (figure D.6). Chacun des packages, qui regroupent les cas d’utilisation par thèmes, devra être illustré par un diagramme de cas d’utilisation.
+Sur cette fiche apparaîtra le nom du cas, son but, son résumé et les acteurs qui interagissent avec ce cas, les pré-conditions, enchaînements nominaux et alternatifs et exceptions. Ces fiches sont tirées de [Roques and Vallée, 2003].</Diamond:documentationLiee>
+        <Diamond:objectif xml:lang="fr">L’objectif de cette étape est la caractérisation des différents cas d’utilisation du système c’est-à-dire ses grands objectifs. Elle est organisée en quatre étapes.</Diamond:objectif>
+        <rdfs:comment xml:lang="fr">On identifie alors le rôle global du système et il faut donc identifier les différents cas d’utilisation de l’application (A.3), les décrire précisément et les hiérarchiser.
+Tout cela permettra de construire le diagramme de cas d’utilisation.</rdfs:comment>
+        <Diamond:next rdf:resource="&Diamond;A4EtudeBesoinServices"/>
+        <Diamond:hasPart rdf:resource="&Diamond;DescriptionCasUtilisation"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheContraintesTechniques"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheDiagrammeCasDUtilisation"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheDocumentationActeur"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheDocumentationCasUtilisation"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FichePresentationProjet"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheReceuilBesoinsFonctionnels"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheStructurationCasUtilisation"/>
+        <Diamond:hasPart rdf:resource="&Diamond;IllustrationCasUtilisation"/>
+        <Diamond:first rdf:resource="&Diamond;IndentificationCasUtilisation"/>
+        <Diamond:hasPart rdf:resource="&Diamond;IndentificationCasUtilisation"/>
+        <Diamond:hasPart rdf:resource="&Diamond;OrganisationCasUtilisation"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#A4EtudeBesoinServices -->
+
+    <NamedIndividual rdf:about="&Diamond;A4EtudeBesoinServices">
+        <rdf:type rdf:resource="&Diamond;Phase"/>
+        <rdfs:label xml:lang="fr">A.4 : Etude des besoins en services</rdfs:label>
+        <Diamond:documentationLiee xml:lang="fr">Ce processus s’appuie sur les fiches liées aux acteurs et aux cas d’utilisation. Des fiches de diagramme de séquence permettront de mettre en évidence les besoins en services (les interactions) entre les acteurs et les différents cas d’utilisation. Ainsi les fiches correspondantes seront utilisées. Des fiches d’IHM peuvent éventuellement être réalisées. Elles relèvent bien de la détermination des
+besoins fonctionnels car leur objectif et de présenter au demandeur l’ensemble des interactions qu’il peut faire. Ces interfaces ne sont pas forcement logicielles (copie d’écran d’interface graphique attendue
+par exemple) mais peuvent être matérielles (dessin d’un panneau de commande avec interrupteurs et voyants).</Diamond:documentationLiee>
+        <rdfs:comment xml:lang="fr">Les besoins en services des différents acteurs doivent être aussi précisés (A.4).</rdfs:comment>
+        <Diamond:objectif xml:lang="fr">L’objectif de cette étape est de préparer la spécification des besoins en services de chacun des acteurs. Les diagrammes de séquence, issus d’UML, permettent aux analystes de concevoir des scénarios d’utilisation du système. Ils permettent de représenter simplement les échanges de messages entre le système et les acteurs qui interagissent avec lui. Certains acteurs du diagramme des cas d’utilisation peuvent ne pas figurer sur les diagrammes de séquence (comme traditionnellement dans les applications purement logicielles). Cela tient du fait que des interactions purement physiques peuvent avoir lieu, comme par exemple, un choc.</Diamond:objectif>
+        <Diamond:next rdf:resource="&Diamond;A5EtudeModeMarcheArret"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheDiagrammeCasDUtilisation"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheDiagrammeSequence"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheDocumentationActeur"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheDocumentationCasUtilisation"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheIhm"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheStructurationCasUtilisation"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheSyntheseCasUtilisation"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#A51DeterminationModeMarche -->
+
+    <NamedIndividual rdf:about="&Diamond;A51DeterminationModeMarche">
+        <rdf:type rdf:resource="&Diamond;Processus"/>
+        <rdfs:label xml:lang="fr">A.5.1 Détermination des modes de marche</rdfs:label>
+        <Diamond:objectif xml:lang="fr">Les modes de marches définissent les états de fonctionnement
+du système mais insistent aussi sur les états d’étalonnage ou de réglage du système. A ce niveau de l’étude on n’envisage pas forcément des réglages automatiques : on souhaite obtenir du demandeur des informations très importantes qu’il ne penserait pas forcément à fournir. Selon l’application, il se peut que des modes soient inutiles voir sans aucun sens.
+Les différents modes de marche que l’on peut identifier sont présentés ci-dessous :
+– Marche normale : Nous allons nous intéresser dans ce mode au fonctionnement normal du système à concevoir. Ce mode a surtout un intérêt pour la sûreté de fonctionnement. On définira par exemple
+les propriétés que doit vérifier le système qui prouve son fonctionnement normal.
+– Marche de préparation : La spécification de ce mode permet de préciser les contraintes à prendre en compte pour amener à une marche normale. Au niveau global cela se traduit généralement par
+des conditions sur, par exemple, les ressources disponibles à l’intérieur du système. Au niveau local, cela se traduit par des contraintes de fonctionnement pour les composants du système : un
+robot ne peut être disponible que si son niveau d’énergie est supérieur à un seuil, l’utilisation d’un four peut nécessiter une préchauffe d’une durée donnée etc. Comme on le pressent, l’étude de ce mode sera surtout utile pour les composants physiques du système.
+– Marche de clôture : La spécification de ce mode permet de définir l’état que doit atteindre le système avant un arrêt prolongé. On va donc s’intéresser aux actions à effectuer pour pouvoir procéder
+à un arrêt du système : des robots mobiles peuvent avoir à se rendre dans un espace de stationnement, etc.
+– Marche de vérification en marche : Dans cet état on va s’intéresser à la possibilité/nécessité de vérifier les différentes primitives des composants du système ou de fonctionnalités globales du système. De telles procédures peuvent être nécessaires pour vérifier le bon fonctionnement ou isoler un problème.
+– Marche de vérification en hors-marche : Dans cet état on va s’intéresser aux procédures de vérifications beaucoup plus complètes mais qui nécessitent que le système suspende temporairement son fonctionnement normal. Ces procédures ne concernent pas seulement la vérification mais les modes de suspension.
+– Marche d’étalonnage : La spécification de ce mode permet de définir le protocole de réglage ou d’étalonnage d’un système.</Diamond:objectif>
+        <Diamond:next rdf:resource="&Diamond;A52DeterminationModeArret"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#A52DeterminationModeArret -->
+
+    <NamedIndividual rdf:about="&Diamond;A52DeterminationModeArret">
+        <rdf:type rdf:resource="&Diamond;Processus"/>
+        <rdfs:label xml:lang="fr">A.5.2 Détermination des modes d&apos;arrêts</rdfs:label>
+        <Diamond:objectif xml:lang="fr">L’étude des modes d’arrêt va permettre tout d’abord d’identifier
+les états d’arrêt qui peuvent survenir pour des raisons extérieures au système. On définit aussi les éventuelles procédures qui les accompagnent. Ces états permettent d’amener le système à un arrêt normal ou de préparer le système à une procédure de re-initialisation. Selon l’application, il se peut que des modes soient inutiles voire sans aucun sens.
+Les différents modes d’arrêt que l’on peut identifier sont :
+– Repos : Il s’agit de caractériser ici l’état dans lequel se trouve le système lorsqu’il est au repos c’est-à-dire en attente de tâches à effectuer.
+– Arrêt demandé en marche normale : La spécification de ce mode d’arrêt permet de s’intéresser à la suspension du fonctionnement normal sans pour autant procéder à une interruption brutale
+du système. Cela peut se limiter à identifier les états durant lesquels on peut arrêter le système et donc s’intéresser aux procédures pour l’y conduire. Ce mode est par exemple intéressant pour des systèmes utilisant des ressources finies. En effet, si un système peut éventuellement nécessiter qu’on interrompe son fonctionnement normal afin de le ré-alimenter. Par souci de sécurité il se
+peut que cette opération ne soit possible que dans des états particuliers du système.
+– Arrêt demandé dans un état déterminé : La spécification de ce mode d’arrêt permet de conduire le système à un arrêt différent du précédent afin que, par exemple, une équipe de maintenance
+intervienne sur le système.
+– Préparation pour remise en route après défaillance : La spécification de ce mode permet de ramener le système après une défaillance dans un état qui lui permettra de remettre en route le système.
+Cela peut se faire de manière automatique ou, éventuellement, nécessiter que des opérateurs interviennent pour corriger le système (initialiser un élément etc.).</Diamond:objectif>
+        <Diamond:next rdf:resource="&Diamond;A53DeterminationModeDefaillant"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#A53DeterminationModeDefaillant -->
+
+    <NamedIndividual rdf:about="&Diamond;A53DeterminationModeDefaillant">
+        <rdf:type rdf:resource="&Diamond;Processus"/>
+        <rdfs:label xml:lang="fr">A.5.3 Détermination des modes défaillants</rdfs:label>
+        <Diamond:objectif xml:lang="fr">L’étude des modes défaillants va permettre de spécifier les procédures de sécurité permettant de réagir lorsqu’une défaillance est rencontrée. Les différents modes défaillants qu’il est possible d’identifier sont:
+– Marche ou arrêt en vue d’assurer la sécurité : Cet état permet de gérer le système lors d’un arrêt d’urgence. On prévoit dans cet état toutes les mesures visant à protéger l’utilisateur et le système, les cycles de dégagements et les précautions pour limiter les conséquences d’une défaillance.
+– Diagnostic et/ou traitement de défaillance : Ce mode traite de ce qui permet à la maintenance de diagnostiquer l’origine de la défaillance et d’envisager le traitement approprié qui permettra le redémarrage du système après traitement de la défaillance. Dans ce mode, le système est arrêté.
+– Marche dégradée : Cet état permet de permet de passer outre une défaillance non résolue du système.</Diamond:objectif>
+        <Diamond:next rdf:resource="&Diamond;BAnalyseSMA"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#A5EtudeModeMarcheArret -->
+
+    <NamedIndividual rdf:about="&Diamond;A5EtudeModeMarcheArret">
+        <rdf:type rdf:resource="&Diamond;Phase"/>
+        <rdfs:label xml:lang="fr">A.5 : Etude des modes marche / arrêt</rdfs:label>
+        <Diamond:documentationLiee xml:lang="fr">A partir de toutes les informations cumulées, et donc toutes les fiches, on renseigne trois fiches : une fiche d’étude des modes de marche,  une fiche d’étude des modes d’arrêt et une fiche d’étude des modes défaillants. Ces fiches doivent être validées par le demandeur et les utilisateurs du système à concevoir. En effet, un des intérêts de ces fiches est qu’elles sont compréhensibles par des non-informaticiens.</Diamond:documentationLiee>
+        <Diamond:objectif xml:lang="fr">Cette partie de l’étude est très importante car elle va permettre de structurer le fonctionnement global du système. Si généralement on souhaite que le système fonctionne en autonomie, il est nécessaire de connaître précisément tous les autres comportements : comment doit être le système avant l’arrêt? comment doit être le système pour être étalonné/réglé ? comment prendre en compte les arrêts d’urgence?
+Même si le problème sera par la suite résolu de manière décentralisée, cette organisation des modes de fonctionnement présente l’avantage d’être facilement interprétable par le demandeur et l’utilisateur.
+De plus, bien qu’à intelligence décentralisée le système doit se soumettre à une législation qui impose, à raison, la présence d’arrêts d’urgence pour les systèmes physiques pouvant nuire à l’intégrité d’une personne ou d’un bien. Ainsi on établit des procédures de marches, de défaillances et d’arrêts. On peut aussi spécifier les transitions entre ces modes. Pour chacun de ces modes, un document doit préciser une description de l’état attendu du système (partie informelle) et formuler les propriétés qui permettront de
+caractériser l’état du système. On va donc déterminer les propriétés qui, selon qu’elles soient ou non respectées, feront que l’on sera dans un état de marche normal, défaillant ou d’arrêt.
+Cette définition des modes pourra en plus, par la suite :
+– mettre en exergue des modes de fonctionnement dégradés du système,
+– spécifier les premiers éléments nécessaires à la tolérance aux pannes,
+– permettre l’identification de situations de coopération ou non coopération,
+– permettre de définir des états de reconnaissance utiles pour l’analyse d’un processus auto-organisationnel d’une application,
+– prendre en compte la sécurité de l’intégrité physique de l’utilisateur éventuellement plongé dans le système physique.</Diamond:objectif>
+        <rdfs:comment xml:lang="fr">Les applications envisagées avec notre méthode étant à la fois logicielles et matérielles, il est nécessaire de prendre en considération les modes de marche et d’arrêt. Cette activité est inspirée du GEMMA
+(Guide des Modes de Marche et d’Arrêt) qui est un guide permettant de structurer graphiquement le fonctionnement des systèmes automatisés de production (SAP) [Moreno and Peulot, 1997]. En effet, le GEMMA a pour vocation de regrouper par thème les états d’un SAP qui serait vu comme une machine à états finis. A ce titre, le GEMMA est utilisé en collaboration avec les GRAFCET. Nous en avons fait un outil textuel pour spécifier des modes de fonctionnement important du système. Des modes ont été supprimés car ils étaient trop spécialisés pour les SAP tandis que d’autres ont été étendus ou ajoutés.</rdfs:comment>
+        <rdfs:comment xml:lang="fr">Vu que le système est en partie physique il est important d’identifier ses différents modes de marche et d’arrêt (A.5) afin de spécifier les contraintes que l’on peut avoir selon les modes de fonctionnement comme pour les arrêts d’urgence.</rdfs:comment>
+        <Diamond:first rdf:resource="&Diamond;A51DeterminationModeMarche"/>
+        <Diamond:hasPart rdf:resource="&Diamond;A51DeterminationModeMarche"/>
+        <Diamond:hasPart rdf:resource="&Diamond;A52DeterminationModeArret"/>
+        <Diamond:hasPart rdf:resource="&Diamond;A53DeterminationModeDefaillant"/>
+        <Diamond:next rdf:resource="&Diamond;BAnalyseSMA"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;CahierDesCharges"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheContraintesTechniques"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheContraintesTechnologiques"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheDiagrammeCasDUtilisation"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheDiagrammeSequence"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheDocumentationActeur"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheDocumentationCasUtilisation"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheGlossaireContextuel"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheIhm"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheModeArret"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheModeDefaillant"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheModeMarche"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FichePresentationProjet"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheReceuilBesoinsFonctionnels"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheStructurationCasUtilisation"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheSyntheseCasUtilisation"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;OntologieDomaine"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#ADefinitionBesoins -->
+
+    <NamedIndividual rdf:about="&Diamond;ADefinitionBesoins">
+        <rdf:type rdf:resource="&Diamond;Etape"/>
+        <rdfs:label xml:lang="fr">A. Définition des besoins</rdfs:label>
+        <rdfs:comment xml:lang="fr">Cette partie est très informelle bien qu’utilisant des présentations formatées (cf §3.5.2). Elle nécessite donc beaucoup de rigueur et beaucoup de recul de la part des personnes qui conçoivent les différents documents. Tout document doit être approuvé par toutes les parties prenantes du projet et si nécessaire des besoins consensuels seront établis.</rdfs:comment>
+        <Diamond:documentationLiee xml:lang="fr">Toute méthode complète d’analyse et de conception s’intéresse tout d’abord au recueil des besoins des utilisateurs. Cette étape a pour objectif d’exprimer un problème.
+Cette étape est la première du cycle de vie de l’application mixte logicielle/matérielle. Elle a pour objectifs de déterminer avec précision les attentes du demandeur et des utilisateurs du futur système ainsi que d’exprimer aux concepteurs le problème. Pour cela, on établit un document qui permettra aux analystes de comprendre les fonctionnalités à la fois globales du système et les tâches plus spécifiques qu’il doit réaliser.
+Cette étape est constituée de plusieurs activités qui permettront d’établir un cahier des charges fonctionnel suffisamment complet afin de déterminer, en premier lieu, si l’approche multi-agents convient au problème. Si oui, la suite de la méthode pourra être appliquée. Dans le cas contraire, il doit permettre de choisir la solution méthodologique/technologique à utiliser.</Diamond:documentationLiee>
+        <rdfs:comment xml:lang="fr">la première étape consiste en la définition des besoins (exprimer le problème à traiter), l’établissement du cahier des charges : cette partie est détaillée en §5.2</rdfs:comment>
+        <Diamond:hasPart rdf:resource="&Diamond;A1ApprochePreliminaireProblème"/>
+        <Diamond:first rdf:resource="&Diamond;A1ApprochePreliminaireProblème"/>
+        <Diamond:hasPart rdf:resource="&Diamond;A2EtudeActeurs"/>
+        <Diamond:hasPart rdf:resource="&Diamond;A3EtudeCasUtilisation"/>
+        <Diamond:hasPart rdf:resource="&Diamond;A4EtudeBesoinServices"/>
+        <Diamond:hasPart rdf:resource="&Diamond;A5EtudeModeMarcheArret"/>
+        <Diamond:next rdf:resource="&Diamond;BAnalyseSMA"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;CahierDesCharges"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheContraintesTechniques"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheContraintesTechnologiques"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheDiagrammeCasDUtilisation"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheDiagrammeSequence"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheDocumentationActeur"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheDocumentationCasUtilisation"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheGlossaireContextuel"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheIhm"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FichePresentationProjet"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheReceuilBesoinsFonctionnels"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheStructurationCasUtilisation"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheSyntheseCasUtilisation"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;OntologieDomaine"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#ActeursForm -->
+
+    <NamedIndividual rdf:about="&Diamond;ActeursForm">
+        <rdf:type rdf:resource="&Diamond;Formulaire"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#B11CaracterisationEnvironnement -->
+
+    <NamedIndividual rdf:about="&Diamond;B11CaracterisationEnvironnement">
+        <rdf:type rdf:resource="&Diamond;Processus"/>
+        <rdfs:label xml:lang="fr">B.1.1 Caractérisation de l&apos;environnement</rdfs:label>
+        <Diamond:objectif xml:lang="fr">On va s’intéresser aux caractéristiques de l’environnement (vu en §2.2.3.2) du système qui seront autant d’informations précieuses pour le concepteur. Elles portent principalement sur le contexte de conception.
+
+- L’accessibilité - Dans lemonde réel, on ne peut pas tout connaître de l’environnement mais, suivant les applications, on peut mesurer via des capteurs des paramètres qui suffiront à déterminer un état de reconnaissance suffisant pour l’application envisagée. On détermine tout d’abord le degré d’accessibilité de l’environnement. Autrement dit que peut-on percevoir des différents éléments de l’environnement qui nous intéresse? Quelle incertitude sur ces mesures? Quel impact?
+Si ces mesures suffisent à reconnaître un état de l’environnement (accessible), on va ainsi préciser les primitives de perception nécessaires aux agents. Il faudra penser à doter l’agent de moyens
+de mémorisation (afin qu’il puisse construire la représentation de l’environnement) et de raisonnement pour qu’il puisse raisonner sur cette représentation (conditionne l’aspect décisionnel de l’agent).
+Si l’environnement ne s’avère pas accessible, peut-on raisonnablement supposer sur l’information inaccessible de l’environnement à partir de la perception des différentes évolutions d’autres paramètres? Tant que l’environnement ne sera pas suffisamment accessible, il sera nécessaire de demander des précisions aux demandeurs et aux utilisateurs.
+
+- Le déterminisme - Pour mesurer le degré de déterminisme de l’environnement il faut s’interroger sur ce que l’on peut physiquement contrôler de cet environnement. Les environnements réels sont très rarement déterministes. On peut donc, lorsqu’on s’intéresse à ce critère, commencer à s’interroger sur les effecteurs de l’agent.
+
+- Episodique - Les environnements réels sont généralement épisodiques. Cette caractéristique aura une influence directe sur les buts des agents qui ont pour objectif le contrôle de cet environnement. 
+
+- Statique - Les environnements réels sont quasiment toujours dynamiques mais c’est au concepteur d’apprécier le degré de dynamique de la partie de l’environnement qui l’intéresse.
+Ce paramètre influe sur l’architecture des agents. Ainsi, pour des environnements réels, elle favorisera des architectures réactives et hydrides.
+
+- Discret - Comme toujours, ce critère est laissé à l’appréciation du concepteur suivant l’application qu’il envisage. Un environnement réel est quasiment toujours continu.</Diamond:objectif>
+        <Diamond:next rdf:resource="&Diamond;B12DeterminationEntites"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheDescriptionEnvironnement"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#B12DeterminationEntites -->
+
+    <NamedIndividual rdf:about="&Diamond;B12DeterminationEntites">
+        <rdf:type rdf:resource="&Diamond;Processus"/>
+        <rdfs:label xml:lang="fr">B.1.2 Détermination des entités actives et passives</rdfs:label>
+        <Diamond:objectif xml:lang="fr">Dans un système multi-agents physique, la présence ou non d’adversaire relationnel, joue sur les stratégies à mettre en oeuvre dans l’aspect décisionnel de l’agent. Dans le monde réel il faut penser aux possibilités d’interférences avec d’autres systèmes multi-agents.
+Dans cette activité, on identifie les entités actives et passives qui composent le système. Une entité active possède de l’autonomie. Cette autonomie peut être, par exemple, vis-à-vis de son environnement et des autres entités. Elle peut ainsi régir des règles d’interactions entre les différentes entités. Une entité passive ne possède pas ce pouvoir de dire non que lui confère l’autonomie : elle répond quasiment uniformément aux sollicitations des autres entités. Généralement les entités passives sont des ressources du
+systèmes. Les entités peuvent être contenir du logiciel (active: un dispatcheur de services, passive: un fichier) et du matériel (active: un robot, passive: une balle). Une entité peut aussi se présenter plus simplement sous la forme d’un jeu de contraintes qui module des interactions. Pour chacune de ces entités il est nécessaire de lui trouver un nom, de préciser son rôle et sa raison d’être. Il va être nécessaire d’identifier les interactions entre ces entités et l’environnement. A partir des interactions entre les utilisateurs et le système (identifiées en §5.2.4), via les fiches de diagramme de séquence, on va identifier les entités qui participent aux interactions entités/utilisateurs.</Diamond:objectif>
+        <Diamond:next rdf:resource="&Diamond;B13DeterminationAgents"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheDescriptionEntiteActivePassive"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheDiagrammeCasDUtilisation"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheDocumentationActeur"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheDocumentationCasUtilisation"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheModeArret"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheModeDefaillant"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheModeMarche"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheStructurationCasUtilisation"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheSyntheseCasUtilisation"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#B13DeterminationAgents -->
+
+    <NamedIndividual rdf:about="&Diamond;B13DeterminationAgents">
+        <rdf:type rdf:resource="&Diamond;Processus"/>
+        <rdfs:label xml:lang="fr">B.1.3 Détermination des agents</rdfs:label>
+        <Diamond:objectif xml:lang="fr">A ce niveau de l’analyse, il va falloir choisir les entités que l’on modélisera par des agents. Pour cela, on s’appuie sur les descriptions faites lors de l’activité précédente.
+On va s’intéresser pour cela essentiellement aux entités actives (les entités passives seront essentiellement étudiées par la vue qu’en auront les entités actives). Selon la complexité des entités traitées, il sera possible de l’éclater en un ensemble d’agents : une entité active sera donc modélisable par des agents coopérants.
+Cette activité fait appelle a l’expérience de l’analyste. Nous travaillons cependant pour assister l’analyste dans cette opération via la démarche qualité qui sera mise en place. En effet, nous pensons qu’en associant à chaque entité des mesures permettant d’évaluer la contribution à la qualité globale du système, il sera possible d’assister le choix des agents.</Diamond:objectif>
+        <Diamond:next rdf:resource="&Diamond;B2PhaseIndividuelle"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheDiagrammeCasDUtilisation"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheDocumentationActeur"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheDocumentationCasUtilisation"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheIdentificationEntiteActivePassive"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheModeArret"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheModeDefaillant"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheModeMarche"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheStructurationCasUtilisation"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheSyntheseCasUtilisation"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#B1PhaseSituation -->
+
+    <NamedIndividual rdf:about="&Diamond;B1PhaseSituation">
+        <rdf:type rdf:resource="&Diamond;Phase"/>
+        <rdfs:label xml:lang="fr">B.1. Phase de Situation</rdfs:label>
+        <Diamond:objectif xml:lang="fr">Cette activité consiste à définir les limites de l’application, à caractériser les agents et l’environnement. Dans notre contexte(exemple du robot-soccer), c’est l’analyse de l’environnement qui est l’objet de la phase de situation, qui pose les bases de la décomposition. Nous allons donc nous intéresser dans un premier temps à déterminer les frontières de l’application et caractériser quels éléments de l’environnement il est pertinent de prendre en compte dans la future application.</Diamond:objectif>
+        <Diamond:documentationLiee xml:lang="fr">Dans cette partie de l’analyse on s’appuie sur les fiches résultants de l’approche préliminaire. Pour identifier les entités actives et passives on se servira aussi des
+fiches issues de l’étude des acteurs, des cas d’utilisation et de l’étude des modes de fonctionnement. Il en est de même pour l’identification des agents.
+Pour ce qui concerne la production de documents, on va créer plusieurs fiches dans la partie &quot;analyse&quot; de la documentation :
+– On commence aussi à définir le glossaire d’analyse. Dans chacun des autres processus de la phase d’analyse, des termes pourront être ajoutés. Un même terme peut apparaître dans des glossaires différents en ayant un définition différente. Il est, par exemple, fréquent qu’un concepteur donne à une entité logicielle le nom de l’entité physique dont il est une abstraction.
+– Une fiche de description de l’environnement qui rend compte de l’appréciation de chacune des caractéristiques de l’environnement et les argumente. Il y figure un inventaire des perceptions élémentaires et des opérations supportables par l’environnement (et qui peuvent être intéressantes pour l’application) qui permettra de réfléchir aux primitives d’actions/perceptions, aux actions plus évoluées et éventuels schémas d’interaction que l’on peut construire à partir des primitives disponibles.
+– Une fiche d’identification des entités actives et passives sera créée à cet effet. On y trouvera la classification des entités ainsi que les hypothèses et l’argumentation qui a permis ce choix.
+On crée dès lors dans la partie &quot;conception&quot; de la documentation un classeur par entité mais pour chaque entité active devenant agent on créer un classeur : il rassemblera plusieurs documents. Ce classeur porte le nom de l’agent et contient une description de sa raison d’être.</Diamond:documentationLiee>
+        <Diamond:hasPart rdf:resource="&Diamond;B11CaracterisationEnvironnement"/>
+        <Diamond:hasPart rdf:resource="&Diamond;B12DeterminationEntites"/>
+        <Diamond:hasPart rdf:resource="&Diamond;B13DeterminationAgents"/>
+        <Diamond:next rdf:resource="&Diamond;B2PhaseIndividuelle"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheGlossaireAnalyse"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#B21EtablissementGrapheTaches -->
+
+    <NamedIndividual rdf:about="&Diamond;B21EtablissementGrapheTaches">
+        <rdf:type rdf:resource="&Diamond;Processus"/>
+        <rdfs:label xml:lang="fr">B.2.1 Etablissement du graphe des tâches</rdfs:label>
+        <Diamond:objectif xml:lang="fr">L’instanciation du système de raisonnement commence, comme nous l’avons vu, par une phase monoagent de construction de plans d’action. On va dans cette activité s’intéresser à la définition des missions confiées aux agents et des actions qui leurs sont nécessaires. On ordonnance ensuite ces actions en plans en ne tenant pas compte des possibles influences externes liées au propre travail des autres agents. Un plan exprime le déroulement normal du travail que doit effectuer un agent pour un but donné, il est constitué d’une séquence d’actions. Les actions peuvent modifier l’environnement ou acquérir des informations. Il est possible de définir des actions que notre agent n’est pas capable d’effectuer et qu’il déléguera au moment de l’exécution [Sichman et al., 1994].
+A ce niveau, nous avons identifié quatre catégories d’actions :
+1. Les actions primitives qui sont les tâches non physiquement décomposables.
+2. les actions primitives paramétrées qui sont des actions créées à partir d’une action primitive que l’on paramètre.
+3. Les actions composées qui sont des agencements de primitives.
+4. Les actions situées qui nécessitent une partie de la représentation du monde pour instancier les actions composées ou les primitives.
+Le qualificatif &quot;physiquement&quot; est utilisé dans la définition des primitives pour écarter certaines ambiguïtés.
+Si on considère par exemple le cas d’un moteur qui permet faire de avancer un mobile selon deux vitesses, avançer_lentement et avançer_vite ne seront pas des actions primitives mais des actions primitives paramétrées. D’un point de vue logique cela peut paraître étonnant mais c’est la nature physique de l’application qui nous oblige à prendre ce point de vue. En effet, sans la primitive avançeron ne peut pas créer avançer_lentement et avançer_vite. La réciproque n’a aucun sens.</Diamond:objectif>
+        <Diamond:next rdf:resource="&Diamond;B22EtablissementRepresentationSoiEnvironnement"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#B22EtablissementRepresentationSoiEnvironnement -->
+
+    <NamedIndividual rdf:about="&Diamond;B22EtablissementRepresentationSoiEnvironnement">
+        <rdf:type rdf:resource="&Diamond;Processus"/>
+        <rdfs:label xml:lang="fr">B.2.2 Etablissement de la représentation de soi et de l&apos;environnement</rdfs:label>
+        <Diamond:objectif xml:lang="fr">On commencera par s’intéresser à la représentation qu’a l’agent de lui même (identifiant, niveau d’énergie etc.). Ces données de l’agent sont donc à identifier.
+Les actions travaillent, dans la plupart des cas, à partir des données disponibles dans la représentation de l’environnement détenue par l’agent. Il s’agit donc de spécifier cette représentation à partir des besoins exprimés lors de la spécification des actions. Afin de garantir la réalité de ces données, il est alors nécessaire de définir les capacités de perception utiles. Ces perceptions nécessitées par ces tâches peuvent être définies d’une manière analogue aux actions :
+1. Les perceptions primitives qui sont les perceptions non décomposables.
+2. Les perceptions composées qui sont construites à partir d’autres perceptions c’est-à-dire des éléments de la représentation du monde.
+Les besoins en données de l’agent, qui ne sont pas satisfaits, devront être clairement définis et mis en avant. Lors de la phase sociale, il sera nécessaire de savoir si les autres agents peuvent répondre à ces besoins. Si ce ne sera pas le cas, il faudra contacter le demandeur et re-itérer sur le processus d’analyse.</Diamond:objectif>
+        <Diamond:next rdf:resource="&Diamond;B23EtablissementDiagrammeContexte"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#B23EtablissementDiagrammeContexte -->
+
+    <NamedIndividual rdf:about="&Diamond;B23EtablissementDiagrammeContexte">
+        <rdf:type rdf:resource="&Diamond;Processus"/>
+        <rdfs:label xml:lang="fr">B.2.3 Etablissement du diagramme de contexte</rdfs:label>
+        <Diamond:objectif xml:lang="fr">Cette activité peut avoir des répercussions sur le diagramme de cas d’utilisation. On établit ainsi, sans tenir compte des différents solutions technologiques ou des contraintes de conception, le diagramme de Contexte qui va nous permettre d’identifier le système (ou certaines fonctionnalités principales) par rapport aux flux d’entrées et de sorties. Dans l’activité précédente, on a défini les actions et les perceptions de l’agent : à ce niveau on va les instancier en précisant les échanges d’informations entre les différents organes physiques qui exécuteront les actions/perceptions primitives. Aucun choix technologique n’est fait à ce niveau (ce sera fait durant la phase de conception). Le diagramme de contexte peut éventuellement être accompagné d’un diagramme de Flots de Données qui est un sous-processus du diagramme de contexte et qui va permettre d’analyser chaque élément du diagramme de contexte et plus particulièrement les terminateurs et les flots de données. Il sera possible aussi de définir le diagramme de Flots de Contrôle hiérarchisé qui résume le diagramme de contexte et le diagramme de flots de données en intégrant des nouvelles sorties et entrées ainsi que les fiches de
+spécification des différents processus de transformation ou de contrôle.</Diamond:objectif>
+        <Diamond:next rdf:resource="&Diamond;B24EtablirComportementAgent"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#B24EtablirComportementAgent -->
+
+    <NamedIndividual rdf:about="&Diamond;B24EtablirComportementAgent">
+        <rdf:type rdf:resource="&Diamond;Processus"/>
+        <rdfs:label xml:lang="fr">B.2.4 Etablissement du comportement des agents</rdfs:label>
+        <Diamond:objectif xml:lang="fr">A ce niveau, on a défini l’ensemble des actions nécessaires à la réalisation des missions confiées à l’agent par l’analyse du problème. On ordonnance ensuite ces actions en comportements ne tenant pas compte des possibles influences externes liées au propre travail des autres agents. Un comportement exprime le déroulement normal du travail que doit effectuer un agent pour un but donné, il est constitué d’une séquence d’actions.
+Les actions peuvent modifier l’environnement ou acquérir des informations de celui-ci dans un processus de fonctionnement ordinaire, échanger des informations ou de tâches avec d’autres agents.</Diamond:objectif>
+        <Diamond:next rdf:resource="&Diamond;B3PhaseSociale"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#B2PhaseIndividuelle -->
+
+    <NamedIndividual rdf:about="&Diamond;B2PhaseIndividuelle">
+        <rdf:type rdf:resource="&Diamond;Phase"/>
+        <rdfs:label xml:lang="fr">B.2. Phase Individuelle</rdfs:label>
+        <Diamond:documentationLiee xml:lang="fr">Dans cette phase, dans le classeur de chaque &quot;type&quot; d’agents. On créé une partie phase individuelle dans laquelle se trouve :
+– une fiche de contexte dans laquelle va apparaître le diagramme de contexte de l’agent (en accord avec les actions/perception identifiées précédemment). Pour cela on s’appuie essentiellement sur la fiche description de l’environnement et sur les fiches liées aux cas d’utilisation. Aucun choix technologique n’étant fait à ce niveau : le diagramme sera à ce stade &quot;incomplet&quot;.
+– Une fiche de schéma d’actions et une fiche de perception est créée pour mettre en respectivement en les dépendances entre les actions (graphe des tâches) et les perceptions. On ne s’intéresse pas aux dépendances perceptions/actions car ce sont des comportements (réactif dans ce cas). On s’appuie essentiellement sur la fiche de contexte pour créer cette fiche.
+– Une fiche de comportement individuelle exprime le comportement de l’agent (aucun formalisme n’est imposé pour l’analyse). Plusieurs fiches pourront être instanciées si plusieurs comportements co-habitent. On s’appuie pour construire le comportement des agents sur les fiches liées aux acteurs et au cas d’utilisation. Il est important de consulter les fiches des modes de marches et d’arrêt car certains modes peuvent affecter des comportements individuels.
+– Tout terme spécifique (apparaissant dans les diagrammes, les arbres etc.) devra apparaître dans le glossaire d’analyse de l’agent. Il figure dans le classeur mais n’est associé à aucune partie.</Diamond:documentationLiee>
+        <rdfs:comment xml:lang="fr">Il est nécessaire avant de créer &quot;l’intelligence&quot; de chaque agent de commencer par une phase monoagent de construction des comportements : l’agent sera vue comme une entité &quot;autiste&quot;. Il est donc nécessaire de s’intéresser aux aspects externes et internes des agents.</rdfs:comment>
+        <Diamond:objectif xml:lang="fr">L’aspect interne consiste à définir ce qui est propre à l’agent, c’est-à-dire ce qu’il sait faire (primitives d’actions ou services, B.2.1) et ce qu’il connaît (sa représentation des A - E, B.2.2). Dans la plupart des cas, les actions travaillent à partir des données disponibles dans la représentation de l’environnement détenue par l’agent. Il s’agit donc ensuite de spécifier cette représentation à partir des besoins exprimés lors de la spécification des actions. Afin de garantir la réalité de ces données, il est alors nécessaire de définir les capacités de perception utiles. L’aspect externe concerne la définition des médias mettant en rapport l’agent avec le monde extérieur, c’est-à-dire ce qu’il peut percevoir (représentation du monde, B.2.2) et comment il le perçoit (diagramme de contexte, B.2.3). L’activité B.2.3 va mettre en exergue, pour chacun des agents, les besoins en capteurs, en effecteurs. Il faudra donc produire un tableau des perceptions/actions qui permettra d’identifier la nature de ces perceptions, les capteurs nécessaires pour accomplir cette perception, et les effecteurs afin de, éventuellement, modifier l’état de ce qui est perçu.
+Dans A.3, nous avons établi une vue fonctionnelle du système : il nous faut désormais voir le même problème d’un point de vue plus matériel et centré sur l’agent. Les diagrammes de contexte sont un cas particulier de diagrammes de flots de données qui définissent les interfaces physiques d’un système. Ils définissent les composants de l’environnement d’un système tels qu’ils sont perçus du point de vue du système, en les identifiant comme une série de terminaisons rattachées aux interfaces du système.
+Nous allons ainsi, grâce à cette activité, définir le contexte de l’agent physique c’est-à-dire caractériser l’environnement physique dans lequel évolue l’agent. Il est nécessaire de s’intéresser entre autres aux interactions possibles même non désirées entre le système et son environnement (actions et perceptions).</Diamond:objectif>
+        <Diamond:hasPart rdf:resource="&Diamond;B21EtablissementGrapheTaches"/>
+        <Diamond:first rdf:resource="&Diamond;B21EtablissementGrapheTaches"/>
+        <Diamond:hasPart rdf:resource="&Diamond;B22EtablissementRepresentationSoiEnvironnement"/>
+        <Diamond:hasPart rdf:resource="&Diamond;B23EtablissementDiagrammeContexte"/>
+        <Diamond:hasPart rdf:resource="&Diamond;B24EtablirComportementAgent"/>
+        <Diamond:next rdf:resource="&Diamond;B3PhaseSociale"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheComportementIndividuel"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheContexte"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheGlossaireAnalyseAgent"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheScemaPerception"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheSchemaAction"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#B31DefinitionConnaissanceAutres -->
+
+    <NamedIndividual rdf:about="&Diamond;B31DefinitionConnaissanceAutres">
+        <rdf:type rdf:resource="&Diamond;Processus"/>
+        <rdfs:label xml:lang="fr">B.3.1 Définition de la connaissance des autres</rdfs:label>
+        <Diamond:objectif xml:lang="fr">Dans un premier temps il est nécessaire de s’intéresser à la perception des autres (sous-entendu les autres agents). Ainsi pour chaque agent on indique ce que
+l’agent peut savoir à tout instant et comment il peut le savoir. Dans cette partie, on n’aborde pas la définition précise des protocoles d’interaction du type protocoles d’introduction : on se contente d’exprimer des conditions sur les données perceptibles.</Diamond:objectif>
+        <Diamond:next rdf:resource="&Diamond;B31DefinitionConnaissanceAutres"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#B32DefinitionPrimitivesCommunication -->
+
+    <NamedIndividual rdf:about="&Diamond;B32DefinitionPrimitivesCommunication">
+        <rdf:type rdf:resource="&Diamond;Processus"/>
+        <rdfs:label xml:lang="fr">B.3.2 Définition des primitives de communication</rdfs:label>
+        <Diamond:objectif xml:lang="fr">Il nous faut dès lors caractériser les primitives de communication. Cette caractérisation se fait selon quatre points et en respect du cahier des charges :
+– Les médias de communication qu’offre l’environnement physique. Un médium est le support de transmission permettant le passage des informations d’un équipement à un autre (fibre optique, cuivre, air etc.).
+– L’adressage qui doit être mis en place. On détermine si les agents doivent pouvoir avoir des conversations bipartites ou multipartites, diffuser à des groupes (multicast), inonder les autres agents (broadcast).
+– La persistance pour savoir si les messages doivent être disponibles pour une certaines durée (utilisation éventuelle de blackboard ou autre).
+– La localité des communications : on doit identifier s’il est possible ou non que les envois de messages nécessitent de s’appuyer sur son entourage.
+Si le cahier des charges contient des contraintes techniques à ce sujet, il est important de les prendre en compte. Cependant, en aucun cas le choix d’un médium parmi différents types de média possibles n’est effectué à ce niveau : c’est au concepteur de choisir une solution technologique en fonction des contraintes technologiques spécifiées : seuls l’analyse des besoins en communication des agents est approfondie.</Diamond:objectif>
+        <Diamond:next rdf:resource="&Diamond;B33DefinitionActionPerceptionsCollaboratives"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#B33DefinitionActionPerceptionsCollaboratives -->
+
+    <NamedIndividual rdf:about="&Diamond;B33DefinitionActionPerceptionsCollaboratives">
+        <rdf:type rdf:resource="&Diamond;Processus"/>
+        <rdfs:label xml:lang="fr">B.3.3 Définition des actions et perceptions collaboratives</rdfs:label>
+        <Diamond:objectif xml:lang="fr">A ce stade de l’analyse, on s’intéresse à la définition des services évolués intégrant des interactions avec les autres agents et aux éventuels contrats:
+on définit les protocoles d’interaction. On s’intéresse aussi aux perceptions que l’on peut obtenir grâce à d’autres agents. Les besoins en données qui n’ont pas été satisfaits dans la phase individuelle doivent en effet trouver un écho favorable dans cette activité sinon il sera nécessaire de solliciter à nouveau l’utilisateur.</Diamond:objectif>
+        <Diamond:next rdf:resource="&Diamond;B34ExpressionOrganisationSMA"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#B34ExpressionOrganisationSMA -->
+
+    <NamedIndividual rdf:about="&Diamond;B34ExpressionOrganisationSMA">
+        <rdf:type rdf:resource="&Diamond;Processus"/>
+        <rdfs:label xml:lang="fr">B.3.4 Expression de l&apos;organisation du Système Multi-Agents</rdfs:label>
+        <Diamond:objectif xml:lang="fr">On s’intéresse ensuite à l’aspect social du système comme dans la décomposition AEIO des systèmes multi-agents traditionnels. On va donc étudier la possibilité de collaborations, la formation de coalition etc. On pourra par exemple associer des schémas d’interactions aux rôles etc. Les groupes peuvent être exprimés à l’aide de diagrammes entité-relation.</Diamond:objectif>
+        <Diamond:next rdf:resource="&Diamond;B4PhaseIntegration"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#B3PhaseSociale -->
+
+    <NamedIndividual rdf:about="&Diamond;B3PhaseSociale">
+        <rdf:type rdf:resource="&Diamond;Phase"/>
+        <rdfs:label xml:lang="fr">B.3. Phase Sociale</rdfs:label>
+        <Diamond:objectif xml:lang="fr">Les modes d’échanges sont formalisés de façon externe et commune aux agents à l’ aide de protocoles d’interaction (qui peuvent éventuellement mettre en oeuvre des actes de langages). La gestion des conflits est optimisée par la prise en compte des relations entre les agents, c’est à dire la construction d’une organisation. Ces relations peuvent être construites par une analyse des dépendances entre agent en terme de tâches, de position sociale ou d’influence. L’expression d’une organisation doit être externe. Les agents ont la capacité d’exploiter cette connaissance organisationnelle. La modélisation de l’organisation se fait naturellement avec des relations de subordination qui expriment la priorité d’un d’agent sur un autre. Dans le cas de délégation de tâches, on précise à quels autres agents ces actions peuvent être déléguées et donc de construire une représentation des autres et de leurs compétences. A ce niveau du cycle de vie, nous allons nous intéresser aux actions qui peuvent initialiser des interactions avec d’autres agents et répondre à tous les besoins en interaction. Nous pouvons distinguer différents types de granularité dans les protocoles d’interactions. Cette granularité va donner naissance aux différentes activités de cette étape.</Diamond:objectif>
+        <Diamond:documentationLiee xml:lang="fr">On crée pour chaque classeur d’agent une partie Phase sociale. On y adjoint une fiche de connaissance des autres, une fiche des besoins en communication, une fiche des actions et des perceptions collaboratives, une fiche d’aspect organisationnel et une fiche des
+comportements collectifs qui n’impose aucun formalisme pour l’analyse. Il est important de consulter les fiches des modes de marche et d’arrêt car certains modes peuvent affecter des comportements collectifs.</Diamond:documentationLiee>
+        <Diamond:first rdf:resource="&Diamond;B31DefinitionConnaissanceAutres"/>
+        <Diamond:hasPart rdf:resource="&Diamond;B31DefinitionConnaissanceAutres"/>
+        <Diamond:hasPart rdf:resource="&Diamond;B32DefinitionPrimitivesCommunication"/>
+        <Diamond:hasPart rdf:resource="&Diamond;B33DefinitionActionPerceptionsCollaboratives"/>
+        <Diamond:hasPart rdf:resource="&Diamond;B34ExpressionOrganisationSMA"/>
+        <Diamond:next rdf:resource="&Diamond;B4PhaseIntegration"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheActionPerceptionsCollaboratives"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheAspectOrganisationnel"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheBesoinsCommunication"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheConnaissanceAutres"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#B41IdentificationInfluencesociale -->
+
+    <NamedIndividual rdf:about="&Diamond;B41IdentificationInfluencesociale">
+        <rdf:type rdf:resource="&Diamond;Processus"/>
+        <rdfs:label xml:lang="fr">B.4.1 Identification de l&apos;influence sociale</rdfs:label>
+        <Diamond:objectif xml:lang="fr">Le but de cette activité est d’identifier les influences sociales qui peuvent affecter le comportement purement individuel de l’agent. Ainsi, on doit déterminer les possibles situations d’indépendance, de collaboration (simple ou ordonnée), d’encombrement, de compétition (individuelle pure ou collective), les situations de conflits (individuels ou collectif) pour des ressources. Ces différentes situations d’interactions sont précisés en §2.2.3.3.</Diamond:objectif>
+        <Diamond:next rdf:resource="&Diamond;B42DefinitionComportementSocial"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#B42DefinitionComportementSocial -->
+
+    <NamedIndividual rdf:about="&Diamond;B42DefinitionComportementSocial">
+        <rdf:type rdf:resource="&Diamond;Processus"/>
+        <rdfs:label xml:lang="fr">B.4.2 Définition du comportement social</rdfs:label>
+        <Diamond:objectif xml:lang="fr">Il va maintenant falloir adapter le comportement des agents (jusqu’à lors il était &quot;autiste&quot;). On va donc prendre en compte les perturbations identifiées précédemment et dues aux autres agents.
+Cette phase a pour objectif de réaliser l’intégration dans les agents des aspects décrits dans les phases précédentes. Elle impose en cela de construire le contrôle de l’agent. Cette phase a pour objectif de réaliser l’intégration dans les agents des aspects décrits dans les phases précédentes. Elle impose en cela de construire le contrôle de l’agent. Il s’agit donc de choisir une architecture et de l’instancier dans le contexte de l’application. Nous devons décrire les connaissances et des tâches de l’agent. Les tâches de l’agent peuvent être de simples primitives ou des services évolués.
+A ce niveau de la méthode nous nous intéressons au premier niveau de description de l’agent, c’est à-dire son modèle. Les traditionnels second et troisième niveau de description d’un agent, l’architecture et l’implémentation, ne concerneront respectivement que les étapes de Conception générique et de réalisation du cycle de développement.</Diamond:objectif>
+        <Diamond:next rdf:resource="&Diamond;CConceptionGenerique"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#B4PhaseIntegration -->
+
+    <NamedIndividual rdf:about="&Diamond;B4PhaseIntegration">
+        <rdf:type rdf:resource="&Diamond;Phase"/>
+        <rdfs:label xml:lang="fr">B.4. Phase d&apos;intégration</rdfs:label>
+        <Diamond:objectif xml:lang="fr">Cette phase permet la socialisation des individus. A ce point, les influences possibles sur les comportements purement individuels doivent être analysées. Ces influences sont intégrées dans les agents par l’intermédiaire des capacités d’évaluation de la communication et de la perception détaillées dans le modèle de l’agent. Jusqu’ici la décomposition a occulté la notion de contrôle de l’agent, c’est-à-dire comment il va gérer son attention, sa décision, et enchaîner ses actions. Cet aspect que l’on peut qualifier de mixte se greffe sur les deux précédents (social et individuel). C’est par l’intégration des influences sociales dans les agents que l’on va donner une dynamique au SMA.</Diamond:objectif>
+        <Diamond:documentationLiee xml:lang="fr">On créé pour chaque classeur d’agent une partie Phase d’intégration. On y adjoint une fiche d’identification de l’influence sociale, une fiche de comportement sociale, une fiche d’adaptation des comportement individuels et sociaux où pour chaque influence sociale identifiée on apporte une correction du comportement de l’agent.</Diamond:documentationLiee>
+        <Diamond:first rdf:resource="&Diamond;B41IdentificationInfluencesociale"/>
+        <Diamond:hasPart rdf:resource="&Diamond;B41IdentificationInfluencesociale"/>
+        <Diamond:hasPart rdf:resource="&Diamond;B42DefinitionComportementSocial"/>
+        <Diamond:next rdf:resource="&Diamond;CConceptionGenerique"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheAdaptationComportementsIndividuelsSociaux"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheComportementSocial"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;FicheIdentificationInfluenceSociale"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#BAnalyseSMA -->
+
+    <NamedIndividual rdf:about="&Diamond;BAnalyseSMA">
+        <rdf:type rdf:resource="&Diamond;Etape"/>
+        <rdfs:label xml:lang="fr">B. Analyse du système Multi-Agents</rdfs:label>
+        <Diamond:objectif xml:lang="fr">Vu le caractère mixte logiciel/matériel, il nous faut dans cette démarche, étudier une spécialisation de la définition des différents axes de la décomposition AEIO pour les étendre à la description du &quot;matériel&quot; (il est à noter qu’à ce niveau de la méthode, aucune frontière logicielle/matérielle fixe n’existe pour ce qui concerne la spécification du contrôle). Une des premières questions à élucider est celle qui concerne l’agencement des axes. D’une manière générale, notre expérience nous conduit à penser que l’ordre d’approche des axes dans la décomposition multi-agents dépend des problèmes et des domaines abordés [Occello, 2003]. Lorsque l’on travaille sur un système physique il nous semble en fait assez naturel de commencer par s’intéresser d’abord à l’Environnement dans lequel les entités évoluent, puis à l’axe Agent, aux Interactions, et enfin l’Organisation.
+L’itération multi-agents de la spirale regroupe quatre différentes activités que nous abordons par la suite :
+– une phase de situation pour définir les limites du système multi-agents, de l’environnement (B.1),
+– une phase individuelle pour s’intéresser aux agents de façon interne (B.2),
+– une phase sociale pour les interactions et l’organisation (B.3),
+– une phase d’intégration pour la socialisation des agents c’est-à-dire l’intégration des influences sociales dans les agents (B.4).</Diamond:objectif>
+        <rdfs:comment xml:lang="fr">la seconde étape va permettre l’analyse de l’application à concevoir. Cette étape est détaillée en §5.3</rdfs:comment>
+        <Diamond:first rdf:resource="&Diamond;B1PhaseSituation"/>
+        <Diamond:hasPart rdf:resource="&Diamond;B1PhaseSituation"/>
+        <Diamond:hasPart rdf:resource="&Diamond;B2PhaseIndividuelle"/>
+        <Diamond:hasPart rdf:resource="&Diamond;B3PhaseSociale"/>
+        <Diamond:hasPart rdf:resource="&Diamond;B4PhaseIntegration"/>
+        <Diamond:next rdf:resource="&Diamond;CConceptionGenerique"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#C11ChoixArchitectureAgents -->
+
+    <NamedIndividual rdf:about="&Diamond;C11ChoixArchitectureAgents">
+        <rdf:type rdf:resource="&Diamond;Processus"/>
+        <rdfs:label xml:lang="fr">C.1.1 Choix d&apos;une architecture pour les différents agents</rdfs:label>
+        <Diamond:objectif xml:lang="fr">On fait les choix des architectures pour les agents en accord avec le modèle choisi et les contraintes spécifiées précédemment. Cette architecture
+comme nous le verrons dans l’étape suivante, servira de patron pour la conception détaillée en composants permettant ainsi de la guider et de la structurer.</Diamond:objectif>
+        <Diamond:next rdf:resource="&Diamond;C12PrecisionsDiagrammeContexte"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#C12PrecisionsDiagrammeContexte -->
+
+    <NamedIndividual rdf:about="&Diamond;C12PrecisionsDiagrammeContexte">
+        <rdf:type rdf:resource="&Diamond;Processus"/>
+        <rdfs:label xml:lang="fr">C.1.2 Précision du diagramme de contexte</rdfs:label>
+        <Diamond:objectif xml:lang="fr">A ce niveau de l’étude il est temps de procéder aux choix technologiques des actionneurs et des effecteurs de chaque agent. On prendra garde les contraintes à ne pas violer figurant dans la fiche des contraintes technologiques. Les paramètres qui influent sur ce choix sont traditionnellement le coût, la consommation électrique, le rendement, la fiabilité etc. En fonction de ces choix il nous faut caractériser les interfaces qui permettront de numériser les informations (échantillonner, quantifier, coder). On complète ainsi les informations apparaissant sur le diagramme de contexte.</Diamond:objectif>
+        <Diamond:next rdf:resource="&Diamond;C2ConstructionTachesApplicatives"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#C1DefinitionContexte -->
+
+    <NamedIndividual rdf:about="&Diamond;C1DefinitionContexte">
+        <rdf:type rdf:resource="&Diamond;Phase"/>
+        <rdfs:label xml:lang="fr">C.1 Définition du contexte</rdfs:label>
+        <Diamond:documentationLiee xml:lang="fr">Au point de départ du travail fait dans cette activité sont les fiches de contextes élaborée dans la phase individuelle. A ce niveau de l’étude on s’appuie sur les à ne pas violer les contraintes figurant dans la fiche des contraintes technologiques. On va créer une partie Conception dans la documentation de l’agent. On commence par créer une fiche de description architecturale de l’agent. On y précise les raisons qui ont amené à ce choix. On créé une nouvelle fiche de diagramme de contexte. On y reprend le contenu du diagramme de contexte mais en précisant la nature physique des informations (il se peut que dans certains cas il soit nécessaire de dégrader le diagramme c’est-à-dire l’adapter à des contraintes particulières de conception).</Diamond:documentationLiee>
+        <rdfs:comment xml:lang="fr">Dans cette étape nous allons préciser le contexte qui a été esquissé durant l’étape précédente.</rdfs:comment>
+        <Diamond:hasPart rdf:resource="&Diamond;C11ChoixArchitectureAgents"/>
+        <Diamond:first rdf:resource="&Diamond;C11ChoixArchitectureAgents"/>
+        <Diamond:hasPart rdf:resource="&Diamond;C12PrecisionsDiagrammeContexte"/>
+        <Diamond:next rdf:resource="&Diamond;C2ConstructionTachesApplicatives"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheContexte"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#C21ConstructionCoquilleExterne -->
+
+    <NamedIndividual rdf:about="&Diamond;C21ConstructionCoquilleExterne">
+        <rdf:type rdf:resource="&Diamond;Processus"/>
+        <rdfs:label xml:lang="fr">C.2.1 Construction de la coquille externe de l&apos;agent</rdfs:label>
+        <Diamond:objectif xml:lang="fr">On construit la coquille de l’agent c’est-à-dire :
+– les parties de l’agent qui vont acquérir l’information provenant des interfaces capteurs afin son interface avec le monde extérieur afin d’établir la représentation du monde,
+– les parties de l’agent qui vont agir sur le monde extérieur pour changer son état.</Diamond:objectif>
+        <Diamond:next rdf:resource="&Diamond;C22ConstructionCoquilleInterne"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#C22ConstructionCoquilleInterne -->
+
+    <NamedIndividual rdf:about="&Diamond;C22ConstructionCoquilleInterne">
+        <rdf:type rdf:resource="&Diamond;Processus"/>
+        <rdfs:label xml:lang="fr">C.2.2 Construction de la coquille interne de l&apos;agent</rdfs:label>
+        <Diamond:objectif xml:lang="fr">On s’attache ensuite à la création des actions évoluées : actions paramétrées, composées et situés ainsi que les actions composées. Il est conseillé de respecter l’ordre dans lesquels ont été définies préalablement les différentes actions et perceptions afin d’éviter de devoir revenir sur un composant déjà créé à cause d’une mauvaise appréciation de l’interface d’un composant utilisé.</Diamond:objectif>
+        <Diamond:next rdf:resource="&Diamond;C3ConstructionModulesCommunicationStructuresOrganisation"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#C2ConstructionTachesApplicatives -->
+
+    <NamedIndividual rdf:about="&Diamond;C2ConstructionTachesApplicatives">
+        <rdf:type rdf:resource="&Diamond;Phase"/>
+        <rdfs:label xml:lang="fr">C.2 Construction des tâches applicatives</rdfs:label>
+        <Diamond:objectif xml:lang="fr">Nous allons construire les différentes tâches de l’agent. Cette construction se fera via des composants.
+Un composant peut être défini comme une unité indépendante de production et de déploiement, qui est
+combinée à d’autres composants pour former une application (dans notre cas ce sera une application
+multi-agents). Une approche orientée composants permet de bénéficier de plusieurs avantages :
+– Réutilisation des composants par une autre application,
+– Mise à jour des composants, sans que l’ensemble de l’application ne soit modifié,
+– Les composants peuvent reposer sur des ressources (Base de données, images).
+Néanmoins, comme généralement &quot;le langage est l’environnement&quot;, il n’est pas suffisant d’inventer
+de nouveaux langages de programmation ou des mécanismes de composition. Ceux-ci doivent être aidés
+par des environnements de développement, de sorte que les développeurs puissent appliquer les nouveaux
+dispositifs.</Diamond:objectif>
+        <Diamond:documentationLiee xml:lang="fr">Pour chaque composant créé, on saisit une fiche de description de composant qui permet d’identifier sa description externe et sa description interne</Diamond:documentationLiee>
+        <Diamond:hasPart rdf:resource="&Diamond;C21ConstructionCoquilleExterne"/>
+        <Diamond:first rdf:resource="&Diamond;C21ConstructionCoquilleExterne"/>
+        <Diamond:hasPart rdf:resource="&Diamond;C22ConstructionCoquilleInterne"/>
+        <Diamond:next rdf:resource="&Diamond;C3ConstructionModulesCommunicationStructuresOrganisation"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#C3ConstructionModulesCommunicationStructuresOrganisation -->
+
+    <NamedIndividual rdf:about="&Diamond;C3ConstructionModulesCommunicationStructuresOrganisation">
+        <rdf:type rdf:resource="&Diamond;Phase"/>
+        <rdfs:label xml:lang="fr">C.3 Construction des modules de communication et des structures d&apos;organisation</rdfs:label>
+        <Diamond:objectif xml:lang="fr">Ce processus a pour objectif la construction des modules de communication. Cette construction se fait, comme précédemment avec des composants. Une fois cette opération effectuée, on va s’intéresser à la construction des protocoles d’interaction et de la structure organisationnelle toujours avec des composants.</Diamond:objectif>
+        <Diamond:documentationLiee xml:lang="fr">Similaire à la construction de la documentation du processus C.2 vue en 5.4.2.</Diamond:documentationLiee>
+        <Diamond:next rdf:resource="&Diamond;C4ConstructionControle"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#C41ConstructionControleEnvironnemental -->
+
+    <NamedIndividual rdf:about="&Diamond;C41ConstructionControleEnvironnemental">
+        <rdf:type rdf:resource="&Diamond;Processus"/>
+        <rdfs:label xml:lang="fr">C.4.1 Construction du contrôle environnemental</rdfs:label>
+        <rdfs:comment xml:lang="fr">Construire le contrôle (partie environnementale) 
+Dis moi comment tu réagis et je te dirais d’où tu viens?</rdfs:comment>
+        <Diamond:next rdf:resource="&Diamond;C42ConstructionControleSocial"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#C42ConstructionControleSocial -->
+
+    <NamedIndividual rdf:about="&Diamond;C42ConstructionControleSocial">
+        <rdf:type rdf:resource="&Diamond;Processus"/>
+        <rdfs:label xml:lang="fr">C.4.2 Constructuion du contrôle social</rdfs:label>
+        <rdfs:comment xml:lang="fr">Construire le contrôle social de l’agent.
+Dis moi comment tu penses et je te dirai de quelle société tu viens?</rdfs:comment>
+        <Diamond:next rdf:resource="&Diamond;DImplementation"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#C4ConstructionControle -->
+
+    <NamedIndividual rdf:about="&Diamond;C4ConstructionControle">
+        <rdf:type rdf:resource="&Diamond;Phase"/>
+        <rdfs:label xml:lang="fr">C.4 Construction du contrôle de l&apos;agent</rdfs:label>
+        <Diamond:objectif xml:lang="fr">Cette étape compose avec l’élaboration des comportements des composants/agents. Les parties &quot;évaluation&quot; et &quot;décision&quot; de l’agent seront créées dans cette étape. Quand un message est reçu le composant/agent doit être capable de fournir une réponse appropriée, de choisir les comportements appropriés qui doivent être exécuter. Cette exécution de tâche va changer alors l’état du composant/agent.</Diamond:objectif>
+        <Diamond:documentationLiee xml:lang="fr">Similaire à la construction de la documentation du processus C.2 vue en 5.4.2.</Diamond:documentationLiee>
+        <Diamond:first rdf:resource="&Diamond;C41ConstructionControleEnvironnemental"/>
+        <Diamond:hasPart rdf:resource="&Diamond;C41ConstructionControleEnvironnemental"/>
+        <Diamond:hasPart rdf:resource="&Diamond;C42ConstructionControleSocial"/>
+        <Diamond:next rdf:resource="&Diamond;DImplementation"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#CConceptionGenerique -->
+
+    <NamedIndividual rdf:about="&Diamond;CConceptionGenerique">
+        <rdf:type rdf:resource="&Diamond;Etape"/>
+        <rdfs:label xml:lang="fr">C. Conception Générique</rdfs:label>
+        <rdfs:comment xml:lang="fr">La troisième étape de notre méthode consiste en une conception générique du système : à ce niveau du cycle de vie, on spécifie sans distinction ce qui deviendra logiciel ou matériel. Cette étape qui utilise les composants comme unité opératoire est détaillée
+en §5.4. Elle a donc pour objectif la construction des entités élémentaires de notre système (les agents) en respect avec l’analyse effectuée précédemment.</rdfs:comment>
+        <Diamond:objectif xml:lang="fr">Tout n’est pas modélisable, ni plus encore implémentable avec un mêmemodèle de système multi-agents. Par contre, les mêmes schémas se répètent souvent au travers des différentes applications. Un des objectifs de notre approche est de fournir des modèles et des outils basés sur la réutilisabilité. L’expérience accumulée dans le domaine de la conception d’applications des SMA nous permet d’envisager de réutiliser des modèles génériques développés pour chacune des notions A, E, I, O, en les instanciant pour les applications visées. L’objectif de ce niveau est d’obtenir un système de composants à partir de la description informelle du système multi-agents. La construction de nos agents repose sur l’utilisation de composants. Les composants sont de très bons outils car ils sont interchangeables et réutilisables. De plus, ils facilitent le travail futur concernant le partitionnement de ce qui deviendra logiciel et matériel.</Diamond:objectif>
+        <Diamond:hasPart rdf:resource="&Diamond;C1DefinitionContexte"/>
+        <Diamond:first rdf:resource="&Diamond;C1DefinitionContexte"/>
+        <Diamond:hasPart rdf:resource="&Diamond;C2ConstructionTachesApplicatives"/>
+        <Diamond:hasPart rdf:resource="&Diamond;C3ConstructionModulesCommunicationStructuresOrganisation"/>
+        <Diamond:hasPart rdf:resource="&Diamond;C4ConstructionControle"/>
+        <Diamond:next rdf:resource="&Diamond;DImplementation"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#CahierChargesForm -->
+
+    <NamedIndividual rdf:about="&Diamond;CahierChargesForm">
+        <rdf:type rdf:resource="&Diamond;Formulaire"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#CahierDesCharges -->
+
+    <NamedIndividual rdf:about="&Diamond;CahierDesCharges">
+        <rdf:type rdf:resource="&Diamond;ApprochePreliminaire"/>
+        <rdfs:label xml:lang="fr">Cahier des charges</rdfs:label>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#D11DeterminationPartitionnement -->
+
+    <NamedIndividual rdf:about="&Diamond;D11DeterminationPartitionnement">
+        <rdf:type rdf:resource="&Diamond;Processus"/>
+        <rdfs:label xml:lang="fr">D.1.1 Détermination du Partitionnement</rdfs:label>
+        <Diamond:objectif xml:lang="fr">Dans ce premier niveau de sélection du partitionnement on va déterminer les parties de l’agent pour lesquelles la question du partitionnement ne se pose pas. En effet certains éléments, par essence même, devront être matériels. Comme on peut le voir sur la figure 5.17, c’est le cas des périphériques d’entrées/sorties comme par exemple les capteurs et les actionneurs.</Diamond:objectif>
+        <rdfs:comment xml:lang="fr">Déterminer si la question du partitionnement se pose</rdfs:comment>
+        <Diamond:next rdf:resource="&Diamond;D12HierarchisationCriteres"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#D12HierarchisationCriteres -->
+
+    <NamedIndividual rdf:about="&Diamond;D12HierarchisationCriteres">
+        <rdf:type rdf:resource="&Diamond;Processus"/>
+        <rdfs:label xml:lang="fr">D.1.2 Hiérarchisation des critères</rdfs:label>
+        <Diamond:objectif xml:lang="fr">Ce second niveau de sélection du partitionnement concerne les éléments pour lesquels il y a réellement plusieurs choix d’implémentation (fig. 5.17, zones partagées par le co-design et le logiciel ou le matériel). Pour ceux-là différents paramètres vont entrer en jeu : les critères de partitionnement peuvent être plus ou moins subjectifs. Nous présentons dans le tableau 5.4 ceux que nous avons jugés pertinents pour les agents à partir de différents travaux effectués dans le codesign [De Micheli, 1995, Ismail, 1996, Berrebi, 1997, Koudil, 2002, Kumar, 2002] et de notre propre expérience.</Diamond:objectif>
+        <Diamond:next rdf:resource="&Diamond;D13DeterminationChoixPartitionnement"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#D13DeterminationChoixPartitionnement -->
+
+    <NamedIndividual rdf:about="&Diamond;D13DeterminationChoixPartitionnement">
+        <rdf:type rdf:resource="&Diamond;Processus"/>
+        <rdfs:label xml:lang="fr">D.1.3 Détermination du choix du partitionnement</rdfs:label>
+        <Diamond:objectif xml:lang="fr">Le tableau 5.4 définit plusieurs critères et indique la partitionnement qui sera incité. Il est possible d’avoir des indications contradictoires : c’est la raison pour laquelle les critères ont été hiérarchisés. C’est le concepteur qui devra déterminer la pertinence d’une ou l’autre solution. Un autre critère non mentionné précédemment est à prendre en compte : ce qui a déjà été réalisé par l’entreprise. En effet, certains composants ont éventuellement pu être construits d’un point de vue purement matériel ou purement logiciel. Le concepteur pourra donc être incité à choisir cette solution. Un autre critère qui n’entre pas dans le niveau précédent provient de la nécessité de créer des interfaces entre le logiciel et le matériel. Selon ce que propose l’outil, il peut être compliqué d’interfacer logiciel et matériel. Ainsi, on évitera d’avoir une succession de composants logiciels, puis matériels, puis logiciels etc.</Diamond:objectif>
+        <Diamond:next rdf:resource="&Diamond;D14DefinitionInterfaceLogicielleMaterielle"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#D14DefinitionInterfaceLogicielleMaterielle -->
+
+    <NamedIndividual rdf:about="&Diamond;D14DefinitionInterfaceLogicielleMaterielle">
+        <rdf:type rdf:resource="&Diamond;Processus"/>
+        <rdfs:label xml:lang="fr">D.1.4 Définition des interfaces logicielles / matérielles</rdfs:label>
+        <Diamond:objectif xml:lang="fr">Lorsque l’on fait collaborer du logiciel et du matériel il est nécessaire de définir des interfaces. Généralement on établit une norme pour tout composant et on fournit un bus.</Diamond:objectif>
+        <Diamond:next rdf:resource="&Diamond;D2CoSimulation"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#D1Partitionnement -->
+
+    <NamedIndividual rdf:about="&Diamond;D1Partitionnement">
+        <rdf:type rdf:resource="&Diamond;Phase"/>
+        <rdfs:label xml:lang="fr">D.1 Partitionnement</rdfs:label>
+        <Diamond:objectif xml:lang="fr">La principale utilisation du co-design figure dans le partitionnement logiciel/matériel qui sera fait des différents composants se rapportant aux différents axes de la décomposition AEIO. Il devra être fait manuellement (dans notre cas) en accord avec les spécifications technologiques. Il inclura, à terme, la co-simulation pour la co-synthèse. Cette étape produit les spécifications du logiciel et du matériel.
+Il nous est indispensable de nous interroger sur les critères qui vont orienter nos décisions vers leur implémentation logicielle ou matérielle. Nous pensons qu’il y a deux niveaux à prendre en compte : tout d’abord on va commencer par écarter les composants pour lesquelles la question du partitionnement ne se pose pas (D.1.1). Pour chacun des composants pour lesquels se pose la question du partitionnement, on va hiérarchiser les critères que l’on souhaite satisfaire (D.1.2). On en déduira le choix du partitionnement (D.1.3) et on s’interrogera quant aux interfaces logicielle/matérielle à implémenter 4 (D.1.4).</Diamond:objectif>
+        <Diamond:documentationLiee xml:lang="fr">Une partie partitionnement est créée. Elle regroupe une fiche de critère de partitionnement qui indique la hiérarchisation des critères. De plus une fiche de partitionnement précise pour chaque composant la déclinaison choisie. Il peut exister plusieurs implémentations différentes logicielles ou matérielles d’un même composant : la référence de l’implémentation choisie est précisée et ce choix doit être motivé. Si des contraintes influant sur le partitionnement sont spécifiées dans les fiches de contraintes techniques et technologiques, elles ne devront pas être violées.</Diamond:documentationLiee>
+        <Diamond:first rdf:resource="&Diamond;D11DeterminationPartitionnement"/>
+        <Diamond:hasPart rdf:resource="&Diamond;D11DeterminationPartitionnement"/>
+        <Diamond:hasPart rdf:resource="&Diamond;D12HierarchisationCriteres"/>
+        <Diamond:hasPart rdf:resource="&Diamond;D13DeterminationChoixPartitionnement"/>
+        <Diamond:hasPart rdf:resource="&Diamond;D14DefinitionInterfaceLogicielleMaterielle"/>
+        <Diamond:next rdf:resource="&Diamond;D2CoSimulation"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#D2CoSimulation -->
+
+    <NamedIndividual rdf:about="&Diamond;D2CoSimulation">
+        <rdf:type rdf:resource="&Diamond;Phase"/>
+        <rdfs:label xml:lang="fr">D.2 Cosimulation</rdfs:label>
+        <Diamond:objectif xml:lang="fr">Centrée sur les agents et non sur le système.
+La co-simulation est une simulation simultanée des parties logicielles et des parties matérielles sans oublier leurs interactions. Elle permet d’analyse les propriétés dynamiques du système comme les temps d’exécution. Elle permet de co-vérifier le système c’est-à-dire de garantir que :
+– Les performances et fonctionnalités du système à concevoir sont conformes aux co-spécifications.
+
+--Coût : Critère omniprésent pendant tout le processus de conception du système. Sur de très petites séries c’est le coût du développement du système logiciel et du matériel que l’on va chercher à diminuer autant que possible tandis que dans le cas de grandes séries, c’est la diminution des coûts de fabrication qui revêtira une grande importance.
+-- Performance : Son importance varie selon les problèmes traités. Les applications temps-réel et pour lesquelles la robustesse est fonction du temps d’occupation processeur sont celles pour lesquelles ce critère est capital. C’est alors un partitionnement matériel qui sera à privilégier autant que possible.
+--Flexibilité : Ce critère qui joue en faveur du logiciel. En effet, les effets de bords liés aux modifications du logiciel ont généralement un impact moins important sur le système global que dans le cas du matériel. Cependant, la flexibilité des EPLD et autre FPGA s’améliore grandement et ils sont même re-programmables in-situ, c’est-à-dire que l’on peut modifier leur programme sans les extraire de la carte électronique sur laquelle ils sont fixés.
+-- Tolérance aux pannes internes : De part leur nature les systèmes logiciels sont moins tolérants aux pannes. En effet, les microcontrôleurs, sur lesquels ils reposent, utilisent des mémoires, des structures de piles sujettes au débordement etc. Ce critère qui jouera en faveur d’un partitionnement matériel.
+-- Ergonomie : Il regroupe toutes les caractéristiques physiques du système (le poids, le volume, la consommation énergétique, le dégagement thermique etc.). Selon l’application ce critère peut être hautement critique (cas des applications relevant des métiers de l’aéronautique). C’est au concepteur d’apprécier correctement ce critère.
+-- Complexité algorithmique : Plus une tâche est complexe, plus il y aura de chance pour que l’on s’oriente vers un partitionnement logiciel. La synthèse matérielle des tâches hautement cognitives par exemple est beaucoup trop compliquée.
+
+– Que des déviations du fonctionnement n’aient pas été introduits par les différentes étapes du processus de co-design.</Diamond:objectif>
+        <Diamond:documentationLiee xml:lang="fr">Documentation liée aux processus D.2 et D.3 . Dans cette partie de la documentation doivent figurés les protocoles mis en jeu et les résultats commentés des différentes simulations et validations (fiches de co-simulation et fiches de co-validation).</Diamond:documentationLiee>
+        <Diamond:next rdf:resource="&Diamond;D3CoValidation"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#D3CoValidation -->
+
+    <NamedIndividual rdf:about="&Diamond;D3CoValidation">
+        <rdf:type rdf:resource="&Diamond;Phase"/>
+        <rdfs:label xml:lang="fr">D.3 Covalidation</rdfs:label>
+        <Diamond:objectif xml:lang="fr">Centrée sur les agents et non sur le système.
+La co-validation se fait à l’aide d’outils formels. Elle seule permet de vérifier que le système réalisé respecte toutes les contraintes fixées : elle est cependant très difficile à mettre en oeuvre.</Diamond:objectif>
+        <Diamond:documentationLiee xml:lang="fr">Documentation liée aux processus D.2 et D.3 . Dans cette partie de la documentation doivent figurés les protocoles mis en jeu et les résultats commentés des différentes simulations et validations (fiches de co-simulation et fiches de co-validation).</Diamond:documentationLiee>
+        <Diamond:next rdf:resource="&Diamond;D4Realisation"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#D4Realisation -->
+
+    <NamedIndividual rdf:about="&Diamond;D4Realisation">
+        <rdf:type rdf:resource="&Diamond;Phase"/>
+        <rdfs:label xml:lang="fr">D.4 Réalisation</rdfs:label>
+        <rdfs:comment xml:lang="fr">Elle sera réalisée à terme grâce à un outil associé en cours de développement. Chaque composant est spécifié grâce à une notation graphique commune pour la partie matérielle et la partie logicielle. Pour chacun de ces composants le concepteur choisit s’il désire une implémentation matérielle ou logicielle. L’outil pourra prendre en charge la génération automatique du code pour les composants dont il a été choisi une implémentation logicielle. Le code sera écrit dans un langage portable comme le langage Java ou le langage C (facilement embarquable). Pour ce qui est des composants matériels une spécification en VHDL5 sera générée. Après cela, la compilation des différents codes et la synthèse matérielle des différentes spécifications en VHDL seront réalisées comme l’illustre la figure 5.18. Cette figure met en évidence le traitement d’un composant matériel et d’un composant logiciel.
+Le composant matériel est décrit avec un langage de haut niveau prévu à cet effet (ici le VHDL). On y voit sa description externe (Component entity) et le début de sa description interne (Component architecture). Par &quot;synthèse logique&quot;, nous entendons synthèse comportementale qui traduit la description matérielle en une construction fonctionnelle du circuit (logique combinatoire, machine d’états, registres etc.) suivie de la synthèse RTL qui prend en compte le déroulement temporel des traitements. La synthèse &quot;layout&quot; permet la création de masques. Le résultat de ces traitements est un composant matériel. Le composant logiciel voit son fonctionnement codé via un langage de haut niveau (ici le langage C). La compilation permet la traduction du programme en instructions machines. Ces instructions primitives dépendent généralement du processeur cible. L’édition de liens permet d’ajouter des bibliothèques d’exécution, contenant principalement la gestion mémoire, et de faire la jonction avec le système d’exploitation pour les primitives. Le résultat de ces traitements est un code binaire qui sera placé en mémoire et exécuté par un processeur.
+(Le lecteur ne connaissant pas VHDL est invité à consulter l’annexe B )</rdfs:comment>
+        <Diamond:documentationLiee xml:lang="fr">La documentation consiste en :
+– fiches de code sources qui est une copie textuelle des codes générés,
+– fiches de description architecturale matérielle qui rend compte des spécifications matérielles générées,
+– fiches de co-synthèse qui rend compte des interfaces entre les différentes parties logicielles, les différentes parties matérielles et les parties logicielles/matérielles.</Diamond:documentationLiee>
+        <Diamond:next rdf:resource="&Diamond;D5Test"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#D5Test -->
+
+    <NamedIndividual rdf:about="&Diamond;D5Test">
+        <rdf:type rdf:resource="&Diamond;Phase"/>
+        <rdfs:label xml:lang="fr">D.5 Test</rdfs:label>
+        <Diamond:objectif xml:lang="fr">Ce processus est centré sur le système et non sur les agents. Dans ce processus on va s’intéresser à tester le produit finalisé logiciel/matériel. On va s’attacher à vérifier la conformité entre la spécification initiale et le produit réalisé. On portera une attention particulière aux critères soulevés dans l’activité de hiérarchisation des critère.</Diamond:objectif>
+        <Diamond:documentationLiee xml:lang="fr">Une Fiche de conformité est saisie. Elle servira de support aux personnes chargées de mesurer la satisfaction du demandeur.</Diamond:documentationLiee>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#DImplementation -->
+
+    <NamedIndividual rdf:about="&Diamond;DImplementation">
+        <rdf:type rdf:resource="&Diamond;Etape"/>
+        <rdfs:label xml:lang="fr">D. Implémentation</rdfs:label>
+        <rdfs:comment xml:lang="fr">La quatrième étape de notre cycle de vie, détaillée en section 5.5, consiste à implémenter l’application construite dans la étape précédente : le choix d’une partition logicielle/matérielle</rdfs:comment>
+        <Diamond:hasPart rdf:resource="&Diamond;D1Partitionnement"/>
+        <Diamond:first rdf:resource="&Diamond;D1Partitionnement"/>
+        <Diamond:hasPart rdf:resource="&Diamond;D2CoSimulation"/>
+        <Diamond:hasPart rdf:resource="&Diamond;D3CoValidation"/>
+        <Diamond:hasPart rdf:resource="&Diamond;D4Realisation"/>
+        <Diamond:hasPart rdf:resource="&Diamond;D5Test"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#David -->
+
+    <NamedIndividual rdf:about="&Diamond;David">
+        <rdf:type rdf:resource="&Diamond;Analyste"/>
+        <rdf:type rdf:resource="&Diamond;Concepteur"/>
+        <rdf:type rdf:resource="&Diamond;Demandeur"/>
+        <rdf:type rdf:resource="&Diamond;Expert"/>
+        <rdf:type rdf:resource="&Diamond;Utilisateur"/>
+        <foaf:gender rdf:datatype="&xsd;string">M</foaf:gender>
+        <foaf:familyName>Falavaleris</foaf:familyName>
+        <foaf:firstName>David</foaf:firstName>
+        <foaf:birthday>14/05/1977</foaf:birthday>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#DescriptionActeurs -->
+
+    <NamedIndividual rdf:about="&Diamond;DescriptionActeurs">
+        <rdf:type rdf:resource="&Diamond;Processus"/>
+        <rdfs:label xml:lang="fr">A.2.2 Description des acteurs</rdfs:label>
+        <rdfs:comment xml:lang="fr">Il est nécessaire pour ne pas laisser de multiples interprétations des rôles joués par les acteurs, de décrire leurs fonctions, les fonctionnalités qu’ils demandent au système et des fonctionnalités que le système leur demande.</rdfs:comment>
+        <rdfs:comment xml:lang="fr">quels documents produits ? acteurs ?</rdfs:comment>
+        <Diamond:next rdf:resource="&Diamond;A3EtudeCasUtilisation"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#DescriptionCasUtilisation -->
+
+    <NamedIndividual rdf:about="&Diamond;DescriptionCasUtilisation">
+        <rdf:type rdf:resource="&Diamond;Processus"/>
+        <rdfs:label xml:lang="fr">A.3.2 Description des cas d&apos;utilisation</rdfs:label>
+        <rdfs:comment xml:lang="fr">Chaque cas d’utilisation doit être décrit précisément. Pour cela, on pourra avoir une vue centrée acteur (est-il l’acteur principal c’est-à-dire celui qui déclenche le cas ou non?) et aux messages émis ou reçus par les acteurs qui collaborent aux présents cas (un tableau de synthèse sera créé). Enfin, d’une manière plus traditionnelle on peut avoir une vue centrée cas qui permet de connaître les conditions qui provoquent le déclenchement et l’arrêt du cas ainsi que sa chronologie
+(un tableau de synthèse sera lui aussi créé).</rdfs:comment>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#DescriptionProjetForm -->
+
+    <NamedIndividual rdf:about="&Diamond;DescriptionProjetForm">
+        <rdf:type rdf:resource="&Diamond;Formulaire"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#DiamondCaracteristiques -->
+
+    <NamedIndividual rdf:about="&Diamond;DiamondCaracteristiques">
+        <rdf:type rdf:resource="&Diamond;Caracteristique"/>
+        <Diamond:PossibiliteRemiseEnCauseDuProduit rdf:datatype="&xsd;boolean">false</Diamond:PossibiliteRemiseEnCauseDuProduit>
+        <Diamond:cycleDevie rdf:datatype="&xsd;string">spirale</Diamond:cycleDevie>
+        <Diamond:Raffinement rdf:datatype="&xsd;boolean">true</Diamond:Raffinement>
+        <Diamond:Incremental rdf:datatype="&xsd;boolean">true</Diamond:Incremental>
+        <Diamond:PossibiliteRemiseEnCauseBesoins rdf:datatype="&xsd;boolean">true</Diamond:PossibiliteRemiseEnCauseBesoins>
+        <Diamond:GestionDesRisques rdf:datatype="&xsd;boolean">true</Diamond:GestionDesRisques>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#DocumentationCasUtilisation -->
+
+    <NamedIndividual rdf:about="&Diamond;DocumentationCasUtilisation">
+        <rdf:type rdf:resource="&Diamond;Processus"/>
+        <rdfs:label xml:lang="fr">A.3.4 Documentation des cas d&apos;utilisation</rdfs:label>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#DocumentationDiamond -->
+
+    <NamedIndividual rdf:about="&Diamond;DocumentationDiamond">
+        <rdf:type rdf:resource="&Diamond;Documentation"/>
+        <Diamond:auteur rdf:resource="&Diamond;Greg"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#DomaineForm -->
+
+    <NamedIndividual rdf:about="&Diamond;DomaineForm">
+        <rdf:type rdf:resource="&Diamond;Formulaire"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FicheActionPerceptionsCollaboratives -->
+
+    <NamedIndividual rdf:about="&Diamond;FicheActionPerceptionsCollaboratives">
+        <rdf:type rdf:resource="&Diamond;ActionsPerceptionsCollaboratives"/>
+        <rdfs:label xml:lang="fr">Fiche des actions et perceptions collaboratives</rdfs:label>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FicheAdaptationComportementsIndividuelsSociaux -->
+
+    <NamedIndividual rdf:about="&Diamond;FicheAdaptationComportementsIndividuelsSociaux">
+        <rdf:type rdf:resource="&Diamond;AdaptationComportement"/>
+        <rdfs:label xml:lang="fr">Fiche d&apos;adaptation des comportements individuels et sociaux</rdfs:label>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FicheAspectOrganisationnel -->
+
+    <NamedIndividual rdf:about="&Diamond;FicheAspectOrganisationnel">
+        <rdf:type rdf:resource="&Diamond;AspectOrganisationnel"/>
+        <rdfs:label xml:lang="fr">Fiche d&apos;aspect organisationnel</rdfs:label>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FicheBesoinsCommunication -->
+
+    <NamedIndividual rdf:about="&Diamond;FicheBesoinsCommunication">
+        <rdf:type rdf:resource="&Diamond;BesoinsCommunication"/>
+        <rdfs:label xml:lang="fr">Fiche des besoins en communication</rdfs:label>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FicheComportementIndividuel -->
+
+    <NamedIndividual rdf:about="&Diamond;FicheComportementIndividuel">
+        <rdf:type rdf:resource="&Diamond;ComportementIndividuel"/>
+        <rdfs:label xml:lang="fr">Fiche de comportement individuel</rdfs:label>
+        <Diamond:objectif xml:lang="fr">Une fiche de comportement individuelle exprime le comportement de l’agent (aucun formalisme n’est imposé pour l’analyse). Plusieurs fiches pourront être instanciées si plusieurs comportements co-habitent. On s’appuie pour construire le comportement des agents sur les fiches liées aux acteurs et au cas d’utilisation. Il est important de consulter les fiches des modes de marches et d’arrêt car certains modes peuvent affecter des comportements individuels.</Diamond:objectif>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheDiagrammeCasDUtilisation"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheDocumentationActeur"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheDocumentationCasUtilisation"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheIdentificationEntiteActivePassive"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheModeArret"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheModeDefaillant"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheModeMarche"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheStructurationCasUtilisation"/>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheSyntheseCasUtilisation"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FicheComportementSocial -->
+
+    <NamedIndividual rdf:about="&Diamond;FicheComportementSocial">
+        <rdf:type rdf:resource="&Diamond;ComportementSocial"/>
+        <rdfs:label xml:lang="fr">Fiche de comportement social</rdfs:label>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FicheConnaissanceAutres -->
+
+    <NamedIndividual rdf:about="&Diamond;FicheConnaissanceAutres">
+        <rdf:type rdf:resource="&Diamond;ConnaissanceAutres"/>
+        <rdfs:label xml:lang="fr">Fiche de connaissance des autres</rdfs:label>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FicheContexte -->
+
+    <NamedIndividual rdf:about="&Diamond;FicheContexte">
+        <rdf:type rdf:resource="&Diamond;Contexte"/>
+        <rdfs:label xml:lang="fr">Fiche de contexte</rdfs:label>
+        <Diamond:objectif xml:lang="fr">une fiche de contexte dans laquelle va apparaître le diagramme de contexte de l’agent (en accord avec les actions/perception identifiées précédemment). Pour cela on s’appuie essentiellement sur la fiche description de l’environnement et sur les fiches liées aux cas d’utilisation. Aucun choix technologique n’étant fait à ce niveau : le diagramme sera à ce stade &quot;incomplet&quot;.</Diamond:objectif>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FicheContraintesTechniques -->
+
+    <NamedIndividual rdf:about="&Diamond;FicheContraintesTechniques">
+        <rdf:type rdf:resource="&Diamond;ContraintesTechniques"/>
+        <rdfs:label xml:lang="fr">Fiche des contraintes techniques</rdfs:label>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FicheContraintesTechnologiques -->
+
+    <NamedIndividual rdf:about="&Diamond;FicheContraintesTechnologiques">
+        <rdf:type rdf:resource="&Diamond;ContraintesTechnologiques"/>
+        <rdfs:label xml:lang="fr">Fiche des contraintes technologiques</rdfs:label>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FicheDescriptionEntiteActivePassive -->
+
+    <NamedIndividual rdf:about="&Diamond;FicheDescriptionEntiteActivePassive">
+        <rdf:type rdf:resource="&Diamond;DescriptionEntiteActivePassive"/>
+        <rdfs:label xml:lang="fr">Fiche de description des entités actives / passives</rdfs:label>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FicheDescriptionEnvironnement -->
+
+    <NamedIndividual rdf:about="&Diamond;FicheDescriptionEnvironnement">
+        <rdf:type rdf:resource="&Diamond;DescriptionEnvironnement"/>
+        <rdfs:label xml:lang="fr">Fiche de description de l&apos;environnement</rdfs:label>
+        <Diamond:objectif xml:lang="fr">Une fiche de description de l’environnement qui rend compte de l’appréciation de chacune des caractéristiques de l’environnement et les argumente. Il y figure un inventaire des perceptions élémentaires et des opérations supportables par l’environnement (et qui peuvent être intéressantes pour l’application) qui permettra de réfléchir aux primitives d’actions/perceptions, aux actions plus évoluées et éventuels schémas d’interaction que l’on peut construire à partir des primitives disponibles.</Diamond:objectif>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FicheDiagrammeCasDUtilisation -->
+
+    <NamedIndividual rdf:about="&Diamond;FicheDiagrammeCasDUtilisation">
+        <rdf:type rdf:resource="&Diamond;CasUtilisationDocumentation"/>
+        <rdfs:label xml:lang="fr">Fiche de diagramme des cas d&apos;utilisation</rdfs:label>
+        <rdfs:comment xml:lang="fr">Sur cette fiche apparaîtra le nom du cas, son but, son résumé et les acteurs qui interagissent avec ce cas, les pré-conditions, enchaînements nominaux et alternatifs et exceptions. Ces fiches sont tirées de [Roques and Vallée, 2003].</rdfs:comment>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FicheDiagrammeSequence -->
+
+    <NamedIndividual rdf:about="&Diamond;FicheDiagrammeSequence">
+        <rdf:type rdf:resource="&Diamond;DiagrammeSequence"/>
+        <rdfs:label xml:lang="fr">Fiche de diagramme de séquence</rdfs:label>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FicheDocumentationActeur -->
+
+    <NamedIndividual rdf:about="&Diamond;FicheDocumentationActeur">
+        <rdf:type rdf:resource="&Diamond;DocumentationActeurs"/>
+        <rdfs:label xml:lang="fr">Fiche de documentation de acteurs</rdfs:label>
+        <rdfs:comment xml:lang="fr">Chacun des acteurs devra être documenté via une fiche de documentation des acteurs qui insiste sur la définition du rôle des acteurs.</rdfs:comment>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FicheDocumentationCasUtilisation -->
+
+    <NamedIndividual rdf:about="&Diamond;FicheDocumentationCasUtilisation">
+        <rdf:type rdf:resource="&Diamond;CasUtilisationDocumentation"/>
+        <rdfs:label xml:lang="fr">Fiche de documentation des cas d&apos;utilisation</rdfs:label>
+        <rdfs:comment xml:lang="fr">Chaque cas est documenté via une fiche de documentation de cas d’utilisation (figure D.4). qui indique les acteurs qui interagissent avec le cas étudié. Une synthèse des cas apparaîtra dans la fiche de synthèse des cas d’utilisation (figure D.5). Ces cas d’utilisation organisés via la fiche de structuration des cas d’utilisation (figure D.6).</rdfs:comment>
+        <rdfs:comment xml:lang="fr">La description textuelle (A.3.2) est efficace pour communiquer
+avec les utilisateurs et s’entendre sur la terminologie du domaine. Cependant, il est nécessaire d’avoir recours à d’autres outils pour montrer comment les enchaînements se succèdent ou permettre une
+maintenance efficace de l’application. Pour cela on dispose des diagrammes d’activité qui permettent de consolider les enchaînements de la fiche descriptive textuelle du cas. L’alternative est le diagramme d’état qui se prête mieux à la modélisation événementielle. Cependant il est plus difficile à appréhender
+par l’utilisateur.</rdfs:comment>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FicheGlossaireAnalyse -->
+
+    <NamedIndividual rdf:about="&Diamond;FicheGlossaireAnalyse">
+        <rdf:type rdf:resource="&Diamond;GlossaireAnalyse"/>
+        <rdfs:label xml:lang="fr">Fiche Glossaire d&apos;analyse</rdfs:label>
+        <rdfs:comment xml:lang="fr">On commence aussi à définir le glossaire d’analyse. Dans chacun des autres processus de la phase d’analyse, des termes pourront être ajoutés. Un même terme peut apparaître dans des glossaires différents en ayant un définition différente. Il est, par exemple, fréquent qu’un concepteur donne à une entité logicielle le nom de l’entité physique dont il est une abstraction.</rdfs:comment>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FicheGlossaireAnalyseAgent -->
+
+    <NamedIndividual rdf:about="&Diamond;FicheGlossaireAnalyseAgent">
+        <rdf:type rdf:resource="&Diamond;GlossaireAnalyseAgent"/>
+        <rdfs:label xml:lang="fr">Fiche de Glossaire d&apos;analyse de l&apos;agent</rdfs:label>
+        <Diamond:objectif xml:lang="fr">Tout terme spécifique (apparaissant dans les diagrammes, les arbres etc.) devra apparaître dans le glossaire d’analyse de l’agent. Il figure dans le classeur mais n’est associé à aucune partie.</Diamond:objectif>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FicheGlossaireContextuel -->
+
+    <NamedIndividual rdf:about="&Diamond;FicheGlossaireContextuel">
+        <rdf:type rdf:resource="&Diamond;GlossaireContextuel"/>
+        <rdfs:label xml:lang="fr">Fiche de glossaire contextuel</rdfs:label>
+        <rdfs:comment xml:lang="fr">un glossaire contextuel qui permet de préciser la définition du vocabulaire voire d’aider, si nécessaire, à la construction d’une ontologie du domaine.</rdfs:comment>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FicheIdentificationEntiteActivePassive -->
+
+    <NamedIndividual rdf:about="&Diamond;FicheIdentificationEntiteActivePassive">
+        <rdf:type rdf:resource="&Diamond;IdentificationEntitesActivesPassives"/>
+        <rdfs:label xml:lang="fr">Fiche d&apos;identification d&apos;une entités actives / passives</rdfs:label>
+        <Diamond:objectif xml:lang="fr">Une fiche d’identification des entités actives et passives sera créée à cet effet. On y trouvera la classification des entités ainsi que les hypothèses et l’argumentation qui a permis ce choix. On crée dès lors dans la partie &quot;conception&quot; de la documentation un classeur par entité mais pour chaque entité active devenant agent on créer un classeur : il rassemblera plusieurs documents. Ce classeur porte le nom de l’agent et contient une description de sa raison d’être.</Diamond:objectif>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FicheIdentificationInfluenceSociale -->
+
+    <NamedIndividual rdf:about="&Diamond;FicheIdentificationInfluenceSociale">
+        <rdf:type rdf:resource="&Diamond;IdentificationInfluenceSociale"/>
+        <rdfs:label xml:lang="fr">Fiche d&apos;identification de l&apos;influence sociale</rdfs:label>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FicheIhm -->
+
+    <NamedIndividual rdf:about="&Diamond;FicheIhm">
+        <rdf:type rdf:resource="&Diamond;Ihm"/>
+        <rdfs:label xml:lang="fr">Fiche d&apos;Ihm</rdfs:label>
+        <rdfs:comment xml:lang="fr">Des fiches d’IHM peuvent éventuellement être réalisées. Elles relèvent bien de la détermination des besoins fonctionnels car leur objectif et de présenter au demandeur l’ensemble des interactions qu’il peut faire. Ces interfaces ne sont pas forcement logicielles (copie d’écran d’interface graphique attendue par exemple) mais peuvent être matérielles (dessin d’un panneau de commande avec interrupteurs et voyants).</rdfs:comment>
+        <rdfs:comment xml:lang="fr">Fiche d&apos;interface Homme-Machine</rdfs:comment>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FicheModeArret -->
+
+    <NamedIndividual rdf:about="&Diamond;FicheModeArret">
+        <rdf:type rdf:resource="&Diamond;EtudeModeArrets"/>
+        <rdfs:label xml:lang="fr">Fiche d&apos;étude des modes d&apos;arrêt</rdfs:label>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FicheModeDefaillant -->
+
+    <NamedIndividual rdf:about="&Diamond;FicheModeDefaillant">
+        <rdf:type rdf:resource="&Diamond;EtudeModeDefaillants"/>
+        <rdfs:label xml:lang="fr">Fiche d&apos;étude des modes défaillants</rdfs:label>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FicheModeMarche -->
+
+    <NamedIndividual rdf:about="&Diamond;FicheModeMarche">
+        <rdf:type rdf:resource="&Diamond;EtudeModeMarches"/>
+        <rdfs:label xml:lang="fr">Fiche d&apos;étude des modes de marche</rdfs:label>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FichePresentationProjet -->
+
+    <NamedIndividual rdf:about="&Diamond;FichePresentationProjet">
+        <rdf:type rdf:resource="&Diamond;PresentationProjet"/>
+        <rdfs:label xml:lang="fr">Fiche de présentation du projet</rdfs:label>
+        <Diamond:first rdf:resource="&Diamond;FicheReceuilBesoinsFonctionnels"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FicheReceuilBesoinsFonctionnels -->
+
+    <NamedIndividual rdf:about="&Diamond;FicheReceuilBesoinsFonctionnels">
+        <rdf:type rdf:resource="&Diamond;RecueilBesoinsFonctionnels"/>
+        <rdfs:label xml:lang="fr">Fiche de recueil des besoins fonctionnels</rdfs:label>
+        <rdfs:comment xml:lang="fr">une fiche de recueil des besoins fonctionnels qui est une synthèse des besoins exprimés dans le cahier des charges.</rdfs:comment>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FicheScemaPerception -->
+
+    <NamedIndividual rdf:about="&Diamond;FicheScemaPerception">
+        <rdf:type rdf:resource="&Diamond;SchemaPerception"/>
+        <rdfs:label xml:lang="fr">Fiche de schéma de perception</rdfs:label>
+        <Diamond:objectif xml:lang="fr">Une fiche de schéma d’actions et une fiche de perception est créée pour mettre en respectivement en les dépendances entre les actions (graphe des tâches) et les perceptions. On ne s’intéresse pas aux dépendances perceptions/actions car ce sont des comportements (réactif dans ce cas). On s’appuie essentiellement sur la fiche de contexte pour créer cette fiche.</Diamond:objectif>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheContexte"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FicheSchemaAction -->
+
+    <NamedIndividual rdf:about="&Diamond;FicheSchemaAction">
+        <rdf:type rdf:resource="&Diamond;SchemaAction"/>
+        <rdfs:label xml:lang="fr">Fiche de schéma d&apos;action</rdfs:label>
+        <Diamond:objectif xml:lang="fr">Une fiche de schéma d’actions et une fiche de perception est créée pour mettre en respectivement en les dépendances entre les actions (graphe des tâches) et les perceptions. On ne s’intéresse pas aux dépendances perceptions/actions car ce sont des comportements (réactif dans ce cas). On s’appuie
+essentiellement sur la fiche de contexte pour créer cette fiche.</Diamond:objectif>
+        <Diamond:document_necessaire rdf:resource="&Diamond;FicheContexte"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FicheStructurationCasUtilisation -->
+
+    <NamedIndividual rdf:about="&Diamond;FicheStructurationCasUtilisation">
+        <rdf:type rdf:resource="&Diamond;StructurationCasUtilisation"/>
+        <rdfs:label xml:lang="fr">Fiche de structuration des cas d&apos;utilisation</rdfs:label>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#FicheSyntheseCasUtilisation -->
+
+    <NamedIndividual rdf:about="&Diamond;FicheSyntheseCasUtilisation">
+        <rdf:type rdf:resource="&Diamond;SynthèseCasUtilisation"/>
+        <rdfs:label xml:lang="fr">Fiche de synthèse des cas d&apos;utilisation</rdfs:label>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#Greg -->
+
+    <NamedIndividual rdf:about="&Diamond;Greg"/>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#IdentificationActeurs -->
+
+    <NamedIndividual rdf:about="&Diamond;IdentificationActeurs">
+        <rdf:type rdf:resource="&Diamond;Processus"/>
+        <rdfs:label xml:lang="fr">A.2.1 Identification des acteurs</rdfs:label>
+        <rdfs:comment xml:lang="fr">Les acteurs représentent en premier lieu les différentes personnes qui
+interagissent avec le système en cours de modélisation. A une même personne peuvent être associés plusieurs acteurs selon les rôles fonctionnels qu’ils jouent sur le système. Un acteur peut cependant être
+une machine extérieure au système mais qui interagit avec ce dernier. De la même manière que pour une personne, à une entité peut être associée plusieurs acteurs d’un système.</rdfs:comment>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#IllustrationCasUtilisation -->
+
+    <NamedIndividual rdf:about="&Diamond;IllustrationCasUtilisation">
+        <rdf:type rdf:resource="&Diamond;Processus"/>
+        <rdfs:label xml:lang="fr">A.3.5 Illustration des cas d&apos;utilisation</rdfs:label>
+        <rdfs:comment xml:lang="fr">Les cas d’utilisation, une fois documentés (A.3.4), doivent être illustrés avec des scénarios particuliers comme les scénarios nominaux qui caractérisent une marche normale de l’application. Pour ce faire on dispose des diagrammes de scénario facilement compréhensibles par les utilisateurs et les diagrammes de collaboration qui sont moins compréhensibles par les utilisateurs.</rdfs:comment>
+        <Diamond:next rdf:resource="&Diamond;A4EtudeBesoinServices"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#IndentificationCasUtilisation -->
+
+    <NamedIndividual rdf:about="&Diamond;IndentificationCasUtilisation">
+        <rdf:type rdf:resource="&Diamond;Processus"/>
+        <rdfs:label xml:lang="fr">A.3.1 Identification des cas d&apos;utilisation</rdfs:label>
+        <rdfs:comment xml:lang="fr">Les cas d’utilisation représentent les objectifs majeurs du
+système à modéliser : elle représente un ensemble de séquence d’actions. Il ne s’agit en aucun cas de tâches (granularité trop basse) mais bien des services rendus par le système voire un comportement
+attendu par le système.
+A la différence des diagrammes de cas d’utilisation, tels qu’ils sont utilisés dans UML, le système ne se résume pas à un système logiciel. Aussi, les acteurs sont forcément extérieurs au système. Dans un
+diagramme UML un effecteur utilisé par le système serait à modéliser comme étant un acteur secondaire, ce qui n’est pas le cas ici. En effet, UML focalise sur le système logiciel alors que notre objet d’étude est
+le système mixte qui est donc vu comme un tout.</rdfs:comment>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#MethodeDiamond -->
+
+    <Thing rdf:about="&Diamond;MethodeDiamond">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+        <Diamond:hasPart rdf:resource="&Diamond;DocumentationDiamond"/>
+        <Diamond:hasPart rdf:resource="&Diamond;ProcedureDiamond"/>
+    </Thing>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#OntologieDomaine -->
+
+    <NamedIndividual rdf:about="&Diamond;OntologieDomaine">
+        <rdf:type rdf:resource="&Diamond;GlossaireContextuel"/>
+        <rdfs:label xml:lang="fr">Fiche d&apos;ontologie du domaine</rdfs:label>
+        <rdfs:seeAlso rdf:resource="&Diamond;FicheGlossaireContextuel"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#OrganisationCasUtilisation -->
+
+    <NamedIndividual rdf:about="&Diamond;OrganisationCasUtilisation">
+        <rdf:type rdf:resource="&Diamond;Processus"/>
+        <rdfs:label xml:lang="fr">A.3.3 Organisation des cas d&apos;utilisation</rdfs:label>
+        <rdfs:comment xml:lang="fr">Les différents cas d’utilisation peuvent être organisés selon
+deux façons complémentaires. On peut tout d’abord établir les éventuelles relations qui lient les cas (inclusion, extension ou généralisation). Enfin, on peut regrouper ces cas en packages &quot;fonctionnels&quot;.</rdfs:comment>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#PersonForm -->
+
+    <NamedIndividual rdf:about="&Diamond;PersonForm">
+        <rdf:type rdf:resource="&Diamond;Formulaire"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#ProcedureDiamond -->
+
+    <NamedIndividual rdf:about="&Diamond;ProcedureDiamond">
+        <rdf:type rdf:resource="&Diamond;Procedure"/>
+        <rdfs:label xml:lang="fr">Procédure Diamond</rdfs:label>
+        <Diamond:first rdf:resource="&Diamond;ADefinitionBesoins"/>
+        <Diamond:hasPart rdf:resource="&Diamond;ADefinitionBesoins"/>
+        <Diamond:hasPart rdf:resource="&Diamond;BAnalyseSMA"/>
+        <Diamond:hasPart rdf:resource="&Diamond;CConceptionGenerique"/>
+        <Diamond:hasPart rdf:resource="&Diamond;DImplementation"/>
+        <Diamond:documentproduit rdf:resource="&Diamond;DocumentationDiamond"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#TestAuSterone -->
+
+    <NamedIndividual rdf:about="&Diamond;TestAuSterone">
+        <rdf:type rdf:resource="&rdf;Seq"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://smag0.blogspot.fr/ontologies/Diamond#TitreProjetForm -->
+
+    <NamedIndividual rdf:about="&Diamond;TitreProjetForm">
+        <rdf:type rdf:resource="&Diamond;Formulaire"/>
+    </NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+
