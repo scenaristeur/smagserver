@@ -193,7 +193,7 @@ doapDiv.innerHTML += '<li class="received"><span>'+objDoap[key].object+': </span
   		document.getElementById("description").value = descriptionDoap;
         document.getElementById("infoSujet").value = projetId;
 };
- 
+
 websocketPageProjet.onmessage = function(event) {
 console.log("Page projet:" +event.data);
 objDetail=JSON.parse(event.data);
