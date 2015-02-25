@@ -24,7 +24,7 @@ function drawMethode(id, objMethode){
  		for (var key in obj) {
  			if (obj.hasOwnProperty(key)) {
  		 		i++;
- 		 		//pjs.addNoeud(obj[key].subject,10, 20*i);
+ 		 		pjs.addNoeud(obj[key].subject,10, 20*i);
  		 		pjs.addNoeud(obj[key].object,300, 20*i);
  		 		console.log("ajoute point"+obj[key].subject);
  		 	}
