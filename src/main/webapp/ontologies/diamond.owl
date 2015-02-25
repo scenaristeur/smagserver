@@ -2639,7 +2639,6 @@ deux façons complémentaires. On peut tout d’abord établir les éventuelles 
         <Diamond:hasPart rdf:resource="&Diamond;CConceptionGenerique"/>
         <Diamond:hasPart rdf:resource="&Diamond;DImplementation"/>
         <Diamond:documentproduit rdf:resource="&Diamond;DocumentationDiamond"/>
-        <Diamond:hasPart rdf:resource="&Diamond;TestDemiseenlignedelontologie"/>
     </NamedIndividual>
     
 
