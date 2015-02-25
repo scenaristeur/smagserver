@@ -181,31 +181,30 @@ public class MethodeHtml5Servlet extends WebSocketServlet {
 				System.out.println("\n\nRecuperation du detail de la méthode"
 						+ queryString);
 				Query query = QueryFactory.create(queryString);
-				try (QueryExecution qexec = QueryExecutionFactory.create(query,
-						model)) {
-					ResultSet results = qexec.execSelect();
-					for (; results.hasNext();) {
-						QuerySolution soln = results.nextSolution();
-						RDFNode propriete = soln.get("propriete");
-						RDFNode x = soln.get("objet");
-						Resource r = soln.getResource("etape");
-						if (propriete == smagHasPart) {
-							System.out.println(x.toString());
-						} else {
-							// RDFNode x = soln.get("objet"); // Get a result
-							// variable by name.
-							// Resource r = soln.getResource("etape"); // Get a
-							// result
-							// variable -
-							// must be a
-							// resource
-							// Literal l = soln.getLiteral("objet"); // Get a
-							// result
-							// variable -
-							// must be a
-							// literal
-							System.out.println(soln);
-						}
+				QueryExecution qexec = QueryExecutionFactory.create(query,
+						model);
+				ResultSet results = qexec.execSelect();
+				for (; results.hasNext();) {
+					QuerySolution soln = results.nextSolution();
+					RDFNode propriete = soln.get("propriete");
+					RDFNode x = soln.get("objet");
+					Resource r = soln.getResource("etape");
+					if (propriete == smagHasPart) {
+						System.out.println(x.toString());
+					} else {
+						// RDFNode x = soln.get("objet"); // Get a result
+						// variable by name.
+						// Resource r = soln.getResource("etape"); // Get a
+						// result
+						// variable -
+						// must be a
+						// resource
+						// Literal l = soln.getLiteral("objet"); // Get a
+						// result
+						// variable -
+						// must be a
+						// literal
+						System.out.println(soln);
 					}
 				}
 			}
