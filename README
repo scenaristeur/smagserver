@@ -9,3 +9,6 @@ Smag s'appuie sur un serveur RDF pour représenter les informations (voir le blog
 Partant du principe que ce que je veux transmettre à ma maison, à mes objets connectés, ou au système SMAG est pour moi un projet, il faut commencer par une interface de gestion des projets. Ceux-ci deviennent ensuite des agents autonomes comme Albert et Bernardo, dont le but est de tout faire (ou presque !) pour être réalisés (rechercher ou demander des informations, se connecter à des projets similaires...) 
 Pour ajouter des projets, utilisez l'application Android (en cours de développement) Projet.apk
 ou la page des projets Liste Projets V3 (Attention ! les doubles quotes/guillemets comme " sont interdites pour l'instant, préférez << !)
+
+Pour la resolution de problèmes complexes, Smag s'appuie sur la Méthode Diamond : http://smag0.rww.io/diamond.owl
+et utilise le système multi-agent de Janus : http://www.janus-project.org/Home
