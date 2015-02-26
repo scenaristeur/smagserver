@@ -7,8 +7,11 @@
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+<script src="/js/processing.min.js"></script>
   <div id="page-wrapper">
     <h1>Smag0 enregistrement des projets</h1>
+    <canvas id="projetsPde"  width="480" height="320" data-processing-sources="pde/projets/projets.pde pde/projets/Projet.pde"></canvas>
+    
     <form id="message-form" action="#" method="post">
       <input id="nomProjet" placeholder="Nom du projet..." required></input>
       <textarea id="message" placeholder="Entrez la description de votre projet... Eviter guillemets, parenthèses... (ce problème sera résolu dès que possible)" required></textarea>

@@ -1,5 +1,8 @@
 window.onload = function() {
 
+
+
+
   // Get references to elements on the page.
   var form = document.getElementById('message-form');
   var messageField = document.getElementById('message');
@@ -18,6 +21,22 @@ var socket = new WebSocket('ws://echo.websocket.org');
   var wsUriListeProjets = "ws://" + window.location.hostname + ":" + openshiftWebSocketPort + "/listeprojetsws";
  var websocketNouveauProjet = new WebSocket(wsUriNouveauProjet);
   var websocketListeProjets = new WebSocket(wsUriListeProjets);
+          
+
+
+function ajouteProjetPde(projet){
+		var pjs = Processing.getInstanceById('projetsPde');
+		pjs.addProjet(projet);
+		/*var i=0;
+
+ 		for (var key in obj) {
+ 			if (obj.hasOwnProperty(key)) {
+ 		 		i++;
+ 		 		pjs.addProjet(obj[key].subject,10, 20*i);
+ 		 		console.log("ajoute point"+obj[key].subject);
+ 		 	}
+ 		}*/
+        };
 
 // Show a connected message when the WebSocket is opened.
 socket.onopen = function(event) {
@@ -106,6 +125,7 @@ messagesList.innerHTML += '<li class="received"><span><a href=\"projet.jsp?proje
 // '<a href=\"projet1.jsp?projet='+obj[key].projet+'\">(ancienne page projet) </a>'+
 '</span></br>' +
 obj[key].description + '</li>';
+ajouteProjetPde(obj[key].projet);
   }
 
    }
