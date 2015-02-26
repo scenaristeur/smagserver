@@ -1,22 +1,23 @@
 ArrayList<Projet> projets=new ArrayList();
 
 void setup(){
-size(600, 400, OPENGL);
+//size(600, 400, OPENGL);
+size(600,400);
 //noStroke();
 background(50);
   stroke(#FFEE88);
   fill(#88EE88);
   background(#000033);
   text("", 0, 0);          // force Processing to load a font
-  textSize(18);
-lights();
+  textSize(10);
+/*lights();
 translate(width/2+30, height/2, 0);
 rotateX(-PI/6);
 rotateY(PI/3 + 210/float(height) * PI);
 box(45);
 translate(0, 0, -50);
 box(30);
-
+*/
 }
 
 void draw(){
@@ -28,6 +29,12 @@ void draw(){
 
 Projet addProjet(String _id) {
   Projet projet= new Projet(_id); 
+  projets.add(projet);
+  return projet;
+}
+Projet addProjet(String _id,String _titre) {
+  Projet projet= new Projet(_id);
+ projet.titre=_titre; 
   projets.add(projet);
   return projet;
 }

@@ -24,9 +24,9 @@ var socket = new WebSocket('ws://echo.websocket.org');
           
 
 
-function ajouteProjetPde(projet){
+function ajouteProjetPde(projet,titre){
 		var pjs = Processing.getInstanceById('projetsPde');
-		pjs.addProjet(projet);
+		pjs.addProjet(projet,titre);
 		/*var i=0;
 
  		for (var key in obj) {
