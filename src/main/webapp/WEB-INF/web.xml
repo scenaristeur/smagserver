@@ -4,53 +4,43 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
- 
   <servlet>
     <servlet-name>HelloHtml5</servlet-name>
     <servlet-class>org.ajeesh.app.Html5Servlet</servlet-class>
   </servlet>
- 
-    <servlet>
+  <servlet>
     <servlet-name>ProjetsHtml5</servlet-name>
     <servlet-class>favedave.smag.projets.ProjetsHtml5Servlet</servlet-class>
-  </servlet>
-      
-<servlet>
+  </servlet>     
+  <servlet>
     <servlet-name>DiamondHtml5</servlet-name>
     <servlet-class>favedave.smag.projets.DiamondHtml5Servlet</servlet-class>
-  </servlet>
-       
-        <servlet>
+  </servlet> 
+  <servlet>
     <servlet-name>ProjetHtml5</servlet-name>
     <servlet-class>favedave.smag.projets.ProjetHtml5Servlet</servlet-class>
   </servlet>
- 
-    <servlet>       
+  <servlet>       
     <servlet-name>ProjetsServlet</servlet-name>
     <servlet-class>favedave.smag.ProjetsServlet</servlet-class>
   </servlet>
- 
-      <servlet>
+  <servlet>
     <servlet-name>Hello</servlet-name>
     <servlet-class>favedave.smag.HelloServlet</servlet-class>
   </servlet>
-
-  
-<servlet>
+  <servlet>
     <servlet-name>TestJson</servlet-name>
     <servlet-class>favedave.smag.TestJson</servlet-class>
   </servlet>
-  
-<servlet>
+  <servlet>
     <servlet-name>MethodeHtml5Servlet</servlet-name>
     <servlet-class>favedave.smag.projets.MethodeHtml5Servlet</servlet-class>
   </servlet>
-<servlet>
+  <servlet>
     <servlet-name>DoapHtml5Servlet</servlet-name>
     <servlet-class>favedave.smag.projets.DoapHtml5Servlet</servlet-class>
   </servlet>
-  
-<servlet>
+  <servlet>
     <servlet-name>NouveauProjet</servlet-name>
     <servlet-class>favedave.smag0.NouveauProjetSocket</servlet-class>
   </servlet>
@@ -58,71 +48,64 @@
     <servlet-name>ListeProjets</servlet-name>
     <servlet-class>favedave.smag0.ListeProjetsSocket</servlet-class>
   </servlet>
-    <servlet>
+  <servlet>
     <servlet-name>PageProjet</servlet-name>
     <servlet-class>favedave.smag0.PageProjetSocket</servlet-class>
   </servlet>
-      <servlet>
+  <servlet>
     <servlet-name>DoapModel</servlet-name>
     <servlet-class>favedave.smag0.DoapModelSocket</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>UtilisateurModel</servlet-name>
+    <servlet-class>favedave.smag0.UtilisateurSocket</servlet-class>
   </servlet>
  <!-- MAPPING --> 
    
   <servlet-mapping>
     <servlet-name>HelloHtml5</servlet-name>
     <url-pattern>/ws/*</url-pattern>
-  </servlet-mapping>
-  
-  <servlet-mapping>
+</servlet-mapping>
+<servlet-mapping>
     <servlet-name>ProjetsHtml5</servlet-name>
     <url-pattern>/projetsws/*</url-pattern>
-  </servlet-mapping>
-     
-  <servlet-mapping>
+</servlet-mapping>
+<servlet-mapping>
     <servlet-name>DiamondHtml5</servlet-name>
     <url-pattern>/diamondws/*</url-pattern>
-  </servlet-mapping>
-  
-  <servlet-mapping>
+</servlet-mapping>
+<servlet-mapping>
     <servlet-name>ProjetHtml5</servlet-name>
     <url-pattern>/projetws/*</url-pattern>
-  </servlet-mapping>
-    
-  <servlet-mapping>
+</servlet-mapping>
+<servlet-mapping>
     <servlet-name>ProjetsServlet</servlet-name>
     <url-pattern>/projets/*</url-pattern>
-  </servlet-mapping>
-  
-  <servlet-mapping>
+</servlet-mapping>
+<servlet-mapping>
     <servlet-name>Hello</servlet-name>
     <url-pattern>/hello/*</url-pattern>
-  </servlet-mapping>
-    
-  <servlet-mapping>
+</servlet-mapping>
+<servlet-mapping>
     <servlet-name>TestJson</servlet-name>
     <url-pattern>/testjson/*</url-pattern>
-  </servlet-mapping>
-  
-    <servlet-mapping>
+</servlet-mapping>
+<servlet-mapping>
     <servlet-name>MethodeHtml5Servlet</servlet-name>
     <url-pattern>/methodews/*</url-pattern>
-  </servlet-mapping>
-  
-      <servlet-mapping>
+</servlet-mapping>
+<servlet-mapping>
     <servlet-name>DoapHtml5Servlet</servlet-name>
     <url-pattern>/doapws/*</url-pattern>
-  </servlet-mapping>
-  
-            <servlet-mapping>
+</servlet-mapping>
+<servlet-mapping>
     <servlet-name>NouveauProjet</servlet-name>
     <url-pattern>/nouveauprojetws/*</url-pattern>
-  </servlet-mapping>
-  
-                  <servlet-mapping>
+</servlet-mapping>  
+<servlet-mapping>
     <servlet-name>ListeProjets</servlet-name>
     <url-pattern>/listeprojetsws/*</url-pattern>
-  </servlet-mapping>
-  
+</servlet-mapping> 
 <servlet-mapping>
     <servlet-name>PageProjet</servlet-name>
     <url-pattern>/pageprojetws/*</url-pattern>
@@ -130,6 +113,10 @@
 <servlet-mapping>
     <servlet-name>DoapModel</servlet-name>
     <url-pattern>/doapmodelws/*</url-pattern>
-  </servlet-mapping>
+</servlet-mapping>
+<servlet-mapping>
+    <servlet-name>UtilisateurModel</servlet-name>
+    <url-pattern>/utilisateurws/*</url-pattern>
+</servlet-mapping>
   
 </web-app>
