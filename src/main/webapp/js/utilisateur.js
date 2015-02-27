@@ -19,7 +19,7 @@ var websocketUtilisateur = new WebSocket(wsUtilisateur);
 var titre = document.getElementById('titre');
    
    console.log(email);
-   
+   titre.innerHTML=email;
     websocketUtilisateur.onopen = function(evt) { onOpenUtilisateur(evt) };
     websocketUtilisateur.onclose = function(evt) { onCloseUtilisateur(evt) };
     websocketUtilisateur.onmessage = function(evt) { onMessageUtilisateur(evt) };
@@ -30,7 +30,7 @@ function onOpenUtilisateur(evt){
 	if (email!=null){
 		console.log("envoi de l'email : "+email);
 		websocketUtilisateur.send(email);
-		titre.innerHTML=email;
+		
 	}
 }
 function onCloseUtilisateur(evt){
