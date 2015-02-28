@@ -15,6 +15,7 @@ function getParameterByName(name) {
   var portObjetField = document.getElementById('portObjet');
   var commentaireObjetField = document.getElementById('commentaireObjet');
   var emailNouvelObjetField = document.getElementById('emailNouvelObjet');
+  var listeObjetConnecteDiv = document.getElementById('listeObjetConnecteDiv');
 
 var openshiftWebSocketPort = 8000; // Or use 8443 for wss
 
@@ -24,6 +25,9 @@ var projetId = getParameterByName('projet');
 
 var wsUtilisateur = "ws://" + window.location.hostname + ":" + openshiftWebSocketPort + "/utilisateurws";
 var websocketUtilisateur = new WebSocket(wsUtilisateur);
+
+var wsListeObjetsConnectes = "ws://" + window.location.hostname + ":" + openshiftWebSocketPort + "/listeobjetsconnectesws";
+var websocketListeObjetsConnectes = new WebSocket(wsListeObjetsConnectes);
 
 var titre = document.getElementById('titre');
  
@@ -36,25 +40,29 @@ var titre = document.getElementById('titre');
     websocketUtilisateur.onmessage = function(evt) { onMessageUtilisateur(evt) };
     websocketUtilisateur.onerror = function(evt) { onErrorUtilisateur(evt) };
     
+    websocketListeObjetsConnectes.onopen = function(evt) { onOpenListeObjetsConnectes(evt) };
+    websocketListeObjetsConnectes.onclose = function(evt) { onCloseListeObjetsConnectes(evt) };
+    websocketListeObjetsConnectes.onmessage = function(evt) { onMessageListeObjetsConnectes(evt) };
+    websocketListeObjetsConnectes.onerror = function(evt) { onErrorListeObjetsConnectes(evt) };
+    
 function onOpenUtilisateur(evt){
 	console.log("onOpenUtilisateur");
 	if (email!=null){
 		console.log("envoi de l'email : "+email);
 		//websocketUtilisateur.send(email);
-		emailNouvelObjetField.value=email
+		emailNouvelObjetField.value=email;
 		  var data = "{ \"type\" : \"email\", "+
-    		"\"email\": \""+ email +"\", "+
-    		"\"date\": \""+Date.now()+"\""+
- 			 "}";
+					"\"email\": \""+ email +"\", "+
+					"\"date\": \""+Date.now()+"\""+
+					"}";
   		console.log(data);
-  // Send the message through the WebSocket.
-  websocketUtilisateur.send(data);
+	// Send the message through the WebSocket.
+	websocketUtilisateur.send(data);
 	}
 	
 // Send a message when the form is submitted.
 ajouteObjetForm.onsubmit = function(e) {
 e.preventDefault();
-
   // Retrieve the message from the textarea.
   var nomObjet = nomObjetField.value;
   var adresseIpObjet = adresseIpObjetField.value;
@@ -62,26 +70,23 @@ e.preventDefault();
   var commentaireObjet = commentaireObjetField.value;
   var emailNouvelObjet = emailNouvelObjetField.value;
   var data = "{ \"type\" : \"nouvelObjetConnecte\", "+
-    "\"nomObjet\": \""+ nomObjet +"\", "+
-    "\"adresseIpObjet\": \""+ adresseIpObjet +"\", "+
-    "\"portObjet\": \""+ portObjet +"\", "+
-    "\"commentaireObjet\": \""+ commentaireObjet +"\", "+
-    "\"emailNouvelObjet\": \""+ emailNouvelObjet +"\", "+
-    "\"date\": \""+Date.now()+"\""+
-  "}";
+				"\"nomObjet\": \""+ nomObjet +"\", "+
+				"\"adresseIpObjet\": \""+ adresseIpObjet +"\", "+
+				"\"portObjet\": \""+ portObjet +"\", "+
+				"\"commentaireObjet\": \""+ commentaireObjet +"\", "+
+				"\"emailNouvelObjet\": \""+ emailNouvelObjet +"\", "+
+				"\"date\": \""+Date.now()+"\""+
+				"}";
   console.log(data);
-
   // Send the message through the WebSocket.
-
-  websocketUtilisateur.send(data);
-  // Clear out the message field.
- // messageField.value = '';
- ajouteObjetConnecteDiv.disable="true";
- nomObjet.value = '';
- ajouterObjet.value='Creation de votre objet connecté en cours';
- toggleMe('ajouteObjetConnecteDiv');
-  return false;
-};
+	websocketUtilisateur.send(data);
+	ajouteObjetConnecteDiv.disable="true";
+	nomObjet.value = '';
+	ajouterObjet.value='Creation de votre objet connecté en cours';
+	toggleMe('ajouteObjetConnecteDiv');
+	demandeUpdateObjetsConnectes();
+	return false;
+	};
 }
 function onCloseUtilisateur(evt){
 	console.log("onCloseUtilisateur");
@@ -89,12 +94,41 @@ function onCloseUtilisateur(evt){
 function onErrorUtilisateur(evt){
 	console.log("onErrorUtilisateur");
 }
-function onCloseUtilisateur(evt){
-	console.log("onCloseUtilisateur");
-}
 function onMessageUtilisateur(evt){
 	console.log("onMessageUtilisateur");
 	console.log(evt.data);
-	ajouterObjet.value=evt.data;
+	ajouterObjet.value=evt.data;	
+}
+
+
+function onOpenListeObjetsConnectes(evt){
+	console.log("onOpenListeObjetsConnectes");
+	demandeUpdateObjetsConnectes();
+	}
+function onCloseListeObjetsConnectes(evt){
+	console.log("onCloseListeObjetsConnectes");
+}
+function onErrorListeObjetsConnectes(evt){
+	console.log("onErrorListeObjetsConnectes");
+}
+
+function onMessageListeObjetsConnectes(evt){
+	console.log("onMessageListeObjetsConnectes");
+	console.log(evt.data);
+	listeObjetConnecteDiv.innerHtml=evt.data;
+}
+function demandeUpdateObjetsConnectes(){
+		if (email!=null){
+		console.log("envoi de l'email : "+email);
+		//websocketUtilisateur.send(email);
+		emailNouvelObjetField.value=email;
+		  var data = "{ \"type\" : \"update\", "+
+						"\"email\": \""+ email +"\", "+
+						"\"date\": \""+Date.now()+"\""+
+						"}";
+  		console.log(data);											 
+	 	websocketListeObjetsConnectes.send(data);                           // Send the message through the WebSocket. 
+		return false;
+		};
 }
 };

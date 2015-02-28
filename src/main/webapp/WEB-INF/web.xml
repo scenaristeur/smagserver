@@ -60,6 +60,10 @@
     <servlet-name>UtilisateurModel</servlet-name>
     <servlet-class>favedave.smag0.UtilisateurSocket</servlet-class>
   </servlet>
+   <servlet>
+    <servlet-name>ListeObjetsConnectes</servlet-name>
+    <servlet-class>favedave.smag0.ListeObjetsConnectesSocket</servlet-class>
+  </servlet>
  <!-- MAPPING --> 
    
   <servlet-mapping>
@@ -118,5 +122,9 @@
     <servlet-name>UtilisateurModel</servlet-name>
     <url-pattern>/utilisateurws/*</url-pattern>
 </servlet-mapping>
+<servlet-mapping>
+    <servlet-name>ListeObjetsConnectes</servlet-name>
+    <url-pattern>/listeobjetsconnectesws/*</url-pattern>
+</servlet-mapping> 
   
 </web-app>

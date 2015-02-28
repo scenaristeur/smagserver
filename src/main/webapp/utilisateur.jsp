@@ -24,7 +24,15 @@
     <h1 id="titre">Smag0</h1>
   <!--  <canvas id="projetsPde"  width="480" height="320" data-processing-sources="pde/projets/projets.pde pde/projets/Projet.pde"></canvas>
     -->
-    <!-- AJOUTE OBJET CONNECTE -->
+        <!-- LISTE OBJETS CONNECTES -->
+        <input type="button" type="button" id="listerObjet" onclick="return toggleMe('listeObjetConnecteDiv')" value="Les objets connectes de cet utilisateur" >
+       <div id="listeObjetConnecteDiv">
+       liste des objets connectes
+       <ul id="listeObjets">
+       <li>Objet 1</li>
+       </ul>
+       </div>
+
     <input type="button" type="button" id="ajouterObjet" onclick="return toggleMe('ajouteObjetConnecteDiv')" value="Ajouter un nouvel objet connecté ou service" >
        <div id="ajouteObjetConnecteDiv">
        <form id="ajouteObjetForm" action="#" method="post">

@@ -84,6 +84,16 @@ public class UtilisateurSocket extends WebSocketServlet {
 		}
 	}
 
+	/*
+	 * requete pour modifier une info sur le serveur : PREFIX dc:
+	 * <http://purl.org/dc/elements/1.1/> PREFIX smag:
+	 * <http://smag0.blogspot.fr/ns/smag0#>
+	 * 
+	 * WITH <http://smag0.blogspot.fr/GraphTest> DELETE { ?objet
+	 * dc:emailGestionnaire 'hjb@jk.ki' } INSERT { ?objet smag:emailGestionnaire
+	 * 'scenaristeur@gmail.com' } WHERE { ?objet dc:emailGestionnaire
+	 * 'hjb@jk.ki' }
+	 */
 	public static Map<String, String> parse(JSONObject json,
 			Map<String, String> out) throws JSONException {
 		Iterator<String> keys = json.keys();
