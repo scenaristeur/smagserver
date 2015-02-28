@@ -123,7 +123,7 @@ function onMessageListeObjetsConnectes(evt){
 	obj = JSON.parse(event.data);
 var i=0;
 
-  	ligneObjetConnecte.innerHTML+="<div id="+obj.objetConnecte+"><a href=\""+obj.adresseIpObjet+":"+obj.portObjet+"\">"+obj.titre+"</a>indicateur dispo ou non</div>";
+  	ligneObjetConnecte.innerHTML+="<div id="+obj.objetConnecte+" title="+obj.description+"><a href=\""+obj.adresseIpObjet+":"+obj.portObjet+"\" target="_blank">"+obj.titre+"</a>    ......   indicateur dispo ou non</div>";
 }
 function demandeUpdateObjetsConnectes(){
 		if (email!=null){
