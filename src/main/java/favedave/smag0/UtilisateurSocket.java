@@ -1,12 +1,19 @@
 package favedave.smag0;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.eclipse.jetty.websocket.WebSocket;
 import org.eclipse.jetty.websocket.WebSocketServlet;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class UtilisateurSocket extends WebSocketServlet {
 	private String email;
+	JSONObject received = new JSONObject();
 
 	@Override
 	public WebSocket doWebSocketConnect(HttpServletRequest request,
@@ -44,8 +51,45 @@ public class UtilisateurSocket extends WebSocketServlet {
 
 		@Override
 		public void onMessage(String data) {
-			System.out.println("Page utilisateur reçu " + data);
+			System.out.println("Message reçu de la Page utilisateur : " + data);
+			JSONObject receivedTemp = new JSONObject(data);
+			Map<String, String> out = new HashMap<String, String>();
+			parse(receivedTemp, out);
+			String type = out.get("type");
 
+			if (type.equals("nouvelObjetConnecte")) {
+				System.out
+						.println("Procedure de creation d'un nouvel objet connecté");
+				/*
+				 * connection à nouveau projet socket, puis envoi du
+				 * receivedTemp
+				 */
+			} else {
+				System.out
+						.println("Creer une methode pour traiter le type de message "
+								+ type);
+			}
 		}
 	}
+
+	public static Map<String, String> parse(JSONObject json,
+			Map<String, String> out) throws JSONException {
+		Iterator<String> keys = json.keys();
+		while (keys.hasNext()) {
+			String key = keys.next();
+			String val = null;
+			try {
+				JSONObject value = json.getJSONObject(key);
+				parse(value, out);
+			} catch (Exception e) {
+				val = json.getString(key);
+			}
+
+			if (val != null) {
+				out.put(key, val);
+			}
+		}
+		return out;
+	}
+
 }

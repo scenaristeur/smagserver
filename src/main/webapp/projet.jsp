@@ -19,11 +19,7 @@
 				e.style.display="none"
 			}
 			return true;
-	}
-	
-     
-
-
+	}  
 </script>
 
 <div id="page-left">Visualisation</br>
