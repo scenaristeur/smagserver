@@ -165,12 +165,11 @@ public class ListeObjetsConnectesSocket extends WebSocketServlet {
 				}
 				// jsonListe.put(String.valueOf(i), jresult);
 			}
-			try {
-				connection.sendMessage("fin de la liste");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			/*
+			 * try { connection.sendMessage("fin de la liste"); } catch
+			 * (IOException e) { // TODO Auto-generated catch block
+			 * e.printStackTrace(); }
+			 */
 			/*
 			 * System.out.println(jsonListe.toString()); try {
 			 * //connection.sendMessage("houlaHop");

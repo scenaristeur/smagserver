@@ -32,7 +32,7 @@ var websocketListeObjetsConnectes = new WebSocket(wsListeObjetsConnectes);
 var titre = document.getElementById('titre');
  
  toggleMe('ajouteServiceDiv');
-   
+  listeObjetConnecteDiv.innerHTML = "Liste des objets connectes , Chargement des informations";	 
    console.log(email);
    titre.innerHTML=email;
     websocketUtilisateur.onopen = function(evt) { onOpenUtilisateur(evt) };
@@ -122,8 +122,8 @@ function onMessageListeObjetsConnectes(evt){
   	listeObjetsUtilisateur.appendChild(ligneObjetConnecte);
 	obj = JSON.parse(event.data);
 var i=0;
-ligneObjetConnecte.innerHTML+=obj.titre;
-  	//ligneObjetConnecte.innerHTML+="<div id="+obj.objetConnecte+" title=\""+obj.description+"\"><a href=\""+obj.adresseIpObjet+":"+obj.portObjet+"\" target=\"_blank\">"+obj.titre+"</a> </br>";
+//ligneObjetConnecte.innerHTML+=obj.titre;
+  	ligneObjetConnecte.innerHTML+="<div id="+obj.objetConnecte+" title=\""+obj.description+"\"><a href=\""+obj.adresseIpObjet+":"+obj.portObjet+"\" target=\"_blank\">"+obj.titre+"</a> </br>";
   	  //	ligneObjetConnecte.innerHTML+="   ......   indicateur dispo ou non</br>... Laisser un message à cet objet connecté / à son gestionnaire </div>";
 }
 function demandeUpdateObjetsConnectes(){
@@ -136,7 +136,7 @@ function demandeUpdateObjetsConnectes(){
 						"\"date\": \""+Date.now()+"\""+
 						"}";
   		console.log(data);	
-  		listeObjetConnecteDiv.innerHTML = "Liste des objets connectes , Chargement des informations";										 
+  		listeObjetConnecteDiv.innerHTML = "";										 
 	 	websocketListeObjetsConnectes.send(data);                           // Send the message through the WebSocket. 
 		return false;
 		};
