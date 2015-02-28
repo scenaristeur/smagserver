@@ -20,6 +20,7 @@ import com.hp.hpl.jena.query.QuerySolution;
 import com.hp.hpl.jena.query.ResultSet;
 import com.hp.hpl.jena.query.ResultSetFactory;
 import com.hp.hpl.jena.query.ResultSetRewindable;
+import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.Resource;
 
 public class ListeObjetsConnectesSocket extends WebSocketServlet {
@@ -45,7 +46,7 @@ public class ListeObjetsConnectesSocket extends WebSocketServlet {
 
 		@Override
 		public void onClose(int closeCode, String message) {
-			System.out.println(closeCode + " : " + message);
+			// System.out.println(closeCode + " : " + message);
 
 		}
 
@@ -92,8 +93,19 @@ public class ListeObjetsConnectesSocket extends WebSocketServlet {
 
 		private void prepareRequete(String email) {
 			// select * where {?s ?p 'scenaristeur@gmail.com' }
-			String queryString = "select * where {?objetconnecte ?propriete \'"
-					+ email + "\'}";
+			String queryString = "PREFIX smag:   <http://smag0.blogspot.fr/ns/smag0#> \n";
+			queryString += "PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n";
+			queryString += "PREFIX dc: <http://purl.org/dc/elements/1.1/> \n";
+			queryString += "SELECT ?objetconnecte ?titre ?description ?adresseIpObjet ?portObjet ";
+			queryString += "WHERE {?objetconnecte smag:emailGestionnaire \'"
+					+ email + "\' . \n";
+			queryString += "?objetconnecte dc:title ?titre . \n";
+			queryString += "?objetconnecte dc:description ?description . \n";
+			queryString += "?objetconnecte smag:adresseIpObjet ?adresseIpObjet . \n";
+			queryString += "?objetconnecte smag:portObjet ?portObjet . \n";
+			queryString += "}";
+			// ?objetconnecte smag:emailGestionnaire 'scenaristeur@gmail.com' .
+			// ?objetconnecte ?propriete ?valeur .
 			// +
 			// "?projet <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smag0.blogspot.fr/ns/smag0#Projet> ."
 			// + "?projet <http://purl.org/dc/elements/1.1/title> ?titre ."
@@ -115,40 +127,57 @@ public class ListeObjetsConnectesSocket extends WebSocketServlet {
 			int i = 0;
 			for (; resultats.hasNext();) {
 				i++;
+
 				QuerySolution soln = resultats.nextSolution();
 				// RDFNode x = soln.get("varName") ; // Get a result variable by
 				// name.
-				Resource objetconnecte = soln.getResource("objetconnecte"); // Get
-																			// a
-																			// result
-				// variable -
-				// must be a
-				// resource
-				// Literal titre = soln.getLiteral("titre");
-				// Literal description = soln.getLiteral("description"); // Get
-				// a
-				// result
-				// variable
-				// -
-				// must
-				// be a
-				// literal
+				Resource objetconnecte = soln.getResource("objetconnecte");
+				// RDFNode propriete = soln.get("propriete");// Get
+				// RDFNode valeur = soln.get("valeur");
+				RDFNode titre = soln.getLiteral("titre");
+				RDFNode description = soln.getLiteral("description");
+				RDFNode adresseIpObjet = soln.getLiteral("adresseIpObjet");
+				RDFNode portObjet = soln.getLiteral("portObjet");
+				/*
+				 * String valeurResultat = null; String proprieteResultat =
+				 * null; if (propriete.isResource()) { proprieteResultat =
+				 * propriete.asResource().toString(); } else if
+				 * (propriete.isLiteral()) { proprieteResultat =
+				 * propriete.asLiteral().toString(); } if (valeur.isResource())
+				 * { valeurResultat = valeur.asResource().toString(); } else if
+				 * (valeur.isLiteral()) { valeurResultat =
+				 * valeur.asLiteral().toString(); }
+				 */
 				JSONObject jresult = new JSONObject();
 				jresult.put("objetConnecte", objetconnecte.getLocalName()
 						.toString());
-				// jresult.put("titre", titre);
-				// jresult.put("description", description);
+				jresult.put("titre", titre.toString());
+				jresult.put("description", description.toString());
+				jresult.put("adresseIpObjet", adresseIpObjet.toString());
+				jresult.put("portObjet", portObjet.toString());
+
 				System.out.println(jresult.toString());
-				jsonListe.put(String.valueOf(i), jresult);
+				try {
+					connection.sendMessage(jresult.toString());
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				// jsonListe.put(String.valueOf(i), jresult);
 			}
-			System.out.println(jsonListe.toString());
 			try {
-				connection.sendMessage("houlaHop");
-				connection.sendMessage(jsonListe.toString());
+				connection.sendMessage("fin de la liste");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			/*
+			 * System.out.println(jsonListe.toString()); try {
+			 * //connection.sendMessage("houlaHop");
+			 * connection.sendMessage(jsonListe.toString()); } catch
+			 * (IOException e) { // TODO Auto-generated catch block
+			 * e.printStackTrace(); }
+			 */
 		}
 	}
 }

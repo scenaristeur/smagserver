@@ -115,7 +115,16 @@ function onErrorListeObjetsConnectes(evt){
 function onMessageListeObjetsConnectes(evt){
 	console.log("onMessageListeObjetsConnectes");
 	console.log(evt.data);
-	listeObjetConnecteDiv.innerHtml=evt.data;
+//	console.log("test"+listeObjetConnecteDiv.innerHTML);
+	var listeObjetsUtilisateur = document.createElement('ul');
+	listeObjetConnecteDiv.appendChild(listeObjetsUtilisateur);
+	var ligneObjetConnecte = document.createElement('li');
+  	listeObjetsUtilisateur.appendChild(ligneObjetConnecte);
+	obj = JSON.parse(event.data);
+var i=0;
+
+  	ligneObjetConnecte.innerHTML+="<div id="+obj.objetConnecte+"><a href=\""+obj.adresseIpObjet+":"+portObjet+"\">"+obj.titre+"</a></div>"+evt.data+"ajouter bouton disponible ou non";
+
 }
 function demandeUpdateObjetsConnectes(){
 		if (email!=null){
@@ -126,7 +135,8 @@ function demandeUpdateObjetsConnectes(){
 						"\"email\": \""+ email +"\", "+
 						"\"date\": \""+Date.now()+"\""+
 						"}";
-  		console.log(data);											 
+  		console.log(data);	
+  		listeObjetConnecteDiv.innerHTML = "Liste des objets connectes , Chargement des informations";										 
 	 	websocketListeObjetsConnectes.send(data);                           // Send the message through the WebSocket. 
 		return false;
 		};

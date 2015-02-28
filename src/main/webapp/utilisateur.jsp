@@ -27,10 +27,6 @@
         <!-- LISTE OBJETS CONNECTES -->
         <input type="button" type="button" id="listerObjet" onclick="return toggleMe('listeObjetConnecteDiv')" value="Les objets connectes de cet utilisateur" >
        <div id="listeObjetConnecteDiv">
-       liste des objets connectes
-       <ul id="listeObjets">
-       <li>Objet 1</li>
-       </ul>
        </div>
 
     <input type="button" type="button" id="ajouterObjet" onclick="return toggleMe('ajouteObjetConnecteDiv')" value="Ajouter un nouvel objet connecté ou service" >
