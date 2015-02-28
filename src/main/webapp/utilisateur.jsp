@@ -25,7 +25,7 @@
   <!--  <canvas id="projetsPde"  width="480" height="320" data-processing-sources="pde/projets/projets.pde pde/projets/Projet.pde"></canvas>
     -->
     <!-- AJOUTE OBJET CONNECTE -->
-    <input type="button" type="button" id="ajouterObjet" onclick="return toggleMe('ajouteObjetConnecteDiv')" value="Ajouter un nouvel objet connecté" >
+    <input type="button" type="button" id="ajouterObjet" onclick="return toggleMe('ajouteObjetConnecteDiv')" value="Ajouter un nouvel objet connecté ou service" >
        <div id="ajouteObjetConnecteDiv">
        <form id="ajouteObjetForm" action="#" method="post">
        <input id="emailNouvelObjet" type="hidden"></input>

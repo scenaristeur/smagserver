@@ -1,5 +1,6 @@
 package favedave.smag0;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -10,6 +11,8 @@ import org.eclipse.jetty.websocket.WebSocket;
 import org.eclipse.jetty.websocket.WebSocketServlet;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import favedave.smag.objets.ObjetConnecte;
 
 public class UtilisateurSocket extends WebSocketServlet {
 	private String email;
@@ -61,9 +64,18 @@ public class UtilisateurSocket extends WebSocketServlet {
 				System.out
 						.println("Procedure de creation d'un nouvel objet connecté");
 				/*
-				 * connection à nouveau projet socket, puis envoi du
-				 * receivedTemp
+				 * connection à nouveau Objet socket, puis envoi du receivedTemp
 				 */
+				ObjetConnecte objetnouveau = new ObjetConnecte();
+				String resultatCreationObjet = objetnouveau
+						.setJsonParamaters(receivedTemp);
+				try {
+					System.out.println("envoi du message OK objet cree");
+					connection.sendMessage(resultatCreationObjet);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			} else {
 				System.out
 						.println("Creer une methode pour traiter le type de message "

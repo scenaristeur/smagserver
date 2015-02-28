@@ -78,7 +78,7 @@ e.preventDefault();
  // messageField.value = '';
  ajouteObjetConnecteDiv.disable="true";
  nomObjet.value = '';
- ajouteObjetConnecte.value='Creation de votre objet connecté en cours';
+ ajouterObjet.value='Creation de votre objet connecté en cours';
  toggleMe('ajouteObjetConnecteDiv');
   return false;
 };
@@ -94,5 +94,7 @@ function onCloseUtilisateur(evt){
 }
 function onMessageUtilisateur(evt){
 	console.log("onMessageUtilisateur");
+	console.log(evt.data);
+	ajouterObjet.value=evt.data;
 }
 };
