@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+<a href="index.html">Aide</a>
 <script src="/js/processing.min.js"></script>
   <div id="page-wrapper">
     <h1>Smag0 enregistrement des projets</h1>
