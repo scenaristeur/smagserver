@@ -32,7 +32,7 @@
        Liste des objets connectes , Chargement des informations
        </div>
 
-    <input type="button" type="button" id="ajouterObjet" onclick="return toggleMe('ajouteObjetConnecteDiv')" value="Ajouter un nouvel objet connecté ou service" >
+    <input type="button" id="ajouterObjet" onclick="return toggleMe('ajouteObjetConnecteDiv')" value="Ajouter un nouvel objet connecté ou service" >
        <div id="ajouteObjetConnecteDiv">
        <form id="ajouteObjetForm" action="#" method="post">
        <input id="emailNouvelObjet" type="hidden"></input>
