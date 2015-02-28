@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="Content-Script-Type" content="text/javascript">
   <title>Smag 0, résoudre un problème complexe à l'aide d'ontologies et de système multi-agent</title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
@@ -25,7 +26,7 @@
   <!--  <canvas id="projetsPde"  width="480" height="320" data-processing-sources="pde/projets/projets.pde pde/projets/Projet.pde"></canvas>
     -->
         <!-- LISTE OBJETS CONNECTES -->
-        <input type="button" type="button" id="listerObjet" onclick="return toggleMe('listeObjetConnecteDiv')" value="Les objets connectes de cet utilisateur" >
+        <input type="button" id="listerObjet" onclick="return toggleMe('listeObjetConnecteDiv')" value="Les objets connectes de cet utilisateur" >
        <div id="listeObjetConnecteDiv">
        </div>
 
@@ -42,7 +43,7 @@
     </form>
     </div>
  <!--  AJOUTE SERVICE -->   
-        <input type="button" type="button" id="ajouterService" onclick="return toggleMe('ajouteServiceDiv')" value="Ajouter un nouveau service" >
+        <input type="button" id="ajouterService" onclick="return toggleMe('ajouteServiceDiv')" value="Ajouter un nouveau service" >
       <div id="ajouteServiceDiv">
        <form id="ajouteServiceForm" action="#" method="post">
        <input id="emailNouvelObjet" type="hidden"></input>

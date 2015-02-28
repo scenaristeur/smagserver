@@ -50,7 +50,7 @@
     <h1 id="titreProjet">Smag0 détail d'un projet </h1>
     <ul id="descriptionProjet">description </ul>
      </br>
-     <ul> <input type="button" type="button" id="ajouterInfo" onclick="return toggleMe('ajouteInfoDiv')" value="Ajouter une information en rapport avec ce projet (dev en cours)" >
+     <ul> <input type="button"  id="ajouterInfo" onclick="return toggleMe('ajouteInfoDiv')" value="Ajouter une information en rapport avec ce projet (dev en cours)" >
   <div id="ajouteInfoDiv">
     <form id="ajouteInfo-form" action="#" method="post">
     Insérez une info au format rdf : Sujet / Propriété / Objet </br>(exemple : <i>mon robot / possède la capacité de / se déplacer</i> ou </br>

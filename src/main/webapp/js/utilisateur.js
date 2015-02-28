@@ -122,9 +122,9 @@ function onMessageListeObjetsConnectes(evt){
   	listeObjetsUtilisateur.appendChild(ligneObjetConnecte);
 	obj = JSON.parse(event.data);
 var i=0;
-
-  	ligneObjetConnecte.innerHTML+="<div id="+obj.objetConnecte+" title=\""+obj.description+"\"><a href=\""+obj.adresseIpObjet+":"+obj.portObjet+"\" target=\"_blank\">"+obj.titre+"</a> </br>";
-  	  	ligneObjetConnecte.innerHTML+="   ......   indicateur dispo ou non</br>... Laisser un message à cet objet connecté / à son gestionnaire </div>";
+ligneObjetConnecte.innerHTML+=obj.titre;
+  	//ligneObjetConnecte.innerHTML+="<div id="+obj.objetConnecte+" title=\""+obj.description+"\"><a href=\""+obj.adresseIpObjet+":"+obj.portObjet+"\" target=\"_blank\">"+obj.titre+"</a> </br>";
+  	  //	ligneObjetConnecte.innerHTML+="   ......   indicateur dispo ou non</br>... Laisser un message à cet objet connecté / à son gestionnaire </div>";
 }
 function demandeUpdateObjetsConnectes(){
 		if (email!=null){
