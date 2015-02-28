@@ -32,7 +32,7 @@ var websocketListeObjetsConnectes = new WebSocket(wsListeObjetsConnectes);
 var titre = document.getElementById('titre');
  
  toggleMe('ajouteServiceDiv');
-  listeObjetConnecteDiv.innerHTML = "Liste des objets connectes , Chargement des informations";	 
+
    console.log(email);
    titre.innerHTML=email;
     websocketUtilisateur.onopen = function(evt) { onOpenUtilisateur(evt) };
