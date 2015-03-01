@@ -124,9 +124,9 @@ public class ListeObjetsConnectesSocket extends WebSocketServlet {
 			} finally {
 				qexec.close();
 			}
-			int i = 0;
+			// int i = 0;
 			for (; resultats.hasNext();) {
-				i++;
+				// i++;
 
 				QuerySolution soln = resultats.nextSolution();
 				// RDFNode x = soln.get("varName") ; // Get a result variable by

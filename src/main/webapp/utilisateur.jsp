@@ -50,17 +50,13 @@
 		</select></br>
 		<select id="lienComplexe">
 			<option value="">Lien complexe :</other>
-			<option value="foaf">Friend Of A Friend - Vocabulaire des relations entre les personnes</option>
-			<option value="wai">Rôles et profiles dans une organisation</option>
+			<option value="foaf">FOAF - vocabulaire des relations entre les personnes</option>
+			<option value="wai">WAI - vocabulaire des rôles et profiles dans une organisation</option>
 			<option value="doap">DOAP - vocabulaire d'un projet</option>
-			<option value="diamond">Diamond - vocabulaire de la méthode Diamond</option>
-			<option value="smag">Smag0 -  Euh là c'est pour enregistrer une nouvelle propriete sur le serveur de l'appli</option>
-		</select>
+			<option value="diamond">DIAMOND - vocabulaire de la méthode Diamond</option>
+			<option value="smag">SMAG0 -  Euh là c'est pour enregistrer une nouvelle propriete sur le serveur de l'appli</option>
+		</select></br>
 		<select id="lienDansVoc">
-			<option value="">Choisissez une propriété dans ce vocabulaire :</option>
-			<option value="prop1">prop1</option>
-			<option value="prop2">prop2</option>
-			<option value="prop3">prop3</option>
 		</select>
 		<input id="lienAjoute" placeholder="Saisissez un lien (une relation), ou selectionnez le grâce aux listes déroulantes" required></input>
  	</fieldset>

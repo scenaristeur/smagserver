@@ -64,9 +64,13 @@
     <servlet-name>ListeObjetsConnectes</servlet-name>
     <servlet-class>favedave.smag0.ListeObjetsConnectesSocket</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>RelationSocket</servlet-name>
+    <servlet-class>favedave.smag0.RelationSocket</servlet-class>
+  </servlet>
  <!-- MAPPING --> 
    
-  <servlet-mapping>
+<servlet-mapping>
     <servlet-name>HelloHtml5</servlet-name>
     <url-pattern>/ws/*</url-pattern>
 </servlet-mapping>
@@ -125,6 +129,10 @@
 <servlet-mapping>
     <servlet-name>ListeObjetsConnectes</servlet-name>
     <url-pattern>/listeobjetsconnectesws/*</url-pattern>
+</servlet-mapping> 
+<servlet-mapping>
+    <servlet-name>RelationSocket</servlet-name>
+    <url-pattern>/relationws/*</url-pattern>
 </servlet-mapping> 
   
 </web-app>
