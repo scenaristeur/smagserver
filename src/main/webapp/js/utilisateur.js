@@ -160,8 +160,9 @@ function demandeUpdateObjetsConnectes(){
 
 var radiosValeur = document.getElementsByName("saisieValeur");
 for(var i = 0; i < radiosValeur.length; i++){
-    if(radios[i].checked){
-        val = radios[i].value;
+    if(radiosValeur[i].checked){
+        var val = radiosValeur[i].value;
+		console.log(val);
     }
 }
 
@@ -169,15 +170,24 @@ ajouteLienForm.onsubmit= function(e) {
 	e.preventDefault();
 	var lienAjouteValue=lienAjouteField.value;
 	var lienObjetValue=lienObjetField.value;
+	var debutObjet=lienObjetValue.slice(0, 1);
+	var finObjet=lienObjetValue.slice(-1);
+	var typeObjet="texte";
+	if ((debutObjet=="<")&&(finObjet==">")){
+		typeObjet="ressource";
+		};
+	//test pour voir si on a affaire à une REssource (caractères < et > )
+	 console.log(lienObjetValue.slice(-1)+" "+lienObjetValue.slice(0, 1));
 	var emailNouveauLienValue = email;
 	var data = "{ \"type\" : \"nouveauLien\", "+
 				"\"lienAjouteValue\": \""+ lienAjouteValue +"\", "+
 				"\"lienObjetValue\": \""+ lienObjetValue +"\", "+
 				"\"emailNouveauLienValue\": \""+ emailNouveauLienValue +"\", "+
+				"\"typeObjet\": \""+ typeObjet +"\", "+
 				"\"date\": \""+Date.now()+"\""+
 				"}";
 	console.log(data);
-	websocketRelation.send(data);
+//websocketRelation.send(data);
 	/*ajouteObjetConnecteDiv.disable="true";
 	nomObjet.value = '';
 	ajouterObjet.value='Creation de votre objet connecté en cours';

@@ -83,6 +83,7 @@ public class RelationSocket extends WebSocketServlet {
 				System.out.println("traiter les lessages de type : " + type);
 				String lienAjouteValue = out.get("lienAjouteValue");
 				String lienObjetValue = out.get("lienObjetValue");
+				String typeObjet = out.get("typeObjet");
 				// Test a faire si lienObjetValue est une ressource / ou le
 				// recuperer du formulaire
 				String emailNouveauLienValue = out.get("emailNouveauLienValue");
@@ -105,8 +106,17 @@ public class RelationSocket extends WebSocketServlet {
 						+ "    rdf:type         smag:Utilisateur . \n";
 				update += "smag:" + id + "   foaf:mbox         \""
 						+ emailNouveauLienValue + "\" . \n";
-				update += "smag:" + id + "   <" + lienAjouteValue
-						+ ">         \"" + lienObjetValue + "\" . \n";
+				if (typeObjet.equals("ressource")) {
+					update += "smag:" + id + "   <" + lienAjouteValue + "> "
+							+ lienObjetValue + " . \n";
+					System.out.println(lienObjetValue
+							+ " est inseré comme une ressource");
+				} else {
+					update += "smag:" + id + "   <" + lienAjouteValue
+							+ ">         \"" + lienObjetValue + "\" . \n";
+					System.out.println(lienObjetValue
+							+ " est inseré comme du texte");
+				}
 				/*
 				 * update += "ex:cat     rdfs:subClassOf  ex:animal ."; update
 				 * += "zoo:host   rdfs:range       ex:animal ."; update +=
