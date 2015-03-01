@@ -6,8 +6,15 @@ function getParameterByName(name) {
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
         results = regex.exec(location.search);
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-}
+};
 
+// global var
+var lienAjouteLien=null;
+var vocabulaire=null;
+var vocabulaireSource=null;
+var vocabulaireType=null;
+
+  
   // Get references to elements on the page.
   var ajouteObjetForm = document.getElementById('ajouteObjetForm');
   var nomObjetField = document.getElementById('nomObjet');
@@ -16,6 +23,10 @@ function getParameterByName(name) {
   var commentaireObjetField = document.getElementById('commentaireObjet');
   var emailNouvelObjetField = document.getElementById('emailNouvelObjet');
   var listeObjetConnecteDiv = document.getElementById('listeObjetConnecteDiv');
+  var lienAjoute = document.getElementById('lienAjoute');
+  var lienDansVoc=document.getElementById('lienDansVoc');
+
+
 
 var openshiftWebSocketPort = 8000; // Or use 8443 for wss
 
@@ -32,6 +43,7 @@ var websocketListeObjetsConnectes = new WebSocket(wsListeObjetsConnectes);
 var titre = document.getElementById('titre');
  
  toggleMe('ajouteServiceDiv');
+ lienDansVoc.style.visibility="hidden";
 
    console.log(email);
    titre.innerHTML=email;
@@ -140,5 +152,84 @@ function demandeUpdateObjetsConnectes(){
 	 	websocketListeObjetsConnectes.send(data);                           // Send the message through the WebSocket. 
 		return false;
 		};
+}
+
+// gestion du formulaire d'ajout d'un lien
+lienSimple.onchange=function(){
+console.log(lienSimple.value);
+switch (lienSimple.value)
+{
+    case "sameAs":
+    	/*var propPrefix = document.createElement('b');
+    	var propExpliq = document.createElement('i');
+    	propPrefix.innerHTML="owl:sameAs";
+    	propExpliq.innerHTML=" est identique à";
+  		lienAjouteLien.appendChild(propPrefix);
+        lienAjouteLien+="http://www.w3.org/2002/07/owl#sameAs";
+        lienAjouteLien.appendChild(propExpliq);*/
+        lienAjouteLien="Est identique à (owl:sameAs) http://www.w3.org/2002/07/owl#sameAs";
+        break;
+    case "type":   	
+    	lienAjouteLien="est un/une (=est de type) (rdf:type) http://www.w3.org/1999/02/22-rdf-syntax-ns#type";
+    	break;
+    case "isPartOf":
+        lienAjouteLien="est un composant de (dcterms:isPartOf) http://purl.org/dc/terms/isPartOf";
+        break;
+    case "isInterestedIn":
+        lienAjouteLien="est interessé par (pkm:isInterestedIn) http://www.ontotext.com/proton/protonkm#isInterestedIn";
+        break;
+    default : 
+    	lienAjouteLien="relation indeterminée (smag:relationIndeterminee) http://smag0.blogspot.fr/ns/smag0#relationIndeterminee";
+    	break;
+}
+lienAjoute.value=lienAjouteLien;
+lienComplexe.value="";
+};
+
+
+lienComplexe.onchange=function(){
+console.log(lienComplexe.value);
+lienAjoute.value="";
+switch (lienComplexe.value)
+{
+    case "foaf":
+        vocabulaire="http://xmlns.com/foaf/0.1/";
+        vocabulaireSource="http://xmlns.com/foaf/0.1/";
+        vocabulaireType="rdf/xml";
+        break;
+    case "doap":
+        vocabulaire="http://usefulinc.com/ns/doap#";
+        vocabulaireSource="http://usefulinc.com/ns/doap#";
+        vocabulaireType="rdf/xml";
+        break;
+    case "diamond":
+        vocabulaire="http://smag0.blogspot.fr/ontologies/Diamond#";
+        vocabulaireSource="https://raw.githubusercontent.com/scenaristeur/smagserver/master/src/main/webapp/ontologies/diamond.owl";
+        vocabulaireType="owl";
+        break;
+    case "wai":
+    	vocabulaire="http://purl.org/wai#";
+    	break;
+    case "smag":
+        vocabulaire="http://smag0.blogspot.fr/ns/smag0#";
+        vocabulaireSource="http://fuseki-smag0.rhcloud.com/ds/query";
+        vocabulaireType="sparqlEndpoint";
+        break;
+    default : 
+    	vocabulaire="http://smag0.blogspot.fr/ns/smag0#";
+    	vocabulaireSource="http://fuseki-smag0.rhcloud.com/ds/query";
+    	vocabulaireType="sparqlEndpoint";
+    	break;
+}
+lienSimple.value="";
+lienDansVoc.style.visibility="visible";
+lienDansVoc.value="";
+lienAjoute.value+=vocabulaire;
+//lienAjoute.value=lienComplexe.value;
+};
+
+lienDansVoc.onchange=function(){
+console.log(lienDansVoc.value);
+lienAjoute.value+=lienDansVoc.value;
 }
 };
