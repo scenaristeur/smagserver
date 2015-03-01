@@ -17,13 +17,17 @@ function getParameterByName(name) {
 
 // Get references to elements on the page.
 	var ajouteObjetForm = document.getElementById('ajouteObjetForm');
+	var ajouteLienForm = document.getElementById('ajouteLienForm');
 	var nomObjetField = document.getElementById('nomObjet');
 	var adresseIpObjetField = document.getElementById('adresseIpObjet');
 	var portObjetField = document.getElementById('portObjet');
 	var commentaireObjetField = document.getElementById('commentaireObjet');
 	var emailNouvelObjetField = document.getElementById('emailNouvelObjet');
 	var listeObjetConnecteDiv = document.getElementById('listeObjetConnecteDiv');
-	var lienAjoute = document.getElementById('lienAjoute');
+	var lienAjouteField = document.getElementById('lienAjoute');
+//	var lienValeurField = document.getElementById('lienValeur');
+	var lienObjetField = document.getElementById('lienObjet');
+	var emailNouveauLienField = document.getElementById('emailNouveauLien');
 	var lienDansVoc = document.getElementById('lienDansVoc');
 	var email = getParameterByName('email');
 	var uri = getParameterByName('projet');
@@ -153,6 +157,36 @@ function demandeUpdateObjetsConnectes(){
 };
 
 // gestion du formulaire d'ajout d'un lien
+
+var radiosValeur = document.getElementsByName("saisieValeur");
+for(var i = 0; i < radiosValeur.length; i++){
+    if(radios[i].checked){
+        val = radios[i].value;
+    }
+}
+
+ajouteLienForm.onsubmit= function(e) {
+	e.preventDefault();
+	var lienAjouteValue=lienAjouteField.value;
+	var lienObjetValue=lienObjetField.value;
+	var emailNouveauLienValue = email;
+	var data = "{ \"type\" : \"nouveauLien\", "+
+				"\"lienAjouteValue\": \""+ lienAjouteValue +"\", "+
+				"\"lienObjetValue\": \""+ lienObjetValue +"\", "+
+				"\"emailNouveauLienValue\": \""+ emailNouveauLienValue +"\", "+
+				"\"date\": \""+Date.now()+"\""+
+				"}";
+	console.log(data);
+	websocketRelation.send(data);
+	/*ajouteObjetConnecteDiv.disable="true";
+	nomObjet.value = '';
+	ajouterObjet.value='Creation de votre objet connecté en cours';
+	toggleMe('ajouteObjetConnecteDiv');*/
+	//demandeUpdateLiens();
+	return false;
+};
+
+
 lienSimple.onchange=function(){
 	console.log(lienSimple.value);
 	switch (lienSimple.value)
@@ -165,23 +199,24 @@ lienSimple.onchange=function(){
 			lienAjouteLien.appendChild(propPrefix);
 			lienAjouteLien+="http://www.w3.org/2002/07/owl#sameAs";
 			lienAjouteLien.appendChild(propExpliq);*/
-			lienAjouteLien="Est identique à (owl:sameAs) http://www.w3.org/2002/07/owl#sameAs";
+			lienAjouteLien="http://www.w3.org/2002/07/owl#sameAs";
 			break;
 		case "type":   	
-			lienAjouteLien="est un/une (=est de type) (rdf:type) http://www.w3.org/1999/02/22-rdf-syntax-ns#type";
+			lienAjouteLien="http://www.w3.org/1999/02/22-rdf-syntax-ns#type";
 			break;
 		case "isPartOf":
-			lienAjouteLien="est un composant de (dcterms:isPartOf) http://purl.org/dc/terms/isPartOf";
+			lienAjouteLien="http://purl.org/dc/terms/isPartOf";
 			break;
 		case "isInterestedIn":
-			lienAjouteLien="est interessé par (pkm:isInterestedIn) http://www.ontotext.com/proton/protonkm#isInterestedIn";
+			lienAjouteLien="http://www.ontotext.com/proton/protonkm#isInterestedIn";
 			break;
 		default : 
-			lienAjouteLien="relation indeterminée (smag:relationIndeterminee) http://smag0.blogspot.fr/ns/smag0#relationIndeterminee";
+			lienAjouteLien="http://smag0.blogspot.fr/ns/smag0#relationIndeterminee";
 			break;
 	}
 	lienAjoute.value=lienAjouteLien;
 	lienComplexe.value="";
+	lienDansVoc.style.visibility="hidden";
 };
 
 
@@ -235,7 +270,7 @@ lienComplexe.onchange=function(){
 	lienDansVoc.add(option);
 	websocketRelation.send(data);
 	lienSimple.value="";
-	lienDansVoc.style.visibility="visible";
+	lienDansVoc.style.visibility="hidden";
 	lienDansVoc.value="";
 	lienAjoute.value+=vocabulaire;
 	//lienAjoute.value=lienComplexe.value;
@@ -244,6 +279,7 @@ lienComplexe.onchange=function(){
 lienDansVoc.onchange=function(){
 	console.log(lienDansVoc.value);
 	lienAjoute.value=lienDansVoc.value;
+	lienAjoute.text=lienDansVoc.value;
 	};
 
 function onOpenRelation(evt){
@@ -264,8 +300,11 @@ function onMessageRelation(evt){
 		if (obj.hasOwnProperty(key)) {
 			var option = document.createElement("option");
 			option.text = obj[key].propriete;
+			option.value = obj[key].propriete;
+			option.id = obj[key].propriete;
 			lienDansVoc.add(option);
 			}
    		}
+   	lienDansVoc.style.visibility="visible";
 	};
 };

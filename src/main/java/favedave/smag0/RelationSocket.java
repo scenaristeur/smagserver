@@ -24,6 +24,9 @@ import com.hp.hpl.jena.query.ResultSetRewindable;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.RDFNode;
+import com.hp.hpl.jena.update.UpdateExecutionFactory;
+import com.hp.hpl.jena.update.UpdateProcessor;
+import com.hp.hpl.jena.update.UpdateRequest;
 import com.hp.hpl.jena.util.FileManager;
 
 public class RelationSocket extends WebSocketServlet {
@@ -73,9 +76,55 @@ public class RelationSocket extends WebSocketServlet {
 					prepareRequeteRdf(vocabulaire, vocabulaireSource);
 				}
 
-			} else {
+			} else if (type.equals("update")) {
+				System.out.println("traitement de la demande : " + type);
+			} else if (type.equals("nouveauLien")) {
+
 				System.out.println("traiter les lessages de type : " + type);
+				String lienAjouteValue = out.get("lienAjouteValue");
+				String lienObjetValue = out.get("lienObjetValue");
+				// Test a faire si lienObjetValue est une ressource / ou le
+				// recuperer du formulaire
+				String emailNouveauLienValue = out.get("emailNouveauLienValue");
+				String date = out.get("date");
+				String id = "U" + date;
+				System.out.println(lienAjouteValue + " " + lienObjetValue);
+				UpdateRequest ur = new UpdateRequest();
+				UpdateProcessor up;
+				String service = "http://fuseki-smag0.rhcloud.com/ds/update";
+				String update;
+				update = "PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n";
+				update += "PREFIX smag:   <http://smag0.blogspot.fr/ns/smag0#> \n";
+				update += "PREFIX dc: <http://purl.org/dc/elements/1.1/> \n";
+				update += "PREFIX foaf: <http://xmlns.com/foaf/0.1/> \n";
+
+				update += "INSERT DATA {";
+				update += "GRAPH <http://smag0.blogspot.fr/GraphTest>{";
+
+				update += "smag:" + id
+						+ "    rdf:type         smag:Utilisateur . \n";
+				update += "smag:" + id + "   foaf:mbox         \""
+						+ emailNouveauLienValue + "\" . \n";
+				update += "smag:" + id + "   <" + lienAjouteValue
+						+ ">         \"" + lienObjetValue + "\" . \n";
+				/*
+				 * update += "ex:cat     rdfs:subClassOf  ex:animal ."; update
+				 * += "zoo:host   rdfs:range       ex:animal ."; update +=
+				 * "ex:zoo1    zoo:host         ex:cat2 ."; update +=
+				 * "ex:cat3    owl:sameAs       ex:cat2 .";
+				 */
+				update += "}} \n";
+
+				System.out.println(update);
+				// ur.add("INSERT {<bouuula> <bouuuulb> <bouuulc>} WHERE {?s ?p ?o}");
+				// ur.add("INSERT DATA { <http://website.com/exmp/something> http://purl.org/dc/elements/1.1/title ‘Some title’}");
+				ur.add(update);
+
+				up = UpdateExecutionFactory.createRemote(ur, service);
+				up.execute();
+				System.out.println("lien inséré");
 			}
+			System.out.println("traiter les lessages de type : " + type);
 		}
 
 		private void prepareRequeteRdf(String vocabulaire,
@@ -97,10 +146,12 @@ public class RelationSocket extends WebSocketServlet {
 				// REQUETE EN Doublon pour test, a fusionner ensuite avec le
 				// requete de prepareRequeteSparql
 				String queryString = "PREFIX smag:   <http://smag0.blogspot.fr/ns/smag0#> \n";
+				queryString += "PREFIX prefixAchanger:   <" + vocabulaire
+						+ "> \n";
 				queryString += "PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n";
 				queryString += "PREFIX dc: <http://purl.org/dc/elements/1.1/> \n";
-				queryString += "select ?propriete where {?propriete rdf:type <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> } \n";
-				queryString += "GROUP BY ?propriete";
+				queryString += "SELECT ?propriete WHERE {?propriete rdf:type <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> } \n";
+				queryString += "GROUP BY ?propriete ORDER BY ?propriete";
 				System.out.println(queryString);
 				Query query = QueryFactory.create(queryString);
 				QueryExecution qexec = QueryExecutionFactory.create(query,
@@ -109,8 +160,6 @@ public class RelationSocket extends WebSocketServlet {
 					ResultSet results = qexec.execSelect();
 					resultats = ResultSetFactory.copyResults(results);
 					resultatsJson = ResultSetFactory.copyResults(results);
-					System.out.println("Liste des proprietes : "
-							+ resultatsJson.toString());
 				} finally {
 					qexec.close();
 				}
@@ -119,8 +168,21 @@ public class RelationSocket extends WebSocketServlet {
 					i++;
 					QuerySolution soln = resultats.nextSolution();
 					RDFNode propriete = soln.getResource("propriete");
+					String proprieteResultat = null;
+					String ns = null;
+					if (propriete.isResource()) {
+						proprieteResultat = propriete.asResource()
+								.getLocalName().toString();
+						ns = propriete.asResource().getNameSpace();
+
+					} else if (propriete.isLiteral()) {
+						proprieteResultat = propriete.asLiteral().toString();
+					}
 					JSONObject jresult = new JSONObject();
 					jresult.put("propriete", propriete.toString());
+					jresult.put("proprieteLocalName",
+							proprieteResultat.toString());
+					jresult.put("ns", ns);
 
 					/*
 					 * try { connection.sendMessage(jresult.toString()); } catch
