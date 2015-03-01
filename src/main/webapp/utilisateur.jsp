@@ -30,7 +30,7 @@
 <!-- LISTE Liens Utilisateur -->
 	<input type="button" id="listerObjet" onclick="return toggleMe('lienUtilisateurDiv')" value="Les liens cet utilisateur" >
 		<div id="lienUtilisateurDiv">
-			Liens de cet utilisateur , Chargement des informations
+			<ul id="listeLiensUtilisateur"></ul>
 		</div>
     	<input type="button" id="ajouterLien" onclick="return toggleMe('ajouteLienUtilisateurDiv')" value="Ajouter un nouveau lien pour cet utilisateur" >
 		<div id="ajouteLienUtilisateurDiv">

@@ -24,6 +24,7 @@ import com.hp.hpl.jena.query.ResultSetRewindable;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.RDFNode;
+import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.update.UpdateExecutionFactory;
 import com.hp.hpl.jena.update.UpdateProcessor;
 import com.hp.hpl.jena.update.UpdateRequest;
@@ -77,7 +78,97 @@ public class RelationSocket extends WebSocketServlet {
 				}
 
 			} else if (type.equals("update")) {
+				jsonListe.put("type", "update");
 				System.out.println("traitement de la demande : " + type);
+				String email = out.get("email");
+				System.out.println("Recuperation des liens de " + email);
+				// select * where {?s ?p 'scenaristeur@gmail.com' }
+				String queryString = "PREFIX smag:   <http://smag0.blogspot.fr/ns/smag0#> \n";
+				queryString += "PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n";
+				queryString += "PREFIX dc: <http://purl.org/dc/elements/1.1/> \n";
+				queryString += "SELECT ?ressource ?lien ?proprieteEtendue ?objetEtendu \n";
+				queryString += "WHERE {?ressource ?lien \'" + email + "\' . \n";
+				queryString += "?ressource ?proprieteEtendue ?objetEtendu . \n";
+				queryString += "}";
+				// queryString +=
+				// "?objetconnecte dc:description ?description . \n";
+				// queryString +=
+				// "?objetconnecte smag:adresseIpObjet ?adresseIpObjet . \n";
+				// queryString +=
+				// "?objetconnecte smag:portObjet ?portObjet . \n";
+
+				// ?objetconnecte smag:emailGestionnaire
+				// 'scenaristeur@gmail.com' .
+				// ?objetconnecte ?propriete ?valeur .
+				// +
+				// "?projet <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://smag0.blogspot.fr/ns/smag0#Projet> ."
+				// + "?projet <http://purl.org/dc/elements/1.1/title> ?titre ."
+				// +
+				// "?projet <http://purl.org/dc/elements/1.1/description> ?description ."
+				// +"}" + "ORDER BY DESC(?s)";
+				// + "}" + "ORDER BY DESC(?projet)" + "LIMIT 1000";
+				System.out.println(queryString);
+				Query query = QueryFactory.create(queryString);
+				QueryExecution qexec = QueryExecutionFactory.sparqlService(
+						"http://fuseki-smag0.rhcloud.com/ds/query", query);
+				try {
+					ResultSet results = qexec.execSelect();
+					resultats = ResultSetFactory.copyResults(results);
+					resultatsJson = ResultSetFactory.copyResults(results);
+				} finally {
+					qexec.close();
+				}
+				int i = 0;
+				for (; resultats.hasNext();) {
+					i++;
+
+					QuerySolution soln = resultats.nextSolution();
+					// RDFNode x = soln.get("varName") ; // Get a result
+					// variable by
+					// name.
+					Resource ressource = soln.getResource("ressource");
+					// RDFNode propriete = soln.get("propriete");// Get
+					// RDFNode valeur = soln.get("valeur");
+					RDFNode lien = soln.get("lien");
+					RDFNode proprieteEtendue = soln.get("proprieteEtendue");
+					RDFNode objetEtendu = soln.get("objetEtendu");
+					String objetEtenduResultat = null;
+					if (objetEtendu.isResource()) {
+						objetEtenduResultat = objetEtendu.asResource()
+								.toString();
+					} else if (objetEtendu.isLiteral()) {
+						objetEtenduResultat = objetEtendu.asLiteral()
+								.toString();
+					}
+					JSONObject jresult = new JSONObject();
+					jresult.put("ressourceShort", ressource.getLocalName()
+							.toString());
+					jresult.put("ressource", ressource.toString());
+					jresult.put("lien", lien.toString());
+					jresult.put("proprieteEtendue", proprieteEtendue.toString());
+					jresult.put("objetEtendu", objetEtenduResultat);
+					/*
+					 * System.out.println(jresult.toString()); try {
+					 * connection.sendMessage(jresult.toString()); } catch
+					 * (IOException e) { // TODO Auto-generated catch block
+					 * e.printStackTrace(); }
+					 */
+					jsonListe.put(String.valueOf(i), jresult);
+				}
+				/*
+				 * try { connection.sendMessage("fin de la liste"); } catch
+				 * (IOException e) { // TODO Auto-generated catch block
+				 * e.printStackTrace(); }
+				 */
+
+				System.out.println(jsonListe.toString());
+				try {
+					// connection.sendMessage("houlaHop");
+					connection.sendMessage(jsonListe.toString());
+				} catch (IOException e) { // TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
 			} else if (type.equals("nouveauLien")) {
 
 				System.out.println("traiter les lessages de type : " + type);
@@ -133,8 +224,10 @@ public class RelationSocket extends WebSocketServlet {
 				up = UpdateExecutionFactory.createRemote(ur, service);
 				up.execute();
 				System.out.println("lien inséré");
+			} else {
+				System.out.println("!!!!! traiter les les messages de type : "
+						+ type);
 			}
-			System.out.println("traiter les lessages de type : " + type);
 		}
 
 		private void prepareRequeteRdf(String vocabulaire,

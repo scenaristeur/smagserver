@@ -27,6 +27,7 @@ function getParameterByName(name) {
 	var lienAjouteField = document.getElementById('lienAjoute');
 //	var lienValeurField = document.getElementById('lienValeur');
 	var lienObjetField = document.getElementById('lienObjet');
+	var listeLiensUtilisateur=document.getElementById('listeLiensUtilisateur');
 	var emailNouveauLienField = document.getElementById('emailNouveauLien');
 	var lienDansVoc = document.getElementById('lienDansVoc');
 	var email = getParameterByName('email');
@@ -138,8 +139,8 @@ function onMessageListeObjetsConnectes(evt){
   	listeObjetsUtilisateur.appendChild(ligneObjetConnecte);
 	obj = JSON.parse(event.data);
 	var i=0;
-  	ligneObjetConnecte.innerHTML+="<div id="+obj.objetConnecte+" title=\""+obj.description+"\"><a href=\""+obj.adresseIpObjet+":"+obj.portObjet+"\" target=\"_blank\">"+obj.titre+"</a> </br>";
-  	  //	ligneObjetConnecte.innerHTML+="   ......   indicateur dispo ou non</br>... Laisser un message à cet objet connecté / à son gestionnaire </div>";
+  	ligneObjetConnecte.innerHTML+="<div id="+obj.objetConnecte+" title=\""+obj.description+"\"><a href=\""+obj.adresseIpObjet+":"+obj.portObjet+"\" target=\"_blank\">"+obj.titre+"</a> </div>";
+  	  //	ligneObjetConnecte.innerHTML+="   ......   indicateur dispo ou non</br>... Laisser un message à cet objet connecté / à son gestionnaire ";
 };
 function demandeUpdateObjetsConnectes(){
 		if (email!=null){
@@ -187,12 +188,12 @@ ajouteLienForm.onsubmit= function(e) {
 				"\"date\": \""+Date.now()+"\""+
 				"}";
 	console.log(data);
-//websocketRelation.send(data);
+	websocketRelation.send(data);
 	/*ajouteObjetConnecteDiv.disable="true";
 	nomObjet.value = '';
 	ajouterObjet.value='Creation de votre objet connecté en cours';
 	toggleMe('ajouteObjetConnecteDiv');*/
-	//demandeUpdateLiens();
+	demandeUpdateLiens();
 	return false;
 };
 
@@ -294,6 +295,7 @@ lienDansVoc.onchange=function(){
 
 function onOpenRelation(evt){
 	console.log("onOpenRelation");
+	demandeUpdateLiens();
 	};
 function onCloseRelation(evt){
 	console.log("onCloseRelation");
@@ -306,15 +308,48 @@ function onMessageRelation(evt){
 	console.log("onMessageRelation");
 	console.log(evt.data);
 	obj = JSON.parse(event.data);
-	for (var key in obj) {
-		if (obj.hasOwnProperty(key)) {
-			var option = document.createElement("option");
-			option.text = obj[key].propriete;
-			option.value = obj[key].propriete;
-			option.id = obj[key].propriete;
-			lienDansVoc.add(option);
-			}
-   		}
-   	lienDansVoc.style.visibility="visible";
+	if (obj.hasOwnProperty('type')){
+		console.log("reponse de update"+obj['type']);
+		if (obj['type']=="update"){
+		delete obj['type'];
+		console.log("reponse de update apres remove"+obj['type']);
+		for (var key in obj) {
+					if (obj.hasOwnProperty(key)) {
+						console.log ( obj[key].ressourceShort+" "+obj[key].lien+" "+obj[key].proprieteEtendue+" "+obj[key].objetEtendu);
+  		var ligneLien = document.createElement('li');
+	ligneLien.innerHTML+="<div id="+obj[key].ressourceShort+" title=\""+obj[key].ressourceShort+"\"><a href=\"ressource.jsp?ressource="+obj[key].ressourceShort+"\" target=\"_blank\">"+obj[key].ressourceShort+"</a> <span id=\"mini\"><i> lien avec cet utilisateur :</i></span> "+obj[key].lien+"</br>";						
+	ligneLien.innerHTML+="<i><span id=\"mini\">Caractéristique de cette ressource :</span></i> "+obj[key].proprieteEtendue+"</br>  <span id=\"mini\"><i>a pour valeur :</i></span> "+obj[key].objetEtendu+"</div>";
+	listeLiensUtilisateur.appendChild(ligneLien);	
+						}
+					}
+				}else{
+					console.log("le type n'est pas update mais "+obj['type'])
+					}
+	}else{
+			for (var key in obj) {
+				if (obj.hasOwnProperty(key)) {
+					var option = document.createElement("option");
+					option.text = obj[key].propriete;
+					option.value = obj[key].propriete;
+					option.id = obj[key].propriete;
+					lienDansVoc.add(option);
+					}
+				}
+			lienDansVoc.style.visibility="visible";
+	}
 	};
+function demandeUpdateLiens(){
+		if (email!=null){
+		console.log("demande update liens : "+email);
+		//emailNouvelObjetField.value=email;
+			var data = "{ \"type\" : \"update\", "+
+						"\"email\": \""+ email +"\", "+
+						"\"date\": \""+Date.now()+"\""+
+						"}";
+  		//console.log(data);	
+  		listeObjetConnecteDiv.innerHTML = "";										 
+	 	websocketRelation.send(data); 
+		return false;
+		};
+};
 };

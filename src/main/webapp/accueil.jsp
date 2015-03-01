@@ -14,7 +14,7 @@
     <canvas id="projetsPde"  width="480" height="320" data-processing-sources="pde/projets/projets.pde pde/projets/Projet.pde"></canvas>
     
     <form id="message-form" action="#" method="post">
-      <input id="nomProjet" placeholder="Nom du projet..." required></input>
+      <input type="text" id="nomProjet" placeholder="Nom du projet..." required></input>
       <textarea id="message" placeholder="Entrez la description de votre projet... Eviter guillemets, parenthèses... (ce problème sera résolu dès que possible)" required></textarea>
       <button type="submit">Enregistrer</button>
       <button type="button" id="close">Close Connection</button>
