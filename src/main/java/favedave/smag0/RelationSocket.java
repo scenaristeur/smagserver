@@ -31,7 +31,7 @@ import com.hp.hpl.jena.update.UpdateRequest;
 import com.hp.hpl.jena.util.FileManager;
 
 public class RelationSocket extends WebSocketServlet {
-	JSONObject jsonListe = new JSONObject();
+	// JSONObject jsonListe = new JSONObject();
 
 	@Override
 	public WebSocket doWebSocketConnect(HttpServletRequest request,
@@ -44,6 +44,7 @@ public class RelationSocket extends WebSocketServlet {
 		private Connection connection;
 		private ResultSetRewindable resultats;
 		private ResultSetRewindable resultatsJson;
+		private JSONObject jsonListeProprietes;
 
 		@Override
 		public void onOpen(Connection connection) {
@@ -67,6 +68,7 @@ public class RelationSocket extends WebSocketServlet {
 			String type = out.get("type");
 
 			if (type.equals("listeProprietes")) {
+				jsonListeProprietes = new JSONObject();
 				System.out.println("traitement du message de type  : " + type);
 				String vocabulaire = out.get("vocabulaire");
 				String vocabulaireSource = out.get("vocabulaireSource");
@@ -78,7 +80,8 @@ public class RelationSocket extends WebSocketServlet {
 				}
 
 			} else if (type.equals("update")) {
-				jsonListe.put("type", "update");
+				JSONObject jsonUpdateLiens = new JSONObject();
+				jsonUpdateLiens.put("type", "update");
 				System.out.println("traitement de la demande : " + type);
 				String email = out.get("email");
 				System.out.println("Recuperation des liens de " + email);
@@ -153,7 +156,7 @@ public class RelationSocket extends WebSocketServlet {
 					 * (IOException e) { // TODO Auto-generated catch block
 					 * e.printStackTrace(); }
 					 */
-					jsonListe.put(String.valueOf(i), jresult);
+					jsonUpdateLiens.put(String.valueOf(i), jresult);
 				}
 				/*
 				 * try { connection.sendMessage("fin de la liste"); } catch
@@ -161,10 +164,10 @@ public class RelationSocket extends WebSocketServlet {
 				 * e.printStackTrace(); }
 				 */
 
-				System.out.println(jsonListe.toString());
+				System.out.println(jsonUpdateLiens.toString());
 				try {
 					// connection.sendMessage("houlaHop");
-					connection.sendMessage(jsonListe.toString());
+					connection.sendMessage(jsonUpdateLiens.toString());
 				} catch (IOException e) { // TODO Auto-generated catch block
 					e.printStackTrace();
 				}
@@ -293,11 +296,11 @@ public class RelationSocket extends WebSocketServlet {
 					 * 
 					 * e.printStackTrace(); }
 					 */
-					jsonListe.put(String.valueOf(i), jresult);
+					jsonListeProprietes.put(String.valueOf(i), jresult);
 				}
-				System.out.println(jsonListe.toString());
+				System.out.println(jsonListeProprietes.toString());
 				try {
-					connection.sendMessage(jsonListe.toString());
+					connection.sendMessage(jsonListeProprietes.toString());
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -340,10 +343,10 @@ public class RelationSocket extends WebSocketServlet {
 				 * 
 				 * e.printStackTrace(); }
 				 */
-				jsonListe.put(String.valueOf(i), jresult);
+				jsonListeProprietes.put(String.valueOf(i), jresult);
 			}
 			try {
-				connection.sendMessage(jsonListe.toString());
+				connection.sendMessage(jsonListeProprietes.toString());
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

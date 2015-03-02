@@ -23,6 +23,7 @@
 	<!--<script src="/js/processing.min.js"></script>-->
 	<div id="page-wrapper">
 		<h1 id="titre">Smag0</h1>
+			<div id="message"></div>
 			<!--  <canvas id="projetsPde"  width="480" height="320" data-processing-sources="pde/projets/projets.pde pde/projets/Projet.pde"></canvas>
 				-->
 		<input type="button" value="Tous les projets / Proposer un projet" onclick="location.href='accueil.jsp'">

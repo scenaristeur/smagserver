@@ -25,7 +25,6 @@ function getParameterByName(name) {
 	var emailNouvelObjetField = document.getElementById('emailNouvelObjet');
 	var listeObjetConnecteDiv = document.getElementById('listeObjetConnecteDiv');
 	var lienAjouteField = document.getElementById('lienAjoute');
-//	var lienValeurField = document.getElementById('lienValeur');
 	var lienObjetField = document.getElementById('lienObjet');
 	var listeLiensUtilisateur=document.getElementById('listeLiensUtilisateur');
 	var emailNouveauLienField = document.getElementById('emailNouveauLien');
@@ -34,6 +33,7 @@ function getParameterByName(name) {
 	var uri = getParameterByName('projet');
 	var projetId = getParameterByName('projet');
 	var titre = document.getElementById('titre');
+	var message = document.getElementById('message');
 
 //Sockets
 	var wsUtilisateur = "ws://" + window.location.hostname + ":" + openshiftWebSocketPort + "/utilisateurws";
@@ -47,9 +47,57 @@ function getParameterByName(name) {
 	toggleMe('ajouteServiceDiv');
 	lienDansVoc.style.visibility="hidden";
 	console.log(email);
-	titre.innerHTML=email;
+	if (email==""){
+			titre.innerHTML="Ceci est la page d'un utilisateur anonyme,";
+			message.innerHTML+="vous pouvez créer votre page utilisateur en saisissant votre e-mail <br>";
+			message.innerHTML+="ou l'identifiant d'une ressource RDF unique du style : <http://smag0.blogspot.fr/ns/smag0#David></a> </br>";
+			my_form=document.createElement('FORM');
+			my_form.name='anonymeUser';
+			my_form.method='POST';
+			my_form.action='#';
 
+			my_tb=document.createElement('INPUT');
+			my_tb.type='TEXT';
+			my_tb.name='email';
+			my_tb.id='email';
+			my_tb.placeholder='email ou ressource unique de type rdf';
+			my_form.appendChild(my_tb);
+
+			my_tb=document.createElement('INPUT');
+			my_tb.type='HIDDEN';
+			my_tb.name='hidden1';
+			my_tb.value=Date.now();
+			my_form.appendChild(my_tb);
+			
+			my_button=document.createElement('button');
+			my_button.type='submit';
+			my_button.value='Creer une page utilisateur';
+			my_button.innerHTML='Creer une nouvelle page utilisateur';
+			my_form.appendChild(my_button);
+			
+			message.appendChild(my_form);
+			
+			
+			anonymeUser.onsubmit = function(e) {
+				e.preventDefault();
+				console.log("test");
+				console.log(anonymeUser.email.value);
+				window.location.href ="/utilisateur.jsp?email="+anonymeUser.email.value;
+				};
+			/*
+			message.innerHTML+="vous pouvez créer votre page utilisateur en saisissant votre e-mail : </br>";
+			message.innerHTML+="<
+			message.innerHTML+="<a href=\"utilisateur.jsp?email=blabla\">Creer ma page</a>";*/
+		}else{
+			titre.innerHTML=email;
+			message.disable='disabled';
+		};
+	
 //FORMULAIRES
+
+
+
+
 ajouteObjetForm.onsubmit = function(e) {
 	e.preventDefault();
 	var nomObjet = nomObjetField.value;
@@ -95,7 +143,7 @@ ajouteObjetForm.onsubmit = function(e) {
 //SOCKET UTILISATEUR
 function onOpenUtilisateur(evt){
 	console.log("onOpenUtilisateur");
-	if (email!=null){
+	if (email!=""){
 		console.log("envoi de l'email : "+email);
 		emailNouvelObjetField.value=email;
 		  var data = "{ \"type\" : \"email\", "+
@@ -143,7 +191,7 @@ function onMessageListeObjetsConnectes(evt){
   	  //	ligneObjetConnecte.innerHTML+="   ......   indicateur dispo ou non</br>... Laisser un message à cet objet connecté / à son gestionnaire ";
 };
 function demandeUpdateObjetsConnectes(){
-		if (email!=null){
+		if (email!=""){
 		console.log("envoi de l'email : "+email);
 		emailNouvelObjetField.value=email;
 			var data = "{ \"type\" : \"update\", "+
@@ -307,7 +355,7 @@ function onMessageRelation(evt){
 	lienDansVoc.options.length = 0;
 	console.log("onMessageRelation");
 	console.log(evt.data);
-	obj = JSON.parse(event.data);
+	obj = JSON.parse(evt.data);
 	if (obj.hasOwnProperty('type')){
 		console.log("reponse de update"+obj['type']);
 		if (obj['type']=="update"){
@@ -339,7 +387,7 @@ function onMessageRelation(evt){
 	}
 	};
 function demandeUpdateLiens(){
-		if (email!=null){
+		if (email!=""){
 		console.log("demande update liens : "+email);
 		//emailNouvelObjetField.value=email;
 			var data = "{ \"type\" : \"update\", "+
