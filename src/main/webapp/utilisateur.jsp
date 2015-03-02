@@ -29,7 +29,7 @@
 		<input type="button" value="Tous les projets / Proposer un projet" onclick="location.href='accueil.jsp'">
    
 <!-- LISTE Liens Utilisateur -->
-	<input type="button" id="listerObjet" onclick="return toggleMe('lienUtilisateurDiv')" value="Les liens cet utilisateur" >
+	<input type="button" id="listerObjet" onclick="return toggleMe('lienUtilisateurDiv')" value="Les liens de cet utilisateur" >
 		<div id="lienUtilisateurDiv">
 			<ul id="listeLiensUtilisateur"></ul>
 		</div>
