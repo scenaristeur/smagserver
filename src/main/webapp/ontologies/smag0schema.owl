@@ -1,0 +1,1479 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#"
+     xml:base="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema">
+        <owl:versionIRI rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema/1.0.0"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#a_la_capacite_de -->
+
+    <owl:ObjectProperty rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#a_la_capacite_de">
+        <rdfs:subPropertyOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#janus_propriete"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#a_pour_but_de_resoudre -->
+
+    <owl:ObjectProperty rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#a_pour_but_de_resoudre">
+        <rdfs:range rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Intention"/>
+        <rdfs:domain rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_applicatif"/>
+        <owl:inverseOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#est_resolu_par"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#a_pour_composant -->
+
+    <owl:ObjectProperty rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#a_pour_composant">
+        <rdfs:subPropertyOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#composition"/>
+        <owl:inverseOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#est_un_composant_de"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#a_pour_role_de -->
+
+    <owl:ObjectProperty rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#a_pour_role_de">
+        <rdfs:subPropertyOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#janus_propriete"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#application_installee_sur -->
+
+    <owl:ObjectProperty rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#application_installee_sur">
+        <rdfs:subPropertyOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#est_un_composant_de"/>
+        <owl:inverseOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#possede_l_application"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#capacite_detenue_par -->
+
+    <owl:ObjectProperty rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#capacite_detenue_par">
+        <rdfs:subPropertyOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#janus_propriete"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#composition -->
+
+    <owl:ObjectProperty rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#composition"/>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#connection -->
+
+    <owl:ObjectProperty rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#connection"/>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#emet_requete_vers -->
+
+    <owl:ObjectProperty rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#emet_requete_vers">
+        <rdfs:subPropertyOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#envoie_information"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#envoie_information -->
+
+    <owl:ObjectProperty rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#envoie_information">
+        <owl:inverseOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#recoit_information"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#est_gere_par -->
+
+    <owl:ObjectProperty rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#est_gere_par">
+        <owl:inverseOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#est_gestionnaire_de"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#est_gestionnaire_de -->
+
+    <owl:ObjectProperty rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#est_gestionnaire_de">
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#est_represente_par_l_agent -->
+
+    <owl:ObjectProperty rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#est_represente_par_l_agent">
+        <rdfs:subPropertyOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#janus_propriete"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#est_resolu_par -->
+
+    <owl:ObjectProperty rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#est_resolu_par"/>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#est_un_actionneur_de -->
+
+    <owl:ObjectProperty rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#est_un_actionneur_de">
+        <rdfs:subPropertyOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#est_un_composant_de"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#est_un_capteur_de -->
+
+    <owl:ObjectProperty rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#est_un_capteur_de">
+        <rdfs:subPropertyOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#est_un_composant_de"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#est_un_composant_de -->
+
+    <owl:ObjectProperty rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#est_un_composant_de">
+        <rdfs:subPropertyOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#composition"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#est_un_moteur_de -->
+
+    <owl:ObjectProperty rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#est_un_moteur_de">
+        <rdfs:subPropertyOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#est_un_composant_de"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#est_une_ontologie_utilisee_par -->
+
+    <owl:ObjectProperty rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#est_une_ontologie_utilisee_par">
+        <rdfs:domain rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Ontologie"/>
+        <rdfs:subPropertyOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#est_un_composant_de"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#est_utilisateur_de -->
+
+    <owl:ObjectProperty rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#est_utilisateur_de">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <owl:inverseOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#est_utilise_par"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#est_utilisateur_du_composant_janus -->
+
+    <owl:ObjectProperty rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#est_utilisateur_du_composant_janus">
+        <rdfs:range rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Composant_Janus"/>
+        <rdfs:domain rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Probleme_Complexe"/>
+        <rdfs:domain rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Projet_Complexe"/>
+        <rdfs:subPropertyOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#janus_propriete"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#est_utilise_par -->
+
+    <owl:ObjectProperty rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#est_utilise_par">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#fait_partie_de_l_organisation -->
+
+    <owl:ObjectProperty rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#fait_partie_de_l_organisation">
+        <rdfs:subPropertyOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#janus_propriete"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#janus_propriete -->
+
+    <owl:ObjectProperty rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#janus_propriete"/>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#possede_actionneur -->
+
+    <owl:ObjectProperty rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#possede_actionneur">
+        <rdfs:range rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Actionneur"/>
+        <rdfs:domain rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Objet_Connecte"/>
+        <rdfs:subPropertyOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#a_pour_composant"/>
+        <owl:inverseOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#est_un_actionneur_de"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#possede_capteur -->
+
+    <owl:ObjectProperty rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#possede_capteur">
+        <rdfs:range rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Capteur"/>
+        <rdfs:domain rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Objet_Connecte"/>
+        <rdfs:subPropertyOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#a_pour_composant"/>
+        <owl:inverseOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#est_un_capteur_de"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#possede_l_application -->
+
+    <owl:ObjectProperty rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#possede_l_application">
+        <rdfs:subPropertyOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#a_pour_composant"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#possede_moteur -->
+
+    <owl:ObjectProperty rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#possede_moteur">
+        <rdfs:range rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Moteur"/>
+        <rdfs:domain rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Objet_Connecte"/>
+        <rdfs:subPropertyOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#a_pour_composant"/>
+        <owl:inverseOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#est_un_moteur_de"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#recoit_information -->
+
+    <owl:ObjectProperty rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#recoit_information"/>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#recoit_requete -->
+
+    <owl:ObjectProperty rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#recoit_requete">
+        <rdfs:subPropertyOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#recoit_information"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#role_joue_par -->
+
+    <owl:ObjectProperty rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#role_joue_par">
+        <rdfs:subPropertyOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#janus_propriete"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#utilise_l_ontologie -->
+
+    <owl:ObjectProperty rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#utilise_l_ontologie">
+        <rdfs:range rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Ontologie"/>
+        <rdfs:subPropertyOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#a_pour_composant"/>
+        <owl:inverseOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#est_une_ontologie_utilisee_par"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#url -->
+
+    <owl:DatatypeProperty rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#url"/>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#urlGit -->
+
+    <owl:DatatypeProperty rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#urlGit"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Acteur -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Acteur"/>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Acteur_Humain -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Acteur_Humain">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Acteur"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Actionneur -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Actionneur">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Composant_Materiel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Agent_Janus -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Agent_Janus">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Composant_Janus"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Annuaire_de_vocabulaire_ou_ontolgies -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Annuaire_de_vocabulaire_ou_ontolgies">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_Big_Data"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Appartement -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Appartement">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Environnement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Application -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Application"/>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Application_Mobile -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Application_Mobile">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Application"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Batiment -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Batiment">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Environnement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Capacite_Janus -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Capacite_Janus">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Composant_Janus"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Capteur -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Capteur">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Composant_Materiel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Composant_Janus -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Composant_Janus"/>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Composant_Materiel -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Composant_Materiel"/>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Environnement -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Environnement"/>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Groupe_de_robots -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Groupe_de_robots">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Acteur"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Holon_Janus -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Holon_Janus">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Agent_Janus"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Intention -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Intention"/>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Interface_Home_Machine -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Interface_Home_Machine"/>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Interface_Mobile -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Interface_Mobile">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Interface_Home_Machine"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Interface_PC -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Interface_PC">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Interface_Home_Machine"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Interface_Processing -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Interface_Processing">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Interface_PC"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Kernel_Janus -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Kernel_Janus">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Composant_Janus"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Maison -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Maison">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Batiment"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Methode -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Methode"/>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Methode_de_resolution_de_probleme -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Methode_de_resolution_de_probleme">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Methode"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Methode_de_resolution_de_probleme_complexe -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Methode_de_resolution_de_probleme_complexe">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Methode_de_resolution_de_probleme"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Mode_de_connexion -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Mode_de_connexion"/>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Moteur -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Moteur">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Composant_Materiel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Nao -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Nao">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Robot"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Navigateur_Internet -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Navigateur_Internet">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Interface_PC"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Objet -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Objet">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Acteur"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Objet_Connecte -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Objet_Connecte">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Objet"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Ontologie -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Ontologie">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Source_de_donnees"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Organisation_Hierarchique -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Organisation_Hierarchique">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Structure"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Organisation_Janus -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Organisation_Janus">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Composant_Janus"/>
+        <rdfs:comment xml:lang="fr">l&apos;organisation janus correspond à un agencement de roles et de capacite dans un but précis, collaborative, competitivite</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#PcduinoBot -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#PcduinoBot">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Robot"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Pobot -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Pobot">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Robot"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Poppy -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Poppy">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Robot"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Probleme -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Probleme">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Intention"/>
+        <rdfs:comment xml:lang="fr">Un problème correspond à l&apos;intention de corriger quelque chose qui existe et qui pourrait être mieux</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Probleme_Complexe -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Probleme_Complexe">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Probleme"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Probleme_Simple -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Probleme_Simple">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Probleme"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Probleme_complexe_impliquant_Organisation -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Probleme_complexe_impliquant_Organisation">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Probleme_Complexe"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Probleme_complexe_impliquant_objet_autonome -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Probleme_complexe_impliquant_objet_autonome">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Probleme_Complexe"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Projet -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Projet">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Intention"/>
+        <rdfs:comment xml:lang="fr">Un projet correspond à une intention qui a pour but de créer quelque chose qui n&apos;existe pas encore</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Projet_Complexe -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Projet_Complexe">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Projet"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Projet_Simple -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Projet_Simple">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Projet"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Projet_complexe_impliquant_Organisation -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Projet_complexe_impliquant_Organisation">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Projet_Complexe"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Projet_complexe_impliquant_objet_autonome -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Projet_complexe_impliquant_objet_autonome">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Projet_Complexe"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Recette_de_cuisine -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Recette_de_cuisine">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Methode"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Robot -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Robot">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Objet_Connecte"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Robot_Inconnu -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Robot_Inconnu">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Robot"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Role_Janus -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Role_Janus">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Composant_Janus"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Application"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_Applicatif_Multi-agent -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_Applicatif_Multi-agent">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_applicatif"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_Big_Data -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_Big_Data">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_de_donnees"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_Sparql -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_Sparql">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_de_donnees"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_applicatif -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_applicatif">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_de_donnees -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_de_donnees">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur"/>
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Source_de_donnees"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Source_de_donnees -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Source_de_donnees">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Application"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Sphero -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Sphero">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Robot"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Structure -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Structure">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Environnement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Systeme_Multi_Agents -->
+
+    <owl:Class rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Systeme_Multi_Agents">
+        <rdfs:subClassOf rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Application"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Agent_Janus_representant_l_appartement_de_David -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Agent_Janus_representant_l_appartement_de_David">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Holon_Janus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Agent_Janus_representant_le_groupe_de_robots_de_l_appartement_de_David -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Agent_Janus_representant_le_groupe_de_robots_de_l_appartement_de_David">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Holon_Janus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Agent_Janus_representant_une_entreprise_inconnue -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Agent_Janus_representant_une_entreprise_inconnue">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Holon_Janus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Agent_PcDuino_de_David -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Agent_PcDuino_de_David">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Agent_Janus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Agent_Sphero_de_David -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Agent_Sphero_de_David">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Agent_Janus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Appartement_de_David -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Appartement_de_David">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Appartement"/>
+        <est_represente_par_l_agent rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Agent_Janus_representant_l_appartement_de_David"/>
+        <est_gestionnaire_de rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Groupe_de_robot_de_l_appartement_de_David"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Attraper_et_deplacer_objet_quand_il_aura_des_bras -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Attraper_et_deplacer_objet_quand_il_aura_des_bras">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Role_Janus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Autres_Serveurs_sources_RDF_Ontologies -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Autres_Serveurs_sources_RDF_Ontologies">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_Big_Data"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Bartoc -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Bartoc">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Annuaire_de_vocabulaire_ou_ontolgies"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Bluetooth -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Bluetooth">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Mode_de_connexion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Bouger_la_camera_Gauche_Droit -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Bouger_la_camera_Gauche_Droit">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Capacite_Janus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Bouger_la_camera_Haut_Bas -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Bouger_la_camera_Haut_Bas">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Capacite_Janus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Camera_pcDuinoBot_de_David -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Camera_pcDuinoBot_de_David">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Capteur"/>
+        <est_un_capteur_de rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#PcDuinoBot_de_David"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Capturer_une_image -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Capturer_une_image">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Capacite_Janus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Capturer_une_video -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Capturer_une_video">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Capacite_Janus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Cartographie_Environnement -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Cartographie_Environnement">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Projet_complexe_impliquant_Organisation"/>
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Projet_complexe_impliquant_objet_autonome"/>
+        <a_pour_composant rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Appartement_de_David"/>
+        <est_un_composant_de rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Smag0_Un_robot_qui_range_ma_chambre"/>
+        <a_pour_composant rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Sphero-Carto"/>
+        <a_pour_composant rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Sphero_de_David"/>
+        <a_pour_composant rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Telephone_de_David"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Changer_de_Couleur -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Changer_de_Couleur">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Capacite_Janus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#DBPedia -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#DBPedia">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_Big_Data"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#DataGouvFR -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#DataGouvFR">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_Big_Data"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#DataGrandLyon -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#DataGrandLyon">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_Big_Data"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#David -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#David">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Acteur_Humain"/>
+        <est_gestionnaire_de rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Agent_Janus_representant_l_appartement_de_David"/>
+        <est_gestionnaire_de rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Appartement_de_David"/>
+        <est_utilisateur_de rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Telephone_de_David"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#DiamondOwl -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#DiamondOwl">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Ontologie"/>
+        <url>http://smag0.rww.io/diamond.owl</url>
+        <urlGit>https://raw.githubusercontent.com/scenaristeur/smagserver/master/src/main/webapp/ontologies/diamond.owl</urlGit>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#DogOntOwl -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#DogOntOwl">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Ontologie"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#DublinCore -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#DublinCore">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Ontologie"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Enregistrer_sa_position -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Enregistrer_sa_position">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Capacite_Janus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Entreprise_Inconnue -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Entreprise_Inconnue">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Organisation_Hierarchique"/>
+        <est_represente_par_l_agent rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Agent_Janus_representant_une_entreprise_inconnue"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Envoyer_sa_position -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Envoyer_sa_position">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Capacite_Janus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Foaf -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Foaf">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Ontologie"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Groupe_de_robot_de_l_appartement_de_David -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Groupe_de_robot_de_l_appartement_de_David">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Groupe_de_robots"/>
+        <est_represente_par_l_agent rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Agent_Janus_representant_le_groupe_de_robots_de_l_appartement_de_David"/>
+        <est_gere_par rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Appartement_de_David"/>
+        <est_gere_par rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#David"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Gyroscope_Shero_de_David -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Gyroscope_Shero_de_David">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Capteur"/>
+        <est_un_capteur_de rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Sphero_de_David"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#InseeRdf -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#InseeRdf">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_Big_Data"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#JanusSmag -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#JanusSmag">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Kernel_Janus"/>
+        <est_utilisateur_de rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Janus_Project"/>
+        <est_utilisateur_de rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Methode_Aspecs"/>
+        <est_utilisateur_de rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Methode_Diamond"/>
+        <a_pour_but_de_resoudre rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Probleme_Complexe_Inconnu"/>
+        <a_pour_but_de_resoudre rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Probleme_Simple_Inconnu"/>
+        <a_pour_but_de_resoudre rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Projet_Complexe_Inconnu"/>
+        <a_pour_but_de_resoudre rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Projet_Simple_Inconnu"/>
+        <est_utilise_par rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_Commun_Smag"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Janus_Agent_Inconnu -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Janus_Agent_Inconnu">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Agent_Janus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Janus_Capacite_Inconnue -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Janus_Capacite_Inconnue">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Capacite_Janus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Janus_Organisation_Inconnue -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Janus_Organisation_Inconnue">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Organisation_Janus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Janus_Project -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Janus_Project">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Systeme_Multi_Agents"/>
+        <est_utilisateur_de rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Janus_Agent_Inconnu"/>
+        <est_utilisateur_de rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Janus_Capacite_Inconnue"/>
+        <est_utilisateur_de rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Janus_Organisation_Inconnue"/>
+        <est_utilisateur_de rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Janus_Role_Inconnu"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Janus_Role_Inconnu -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Janus_Role_Inconnu">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Role_Janus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Lan -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Lan">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Mode_de_connexion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Lov -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Lov">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Annuaire_de_vocabulaire_ou_ontolgies"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Lumiere_du_Sphero_de_David -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Lumiere_du_Sphero_de_David">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Actionneur"/>
+        <est_un_actionneur_de rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Sphero_de_David"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Methode_Aspecs -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Methode_Aspecs">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Methode_de_resolution_de_probleme_complexe"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Methode_Diamond -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Methode_Diamond">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Methode_de_resolution_de_probleme_complexe"/>
+        <utilise_l_ontologie rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#DiamondOwl"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Moteur_pan_camera_pcDuinoBot_de_David -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Moteur_pan_camera_pcDuinoBot_de_David">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Moteur"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Moteur_roue_droite_pcDuinoBot_de_David -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Moteur_roue_droite_pcDuinoBot_de_David">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Moteur"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Moteur_roue_gauche_pcDuinoBot_de_David -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Moteur_roue_gauche_pcDuinoBot_de_David">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Moteur"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Moteur_tilt_camera_pcDuinoBot_de_David -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Moteur_tilt_camera_pcDuinoBot_de_David">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Moteur"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Navigateur_Internet_du_PC_de_David -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Navigateur_Internet_du_PC_de_David">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Navigateur_Internet"/>
+        <envoie_information rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_Commun_Smag"/>
+        <recoit_information rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_Commun_Smag"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#PcDuinoBot_de_David -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#PcDuinoBot_de_David">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#PcduinoBot"/>
+        <a_pour_role_de rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Attraper_et_deplacer_objet_quand_il_aura_des_bras"/>
+        <a_la_capacite_de rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Bouger_la_camera_Gauche_Droit"/>
+        <a_la_capacite_de rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Bouger_la_camera_Haut_Bas"/>
+        <a_la_capacite_de rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Capturer_une_image"/>
+        <a_la_capacite_de rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Capturer_une_video"/>
+        <est_gere_par rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#David"/>
+        <est_un_composant_de rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Groupe_de_robot_de_l_appartement_de_David"/>
+        <connection rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Lan"/>
+        <possede_moteur rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Moteur_pan_camera_pcDuinoBot_de_David"/>
+        <possede_moteur rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Moteur_roue_droite_pcDuinoBot_de_David"/>
+        <possede_moteur rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Moteur_roue_gauche_pcDuinoBot_de_David"/>
+        <possede_moteur rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Moteur_tilt_camera_pcDuinoBot_de_David"/>
+        <a_la_capacite_de rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Se_deplacer"/>
+        <a_la_capacite_de rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Servir_des_donnees_Sparql"/>
+        <a_la_capacite_de rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Servir_le_flux_streaming_de_la_camera"/>
+        <a_pour_role_de rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Surveiller_l_environnement"/>
+        <connection rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Wifi"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Probleme_Complexe_Inconnu -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Probleme_Complexe_Inconnu">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Probleme_Complexe"/>
+        <est_gere_par rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#JanusSmag"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Probleme_Simple_Inconnu -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Probleme_Simple_Inconnu">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Probleme_Simple"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Projet_Complexe_Inconnu -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Projet_Complexe_Inconnu">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Projet_Complexe"/>
+        <est_gere_par rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#JanusSmag"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Projet_Simple_Inconnu -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Projet_Simple_Inconnu">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Projet_Simple"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Se_deplacer -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Se_deplacer">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Capacite_Janus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_Commun_Smag -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_Commun_Smag">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_Applicatif_Multi-agent"/>
+        <est_utilisateur_de rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#JanusSmag"/>
+        <est_gestionnaire_de rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Probleme_Complexe_Inconnu"/>
+        <est_gestionnaire_de rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Probleme_Simple_Inconnu"/>
+        <est_gestionnaire_de rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Projet_Complexe_Inconnu"/>
+        <est_gestionnaire_de rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Projet_Simple_Inconnu"/>
+        <recoit_information rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_Fuseki_Smag_Sparql"/>
+        <emet_requete_vers rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_Fuseki_Smag_Sparql"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_Fuseki_Propre_à_chaque_agent_ou_objet_connecte -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_Fuseki_Propre_à_chaque_agent_ou_objet_connecte">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_Sparql"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_Fuseki_Smag_Sparql -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_Fuseki_Smag_Sparql">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_Big_Data"/>
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_Sparql"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_Fuseki_du_PcDuinoBot_de_David -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_Fuseki_du_PcDuinoBot_de_David">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_Sparql"/>
+        <est_un_composant_de rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#PcDuinoBot_de_David"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Servir_des_donnees_Sparql -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Servir_des_donnees_Sparql">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Capacite_Janus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Servir_le_flux_streaming_de_la_camera -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Servir_le_flux_streaming_de_la_camera">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Capacite_Janus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Smag0_Un_robot_qui_range_ma_chambre -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Smag0_Un_robot_qui_range_ma_chambre">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Projet_complexe_impliquant_Organisation"/>
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Projet_complexe_impliquant_objet_autonome"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#SmagPerso -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#SmagPerso">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Application_Mobile"/>
+        <envoie_information rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_Commun_Smag"/>
+        <recoit_information rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_Commun_Smag"/>
+        <application_installee_sur rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Telephone_de_David"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#SmagProjet -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#SmagProjet">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Application_Mobile"/>
+        <envoie_information rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_Fuseki_Smag_Sparql"/>
+        <recoit_information rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Serveur_Fuseki_Smag_Sparql"/>
+        <application_installee_sur rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Telephone_de_David"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Spade -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Spade">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Systeme_Multi_Agents"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Sphero-Carto -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Sphero-Carto">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Application_Mobile"/>
+        <envoie_information rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Sphero_de_David"/>
+        <recoit_information rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Sphero_de_David"/>
+        <application_installee_sur rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Telephone_de_David"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Sphero_de_David -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Sphero_de_David">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Sphero"/>
+        <est_represente_par_l_agent rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Agent_Sphero_de_David"/>
+        <connection rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Bluetooth"/>
+        <a_pour_role_de rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Cartographie_Environnement"/>
+        <a_la_capacite_de rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Changer_de_Couleur"/>
+        <est_gere_par rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#David"/>
+        <a_la_capacite_de rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Enregistrer_sa_position"/>
+        <a_la_capacite_de rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Envoyer_sa_position"/>
+        <est_un_composant_de rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Groupe_de_robot_de_l_appartement_de_David"/>
+        <a_la_capacite_de rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Se_deplacer"/>
+        <recoit_information rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Sphero-Carto"/>
+        <envoie_information rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Sphero-Carto"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Surveiller_l_environnement -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Surveiller_l_environnement">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Role_Janus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Telephone_de_David -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Telephone_de_David">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Interface_Mobile"/>
+        <possede_l_application rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#SmagPerso"/>
+        <possede_l_application rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#SmagProjet"/>
+        <possede_l_application rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Sphero-Carto"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Un_acteur -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Un_acteur">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Acteur"/>
+        <est_utilisateur_de rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Un_telephone_mobile"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Un_telephone_mobile -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Un_telephone_mobile">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Interface_Mobile"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Wifi -->
+
+    <owl:NamedIndividual rdf:about="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Wifi">
+        <rdf:type rdf:resource="http://smag-smag0.rhcloud.com/ns/ontologies/smag0schema#Mode_de_connexion"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net -->
+
