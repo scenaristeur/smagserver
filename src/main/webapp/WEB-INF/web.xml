@@ -68,6 +68,10 @@
     <servlet-name>RelationSocket</servlet-name>
     <servlet-class>favedave.smag0.RelationSocket</servlet-class>
   </servlet>
+   <servlet>
+    <servlet-name>DiamondSocketServlet</servlet-name>
+    <servlet-class>favedave.smag0.DiamondSocketServlet</servlet-class>
+  </servlet>
  <!-- MAPPING --> 
    
 <servlet-mapping>
@@ -133,6 +137,10 @@
 <servlet-mapping>
     <servlet-name>RelationSocket</servlet-name>
     <url-pattern>/relationws/*</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+    <servlet-name>DiamondSocketServlet</servlet-name>
+    <url-pattern>/diamondws/*</url-pattern>
 </servlet-mapping> 
   
 </web-app>

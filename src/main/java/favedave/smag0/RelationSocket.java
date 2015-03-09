@@ -36,7 +36,6 @@ public class RelationSocket extends WebSocketServlet {
 	@Override
 	public WebSocket doWebSocketConnect(HttpServletRequest request,
 			String protocol) {
-		// TODO Auto-generated method stub
 		return new Relation();
 	}
 
@@ -49,13 +48,10 @@ public class RelationSocket extends WebSocketServlet {
 		@Override
 		public void onOpen(Connection connection) {
 			this.connection = connection;
-
 		}
 
 		@Override
 		public void onClose(int closeCode, String message) {
-			// TODO Auto-generated method stub
-
 		}
 
 		@Override
@@ -66,7 +62,6 @@ public class RelationSocket extends WebSocketServlet {
 			Map<String, String> out = new HashMap<String, String>();
 			parse(receivedTemp, out);
 			String type = out.get("type");
-
 			if (type.equals("listeProprietes")) {
 				jsonListeProprietes = new JSONObject();
 				System.out.println("traitement du message de type  : " + type);
@@ -78,14 +73,12 @@ public class RelationSocket extends WebSocketServlet {
 				} else {
 					prepareRequeteRdf(vocabulaire, vocabulaireSource);
 				}
-
 			} else if (type.equals("update")) {
 				JSONObject jsonUpdateLiens = new JSONObject();
 				jsonUpdateLiens.put("type", "update");
 				System.out.println("traitement de la demande : " + type);
 				String email = out.get("email");
 				System.out.println("Recuperation des liens de " + email);
-				// select * where {?s ?p 'scenaristeur@gmail.com' }
 				String queryString = "PREFIX smag:   <http://smag0.blogspot.fr/ns/smag0#> \n";
 				queryString += "PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n";
 				queryString += "PREFIX dc: <http://purl.org/dc/elements/1.1/> \n";
@@ -124,7 +117,6 @@ public class RelationSocket extends WebSocketServlet {
 				int i = 0;
 				for (; resultats.hasNext();) {
 					i++;
-
 					QuerySolution soln = resultats.nextSolution();
 					// RDFNode x = soln.get("varName") ; // Get a result
 					// variable by
@@ -150,30 +142,15 @@ public class RelationSocket extends WebSocketServlet {
 					jresult.put("lien", lien.toString());
 					jresult.put("proprieteEtendue", proprieteEtendue.toString());
 					jresult.put("objetEtendu", objetEtenduResultat);
-					/*
-					 * System.out.println(jresult.toString()); try {
-					 * connection.sendMessage(jresult.toString()); } catch
-					 * (IOException e) { // TODO Auto-generated catch block
-					 * e.printStackTrace(); }
-					 */
 					jsonUpdateLiens.put(String.valueOf(i), jresult);
 				}
-				/*
-				 * try { connection.sendMessage("fin de la liste"); } catch
-				 * (IOException e) { // TODO Auto-generated catch block
-				 * e.printStackTrace(); }
-				 */
-
 				System.out.println(jsonUpdateLiens.toString());
 				try {
-					// connection.sendMessage("houlaHop");
 					connection.sendMessage(jsonUpdateLiens.toString());
-				} catch (IOException e) { // TODO Auto-generated catch block
+				} catch (IOException e) {
 					e.printStackTrace();
 				}
-
 			} else if (type.equals("nouveauLien")) {
-
 				System.out.println("traiter les lessages de type : " + type);
 				String lienAjouteValue = out.get("lienAjouteValue");
 				String lienObjetValue = out.get("lienObjetValue");
@@ -192,10 +169,8 @@ public class RelationSocket extends WebSocketServlet {
 				update += "PREFIX smag:   <http://smag0.blogspot.fr/ns/smag0#> \n";
 				update += "PREFIX dc: <http://purl.org/dc/elements/1.1/> \n";
 				update += "PREFIX foaf: <http://xmlns.com/foaf/0.1/> \n";
-
 				update += "INSERT DATA {";
 				update += "GRAPH <http://smag0.blogspot.fr/GraphTest>{";
-
 				update += "smag:" + id
 						+ "    rdf:type         smag:Utilisateur . \n";
 				update += "smag:" + id + "   foaf:mbox         \""
@@ -211,19 +186,10 @@ public class RelationSocket extends WebSocketServlet {
 					System.out.println(lienObjetValue
 							+ " est inseré comme du texte");
 				}
-				/*
-				 * update += "ex:cat     rdfs:subClassOf  ex:animal ."; update
-				 * += "zoo:host   rdfs:range       ex:animal ."; update +=
-				 * "ex:zoo1    zoo:host         ex:cat2 ."; update +=
-				 * "ex:cat3    owl:sameAs       ex:cat2 .";
-				 */
 				update += "}} \n";
 
 				System.out.println(update);
-				// ur.add("INSERT {<bouuula> <bouuuulb> <bouuulc>} WHERE {?s ?p ?o}");
-				// ur.add("INSERT DATA { <http://website.com/exmp/something> http://purl.org/dc/elements/1.1/title ‘Some title’}");
 				ur.add(update);
-
 				up = UpdateExecutionFactory.createRemote(ur, service);
 				up.execute();
 				System.out.println("lien inséré");
@@ -237,10 +203,8 @@ public class RelationSocket extends WebSocketServlet {
 				String vocabulaireSource) {
 			OntModel model = ModelFactory.createOntologyModel();
 			String source = vocabulaireSource;
-			// Read the ontology file
 			String resultat = "resultat vide";
 			JSONObject j = new JSONObject();
-			// Get the base namespace
 			String namespace = vocabulaire;
 			Model m = FileManager.get().loadModel(source);
 			if (m == null) {
@@ -289,20 +253,12 @@ public class RelationSocket extends WebSocketServlet {
 					jresult.put("proprieteLocalName",
 							proprieteResultat.toString());
 					jresult.put("ns", ns);
-
-					/*
-					 * try { connection.sendMessage(jresult.toString()); } catch
-					 * (IOException e) {
-					 * 
-					 * e.printStackTrace(); }
-					 */
 					jsonListeProprietes.put(String.valueOf(i), jresult);
 				}
 				System.out.println(jsonListeProprietes.toString());
 				try {
 					connection.sendMessage(jsonListeProprietes.toString());
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -337,18 +293,11 @@ public class RelationSocket extends WebSocketServlet {
 				JSONObject jresult = new JSONObject();
 				jresult.put("propriete", propriete.toString());
 				System.out.println(jresult.toString());
-				/*
-				 * try { connection.sendMessage(jresult.toString()); } catch
-				 * (IOException e) {
-				 * 
-				 * e.printStackTrace(); }
-				 */
 				jsonListeProprietes.put(String.valueOf(i), jresult);
 			}
 			try {
 				connection.sendMessage(jsonListeProprietes.toString());
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -365,7 +314,6 @@ public class RelationSocket extends WebSocketServlet {
 				} catch (Exception e) {
 					val = json.getString(key);
 				}
-
 				if (val != null) {
 					out.put(key, val);
 				}

@@ -21,12 +21,12 @@ window.onload = function() {
 	function drawMethode(id, objMethode){
 			var i=0;
 			var pjs = Processing.getInstanceById(id);
-			for (var key in obj) {
-				if (obj.hasOwnProperty(key)) {
+			for (var key in  objMethodejson) {
+				if ( objMethodejson.hasOwnProperty(key)) {
 					i++;
-					pjs.addNoeud(obj[key].subject,10, 20*i);
-					pjs.addNoeud(obj[key].object,300, 20*i);
-					console.log("ajoute point"+obj[key].subject);
+					pjs.addNoeud( objMethodejson[key].subject,10, 20*i);
+					pjs.addNoeud( objMethodejson[key].object,300, 20*i);
+					//console.log("ajoute point"+ objMethodejson[key].subject);
 				}
 			}
 			};
@@ -39,7 +39,7 @@ window.onload = function() {
 	function setIDProjetPde(id, _IDProjetPde){
 			 var pjs = Processing.getInstanceById(id);
 			 var IDProjetPde = _IDProjetPde;
-			 console.log(IDProjetPde);
+			// console.log(IDProjetPde);
 			 pjs.setIDProjetPde(IDProjetPde);    
 			 };
 			 
@@ -64,6 +64,7 @@ window.onload = function() {
 	 var wsUriDoapModel = "ws://" + window.location.hostname + ":" + openshiftWebSocketPort + "/doapmodelws";
 	 var wsUriPageProjet = "ws://" + window.location.hostname + ":" + openshiftWebSocketPort + "/pageprojetws/?projet="+projetId;
 	 var wsUriMethode = "ws://" + window.location.hostname + ":" + openshiftWebSocketPort + "/methodews/?projet="+projetId;
+//	 var wsUriDiamond = "ws://" + window.location.hostname + ":" + openshiftWebSocketPort + "/diamondws/?projet="+projetId;
 	 var titrePage = document.getElementById('titrePage');
 	 var titreProjet = document.getElementById('titreProjet');
 	 var descriptionProjet = document.getElementById('descriptionProjet');
@@ -76,7 +77,9 @@ window.onload = function() {
 	 var websocketDoapModel = new WebSocket(wsUriDoapModel);
 	 var websocketPageProjet = new WebSocket(wsUriPageProjet);
 	 var websocketMethode = new WebSocket(wsUriMethode);
+//	 var websocketDiamond = new WebSocket(wsUriDiamond);
 	 var agentDiv= document.getElementById('agentDiv');
+	var  objMethodejson;
 	var objDoap;
 	var objDetail;
 	var nomDoap=null;
@@ -93,9 +96,9 @@ window.onload = function() {
 	  var ajouteInfoFormSujet = infoSujet.value;
 	  var ajouteInfoFormPropriete = infoPropriete.value;
 	  var ajouteInfoFormObjet = infoObjet.value;
-	  console.log(e);
+	 // console.log(e);
 	  
-	  console.log(ajouteInfoFormSujet+" "+ajouteInfoFormPropriete+" "+ajouteInfoFormObjet);
+	 // console.log(ajouteInfoFormSujet+" "+ajouteInfoFormPropriete+" "+ajouteInfoFormObjet);
 	/*
 	 if (websocketNouveauProjet.readyState === undefined || websocketNouveauProjet.readyState > 1) {
 	websocketNouveauProjet = new WebSocket(wsUriNouveauProjet);
@@ -141,10 +144,9 @@ window.onload = function() {
 
 	// Handle messages sent by the server.
 	websocketDoapModel.onmessage = function(event) {
-		console.log(event);
+	//	console.log(event);
 		var message = event.data;
 		doapDiv.innerHTML ='';
-		console.log(event.data);
 		objDoap = JSON.parse(event.data);
 		var doapform = document.createElement("form");
 		doapform.setAttribute('method',"post");
@@ -188,7 +190,7 @@ window.onload = function() {
 	};
 
 	websocketPageProjet.onmessage = function(event) {
-		console.log("Page projet:" +event.data);
+		//console.log("Page projet:" +event.data);
 		objDetail=JSON.parse(event.data);
 		//setProjetPde('projetPde',objDetail);
 		var i=0;
@@ -196,15 +198,15 @@ window.onload = function() {
 		for (var key in objDetail){
 			if(objDetail.hasOwnProperty(key)){
 				if(key=='messageUtilisateur'){
-					console.log(objDetail[key]);
+					//console.log(objDetail[key]);
 					agentDiv.innerHTML =objDetail[key];
 					//setMessagePde('projetPde',objDetail[key]);
 				}else if(key=='projetsSimilaires'){
 					objProjetSimilaire=objDetail[key];
-					console.log(objProjetSimilaire);
+					//console.log(objProjetSimilaire);
 					for (var key in objProjetSimilaire){
 						if(objProjetSimilaire.hasOwnProperty(key)){
-							console.log(objProjetSimilaire[key]);
+						//	console.log(objProjetSimilaire[key]);
 							lignesProjetsSimilaires+='<li>'+objProjetSimilaire[key].titre+
 							//addProjetSimilairePde('projetPde',objProjetSimilaire[key]);
 							'<span id="mini">'+objProjetSimilaire[key].description+'</span></li>'
@@ -215,7 +217,7 @@ window.onload = function() {
 					nomDoap=objDetail[key].objet;
 					setNomProjetPde('projetPde',nomDoap);
 					setIDProjetPde('projetPde',projetId);
-					console.log("titre :"+nomDoap);
+				//	console.log("titre :"+nomDoap);
 					titreProjet.innerHTML=nomDoap;
 					titrePage.innerHTML=nomDoap;
 					if (document.getElementById("name")){
@@ -225,7 +227,7 @@ window.onload = function() {
 				}else if (objDetail[key].propriete=='http://purl.org/dc/elements/1.1/description'){
 					descriptionDoap=objDetail[key].objet;
 					// setDescriptionProjetPde('projetPde',descriptionDoap);
-					console.log("description : "+descriptionDoap);
+				//	console.log("description : "+descriptionDoap);
 					descriptionProjet.innerHTML=descriptionDoap;
 					if (document.getElementById("description")){
 						document.getElementById("description").value = descriptionDoap;
@@ -240,7 +242,12 @@ window.onload = function() {
 		websocketMethode.onclose = function(evt) { onCloseMet(evt) };
 		websocketMethode.onmessage = function(evt) { onMessageMet(evt) };
 		websocketMethode.onerror = function(evt) { onErrorMet(evt) };
-		
+	/*	
+		websocketDiamond.onopen = function(evt) { onOpenDiamond(evt) };
+		websocketDiamond.onclose = function(evt) { onCloseDiamond(evt) };
+		websocketDiamond.onmessage = function(evt) { onMessageDiamond(evt) };
+		websocketDiamond.onerror = function(evt) { onErrorDiamond(evt) };
+		*/
 	function onOpenMet(evt){
 		console.log("onopenmet");
 		websocketMethode.send("diamond");
@@ -249,62 +256,88 @@ window.onload = function() {
 		console.log("onclosemet");
 	};
 	function onMessageMet(evt){
-		console.log("methode JSON reçue : "+evt.data);
+		console.log("##############################################################methode JSON reçue : "+evt.data);
 		//websocketMethode.send("subclasses");
 		/*websocketMethode.close();*/
-		obj = JSON.parse(evt.data);
-		drawMethode('methodePde',obj);
-		var i=0;
-		var reponse='';
-		var sujet='';
-		var types='subClassOf : ';
-		var hasPart='';
-		var first='';
-		var documentproduit='Document produit : ';
-		var autres='voir aussi : ';
-		var listeDiamond = document.createElement('ul');
-		for (var key in obj) {
-			if (obj.hasOwnProperty(key)) {
-			i++;
-				if (obj[key].subject!=sujet){
-					sujet=obj[key].subject;
-					affichemethode.innerHTML+=sujet; 	
-					affichemethode.appendChild(listeDiamond);
-				};
-				if (obj[key].predicate=='type'){
-					console.log(obj[key].predicate+obj[key].object);
-					types+=obj[key].object+" ";
-				}else if (obj[key].predicate=='hasPart'){
-					console.log(obj[key].predicate+obj[key].object);
-					hasPart+=" <a href=\""+urlProjet+"&etape="+obj[key].object+"\">"+obj[key].object+"</a> ";
-					var ligneDiamond = document.createElement('li');
-					listeDiamond.appendChild(ligneDiamond);
-					ligneDiamond.innerHTML+="<div id="+obj[key].object+"><a href=\""+urlProjet+"&etape="+obj[key].object+"\">"+obj[key].object+"</a></div>";
-					websocketMethode.send(obj[key].object);
-				}else if (obj[key].predicate=='first'){
-					console.log(obj[key].predicate+obj[key].object);
-					first+=obj[key].object+" ";
-				}else if (obj[key].predicate=='documentproduit'){
-					console.log(obj[key].predicate+obj[key].object);
-					documentproduit+=" <a href=\""+urlProjet+"&etape="+obj[key].object+"\">"+obj[key].object+"</a> ";
-					var ligneDiamond = document.createElement('li');
-					listeDiamond.appendChild(ligneDiamond);
-					ligneDiamond.innerHTML+="<a href=\""+urlProjet+"&etape="+obj[key].object+"\">"+obj[key].object+"</a>";
+		objMethodejson = JSON.parse(evt.data);
+
+			if (objMethodejson.hasOwnProperty('message')){
+				console.log("reponse de METHODEHTML5Socket..."+objMethodejson['message']);
+				if (objMethodejson['message']=="detailDiamond"){
+					delete objMethodejson['message'];
+					console.log("reponse de update apres remove ");
+					for (var key in objMethodejson) {
+						if (objMethodejson.hasOwnProperty(key)) {
+						
+							console.log ( objMethodejson[key].ressourceShort+" "+objMethodejson[key].lien+" "+objMethodejson[key].objet);
+							var bloc = document.getElementById(objMethodejson[key].ressourceShort);
+							var liste = document.createElement('ul');
+							var ligneLien = document.createElement('li');
+							ligneLien.innerHTML+="<div id="+objMethodejson[key].ressourceShort+"><span id=\"mini\"><i>"+objMethodejson[key].lien+"</i></span><a href=\"\" target=\"_blank\">"+objMethodejson[key].objet+"</a> ";						
+							//ligneLien.innerHTML+="<i><span id=\"mini\">Caractéristique de cette ressource :</span></i> "+objMethodejson[key].proprieteEtendue+"</br>  <span id=\"mini\"><i>a pour valeur :</i></span> "+objMethodejson[key].objetEtendu+"</div>";
+							liste.appendChild(ligneLien);
+							bloc.appendChild(liste);
+						};
+					};
 				}else{
-					autres+=obj[key].object+" ";
+					console.log("le message n'est pas detailDiamond mais "+objMethodejson['message'])
 				};
-			};
-		};
-		affichemethode.innerHTML+='</ul>'; 
-		reponse+=sujet+'(<a id = "mini" href="https://tel.archives-ouvertes.fr/tel-00189046/document" target="_blank">description de la methode</a>)';
-		reponse+=" ("+types+")";
-		//reponse+="<h2>"+first+"</h2>";
-		reponse+="<div>"+hasPart+"</div>";
-		reponse+="<div>"+documentproduit+"</div>";
-		reponse+=autres;
-		reponse+='<a id ="mini" href="http://smag0.rww.io/diamond.owl" target="_blank">détails de la méthode</a>';
-		reponse+='<a id ="mini" href="https://drive.google.com/file/d/0B0zEK4yLB5C6V0xaa3VtLXllQXM/view?usp=sharing" target="_blank">Smag0 sur votre mobile Android</a>';
-		writeToMethode(reponse);
+			}else{
+					drawMethode('methodePde',objMethodejson);
+					var i=0;
+					var reponse='';
+					var sujet='';
+					var types='subClassOf : ';
+					var hasPart='';
+					var first='';
+					var documentproduit='Document produit : ';
+					var autres='voir aussi : ';
+					var listeDiamond = document.createElement('ul');
+					for (var key in objMethodejson) {
+						if (objMethodejson.hasOwnProperty(key)) {
+						i++;
+							if (objMethodejson[key].subject!=sujet){
+								sujet=objMethodejson[key].subject;
+								affichemethode.innerHTML+=sujet; 	
+								affichemethode.appendChild(listeDiamond);
+							};
+							if (objMethodejson[key].predicate=='type'){
+							//	console.log(objMethodejson[key].predicate+objMethodejson[key].object);
+								types+=objMethodejson[key].object+" ";
+							}else if (objMethodejson[key].predicate=='hasPart'){
+							//	console.log(objMethodejson[key].predicate+objMethodejson[key].object);
+								hasPart+=" <a href=\""+urlProjet+"&etape="+objMethodejson[key].object+"\">"+objMethodejson[key].object+"</a> ";
+								var ligneDiamond = document.createElement('li');
+								listeDiamond.appendChild(ligneDiamond);
+								ligneDiamond.innerHTML+="<div id="+objMethodejson[key].object+"><a href=\""+urlProjet+"&etape="+objMethodejson[key].object+"\">"+objMethodejson[key].object+"</a></div>";
+								websocketMethode.send(objMethodejson[key].object);
+							}else if (objMethodejson[key].predicate=='first'){
+							//	console.log(objMethodejson[key].predicate+objMethodejson[key].object);
+								first+=objMethodejson[key].object+" ";
+							}else if (objMethodejson[key].predicate=='documentproduit'){
+							//	console.log(objMethodejson[key].predicate+objMethodejson[key].object);
+								documentproduit+=" <a href=\""+urlProjet+"&etape="+objMethodejson[key].object+"\">"+objMethodejson[key].object+"</a> ";
+								var ligneDiamond = document.createElement('li');
+								listeDiamond.appendChild(ligneDiamond);
+								ligneDiamond.innerHTML+="<a href=\""+urlProjet+"&etape="+objMethodejson[key].object+"\">"+objMethodejson[key].object+"</a>";
+							}else{
+								autres+=objMethodejson[key].object+" ";
+							};
+						};
+					};
+					affichemethode.innerHTML+='</ul>'; 
+					reponse+=sujet+'(<a id = "mini" href="https://tel.archives-ouvertes.fr/tel-00189046/document" target="_blank">description de la methode</a>)';
+					reponse+=" ("+types+")";
+					//reponse+="<h2>"+first+"</h2>";
+					reponse+="<div>"+hasPart+"</div>";
+					reponse+="<div>"+documentproduit+"</div>";
+					reponse+=autres;
+					reponse+='<a id ="mini" href="http://smag0.rww.io/diamond.owl" target="_blank">détails de la méthode</a>';
+					reponse+='<a id ="mini" href="https://drive.google.com/file/d/0B0zEK4yLB5C6V0xaa3VtLXllQXM/view?usp=sharing" target="_blank">Smag0 sur votre mobile Android</a>';
+					writeToMethode(reponse);
+					};
+		//Localisé ici pour l'instant pour plus de clarté dans le debuggage
+	//	websocketDiamond.send("diamond");
 	};
 
 	function onErrorMet(evt){
@@ -316,5 +349,21 @@ window.onload = function() {
 		console.log("ecriture dans methodetab : "+message);
 		methodeDiv.innerHTML=message;
 		methodeDiv.className=rule;
+	};
+	
+	//DIAMOND
+	function onCloseDiamond(evt){
+		console.log("onCloseDiamond");
+	};
+	function onErrorDiamond(evt){
+		console.log("onErrorDiamond");
+	};
+	function onOpenDiamond(evt){
+		console.log("---onOpenDiamond");
+		// lancement reporté en fin de la première pour debuggage plus facile, mais remettre à l'ouverture de la socket websocketMethode.send("diamond");
+	};
+	function onMessageDiamond(evt){
+		console.log("onMessageDiamond");
+		console.log("-----------------------------------------------------------------------------------Réponse de la DiamondSocketServlet : "+evt.data);
 	};
 };

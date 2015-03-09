@@ -23,7 +23,6 @@ public class DoapModelSocket extends WebSocketServlet {
 	@Override
 	public WebSocket doWebSocketConnect(HttpServletRequest request,
 			String protocol) {
-		// TODO Auto-generated method stub
 		return new DoapModel();
 	}
 
@@ -38,14 +37,10 @@ public class DoapModelSocket extends WebSocketServlet {
 
 		@Override
 		public void onClose(int closeCode, String message) {
-			// TODO Auto-generated method stub
-
 		}
 
 		@Override
 		public void onMessage(String data) {
-			// TODO Auto-generated method stub
-
 		}
 
 		private void recupereDOAPModel() {
@@ -58,12 +53,11 @@ public class DoapModelSocket extends WebSocketServlet {
 					.getProperty("http://www.w3.org/2000/01/rdf-schema#label");
 			StmtIterator it = model.listStatements(null, propertyLabel, null,
 					langue);
-			// display the 3 statements
 			int i = 0;
 			for (; it.hasNext();) {
 				i++;
 				Statement doapLigne = it.next();
-				System.out.println(doapLigne);
+				// System.out.println(doapLigne);
 				Resource subject = doapLigne.getSubject();
 				Property predicate = doapLigne.getPredicate();
 				RDFNode object = doapLigne.getObject();
@@ -74,26 +68,16 @@ public class DoapModelSocket extends WebSocketServlet {
 				} else if (object.isLiteral()) {
 					objectResultat = object.asLiteral().toString();
 				}
-				// System.out.println(subject + "\t" + predicate + "\t" +
-				// object);
-
 				JSONObject jresult = new JSONObject();
 				jresult.put("subject", subject.getLocalName().toString());
 				jresult.put("predicate", predicate.getLocalName().toString());
 				jresult.put("object", objectResultat);
-
 				doapJson.put(String.valueOf(i), jresult);
-
 			}
-			// SimpleSelector selector = new SimpleSelector((Resource) null,
-			// (Property) null, (RDFNode) null, "fr");
-			// SimpleSelector((Resource) null, (Property) null, (String) null,
-			// (String) null);
-			System.out.println(doapJson.toString());
+			// System.out.println(doapJson.toString());
 			try {
 				connection.sendMessage(doapJson.toString());
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
